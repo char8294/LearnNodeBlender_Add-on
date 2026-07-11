@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import keyword
 import re
 import shutil
 import zipfile
@@ -56,6 +57,10 @@ class UpdateMetadata:
     release_notes: str = ""
 
 
+def format_version(version: Version) -> str:
+    return ".".join(str(value) for value in version)
+
+
 def parse_version(value: object) -> Version:
     """Return a normalized three-part version from a tag or tuple."""
     if isinstance(value, (tuple, list)):
@@ -88,10 +93,19 @@ def metadata_from_release(
 
     release_url = str(payload.get("html_url") or fallback_release_url)
     release_notes = str(payload.get("body") or "").strip()
+    expected_asset_name = f"LearnNodeBlender-v{format_version(version)}.zip".casefold()
+    archive_url = archive_base_url + quote(ref, safe="")
+    for asset in payload.get("assets") or ():
+        asset_name = str(asset.get("name") or "").casefold()
+        asset_url = str(asset.get("browser_download_url") or "").strip()
+        if asset_name == expected_asset_name and asset_url:
+            archive_url = asset_url
+            break
+
     return UpdateMetadata(
         version=version,
         ref=ref,
-        archive_url=archive_base_url + quote(ref, safe=""),
+        archive_url=archive_url,
         release_url=release_url,
         release_notes=release_notes,
     )
@@ -259,6 +273,36 @@ def extract_and_validate_archive(
             raise ArchiveValidationError(f"Invalid data file: data/{data_name}") from error
 
     return package_root
+
+
+def build_release_archive(
+    source_dir: str | Path,
+    destination: str | Path,
+    package_name: str = "learn_node_blender",
+) -> Path:
+    """Build a Blender-installable ZIP with a valid Python package root."""
+    source_dir = Path(source_dir)
+    destination = Path(destination)
+    if not package_name.isidentifier() or keyword.iskeyword(package_name):
+        raise ValueError(f"Invalid Python package name: {package_name!r}")
+    if not source_dir.is_dir() or not (source_dir / "__init__.py").is_file():
+        raise ValueError("Release source must contain a root __init__.py")
+
+    runtime_files = sorted(
+        path for path in source_dir.glob("*.py") if path.name != "build_release_zip.py"
+    )
+    data_dir = source_dir / "data"
+    if data_dir.is_dir():
+        runtime_files.extend(sorted(path for path in data_dir.rglob("*") if path.is_file()))
+    if not runtime_files:
+        raise ValueError("Release source contains no runtime files")
+
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    with zipfile.ZipFile(destination, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+        for path in runtime_files:
+            relative_path = path.relative_to(source_dir).as_posix()
+            archive.write(path, f"{package_name}/{relative_path}")
+    return destination
 
 
 def _clear_directory(directory: Path) -> None:

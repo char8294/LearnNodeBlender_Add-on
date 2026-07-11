@@ -229,6 +229,26 @@ class UpdateMetadataTests(unittest.TestCase):
         self.assertEqual(metadata.release_notes, "New geometry node explanations.")
         self.assertEqual(metadata.release_url, "https://github.com/example/release/1.2.3")
 
+    def test_release_metadata_prefers_the_valid_install_zip_asset(self):
+        metadata = update_utils.metadata_from_release(
+            {
+                "tag_name": "v1.2.3",
+                "assets": [
+                    {
+                        "name": "LearnNodeBlender-v1.2.3.zip",
+                        "browser_download_url": "https://github.com/example/release/download/v1.2.3/LearnNodeBlender-v1.2.3.zip",
+                    }
+                ],
+            },
+            archive_base_url=self.ARCHIVE_BASE,
+            fallback_release_url=self.RELEASES_URL,
+        )
+
+        self.assertEqual(
+            metadata.archive_url,
+            "https://github.com/example/release/download/v1.2.3/LearnNodeBlender-v1.2.3.zip",
+        )
+
     def test_tag_selection_chooses_highest_supported_numeric_tag(self):
         metadata = update_utils.metadata_from_tags(
             [
@@ -273,6 +293,31 @@ class UpdateMetadataTests(unittest.TestCase):
 
         self.assertEqual(metadata.version, (1, 4, 0))
         self.assertEqual(len(requested_urls), 2)
+
+
+class ReleaseArchiveTests(unittest.TestCase):
+    def test_release_archive_has_a_valid_blender_module_root(self):
+        with TemporaryDirectory() as temp_dir:
+            temp = Path(temp_dir)
+            source = temp / "source"
+            source.mkdir()
+            (source / "__init__.py").write_text(
+                'bl_info = {"version": (1, 0, 0)}\n', encoding="utf-8"
+            )
+            (source / "update_utils.py").write_text("VALUE = 1\n", encoding="utf-8")
+            (source / "data").mkdir()
+            (source / "data" / "geometry_nodes.json").write_text("{}", encoding="utf-8")
+            archive_path = temp / "LearnNodeBlender-v1.0.0.zip"
+
+            update_utils.build_release_archive(source, archive_path)
+
+            with zipfile.ZipFile(archive_path) as archive:
+                names = archive.namelist()
+            roots = {name.split("/", 1)[0] for name in names if name}
+            self.assertEqual(roots, {"learn_node_blender"})
+            self.assertTrue("learn_node_blender/__init__.py" in names)
+            self.assertTrue("learn_node_blender/data/geometry_nodes.json" in names)
+            self.assertTrue("learn_node_blender".isidentifier())
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Learn Node (Thai Explainer)",
     "author": "Antigravity",
-    "version": (1, 0, 0),
+    "version": (1, 0, 1),
     "blender": (3, 3, 0),
     "location": "Node Editor > N-Panel > Learn Node",
     "description": "Explains Geometry Nodes in Thai using a HUD overlay.",
