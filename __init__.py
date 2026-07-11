@@ -30,6 +30,17 @@ SOCKET_TYPE_NAMES = {
     'TEXTURE': 'Texture', 'MATERIAL': 'Material'
 }
 
+PROBE_DATA_TYPE_BY_SOCKET_TYPE = {
+    'VALUE': 'FLOAT',
+    'INT': 'INT',
+    'BOOLEAN': 'BOOLEAN',
+    'VECTOR': 'FLOAT_VECTOR',
+    'RGBA': 'FLOAT_COLOR',
+}
+RUNTIME_VALUE_REFRESH_SECONDS = 0.3
+runtime_value_cache = {"key": None, "values": {}}
+runtime_probe_index = 0
+
 def get_node_data():
     global node_data_cache
     if node_data_cache is None:
@@ -80,48 +91,185 @@ def format_socket_default_value(value):
         return "(" + ", ".join(format_number(component) for component in components) + ")"
     return str(value)
 
-def socket_endpoint_label(node, socket):
-    node_name = node.label or node.name
-    return f"{node_name}.{socket.name}"
+def runtime_socket_key(socket):
+    return (socket.node.name, socket.identifier, socket.is_output)
 
-def format_socket_links(socket):
-    """Show live source/target connections when a socket's value comes from the graph."""
-    if not socket.is_linked:
-        return ""
+def find_socket_by_identifier(sockets, identifier):
+    return next((socket for socket in sockets if socket.identifier == identifier), None)
 
-    if socket.is_output:
-        endpoints = [socket_endpoint_label(link.to_node, link.to_socket) for link in socket.links]
-        direction = "→"
-    else:
-        endpoints = [socket_endpoint_label(link.from_node, link.from_socket) for link in socket.links]
-        direction = "←"
+def get_runtime_value_targets(valid_inputs, valid_outputs):
+    """Map HUD sockets to the output sockets that provide their live values."""
+    targets = []
+    for socket in valid_inputs:
+        if socket.is_linked:
+            source_socket = socket.links[0].from_socket
+            if source_socket.inferred_structure_type == 'SINGLE':
+                targets.append((runtime_socket_key(socket), source_socket))
+    for socket in valid_outputs:
+        if socket.inferred_structure_type == 'SINGLE':
+            targets.append((runtime_socket_key(socket), socket))
+    return targets
 
-    visible_endpoints = endpoints[:2]
-    suffix = f" +{len(endpoints) - len(visible_endpoints)}" if len(endpoints) > len(visible_endpoints) else ""
-    return f"{direction} {', '.join(visible_endpoints)}{suffix}"
-
-def get_socket_runtime_value(socket):
-    """Return the current value or graph state that Blender exposes for this socket."""
-    link_value = format_socket_links(socket)
-    if link_value:
-        return link_value
-
-    if not socket.is_output and not socket.hide_value:
+def read_attribute_value(attribute):
+    if not attribute.data:
+        return None
+    item = attribute.data[0]
+    for property_name in ('value', 'vector', 'color'):
         try:
-            return f"= {format_socket_default_value(socket.default_value)}"
+            return getattr(item, property_name)
+        except AttributeError:
+            pass
+    return None
+
+def evaluate_runtime_values(tree, targets):
+    """Evaluate socket outputs on a temporary point, matching the Viewer-node model."""
+    global runtime_probe_index
+
+    supported_targets = [
+        (display_key, source_socket)
+        for display_key, source_socket in targets
+        if source_socket.type in PROBE_DATA_TYPE_BY_SOCKET_TYPE
+    ]
+    if not supported_targets:
+        return {}
+
+    probe_tree = None
+    probe_mesh = None
+    probe_object = None
+    values = {}
+    runtime_probe_index += 1
+    probe_prefix = f"__learn_node_probe_{runtime_probe_index}_"
+
+    try:
+        probe_tree = tree.copy()
+        group_input = next(node for node in probe_tree.nodes if node.bl_idname == 'NodeGroupInput')
+        group_output = next(
+            node for node in probe_tree.nodes
+            if node.bl_idname == 'NodeGroupOutput' and node.is_active_output
+        )
+        geometry_input = next(socket for socket in group_input.outputs if socket.type == 'GEOMETRY')
+        geometry_output = next(socket for socket in group_output.inputs if socket.type == 'GEOMETRY')
+
+        current_geometry = geometry_input
+        captured_targets = []
+        for index, (display_key, source_socket) in enumerate(supported_targets):
+            probe_node = probe_tree.nodes.get(source_socket.node.name)
+            if not probe_node:
+                continue
+            probe_socket = find_socket_by_identifier(probe_node.outputs, source_socket.identifier)
+            if not probe_socket:
+                continue
+
+            attribute_name = f"{probe_prefix}{index}"
+            store = probe_tree.nodes.new('GeometryNodeStoreNamedAttribute')
+            store.data_type = PROBE_DATA_TYPE_BY_SOCKET_TYPE[source_socket.type]
+            store.domain = 'POINT'
+            store.inputs['Name'].default_value = attribute_name
+            probe_tree.links.new(current_geometry, store.inputs['Geometry'])
+            probe_tree.links.new(probe_socket, store.inputs['Value'])
+            current_geometry = store.outputs['Geometry']
+            captured_targets.append((display_key, source_socket, attribute_name))
+
+        if not captured_targets:
+            return {}
+        probe_tree.links.new(current_geometry, geometry_output)
+
+        probe_mesh = bpy.data.meshes.new(f"{probe_prefix}mesh")
+        probe_mesh.from_pydata([(0.0, 0.0, 0.0)], [], [])
+        probe_mesh.update()
+        probe_object = bpy.data.objects.new(f"{probe_prefix}object", probe_mesh)
+        bpy.context.scene.collection.objects.link(probe_object)
+        modifier = probe_object.modifiers.new(f"{probe_prefix}modifier", 'NODES')
+        modifier.node_group = probe_tree
+
+        bpy.context.view_layer.update()
+        evaluated_object = probe_object.evaluated_get(bpy.context.evaluated_depsgraph_get())
+        attributes = evaluated_object.data.attributes
+        for display_key, source_socket, attribute_name in captured_targets:
+            attribute = attributes.get(attribute_name)
+            value = read_attribute_value(attribute) if attribute else None
+            if value is None:
+                continue
+            values[display_key] = format_socket_default_value(value)
+    except (AttributeError, KeyError, RuntimeError, StopIteration, TypeError, ValueError) as error:
+        print(f"Learn Node: could not evaluate runtime values: {error}")
+    finally:
+        if probe_object:
+            bpy.data.objects.remove(probe_object, do_unlink=True)
+        if probe_mesh:
+            bpy.data.meshes.remove(probe_mesh)
+        if probe_tree:
+            bpy.data.node_groups.remove(probe_tree)
+
+    return values
+
+def runtime_values_cache_key(tree, active_node, targets):
+    return (
+        tree.as_pointer(),
+        active_node.as_pointer(),
+        tuple((display_key, source_socket.node.name, source_socket.identifier) for display_key, source_socket in targets),
+    )
+
+def get_live_socket_values(tree, active_node, valid_inputs, valid_outputs):
+    """Read the latest timer-produced values without mutating Blender during drawing."""
+    targets = get_runtime_value_targets(valid_inputs, valid_outputs)
+    cache_key = runtime_values_cache_key(tree, active_node, targets)
+    return runtime_value_cache["values"] if runtime_value_cache["key"] == cache_key else {}
+
+def find_active_geometry_node_context():
+    for window in bpy.context.window_manager.windows:
+        for area in window.screen.areas:
+            if area.type != 'NODE_EDITOR':
+                continue
+            space = area.spaces.active
+            if space.tree_type != 'GeometryNodeTree' or not space.edit_tree:
+                continue
+            active_node = space.edit_tree.nodes.active
+            if active_node:
+                return space.edit_tree, active_node
+    return None, None
+
+def refresh_runtime_values():
+    """Evaluate active-node sockets away from the draw handler, like a lightweight Viewer."""
+    global runtime_value_cache
+
+    try:
+        prefs = bpy.context.preferences.addons[__package__ if __package__ else __name__].preferences
+    except KeyError:
+        return RUNTIME_VALUE_REFRESH_SECONDS
+    if not prefs.show_hud:
+        return RUNTIME_VALUE_REFRESH_SECONDS
+
+    tree, active_node = find_active_geometry_node_context()
+    if not tree or not active_node:
+        return RUNTIME_VALUE_REFRESH_SECONDS
+
+    valid_inputs = [socket for socket in active_node.inputs if not socket.hide and not socket.is_unavailable]
+    valid_outputs = [socket for socket in active_node.outputs if not socket.hide and not socket.is_unavailable]
+    targets = get_runtime_value_targets(valid_inputs, valid_outputs)
+    cache_key = runtime_values_cache_key(tree, active_node, targets)
+    values = evaluate_runtime_values(tree, targets)
+    runtime_value_cache = {"key": cache_key, "values": values}
+
+    for window in bpy.context.window_manager.windows:
+        for area in window.screen.areas:
+            if area.type == 'NODE_EDITOR':
+                area.tag_redraw()
+    return RUNTIME_VALUE_REFRESH_SECONDS
+
+def get_socket_runtime_value(socket, live_values):
+    """Return only the value Blender can show for a socket, never link metadata."""
+    live_value = live_values.get(runtime_socket_key(socket))
+    if live_value is not None:
+        return f"Value: {live_value}"
+
+    if not socket.is_output and not socket.hide_value and socket.type in PROBE_DATA_TYPE_BY_SOCKET_TYPE:
+        try:
+            default_value = socket.default_value
+            if default_value is not None:
+                return f"Value: {format_socket_default_value(default_value)}"
         except (AttributeError, TypeError, ValueError):
             pass
-
-    # Geometry Nodes fields are evaluated per element, so they do not have one
-    # Python-readable value to display in the HUD.
-    if socket.is_output and getattr(socket, 'inferred_structure_type', '') == 'FIELD':
-        return "Field (per element)"
-    if socket.is_output:
-        try:
-            return f"= {format_socket_default_value(socket.default_value)}"
-        except (AttributeError, TypeError, ValueError):
-            pass
-        return "Unlinked"
     return ""
 
 def get_socket_type_name(socket):
@@ -288,6 +436,8 @@ def draw_callback_px():
         
         # Inputs
         valid_inputs = [socket for socket in active_node.inputs if not socket.hide and not socket.is_unavailable]
+        valid_outputs = [socket for socket in active_node.outputs if not socket.hide and not socket.is_unavailable]
+        live_socket_values = get_live_socket_values(tree, active_node, valid_inputs, valid_outputs)
         if valid_inputs:
             blf.size(font_id, int(18 * scale))
             blf.color(font_id, 0.4, 0.8, 1.0, 1)
@@ -316,7 +466,7 @@ def draw_callback_px():
                 s_type = get_socket_type_name(socket)
                 type_suffix = f" ({s_type})" if s_type else ""
 
-                runtime_value = get_socket_runtime_value(socket)
+                runtime_value = get_socket_runtime_value(socket, live_socket_values)
                 display_text = f"- {socket.name}{type_suffix}"
                 if runtime_value:
                     display_text += f"  {runtime_value}"
@@ -328,7 +478,6 @@ def draw_callback_px():
         text_y -= int(10 * scale)
         
         # Outputs
-        valid_outputs = [socket for socket in active_node.outputs if not socket.hide and not socket.is_unavailable]
         if valid_outputs:
             blf.size(font_id, int(18 * scale))
             blf.color(font_id, 0.4, 0.8, 1.0, 1)
@@ -354,7 +503,7 @@ def draw_callback_px():
                 s_type = get_socket_type_name(socket)
                 type_suffix = f" ({s_type})" if s_type else ""
 
-                runtime_value = get_socket_runtime_value(socket)
+                runtime_value = get_socket_runtime_value(socket, live_socket_values)
                 display_text = f"- {socket.name}{type_suffix}"
                 if runtime_value:
                     display_text += f"  {runtime_value}"
@@ -571,8 +720,13 @@ def register():
             draw_callback_px, (), 'WINDOW', 'POST_PIXEL'
         )
 
+    if not bpy.app.timers.is_registered(refresh_runtime_values):
+        bpy.app.timers.register(refresh_runtime_values, first_interval=0.1, persistent=True)
+
 def unregister():
     global draw_handler
+    if bpy.app.timers.is_registered(refresh_runtime_values):
+        bpy.app.timers.unregister(refresh_runtime_values)
     if draw_handler is not None:
         bpy.types.SpaceNodeEditor.draw_handler_remove(draw_handler, 'WINDOW')
         draw_handler = None
