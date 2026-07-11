@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Learn Node (Thai Explainer)",
     "author": "Antigravity",
-    "version": (1, 0, 1),
+    "version": (1, 0, 2),
     "blender": (3, 3, 0),
     "location": "Node Editor > N-Panel > Learn Node",
     "description": "Explains Geometry Nodes in Thai using a HUD overlay.",
@@ -1011,6 +1011,15 @@ class NODE_PT_learn_node(bpy.types.Panel):
     def draw(self, context):
         layout = self.layout
         prefs = context.preferences.addons[__name__].preferences
+
+        update_box = layout.box()
+        update_row = update_box.row(align=True)
+        update_row.label(
+            text=f"v{_format_version(bl_info['version'])}",
+            icon='PACKAGE',
+        )
+        update_row.operator("learn_node.check_update", text="Check for Updates", icon='URL')
+        layout.separator()
         
         layout.prop(prefs, "show_hud", text="Toggle HUD", toggle=True)
         layout.prop(prefs, "hud_scale", text="HUD Scale", slider=True)
@@ -1023,15 +1032,6 @@ class NODE_PT_learn_node(bpy.types.Panel):
             
         layout.separator()
         layout.operator("learn_node.reload_data", text="Reload JSON Data", icon='FILE_REFRESH')
-
-        layout.separator()
-        update_box = layout.box()
-        update_row = update_box.row(align=True)
-        update_row.label(
-            text=f"Learn Node v{_format_version(bl_info['version'])}",
-            icon='PACKAGE',
-        )
-        update_row.operator("learn_node.check_update", text="Check for Updates", icon='URL')
 
 
 class NODE_OT_learn_node_reload(bpy.types.Operator):
