@@ -15,7 +15,6 @@ from gpu_extras.batch import batch_for_shader
 import json
 import os
 import glob
-import textwrap
 
 # Global handler variable
 draw_handler = None
@@ -341,8 +340,24 @@ def runtime_values_cache_key(tree, active_node, targets):
 def get_live_socket_values(tree, active_node, valid_inputs, valid_outputs):
     """Read the latest timer-produced values without mutating Blender during drawing."""
     targets = get_runtime_value_targets(valid_inputs, valid_outputs)
+    if not targets:
+        return {}
     cache_key = runtime_values_cache_key(tree, active_node, targets)
     return runtime_value_cache["values"] if runtime_value_cache["key"] == cache_key else {}
+
+def tag_node_editors_redraw():
+    for window in bpy.context.window_manager.windows:
+        for area in window.screen.areas:
+            if area.type == 'NODE_EDITOR':
+                area.tag_redraw()
+
+def update_runtime_value_cache_and_redraw(cache_key, values):
+    global runtime_value_cache
+
+    changed = runtime_value_cache["key"] != cache_key or runtime_value_cache["values"] != values
+    runtime_value_cache = {"key": cache_key, "values": values}
+    if changed:
+        tag_node_editors_redraw()
 
 def find_active_geometry_node_context():
     for window in bpy.context.window_manager.windows:
@@ -359,8 +374,6 @@ def find_active_geometry_node_context():
 
 def refresh_runtime_values():
     """Evaluate active-node sockets away from the draw handler, like a lightweight Viewer."""
-    global runtime_value_cache
-
     try:
         prefs = bpy.context.preferences.addons[__package__ if __package__ else __name__].preferences
     except KeyError:
@@ -372,17 +385,16 @@ def refresh_runtime_values():
     if not tree or not active_node:
         return RUNTIME_VALUE_REFRESH_SECONDS
 
+    if active_node.bl_idname not in get_node_data():
+        update_runtime_value_cache_and_redraw((tree.as_pointer(), active_node.as_pointer(), ()), {})
+        return RUNTIME_VALUE_REFRESH_SECONDS
+
     valid_inputs = [socket for socket in active_node.inputs if not socket.hide and not socket.is_unavailable]
     valid_outputs = [socket for socket in active_node.outputs if not socket.hide and not socket.is_unavailable]
     targets = get_runtime_value_targets(valid_inputs, valid_outputs)
     cache_key = runtime_values_cache_key(tree, active_node, targets)
     values = evaluate_runtime_values(tree, targets)
-    runtime_value_cache = {"key": cache_key, "values": values}
-
-    for window in bpy.context.window_manager.windows:
-        for area in window.screen.areas:
-            if area.type == 'NODE_EDITOR':
-                area.tag_redraw()
+    update_runtime_value_cache_and_redraw(cache_key, values)
     return RUNTIME_VALUE_REFRESH_SECONDS
 
 def get_socket_runtime_value(socket, live_values):
@@ -536,6 +548,8 @@ def draw_callback_px():
     shader.uniform_float("color", (0.1, 0.1, 0.1, prefs.hud_bg_opacity))
     batch.draw(shader)
     gpu.state.blend_set('NONE')
+
+    font_id = 0
     
     # Draw Lock Warning if unlocked
     if not prefs.hud_locked:
@@ -548,7 +562,6 @@ def draw_callback_px():
         blf.draw(font_id, "Right Click or ESC to Lock")
     
     # Draw Text
-    font_id = 0
     text_x = x + 15
     text_y = start_y - 30
     
