@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Learn Node (Thai Explainer)",
     "author": "Antigravity",
-    "version": (1, 0, 3),
+    "version": (1, 0, 4),
     "blender": (3, 3, 0),
     "location": "Node Editor > N-Panel > Learn Node",
     "description": "Explains Geometry Nodes in Thai using a HUD overlay.",
@@ -994,7 +994,6 @@ class NODE_OT_learn_node_install_update(bpy.types.Operator):
             if not keep_work_dir:
                 shutil.rmtree(work_dir, ignore_errors=True)
 
-        bpy.ops.learn_node.update_popup('INVOKE_DEFAULT')
         return {'FINISHED'}
 
 
