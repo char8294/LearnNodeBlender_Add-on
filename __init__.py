@@ -37,6 +37,7 @@ PROBE_DATA_TYPE_BY_SOCKET_TYPE = {
     'RGBA': 'FLOAT_COLOR',
 }
 GEOMETRY_SOCKET_TYPE = 'GEOMETRY'
+FIELD_SOCKET_DISPLAY_SHAPE = 'DIAMOND'
 RUNTIME_VALUE_REFRESH_SECONDS = 0.3
 runtime_value_cache = {"key": None, "values": {}}
 runtime_probe_index = 0
@@ -97,10 +98,23 @@ def runtime_socket_key(socket):
 def find_socket_by_identifier(sockets, identifier):
     return next((socket for socket in sockets if socket.identifier == identifier), None)
 
+def socket_has_single_value(socket):
+    return getattr(socket, 'inferred_structure_type', None) == 'SINGLE'
+
+def socket_is_field(socket):
+    return getattr(socket, 'display_shape', '') == FIELD_SOCKET_DISPLAY_SHAPE
+
 def socket_can_be_live_target(socket):
     if socket.type == GEOMETRY_SOCKET_TYPE:
         return True
-    return getattr(socket, 'inferred_structure_type', None) == 'SINGLE'
+    return socket_has_single_value(socket)
+
+def socket_can_show_default_value(socket):
+    if socket.is_output or socket.hide_value:
+        return False
+    if socket.type not in PROBE_DATA_TYPE_BY_SOCKET_TYPE:
+        return False
+    return socket_has_single_value(socket)
 
 def get_runtime_value_targets(valid_inputs, valid_outputs):
     """Map HUD sockets to the output sockets that provide their live values."""
@@ -405,7 +419,7 @@ def get_socket_runtime_value(socket, live_values):
             return live_value
         return f"Value: {live_value}"
 
-    if not socket.is_output and not socket.hide_value and socket.type in PROBE_DATA_TYPE_BY_SOCKET_TYPE:
+    if socket_can_show_default_value(socket):
         try:
             default_value = socket.default_value
             if default_value is not None:
@@ -416,7 +430,7 @@ def get_socket_runtime_value(socket, live_values):
 
 def get_socket_type_name(socket):
     socket_type = SOCKET_TYPE_NAMES.get(getattr(socket, 'type', ''), getattr(socket, 'type', '').title())
-    if getattr(socket, 'display_shape', '') == 'DIAMOND':
+    if socket_is_field(socket):
         socket_type += " Field"
     return socket_type
 
