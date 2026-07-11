@@ -22,6 +22,14 @@ draw_handler = None
 node_data_cache = None
 global_box_height = 400
 
+SOCKET_TYPE_NAMES = {
+    'VALUE': 'Float', 'INT': 'Integer', 'BOOLEAN': 'Boolean',
+    'VECTOR': 'Vector', 'STRING': 'String', 'RGBA': 'Color',
+    'SHADER': 'Shader', 'OBJECT': 'Object', 'IMAGE': 'Image',
+    'GEOMETRY': 'Geometry', 'COLLECTION': 'Collection',
+    'TEXTURE': 'Texture', 'MATERIAL': 'Material'
+}
+
 def get_node_data():
     global node_data_cache
     if node_data_cache is None:
@@ -38,6 +46,89 @@ def get_node_data():
     return node_data_cache
 
 THAI_COMBINING = set('\u0e31\u0e33\u0e34\u0e35\u0e36\u0e37\u0e38\u0e39\u0e3a\u0e47\u0e48\u0e49\u0e4a\u0e4b\u0e4c\u0e4d\u0e4e')
+
+def format_number(value):
+    """Keep numeric socket values short enough to read in the HUD."""
+    if isinstance(value, bool):
+        return str(value)
+    if isinstance(value, int):
+        return str(value)
+    if isinstance(value, float):
+        return f"{value:.4g}"
+    return str(value)
+
+def format_socket_default_value(value):
+    """Return a compact, readable representation of a socket default value."""
+    if value is None:
+        return "None"
+    if isinstance(value, (bool, int, float)):
+        return format_number(value)
+    if isinstance(value, str):
+        return f'"{value}"' if value else '""'
+
+    # Object, collection, material, and image sockets expose Blender ID data.
+    if hasattr(value, "name"):
+        return value.name
+
+    # Vector, color, rotation, and matrix-style values are iterable RNA arrays.
+    try:
+        components = tuple(value)
+    except (TypeError, ValueError):
+        return str(value)
+
+    if components:
+        return "(" + ", ".join(format_number(component) for component in components) + ")"
+    return str(value)
+
+def socket_endpoint_label(node, socket):
+    node_name = node.label or node.name
+    return f"{node_name}.{socket.name}"
+
+def format_socket_links(socket):
+    """Show live source/target connections when a socket's value comes from the graph."""
+    if not socket.is_linked:
+        return ""
+
+    if socket.is_output:
+        endpoints = [socket_endpoint_label(link.to_node, link.to_socket) for link in socket.links]
+        direction = "→"
+    else:
+        endpoints = [socket_endpoint_label(link.from_node, link.from_socket) for link in socket.links]
+        direction = "←"
+
+    visible_endpoints = endpoints[:2]
+    suffix = f" +{len(endpoints) - len(visible_endpoints)}" if len(endpoints) > len(visible_endpoints) else ""
+    return f"{direction} {', '.join(visible_endpoints)}{suffix}"
+
+def get_socket_runtime_value(socket):
+    """Return the current value or graph state that Blender exposes for this socket."""
+    link_value = format_socket_links(socket)
+    if link_value:
+        return link_value
+
+    if not socket.is_output and not socket.hide_value:
+        try:
+            return f"= {format_socket_default_value(socket.default_value)}"
+        except (AttributeError, TypeError, ValueError):
+            pass
+
+    # Geometry Nodes fields are evaluated per element, so they do not have one
+    # Python-readable value to display in the HUD.
+    if socket.is_output and getattr(socket, 'inferred_structure_type', '') == 'FIELD':
+        return "Field (per element)"
+    if socket.is_output:
+        try:
+            return f"= {format_socket_default_value(socket.default_value)}"
+        except (AttributeError, TypeError, ValueError):
+            pass
+        return "Unlinked"
+    return ""
+
+def get_socket_type_name(socket):
+    socket_type = SOCKET_TYPE_NAMES.get(getattr(socket, 'type', ''), getattr(socket, 'type', '').title())
+    if getattr(socket, 'display_shape', '') == 'DIAMOND':
+        socket_type += " Field"
+    return socket_type
 
 def draw_text_multiline(font_id, text, x, y, max_width, size=16, color=(1,1,1,1)):
     blf.size(font_id, size)
@@ -222,24 +313,13 @@ def draw_callback_px():
                 s_color = (min(1.0, s_color[0] * 1.2), min(1.0, s_color[1] * 1.2), min(1.0, s_color[2] * 1.2), 1.0)
                 blf.color(font_id, *s_color)
                 
-                # Map internal socket type to readable name
-                type_map = {
-                    'VALUE': 'Float', 'INT': 'Integer', 'BOOLEAN': 'Boolean',
-                    'VECTOR': 'Vector', 'STRING': 'String', 'RGBA': 'Color',
-                    'SHADER': 'Shader', 'OBJECT': 'Object', 'IMAGE': 'Image',
-                    'GEOMETRY': 'Geometry', 'COLLECTION': 'Collection',
-                    'TEXTURE': 'Texture', 'MATERIAL': 'Material'
-                }
-                s_type = type_map.get(getattr(socket, 'type', ''), getattr(socket, 'type', '').title())
-                
-                # Check if it's a field
-                shape = getattr(socket, 'display_shape', '')
-                if shape == 'DIAMOND':
-                    s_type += " Field"
-                
+                s_type = get_socket_type_name(socket)
                 type_suffix = f" ({s_type})" if s_type else ""
-                
+
+                runtime_value = get_socket_runtime_value(socket)
                 display_text = f"- {socket.name}{type_suffix}"
+                if runtime_value:
+                    display_text += f"  {runtime_value}"
                 text_y = draw_text_multiline(font_id, display_text, text_x, text_y, box_width - int(30 * scale), size=int(14 * scale), color=s_color)
                 if trans_desc:
                     text_y = draw_text_multiline(font_id, f"  {trans_desc}", text_x, text_y, box_width - int(30 * scale), size=int(14 * scale), color=s_color)
@@ -271,23 +351,13 @@ def draw_callback_px():
                 s_color = (min(1.0, s_color[0] * 1.2), min(1.0, s_color[1] * 1.2), min(1.0, s_color[2] * 1.2), 1.0)
                 blf.color(font_id, *s_color)
                 
-                type_map = {
-                    'VALUE': 'Float', 'INT': 'Integer', 'BOOLEAN': 'Boolean',
-                    'VECTOR': 'Vector', 'STRING': 'String', 'RGBA': 'Color',
-                    'SHADER': 'Shader', 'OBJECT': 'Object', 'IMAGE': 'Image',
-                    'GEOMETRY': 'Geometry', 'COLLECTION': 'Collection',
-                    'TEXTURE': 'Texture', 'MATERIAL': 'Material'
-                }
-                s_type = type_map.get(getattr(socket, 'type', ''), getattr(socket, 'type', '').title())
-                
-                # Check if it's a field
-                shape = getattr(socket, 'display_shape', '')
-                if shape == 'DIAMOND':
-                    s_type += " Field"
-                
+                s_type = get_socket_type_name(socket)
                 type_suffix = f" ({s_type})" if s_type else ""
-                
+
+                runtime_value = get_socket_runtime_value(socket)
                 display_text = f"- {socket.name}{type_suffix}"
+                if runtime_value:
+                    display_text += f"  {runtime_value}"
                 text_y = draw_text_multiline(font_id, display_text, text_x, text_y, box_width - int(30 * scale), size=int(14 * scale), color=s_color)
                 if trans_desc:
                     text_y = draw_text_multiline(font_id, f"  {trans_desc}", text_x, text_y, box_width - int(30 * scale), size=int(14 * scale), color=s_color)
