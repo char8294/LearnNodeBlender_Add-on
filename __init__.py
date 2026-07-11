@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Learn Node (Thai Explainer)",
     "author": "Antigravity",
-    "version": (1, 0),
+    "version": (1, 0, 0),
     "blender": (3, 3, 0),
     "location": "Node Editor > N-Panel > Learn Node",
     "description": "Explains Geometry Nodes in Thai using a HUD overlay.",
@@ -15,6 +15,43 @@ from gpu_extras.batch import batch_for_shader
 import json
 import os
 import glob
+import shutil
+import tempfile
+import urllib.error
+import urllib.request
+from pathlib import Path
+
+try:
+    from . import update_utils
+except ImportError:
+    import update_utils
+
+
+GITHUB_OWNER = "char8294"
+GITHUB_REPO = "LearnNodeBlender_Add-on"
+GITHUB_RELEASES_URL = f"https://github.com/{GITHUB_OWNER}/{GITHUB_REPO}/releases"
+GITHUB_LATEST_RELEASE_API = (
+    f"https://api.github.com/repos/{GITHUB_OWNER}/{GITHUB_REPO}/releases/latest"
+)
+GITHUB_TAGS_API = f"https://api.github.com/repos/{GITHUB_OWNER}/{GITHUB_REPO}/tags"
+GITHUB_ARCHIVE_BASE_URL = (
+    f"https://codeload.github.com/{GITHUB_OWNER}/{GITHUB_REPO}/zip/refs/tags/"
+)
+GITHUB_USER_AGENT = "LearnNode-Blender-Updater/1.0"
+
+_update_info = {
+    "checked": False,
+    "busy": False,
+    "phase": "",
+    "error": "",
+    "has_update": False,
+    "installed": False,
+    "current_version": bl_info["version"],
+    "latest_version": bl_info["version"],
+    "release_notes": "",
+    "release_url": GITHUB_RELEASES_URL,
+    "metadata": None,
+}
 
 # Global handler variable
 draw_handler = None
@@ -720,6 +757,247 @@ class LearnNodePreferences(bpy.types.AddonPreferences):
         layout.prop(self, "hud_locked")
 
 
+def _format_version(version):
+    return ".".join(str(value) for value in version)
+
+
+def _wrap_update_notes(content, width=70, max_lines=20):
+    lines = []
+    for source_line in (content or "").splitlines():
+        source_line = source_line.strip()
+        if not source_line:
+            continue
+        while len(source_line) > width:
+            split_at = source_line.rfind(" ", 0, width)
+            split_at = split_at if split_at > 0 else width
+            lines.append(source_line[:split_at])
+            source_line = source_line[split_at:].strip()
+        if source_line:
+            lines.append(source_line)
+    return lines[:max_lines]
+
+
+def _github_request(url, timeout=15):
+    request = urllib.request.Request(
+        url,
+        headers={
+            "Accept": "application/vnd.github+json",
+            "User-Agent": GITHUB_USER_AGENT,
+        },
+    )
+    with urllib.request.urlopen(request, timeout=timeout) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+
+def _download_archive(url, destination, timeout=60):
+    request = urllib.request.Request(
+        url,
+        headers={"Accept": "application/zip", "User-Agent": GITHUB_USER_AGENT},
+    )
+    with urllib.request.urlopen(request, timeout=timeout) as response:
+        with open(destination, "wb") as output:
+            shutil.copyfileobj(response, output)
+
+
+def _fetch_update_metadata():
+    return update_utils.fetch_update_metadata(
+        _github_request,
+        release_api_url=GITHUB_LATEST_RELEASE_API,
+        tags_api_url=GITHUB_TAGS_API,
+        archive_base_url=GITHUB_ARCHIVE_BASE_URL,
+        fallback_release_url=GITHUB_RELEASES_URL,
+    )
+
+
+def _check_for_updates():
+    current_version = update_utils.parse_version(bl_info["version"])
+    try:
+        metadata = _fetch_update_metadata()
+    except Exception as error:
+        _update_info.update(
+            checked=True,
+            busy=False,
+            phase="",
+            error=f"Could not check GitHub for updates: {error}",
+            has_update=False,
+            metadata=None,
+            current_version=current_version,
+            latest_version=current_version,
+        )
+        return
+
+    _update_info.update(
+        checked=True,
+        busy=False,
+        phase="",
+        error="",
+        has_update=metadata.version > current_version,
+        installed=False,
+        current_version=current_version,
+        latest_version=metadata.version,
+        release_notes=metadata.release_notes,
+        release_url=metadata.release_url,
+        metadata=metadata,
+    )
+
+
+class NODE_OT_learn_node_check_update(bpy.types.Operator):
+    """Check GitHub for a newer Learn Node version."""
+
+    bl_idname = "learn_node.check_update"
+    bl_label = "Check for Updates"
+
+    def execute(self, context):
+        if _update_info["busy"]:
+            self.report({'WARNING'}, "Learn Node update is already running")
+            return {'CANCELLED'}
+
+        _update_info.update(
+            checked=False,
+            busy=True,
+            phase="Checking GitHub...",
+            error="",
+            installed=False,
+            metadata=None,
+        )
+        _check_for_updates()
+        bpy.ops.learn_node.update_popup('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+
+class NODE_OT_learn_node_update_popup(bpy.types.Operator):
+    """Show update status and the available installation action."""
+
+    bl_idname = "learn_node.update_popup"
+    bl_label = "Learn Node Update"
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_props_dialog(self, width=480)
+
+    def draw(self, context):
+        layout = self.layout
+        info = _update_info
+
+        if info["busy"]:
+            layout.label(text=info["phase"] or "Working...", icon='TIME')
+            return
+
+        if info["installed"]:
+            layout.label(text="Update installed successfully", icon='CHECKMARK')
+            layout.label(text="Use F3 > Reload Scripts or restart Blender.")
+            return
+
+        if info["error"]:
+            layout.label(text="Update check failed", icon='ERROR')
+            for line in _wrap_update_notes(info["error"], width=65, max_lines=8):
+                layout.label(text=line)
+            operator = layout.operator(
+                "wm.url_open", text="Open GitHub Releases", icon='URL'
+            )
+            operator.url = GITHUB_RELEASES_URL
+            return
+
+        if not info["checked"]:
+            layout.label(text="No update check has been performed yet", icon='INFO')
+            return
+
+        layout.label(
+            text=f"Current version: v{_format_version(info['current_version'])}",
+            icon='PACKAGE',
+        )
+        layout.label(
+            text=f"Latest version: v{_format_version(info['latest_version'])}",
+            icon='WORLD',
+        )
+        layout.separator()
+
+        if info["has_update"]:
+            box = layout.box()
+            box.label(text="A new version is available", icon='INFO')
+            if info["release_notes"]:
+                box.label(text="Release notes:", icon='TEXT')
+                for line in _wrap_update_notes(info["release_notes"]):
+                    box.label(text=line)
+            box.separator()
+            box.label(text="Blender will need Reload Scripts or a restart after install.")
+            box.operator("learn_node.install_update", text="Update Now", icon='IMPORT')
+        else:
+            layout.label(text="Learn Node is up to date", icon='CHECKMARK')
+
+    def execute(self, context):
+        return {'FINISHED'}
+
+
+class NODE_OT_learn_node_install_update(bpy.types.Operator):
+    """Download, validate, and install the selected GitHub ZIP update."""
+
+    bl_idname = "learn_node.install_update"
+    bl_label = "Update Learn Node"
+
+    def execute(self, context):
+        metadata = _update_info.get("metadata")
+        if _update_info["busy"] or not metadata or not _update_info["has_update"]:
+            self.report({'WARNING'}, "No installable Learn Node update is selected")
+            return {'CANCELLED'}
+
+        work_dir = Path(tempfile.mkdtemp(prefix="learn-node-update-"))
+        keep_work_dir = False
+        _update_info.update(busy=True, phase="Downloading update archive...", error="")
+
+        try:
+            archive_path = work_dir / "update.zip"
+            extraction_dir = work_dir / "extract"
+            self.report({'INFO'}, "Downloading update archive...")
+            _download_archive(metadata.archive_url, archive_path)
+
+            _update_info["phase"] = "Extracting and validating update..."
+            self.report({'INFO'}, _update_info["phase"])
+            package_root = update_utils.extract_and_validate_archive(
+                archive_path,
+                extraction_dir,
+                expected_version=metadata.version,
+            )
+
+            target_dir = Path(__file__).resolve().parent
+            if not target_dir.is_dir():
+                raise RuntimeError("The running add-on is not installed in a writable directory")
+            if (target_dir / ".git").exists():
+                raise RuntimeError(
+                    "Automatic update is disabled for a Git working tree; install the add-on in Blender first"
+                )
+
+            _update_info["phase"] = "Installing update..."
+            self.report({'INFO'}, _update_info["phase"])
+            update_utils.install_package(package_root, target_dir, work_dir)
+            _update_info.update(
+                busy=False,
+                phase="",
+                error="",
+                installed=True,
+                has_update=False,
+            )
+            self.report({'INFO'}, "Learn Node update installed; reload scripts or restart Blender")
+        except update_utils.InstallTransactionError as error:
+            keep_work_dir = bool(error.backup_path)
+            message = str(error)
+            if error.backup_path:
+                message += f" Backup preserved at: {error.backup_path}"
+            _update_info.update(busy=False, phase="", error=message, installed=False)
+        except Exception as error:
+            _update_info.update(
+                busy=False,
+                phase="",
+                error=f"Update installation failed: {error}",
+                installed=False,
+            )
+        finally:
+            if not keep_work_dir:
+                shutil.rmtree(work_dir, ignore_errors=True)
+
+        bpy.ops.learn_node.update_popup('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+
 class NODE_PT_learn_node(bpy.types.Panel):
     bl_label = "Learn Node"
     bl_space_type = 'NODE_EDITOR'
@@ -745,6 +1023,15 @@ class NODE_PT_learn_node(bpy.types.Panel):
             
         layout.separator()
         layout.operator("learn_node.reload_data", text="Reload JSON Data", icon='FILE_REFRESH')
+
+        layout.separator()
+        update_box = layout.box()
+        update_row = update_box.row(align=True)
+        update_row.label(
+            text=f"Learn Node v{_format_version(bl_info['version'])}",
+            icon='PACKAGE',
+        )
+        update_row.operator("learn_node.check_update", text="Check for Updates", icon='URL')
 
 
 class NODE_OT_learn_node_reload(bpy.types.Operator):
@@ -862,6 +1149,9 @@ classes = (
     LearnNodePreferences,
     NODE_PT_learn_node,
     NODE_OT_learn_node_reload,
+    NODE_OT_learn_node_check_update,
+    NODE_OT_learn_node_update_popup,
+    NODE_OT_learn_node_install_update,
     NODE_OT_learn_node_drag_hud,
     NODE_OT_learn_node_unlock_hud,
     NODE_OT_learn_node_lock_hud
