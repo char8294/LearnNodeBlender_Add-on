@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Learn Node (Thai Explainer)",
     "author": "Antigravity",
-    "version": (1, 0, 2),
+    "version": (1, 0, 3),
     "blender": (3, 3, 0),
     "location": "Node Editor > N-Panel > Learn Node",
     "description": "Explains Geometry Nodes in Thai using a HUD overlay.",
@@ -1012,16 +1012,10 @@ class NODE_PT_learn_node(bpy.types.Panel):
         layout = self.layout
         prefs = context.preferences.addons[__name__].preferences
 
-        update_box = layout.box()
-        update_row = update_box.row(align=True)
-        update_row.label(
-            text=f"v{_format_version(bl_info['version'])}",
-            icon='PACKAGE',
-        )
-        update_row.operator("learn_node.check_update", text="Check for Updates", icon='URL')
-        layout.separator()
-        
-        layout.prop(prefs, "show_hud", text="Toggle HUD", toggle=True)
+        hud_row = layout.row(align=True)
+        hud_row.prop(prefs, "show_hud", text="Toggle HUD", toggle=True)
+        hud_row.operator("learn_node.check_update", text="", icon='URL')
+
         layout.prop(prefs, "hud_scale", text="HUD Scale", slider=True)
         layout.prop(prefs, "hud_bg_opacity", text="Background Opacity", slider=True)
         
