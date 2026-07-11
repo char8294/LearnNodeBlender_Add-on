@@ -1,0 +1,5864 @@
+{
+  "ShaderNodeValue": {
+    "name": "Value",
+    "description": "กำหนดและส่งออกค่าตัวเลขทศนิยม (Float) ค่าเดียว ใช้สำหรับปรับค่าต่างๆ",
+    "inputs": {},
+    "outputs": {
+      "Value": "ค่าตัวเลขทศนิยม"
+    }
+  },
+  "NodeGroupOutput": {
+    "name": "Group Output",
+    "description": "ส่งผลลัพธ์ของข้อมูลออกจากกลุ่มโหนด (Node Group)",
+    "inputs": {},
+    "outputs": {}
+  },
+  "ShaderNodeBlackbody": {
+    "name": "Blackbody",
+    "description": "คำนวณค่าสีจากการแผ่รังสีความร้อนอุณหภูมิเคลวิน (Kelvin) คล้ายแสงไฟหรือไฟไหม้",
+    "inputs": {},
+    "outputs": {}
+  },
+  "ShaderNodeGamma": {
+    "name": "Gamma",
+    "description": "ปรับค่าความสว่างหรือค่าแกมมา (Gamma) ของสี",
+    "inputs": {},
+    "outputs": {}
+  },
+  "ShaderNodeValToRGB": {
+    "name": "Color Ramp",
+    "description": "ไล่ระดับสีหรือใช้ทำตัวกำหนดช่วงน้ำหนักสีตามค่า 0-1",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeCombineColor": {
+    "name": "Combine Color",
+    "description": "รวมค่าแยกส่วนกลับเป็นข้อมูลสี เช่น HSL, HSV, RGB",
+    "inputs": {},
+    "outputs": {},
+    "dropdowns": {
+      "mode": [
+        "RGB",
+        "HSV",
+        "HSL"
+      ]
+    },
+    "sub_types": {
+      "mode": {
+        "RGB": {
+          "name": "รูปแบบสี RGB",
+          "description": "โหมดสีแบบ Red, Green, Blue"
+        },
+        "HSV": {
+          "name": "รูปแบบสี HSV",
+          "description": "โหมดสีแบบ Hue, Saturation, Value"
+        },
+        "HSL": {
+          "name": "รูปแบบสี HSL",
+          "description": "โหมดสีแบบ Hue, Saturation, Lightness"
+        }
+      }
+    }
+  },
+  "FunctionNodeSeparateColor": {
+    "name": "Separate Color",
+    "description": "แยกค่าสีออกเป็นส่วนๆ เช่น Red, Green, Blue หรือ Hue, Saturation, Value",
+    "inputs": {},
+    "outputs": {},
+    "dropdowns": {
+      "mode": [
+        "RGB",
+        "HSV",
+        "HSL"
+      ]
+    },
+    "sub_types": {
+      "mode": {
+        "RGB": {
+          "name": "รูปแบบสี RGB",
+          "description": "โหมดสีแบบ Red, Green, Blue"
+        },
+        "HSV": {
+          "name": "รูปแบบสี HSV",
+          "description": "โหมดสีแบบ Hue, Saturation, Value"
+        },
+        "HSL": {
+          "name": "รูปแบบสี HSL",
+          "description": "โหมดสีแบบ Hue, Saturation, Lightness"
+        }
+      }
+    }
+  },
+  "ShaderNodeTexBrick": {
+    "name": "Brick Texture",
+    "description": "สร้างลวดลายอิฐเรียงกัน",
+    "inputs": {},
+    "outputs": {}
+  },
+  "ShaderNodeTexChecker": {
+    "name": "Checker Texture",
+    "description": "สร้างลวดลายตารางหมากรุก",
+    "inputs": {},
+    "outputs": {}
+  },
+  "ShaderNodeTexGabor": {
+    "name": "Gabor Texture",
+    "description": "สร้างลวดลายนอยส์แบบมีทิศทาง (Gabor Noise) เพื่อทำลายไม้หรือลายพู่กัน",
+    "inputs": {},
+    "outputs": {},
+    "dropdowns": {
+      "gabor_type": [
+        "2D",
+        "3D"
+      ]
+    },
+    "sub_types": {
+      "gabor_type": {
+        "2D": {
+          "name": "Gabor Texture (2 มิติ)",
+          "description": "ตัวเลือกโหมด: 2 มิติ"
+        },
+        "3D": {
+          "name": "Gabor Texture (3 มิติ)",
+          "description": "ตัวเลือกโหมด: 3 มิติ"
+        }
+      }
+    }
+  },
+  "ShaderNodeTexGradient": {
+    "name": "Gradient Texture",
+    "description": "สร้างลวดลายไล่ระดับสี (Gradient)",
+    "inputs": {},
+    "outputs": {},
+    "dropdowns": {
+      "gradient_type": [
+        "LINEAR",
+        "QUADRATIC",
+        "EASING",
+        "DIAGONAL",
+        "SPHERICAL",
+        "QUADRATIC_SPHERE",
+        "RADIAL"
+      ]
+    },
+    "sub_types": {
+      "gradient_type": {
+        "LINEAR": {
+          "name": "Gradient Texture (เชิงเส้น (Linear))",
+          "description": "ตัวเลือกโหมด: เชิงเส้น (Linear)"
+        },
+        "QUADRATIC": {
+          "name": "Gradient Texture (กำลังสอง (Quadratic))",
+          "description": "ตัวเลือกโหมด: กำลังสอง (Quadratic)"
+        },
+        "EASING": {
+          "name": "Gradient Texture (ปรับเรียบ (Easing))",
+          "description": "ตัวเลือกโหมด: ปรับเรียบ (Easing)"
+        },
+        "DIAGONAL": {
+          "name": "Gradient Texture (แนวทแยง (Diagonal))",
+          "description": "ตัวเลือกโหมด: แนวทแยง (Diagonal)"
+        },
+        "SPHERICAL": {
+          "name": "Gradient Texture (ทรงกลม (Spherical))",
+          "description": "ตัวเลือกโหมด: ทรงกลม (Spherical)"
+        },
+        "QUADRATIC_SPHERE": {
+          "name": "Gradient Texture (ทรงกลมกำลังสอง (Quadratic Sphere))",
+          "description": "ตัวเลือกโหมด: ทรงกลมกำลังสอง (Quadratic Sphere)"
+        },
+        "RADIAL": {
+          "name": "Gradient Texture (รัศมี (Radial))",
+          "description": "ตัวเลือกโหมด: รัศมี (Radial)"
+        }
+      }
+    }
+  },
+  "ShaderNodeTexImage": {
+    "name": "Image Texture",
+    "description": "ดึงข้อมูลจากไฟล์รูปภาพมาใช้เป็นลวดลายหรือแมพสี",
+    "inputs": {},
+    "outputs": {},
+    "dropdowns": {
+      "projection": [
+        "FLAT",
+        "BOX",
+        "SPHERE",
+        "TUBE"
+      ],
+      "interpolation": [
+        "Linear",
+        "Closest",
+        "Cubic",
+        "Smart"
+      ],
+      "extension": [
+        "REPEAT",
+        "EXTEND",
+        "CLIP",
+        "MIRROR"
+      ]
+    },
+    "sub_types": {
+      "projection": {
+        "FLAT": {
+          "name": "Image Texture (แบน (Flat))",
+          "description": "ตัวเลือกโหมด: แบน (Flat)"
+        },
+        "BOX": {
+          "name": "Image Texture (กล่อง (Box))",
+          "description": "ตัวเลือกโหมด: กล่อง (Box)"
+        },
+        "SPHERE": {
+          "name": "Image Texture (ทรงกลม (Sphere))",
+          "description": "ตัวเลือกโหมด: ทรงกลม (Sphere)"
+        },
+        "TUBE": {
+          "name": "Image Texture (ท่อ (Tube))",
+          "description": "ตัวเลือกโหมด: ท่อ (Tube)"
+        }
+      },
+      "interpolation": {
+        "Linear": {
+          "name": "Image Texture (เชิงเส้น (Linear))",
+          "description": "ตัวเลือกโหมด: เชิงเส้น (Linear)"
+        },
+        "Closest": {
+          "name": "Image Texture (ใกล้ที่สุด (Closest))",
+          "description": "ตัวเลือกโหมด: ใกล้ที่สุด (Closest)"
+        },
+        "Cubic": {
+          "name": "Image Texture (ลูกบาศก์ (Cubic))",
+          "description": "ตัวเลือกโหมด: ลูกบาศก์ (Cubic)"
+        },
+        "Smart": {
+          "name": "Image Texture (อัจฉริยะ (Smart))",
+          "description": "ตัวเลือกโหมด: อัจฉริยะ (Smart)"
+        }
+      },
+      "extension": {
+        "REPEAT": {
+          "name": "Image Texture (ทำซ้ำ (Repeat))",
+          "description": "ตัวเลือกโหมด: ทำซ้ำ (Repeat)"
+        },
+        "EXTEND": {
+          "name": "Image Texture (ขยาย (Extend))",
+          "description": "ตัวเลือกโหมด: ขยาย (Extend)"
+        },
+        "CLIP": {
+          "name": "Image Texture (ตัด (Clip))",
+          "description": "ตัวเลือกโหมด: ตัด (Clip)"
+        },
+        "MIRROR": {
+          "name": "Image Texture (สะท้อน (Mirror))",
+          "description": "ตัวเลือกโหมด: สะท้อน (Mirror)"
+        }
+      }
+    }
+  },
+  "ShaderNodeTexMagic": {
+    "name": "Magic Texture",
+    "description": "สร้างลวดลายสีสันแปลกตาแนวเวทมนตร์หรือภาพลวงตา",
+    "inputs": {},
+    "outputs": {}
+  },
+  "ShaderNodeTexNoise": {
+    "name": "Noise Texture",
+    "description": "สร้างลวดลายคลื่นรบกวน (Perlin Noise) คล้ายก้อนเมฆ หรือหมอก",
+    "inputs": {},
+    "outputs": {},
+    "dropdowns": {
+      "noise_dimensions": [
+        "1D",
+        "2D",
+        "3D",
+        "4D"
+      ],
+      "noise_type": [
+        "MULTIFRACTAL",
+        "RIDGED_MULTIFRACTAL",
+        "HYBRID_MULTIFRACTAL",
+        "FBM",
+        "HETERO_TERRAIN"
+      ]
+    },
+    "sub_types": {
+      "noise_dimensions": {
+        "1D": {
+          "name": "Noise Texture (1 มิติ)",
+          "description": "ตัวเลือกโหมด: 1 มิติ"
+        },
+        "2D": {
+          "name": "Noise Texture (2 มิติ)",
+          "description": "ตัวเลือกโหมด: 2 มิติ"
+        },
+        "3D": {
+          "name": "Noise Texture (3 มิติ)",
+          "description": "ตัวเลือกโหมด: 3 มิติ"
+        },
+        "4D": {
+          "name": "Noise Texture (4 มิติ)",
+          "description": "ตัวเลือกโหมด: 4 มิติ"
+        }
+      },
+      "noise_type": {
+        "MULTIFRACTAL": {
+          "name": "Noise Texture (มัลติแฟร็กทัล (Multifractal))",
+          "description": "ตัวเลือกโหมด: มัลติแฟร็กทัล (Multifractal)"
+        },
+        "RIDGED_MULTIFRACTAL": {
+          "name": "Noise Texture (สันมัลติแฟร็กทัล (Ridged Multifractal))",
+          "description": "ตัวเลือกโหมด: สันมัลติแฟร็กทัล (Ridged Multifractal)"
+        },
+        "HYBRID_MULTIFRACTAL": {
+          "name": "Noise Texture (แฟร็กทัลลูกผสม (Hybrid Multifractal))",
+          "description": "ตัวเลือกโหมด: แฟร็กทัลลูกผสม (Hybrid Multifractal)"
+        },
+        "FBM": {
+          "name": "Noise Texture (FBM)",
+          "description": "ตัวเลือกโหมด: FBM"
+        },
+        "HETERO_TERRAIN": {
+          "name": "Noise Texture (ภูมิประเทศต่างกัน (Hetero Terrain))",
+          "description": "ตัวเลือกโหมด: ภูมิประเทศต่างกัน (Hetero Terrain)"
+        }
+      }
+    }
+  },
+  "ShaderNodeTexVoronoi": {
+    "name": "Voronoi Texture",
+    "description": "สร้างลวดลายเซลล์คล้ายผิวหนัง รังผึ้ง หรือกระจกแตก (Voronoi)",
+    "inputs": {},
+    "outputs": {},
+    "dropdowns": {
+      "voronoi_dimensions": [
+        "1D",
+        "2D",
+        "3D",
+        "4D"
+      ],
+      "distance": [
+        "EUCLIDEAN",
+        "MANHATTAN",
+        "CHEBYCHEV",
+        "MINKOWSKI"
+      ],
+      "feature": [
+        "F1",
+        "F2",
+        "SMOOTH_F1",
+        "DISTANCE_TO_EDGE",
+        "N_SPHERE_RADIUS"
+      ]
+    },
+    "sub_types": {
+      "voronoi_dimensions": {
+        "1D": {
+          "name": "Voronoi Texture (1 มิติ)",
+          "description": "ตัวเลือกโหมด: 1 มิติ"
+        },
+        "2D": {
+          "name": "Voronoi Texture (2 มิติ)",
+          "description": "ตัวเลือกโหมด: 2 มิติ"
+        },
+        "3D": {
+          "name": "Voronoi Texture (3 มิติ)",
+          "description": "ตัวเลือกโหมด: 3 มิติ"
+        },
+        "4D": {
+          "name": "Voronoi Texture (4 มิติ)",
+          "description": "ตัวเลือกโหมด: 4 มิติ"
+        }
+      },
+      "distance": {
+        "EUCLIDEAN": {
+          "name": "Voronoi Texture (ยูคลิด (Euclidean))",
+          "description": "ตัวเลือกโหมด: ยูคลิด (Euclidean)"
+        },
+        "MANHATTAN": {
+          "name": "Voronoi Texture (แมนฮัตตัน (Manhattan))",
+          "description": "ตัวเลือกโหมด: แมนฮัตตัน (Manhattan)"
+        },
+        "CHEBYCHEV": {
+          "name": "Voronoi Texture (เชบีเชฟ (Chebychev))",
+          "description": "ตัวเลือกโหมด: เชบีเชฟ (Chebychev)"
+        },
+        "MINKOWSKI": {
+          "name": "Voronoi Texture (มินคอฟสกี้ (Minkowski))",
+          "description": "ตัวเลือกโหมด: มินคอฟสกี้ (Minkowski)"
+        }
+      },
+      "feature": {
+        "F1": {
+          "name": "Voronoi Texture (F1)",
+          "description": "ตัวเลือกโหมด: F1"
+        },
+        "F2": {
+          "name": "Voronoi Texture (F2)",
+          "description": "ตัวเลือกโหมด: F2"
+        },
+        "SMOOTH_F1": {
+          "name": "Voronoi Texture (Smooth F1)",
+          "description": "ตัวเลือกโหมด: Smooth F1"
+        },
+        "DISTANCE_TO_EDGE": {
+          "name": "Voronoi Texture (ระยะถึงขอบ (Distance to Edge))",
+          "description": "ตัวเลือกโหมด: ระยะถึงขอบ (Distance to Edge)"
+        },
+        "N_SPHERE_RADIUS": {
+          "name": "Voronoi Texture (รัศมี N-Sphere (N-Sphere Radius))",
+          "description": "ตัวเลือกโหมด: รัศมี N-Sphere (N-Sphere Radius)"
+        }
+      }
+    }
+  },
+  "ShaderNodeTexWave": {
+    "name": "Wave Texture",
+    "description": "สร้างลวดลายคลื่นน้ำ คลื่นริ้ว หรือลายไม้สลับสี",
+    "inputs": {},
+    "outputs": {},
+    "dropdowns": {
+      "wave_type": [
+        "BANDS",
+        "RINGS"
+      ],
+      "bands_direction": [
+        "X",
+        "Y",
+        "Z",
+        "DIAGONAL"
+      ],
+      "rings_direction": [
+        "X",
+        "Y",
+        "Z",
+        "SPHERICAL"
+      ],
+      "wave_profile": [
+        "SIN",
+        "SAW",
+        "TRI"
+      ]
+    },
+    "sub_types": {
+      "wave_type": {
+        "BANDS": {
+          "name": "Wave Texture (แถบ (Bands))",
+          "description": "ตัวเลือกโหมด: แถบ (Bands)"
+        },
+        "RINGS": {
+          "name": "Wave Texture (วงแหวน (Rings))",
+          "description": "ตัวเลือกโหมด: วงแหวน (Rings)"
+        }
+      },
+      "bands_direction": {
+        "X": {
+          "name": "Wave Texture (แกน X)",
+          "description": "ตัวเลือกโหมด: แกน X"
+        },
+        "Y": {
+          "name": "Wave Texture (แกน Y)",
+          "description": "ตัวเลือกโหมด: แกน Y"
+        },
+        "Z": {
+          "name": "Wave Texture (แกน Z)",
+          "description": "ตัวเลือกโหมด: แกน Z"
+        },
+        "DIAGONAL": {
+          "name": "Wave Texture (แนวทแยง (Diagonal))",
+          "description": "ตัวเลือกโหมด: แนวทแยง (Diagonal)"
+        }
+      },
+      "rings_direction": {
+        "X": {
+          "name": "Wave Texture (แกน X)",
+          "description": "ตัวเลือกโหมด: แกน X"
+        },
+        "Y": {
+          "name": "Wave Texture (แกน Y)",
+          "description": "ตัวเลือกโหมด: แกน Y"
+        },
+        "Z": {
+          "name": "Wave Texture (แกน Z)",
+          "description": "ตัวเลือกโหมด: แกน Z"
+        },
+        "SPHERICAL": {
+          "name": "Wave Texture (ทรงกลม (Spherical))",
+          "description": "ตัวเลือกโหมด: ทรงกลม (Spherical)"
+        }
+      },
+      "wave_profile": {
+        "SIN": {
+          "name": "Wave Texture (ไซน์ (Sin))",
+          "description": "ตัวเลือกโหมด: ไซน์ (Sin)"
+        },
+        "SAW": {
+          "name": "Wave Texture (ฟันเลื่อย (Saw))",
+          "description": "ตัวเลือกโหมด: ฟันเลื่อย (Saw)"
+        },
+        "TRI": {
+          "name": "Wave Texture (สามเหลี่ยม (Tri))",
+          "description": "ตัวเลือกโหมด: สามเหลี่ยม (Tri)"
+        }
+      }
+    }
+  },
+  "ShaderNodeTexWhiteNoise": {
+    "name": "White Noise Texture",
+    "description": "สร้างคลื่นรบกวนแบบสุ่ม 100% ไม่มีทิศทางหรือความต่อเนื่อง (คล้ายจอซ่าทีวี)",
+    "inputs": {},
+    "outputs": {},
+    "dropdowns": {
+      "noise_dimensions": [
+        "1D",
+        "2D",
+        "3D",
+        "4D"
+      ]
+    },
+    "sub_types": {
+      "noise_dimensions": {
+        "1D": {
+          "name": "White Noise Texture (1 มิติ)",
+          "description": "ตัวเลือกโหมด: 1 มิติ"
+        },
+        "2D": {
+          "name": "White Noise Texture (2 มิติ)",
+          "description": "ตัวเลือกโหมด: 2 มิติ"
+        },
+        "3D": {
+          "name": "White Noise Texture (3 มิติ)",
+          "description": "ตัวเลือกโหมด: 3 มิติ"
+        },
+        "4D": {
+          "name": "White Noise Texture (4 มิติ)",
+          "description": "ตัวเลือกโหมด: 4 มิติ"
+        }
+      }
+    }
+  },
+  "ShaderNodeClamp": {
+    "name": "Clamp",
+    "description": "จำกัดค่าไม่ให้เกินช่วงต่ำสุดและสูงสุดที่กำหนด",
+    "inputs": {},
+    "outputs": {},
+    "dropdowns": {
+      "clamp_type": [
+        "MINMAX",
+        "RANGE"
+      ]
+    },
+    "sub_types": {
+      "clamp_type": {
+        "MINMAX": {
+          "name": "Clamp (ต่ำสุดสูงสุด (MinMax))",
+          "description": "ตัวเลือกโหมด: ต่ำสุดสูงสุด (MinMax)"
+        },
+        "RANGE": {
+          "name": "Clamp (ช่วง (Range))",
+          "description": "ตัวเลือกโหมด: ช่วง (Range)"
+        }
+      }
+    }
+  },
+  "FunctionNodeCompare": {
+    "name": "Compare",
+    "description": "เปรียบเทียบค่าสองค่า (เช่น มากกว่า น้อยกว่า เท่ากับ) เพื่อส่งออกเป็น Boolean",
+    "inputs": {},
+    "outputs": {},
+    "dropdowns": {
+      "operation": [
+        "LESS_THAN",
+        "LESS_EQUAL",
+        "GREATER_THAN",
+        "GREATER_EQUAL",
+        "EQUAL",
+        "NOT_EQUAL",
+        "BRIGHTER",
+        "DARKER"
+      ],
+      "data_type": [
+        "FLOAT",
+        "INT",
+        "BOOLEAN",
+        "VECTOR",
+        "RGBA",
+        "ROTATION",
+        "MATRIX",
+        "STRING",
+        "MENU",
+        "SHADER",
+        "OBJECT",
+        "IMAGE",
+        "GEOMETRY",
+        "COLLECTION",
+        "TEXTURE",
+        "MATERIAL",
+        "BUNDLE",
+        "CLOSURE",
+        "FONT",
+        "SCENE",
+        "TEXT",
+        "MASK",
+        "SOUND"
+      ],
+      "mode": [
+        "ELEMENT",
+        "LENGTH",
+        "AVERAGE",
+        "DOT_PRODUCT",
+        "DIRECTION"
+      ]
+    },
+    "sub_types": {
+      "operation": {
+        "LESS_THAN": {
+          "name": "น้อยกว่า (Less Than)",
+          "description": "ตรวจสอบว่าค่าน้อยกว่าหรือไม่"
+        },
+        "LESS_EQUAL": {
+          "name": "น้อยกว่าหรือเท่ากับ (Less Than or Equal)",
+          "description": "ตรวจสอบว่าค่าน้อยกว่าหรือเท่ากับหรือไม่"
+        },
+        "GREATER_THAN": {
+          "name": "มากกว่า (Greater Than)",
+          "description": "ตรวจสอบว่าค่ามากกว่าหรือไม่"
+        },
+        "GREATER_EQUAL": {
+          "name": "มากกว่าหรือเท่ากับ (Greater Than or Equal)",
+          "description": "ตรวจสอบว่าค่ามากกว่าหรือเท่ากับหรือไม่"
+        },
+        "EQUAL": {
+          "name": "เท่ากับ (Equal)",
+          "description": "ตรวจสอบว่าค่าเท่ากันหรือไม่"
+        },
+        "NOT_EQUAL": {
+          "name": "ไม่เท่ากับ (Not Equal)",
+          "description": "ตรวจสอบว่าค่าไม่เท่ากันหรือไม่"
+        },
+        "BRIGHTER": {
+          "name": "สว่างกว่า (Brighter)",
+          "description": "เทียบค่าแล้วคืนค่าที่สว่างกว่า"
+        },
+        "DARKER": {
+          "name": "มืดกว่า (Darker)",
+          "description": "เทียบค่าแล้วคืนค่าที่มืดกว่า"
+        }
+      },
+      "data_type": {
+        "FLOAT": {
+          "name": "Compare (ทศนิยม (Float))",
+          "description": "ตัวเลือกโหมด: ทศนิยม (Float)"
+        },
+        "INT": {
+          "name": "Compare (จำนวนเต็ม (Int))",
+          "description": "ตัวเลือกโหมด: จำนวนเต็ม (Int)"
+        },
+        "BOOLEAN": {
+          "name": "Compare (ตรรกะ (Boolean))",
+          "description": "ตัวเลือกโหมด: ตรรกะ (Boolean)"
+        },
+        "VECTOR": {
+          "name": "Compare (เวกเตอร์)",
+          "description": "ตัวเลือกโหมด: เวกเตอร์"
+        },
+        "RGBA": {
+          "name": "Compare (สี (RGBA))",
+          "description": "ตัวเลือกโหมด: สี (RGBA)"
+        },
+        "ROTATION": {
+          "name": "Compare (การหมุน (Rotation))",
+          "description": "ตัวเลือกโหมด: การหมุน (Rotation)"
+        },
+        "MATRIX": {
+          "name": "Compare (เมทริกซ์ (Matrix))",
+          "description": "ตัวเลือกโหมด: เมทริกซ์ (Matrix)"
+        },
+        "STRING": {
+          "name": "Compare (ข้อความ (String))",
+          "description": "ตัวเลือกโหมด: ข้อความ (String)"
+        },
+        "MENU": {
+          "name": "Compare (เมนู)",
+          "description": "ตัวเลือกโหมด: เมนู"
+        },
+        "SHADER": {
+          "name": "Compare (เชเดอร์)",
+          "description": "ตัวเลือกโหมด: เชเดอร์"
+        },
+        "OBJECT": {
+          "name": "Compare (วัตถุ (Object))",
+          "description": "ตัวเลือกโหมด: วัตถุ (Object)"
+        },
+        "IMAGE": {
+          "name": "Compare (ภาพ (Image))",
+          "description": "ตัวเลือกโหมด: ภาพ (Image)"
+        },
+        "GEOMETRY": {
+          "name": "Compare (รูปทรง (Geometry))",
+          "description": "ตัวเลือกโหมด: รูปทรง (Geometry)"
+        },
+        "COLLECTION": {
+          "name": "Compare (คอลเลกชัน)",
+          "description": "ตัวเลือกโหมด: คอลเลกชัน"
+        },
+        "TEXTURE": {
+          "name": "Compare (พื้นผิว (Texture))",
+          "description": "ตัวเลือกโหมด: พื้นผิว (Texture)"
+        },
+        "MATERIAL": {
+          "name": "Compare (วัสดุ (Material))",
+          "description": "ตัวเลือกโหมด: วัสดุ (Material)"
+        },
+        "BUNDLE": {
+          "name": "Compare (BUNDLE)",
+          "description": "ตัวเลือกโหมด: BUNDLE"
+        },
+        "CLOSURE": {
+          "name": "Compare (CLOSURE)",
+          "description": "ตัวเลือกโหมด: CLOSURE"
+        },
+        "FONT": {
+          "name": "Compare (FONT)",
+          "description": "ตัวเลือกโหมด: FONT"
+        },
+        "SCENE": {
+          "name": "Compare (SCENE)",
+          "description": "ตัวเลือกโหมด: SCENE"
+        },
+        "TEXT": {
+          "name": "Compare (TEXT)",
+          "description": "ตัวเลือกโหมด: TEXT"
+        },
+        "MASK": {
+          "name": "Compare (MASK)",
+          "description": "ตัวเลือกโหมด: MASK"
+        },
+        "SOUND": {
+          "name": "Compare (SOUND)",
+          "description": "ตัวเลือกโหมด: SOUND"
+        }
+      },
+      "mode": {
+        "ELEMENT": {
+          "name": "Compare (ส่วนประกอบ (Element))",
+          "description": "ตัวเลือกโหมด: ส่วนประกอบ (Element)"
+        },
+        "LENGTH": {
+          "name": "Compare (ความยาว (Length))",
+          "description": "ตัวเลือกโหมด: ความยาว (Length)"
+        },
+        "AVERAGE": {
+          "name": "Compare (ค่าเฉลี่ย (Average))",
+          "description": "ตัวเลือกโหมด: ค่าเฉลี่ย (Average)"
+        },
+        "DOT_PRODUCT": {
+          "name": "Compare (ผลคูณจุด (Dot Product))",
+          "description": "ตัวเลือกโหมด: ผลคูณจุด (Dot Product)"
+        },
+        "DIRECTION": {
+          "name": "Compare (ทิศทาง (Direction))",
+          "description": "ตัวเลือกโหมด: ทิศทาง (Direction)"
+        }
+      }
+    }
+  },
+  "FunctionNodeHashValue": {
+    "name": "Hash Value",
+    "description": "แปลงข้อมูลใดๆ ให้เป็นค่ารหัส Hash ตัวเลขสุ่มที่ไม่ซ้ำกัน",
+    "inputs": {},
+    "outputs": {},
+    "dropdowns": {
+      "data_type": [
+        "FLOAT",
+        "INT",
+        "BOOLEAN",
+        "VECTOR",
+        "RGBA",
+        "ROTATION",
+        "MATRIX",
+        "STRING",
+        "MENU",
+        "SHADER",
+        "OBJECT",
+        "IMAGE",
+        "GEOMETRY",
+        "COLLECTION",
+        "TEXTURE",
+        "MATERIAL",
+        "BUNDLE",
+        "CLOSURE",
+        "FONT",
+        "SCENE",
+        "TEXT",
+        "MASK",
+        "SOUND"
+      ]
+    },
+    "sub_types": {
+      "data_type": {
+        "FLOAT": {
+          "name": "ทศนิยม (Float)",
+          "description": "ชนิดข้อมูลตัวเลขทศนิยมเดี่ยว"
+        },
+        "INT": {
+          "name": "จำนวนเต็ม (Integer)",
+          "description": "ชนิดข้อมูลตัวเลขจำนวนเต็ม"
+        },
+        "BOOLEAN": {
+          "name": "ค่าความจริง (Boolean)",
+          "description": "ชนิดข้อมูลตรรกะ จริง/เท็จ"
+        },
+        "VECTOR": {
+          "name": "เวกเตอร์ (Vector)",
+          "description": "ชนิดข้อมูลเวกเตอร์"
+        },
+        "RGBA": {
+          "name": "สี RGBA",
+          "description": "ชนิดข้อมูลสีแบบมีค่าอัลฟา"
+        },
+        "ROTATION": {
+          "name": "การหมุน (Rotation)",
+          "description": "ชนิดข้อมูลการหมุนหรือองศา"
+        },
+        "MATRIX": {
+          "name": "เมทริกซ์ (Matrix)",
+          "description": "ชนิดข้อมูลเมทริกซ์การแปลงสภาพ"
+        },
+        "STRING": {
+          "name": "ข้อความ (String)",
+          "description": "ชนิดข้อมูลตัวอักษรหรือข้อความ"
+        },
+        "MENU": {
+          "name": "เมนู (Menu)",
+          "description": "ข้อมูลตัวเลือกจากเมนู"
+        },
+        "SHADER": {
+          "name": "เชเดอร์ (Shader)",
+          "description": "ชนิดข้อมูลสำหรับเชื่อมโยงการแสดงผล Shader"
+        },
+        "OBJECT": {
+          "name": "วัตถุ (Object)",
+          "description": "ชนิดข้อมูลสำหรับอ้างอิงวัตถุ 3 มิติ"
+        },
+        "IMAGE": {
+          "name": "รูปภาพ (Image)",
+          "description": "ชนิดข้อมูลรูปภาพ"
+        },
+        "GEOMETRY": {
+          "name": "เรขาคณิต (Geometry)",
+          "description": "ชนิดข้อมูลรูปทรงตาข่ายหรือเรขาคณิต"
+        },
+        "COLLECTION": {
+          "name": "คอลเลกชัน (Collection)",
+          "description": "ชนิดข้อมูลกลุ่มอ็อบเจกต์ (Collection)"
+        },
+        "TEXTURE": {
+          "name": "เทกซ์เจอร์ (Texture)",
+          "description": "ชนิดข้อมูลเทกซ์เจอร์พื้นผิว"
+        },
+        "MATERIAL": {
+          "name": "วัสดุ (Material)",
+          "description": "ชนิดข้อมูลอ้างอิง Material"
+        },
+        "BUNDLE": {
+          "name": "ชุดข้อมูล (Bundle)",
+          "description": "แพ็กเกจข้อมูลที่มัดรวมไว้"
+        },
+        "CLOSURE": {
+          "name": "คลอสเชอร์ (Closure)",
+          "description": "ผลลัพธ์การคำนวณการตกกระทบแสง (BSDF/Closure)"
+        },
+        "FONT": {
+          "name": "ฟอนต์ (Font)",
+          "description": "ชนิดข้อมูลฟอนต์ตัวอักษร"
+        },
+        "SCENE": {
+          "name": "ซีน (Scene)",
+          "description": "ชนิดข้อมูลซีนปัจจุบันหรืออ้างอิง"
+        },
+        "TEXT": {
+          "name": "ข้อความหรือสคริปต์ (Text)",
+          "description": "เชื่อมโยงข้อมูล Text Datablock"
+        },
+        "MASK": {
+          "name": "มาสก์ (Mask)",
+          "description": "ชนิดข้อมูลแบบมาสก์ 2D"
+        },
+        "SOUND": {
+          "name": "เสียง (Sound)",
+          "description": "ชนิดข้อมูลคลื่นเสียงออดิโอ"
+        }
+      }
+    }
+  },
+  "ShaderNodeMapRange": {
+    "name": "Map Range",
+    "description": "คำนวณและปรับลดอัตราส่วนช่วงตัวเลขจากช่วงหนึ่งไปยังอีกช่วงหนึ่งแบบบัญญัติไตรยางศ์",
+    "inputs": {},
+    "outputs": {},
+    "dropdowns": {
+      "interpolation_type": [
+        "LINEAR",
+        "STEPPED",
+        "SMOOTHSTEP",
+        "SMOOTHERSTEP"
+      ],
+      "data_type": [
+        "FLOAT",
+        "FLOAT_VECTOR"
+      ]
+    },
+    "sub_types": {
+      "interpolation_type": {
+        "LINEAR": {
+          "name": "Map Range (เชิงเส้น (Linear))",
+          "description": "ตัวเลือกโหมด: เชิงเส้น (Linear)"
+        },
+        "STEPPED": {
+          "name": "Map Range (แบบขั้น (Stepped))",
+          "description": "ตัวเลือกโหมด: แบบขั้น (Stepped)"
+        },
+        "SMOOTHSTEP": {
+          "name": "Map Range (สมูทสเต็ป (Smoothstep))",
+          "description": "ตัวเลือกโหมด: สมูทสเต็ป (Smoothstep)"
+        },
+        "SMOOTHERSTEP": {
+          "name": "Map Range (สมูทเทอร์สเต็ป (Smootherstep))",
+          "description": "ตัวเลือกโหมด: สมูทเทอร์สเต็ป (Smootherstep)"
+        }
+      },
+      "data_type": {
+        "FLOAT": {
+          "name": "ทศนิยม (Float)",
+          "description": "ชนิดข้อมูลตัวเลขทศนิยมเดี่ยว"
+        },
+        "FLOAT_VECTOR": {
+          "name": "เวกเตอร์ (Vector)",
+          "description": "ชนิดข้อมูลเวกเตอร์หรือพิกัดทิศทาง"
+        }
+      }
+    }
+  },
+  "ShaderNodeMix": {
+    "name": "Mix",
+    "description": "ผสมข้อมูลสองชุดเข้าด้วยกันตามเปอร์เซ็นต์ (Factor) เช่น สี ตัวเลข หรือเวกเตอร์",
+    "inputs": {},
+    "outputs": {},
+    "dropdowns": {
+      "data_type": [
+        "FLOAT",
+        "VECTOR",
+        "RGBA",
+        "ROTATION"
+      ],
+      "factor_mode": [
+        "UNIFORM",
+        "NON_UNIFORM"
+      ],
+      "blend_type": [
+        "MIX",
+        "DARKEN",
+        "MULTIPLY",
+        "BURN",
+        "LIGHTEN",
+        "SCREEN",
+        "DODGE",
+        "ADD",
+        "OVERLAY",
+        "SOFT_LIGHT",
+        "LINEAR_LIGHT",
+        "DIFFERENCE",
+        "EXCLUSION",
+        "SUBTRACT",
+        "DIVIDE",
+        "HUE",
+        "SATURATION",
+        "COLOR",
+        "VALUE"
+      ]
+    },
+    "sub_types": {
+      "data_type": {
+        "FLOAT": {
+          "name": "ทศนิยม (Float)",
+          "description": "ชนิดข้อมูลตัวเลขทศนิยมเดี่ยว"
+        },
+        "VECTOR": {
+          "name": "เวกเตอร์ (Vector)",
+          "description": "ชนิดข้อมูลเวกเตอร์"
+        },
+        "RGBA": {
+          "name": "สี RGBA",
+          "description": "ชนิดข้อมูลสีแบบมีค่าอัลฟา"
+        },
+        "ROTATION": {
+          "name": "การหมุน (Rotation)",
+          "description": "ชนิดข้อมูลการหมุนหรือองศา"
+        }
+      },
+      "factor_mode": {
+        "UNIFORM": {
+          "name": "Mix (สม่ำเสมอ (Uniform))",
+          "description": "ตัวเลือกโหมด: สม่ำเสมอ (Uniform)"
+        },
+        "NON_UNIFORM": {
+          "name": "Mix (ไม่สม่ำเสมอ (Non-Uniform))",
+          "description": "ตัวเลือกโหมด: ไม่สม่ำเสมอ (Non-Uniform)"
+        }
+      },
+      "blend_type": {
+        "MIX": {
+          "name": "Mix (ผสม (Mix))",
+          "description": "ตัวเลือกโหมด: ผสม (Mix)"
+        },
+        "DARKEN": {
+          "name": "Mix (ทำให้เข้ม (Darken))",
+          "description": "ตัวเลือกโหมด: ทำให้เข้ม (Darken)"
+        },
+        "MULTIPLY": {
+          "name": "Mix (คูณ (Multiply))",
+          "description": "ตัวเลือกโหมด: คูณ (Multiply)"
+        },
+        "BURN": {
+          "name": "Mix (เบิร์น (Burn))",
+          "description": "ตัวเลือกโหมด: เบิร์น (Burn)"
+        },
+        "LIGHTEN": {
+          "name": "Mix (ทำให้สว่าง (Lighten))",
+          "description": "ตัวเลือกโหมด: ทำให้สว่าง (Lighten)"
+        },
+        "SCREEN": {
+          "name": "Mix (สกรีน (Screen))",
+          "description": "ตัวเลือกโหมด: สกรีน (Screen)"
+        },
+        "DODGE": {
+          "name": "Mix (ดอดจ์ (Dodge))",
+          "description": "ตัวเลือกโหมด: ดอดจ์ (Dodge)"
+        },
+        "ADD": {
+          "name": "Mix (บวก (Add))",
+          "description": "ตัวเลือกโหมด: บวก (Add)"
+        },
+        "OVERLAY": {
+          "name": "Mix (ซ้อนทับ (Overlay))",
+          "description": "ตัวเลือกโหมด: ซ้อนทับ (Overlay)"
+        },
+        "SOFT_LIGHT": {
+          "name": "Mix (แสงนุ่มนวล (Soft Light))",
+          "description": "ตัวเลือกโหมด: แสงนุ่มนวล (Soft Light)"
+        },
+        "LINEAR_LIGHT": {
+          "name": "Mix (แสงเชิงเส้น (Linear Light))",
+          "description": "ตัวเลือกโหมด: แสงเชิงเส้น (Linear Light)"
+        },
+        "DIFFERENCE": {
+          "name": "Mix (ผลต่าง (Difference))",
+          "description": "ตัวเลือกโหมด: ผลต่าง (Difference)"
+        },
+        "EXCLUSION": {
+          "name": "Mix (แยกออก (Exclusion))",
+          "description": "ตัวเลือกโหมด: แยกออก (Exclusion)"
+        },
+        "SUBTRACT": {
+          "name": "Mix (ลบ (Subtract))",
+          "description": "ตัวเลือกโหมด: ลบ (Subtract)"
+        },
+        "DIVIDE": {
+          "name": "Mix (หาร (Divide))",
+          "description": "ตัวเลือกโหมด: หาร (Divide)"
+        },
+        "HUE": {
+          "name": "Mix (เฉดสี (Hue))",
+          "description": "ตัวเลือกโหมด: เฉดสี (Hue)"
+        },
+        "SATURATION": {
+          "name": "Mix (ความอิ่มตัว (Saturation))",
+          "description": "ตัวเลือกโหมด: ความอิ่มตัว (Saturation)"
+        },
+        "COLOR": {
+          "name": "Mix (สี (Color))",
+          "description": "ตัวเลือกโหมด: สี (Color)"
+        },
+        "VALUE": {
+          "name": "Mix (มูลค่า (Value))",
+          "description": "ตัวเลือกโหมด: มูลค่า (Value)"
+        }
+      }
+    }
+  },
+  "FunctionNodeReplaceString": {
+    "name": "Replace String",
+    "description": "แทนที่คำหรือข้อความบางส่วนด้วยข้อความใหม่",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeSliceString": {
+    "name": "Slice String",
+    "description": "ตัดแบ่งเอาเฉพาะข้อความบางส่วนตามตำแหน่งเริ่มและจบ",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeFindInString": {
+    "name": "Find in String",
+    "description": "หาตำแหน่ง Index ของคำย่อยที่ซ่อนอยู่ในข้อความ",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeStringLength": {
+    "name": "String Length",
+    "description": "นับจำนวนตัวอักษรทั้งหมดในข้อความ",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeStringToValue": {
+    "name": "String to Value",
+    "description": "พยายามแปลงข้อความที่มีตัวเลขให้กลายเป็นค่าตัวเลขคณิตศาสตร์จริงๆ",
+    "inputs": {},
+    "outputs": {},
+    "dropdowns": {
+      "data_type": [
+        "FLOAT",
+        "INT"
+      ]
+    },
+    "sub_types": {
+      "data_type": {
+        "FLOAT": {
+          "name": "ทศนิยม (Float)",
+          "description": "ชนิดข้อมูลตัวเลขทศนิยมเดี่ยว"
+        },
+        "INT": {
+          "name": "จำนวนเต็ม (Integer)",
+          "description": "ชนิดข้อมูลตัวเลขจำนวนเต็ม"
+        }
+      }
+    }
+  },
+  "FunctionNodeValueToString": {
+    "name": "Value to String",
+    "description": "แปลงข้อมูลตัวเลขให้กลายเป็นรูปแบบข้อความเพื่อนำไปแสดงผล",
+    "inputs": {},
+    "outputs": {},
+    "dropdowns": {
+      "data_type": [
+        "FLOAT",
+        "INT"
+      ]
+    },
+    "sub_types": {
+      "data_type": {
+        "FLOAT": {
+          "name": "ทศนิยม (Float)",
+          "description": "ชนิดข้อมูลตัวเลขทศนิยมเดี่ยว"
+        },
+        "INT": {
+          "name": "จำนวนเต็ม (Integer)",
+          "description": "ชนิดข้อมูลตัวเลขจำนวนเต็ม"
+        }
+      }
+    }
+  },
+  "FunctionNodeSpecialCharacters": {
+    "name": "Special Characters",
+    "description": "ดึงตัวอักษรหรืออักขระพิเศษมาใช้งาน (เช่น เว้นวรรค, ขึ้นบรรทัดใหม่, Tab)",
+    "inputs": {},
+    "outputs": {}
+  },
+  "ShaderNodeCombineXYZ": {
+    "name": "Combine XYZ",
+    "description": "รวมค่าเดี่ยว 3 ตัวเป็นเวกเตอร์ 3 มิติ (X, Y, Z)",
+    "inputs": {},
+    "outputs": {}
+  },
+  "ShaderNodeSeparateXYZ": {
+    "name": "Separate XYZ",
+    "description": "แยกค่าเวกเตอร์ออกเป็นแกนอิสระ (X, Y, Z)",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeCombineMatrix": {
+    "name": "Combine Matrix",
+    "description": "สร้างตารางเมทริกซ์ 4x4 จากองค์ประกอบย่อย",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeCombineTransform": {
+    "name": "Combine Transform",
+    "description": "รวมค่า ตำแหน่ง (Location) หมุน (Rotation) สเกล (Scale) ให้เป็นเมทริกซ์การแปลง (Transform Matrix)",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeMatrixDeterminant": {
+    "name": "Determinant",
+    "description": "หาค่าดีเทอร์มิแนนต์ของเมทริกซ์",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeInvertMatrix": {
+    "name": "Invert Matrix",
+    "description": "กลับด้านหรือสลับเมทริกซ์ให้เป็น Invert Matrix (คล้ายหารออก)",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeMultiplyMatrices": {
+    "name": "Multiply Matrices",
+    "description": "คูณเมทริกซ์เข้าด้วยกันเพื่อสะสมพิกัดการแปลงหลายๆ ชุด",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeMatrixSVD": {
+    "name": "Matrix SVD",
+    "description": "แยกองค์ประกอบของเมทริกซ์ด้วย Singular Value Decomposition",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeProjectPoint": {
+    "name": "Project Point",
+    "description": "แปลงหรือฉายพิกัดจุด 3 มิติผ่านเมทริกซ์โปรเจคชัน",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeSeparateMatrix": {
+    "name": "Separate Matrix",
+    "description": "แตกเมทริกซ์ออกเป็นตัวแปรย่อยต่างๆ",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeSeparateTransform": {
+    "name": "Separate Transform",
+    "description": "สกัดแยกตำแหน่ง, องศาหมุน, สเกล ออกจากเมทริกซ์เดียว",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeTransformDirection": {
+    "name": "Transform Direction",
+    "description": "ประยุกต์ทิศทางกับเมทริกซ์ (ใช้เฉพาะข้อมูล Rotation ของเมทริกซ์เท่านั้น)",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeTransformPoint": {
+    "name": "Transform Point",
+    "description": "คูณพิกัดจุดกับเมทริกซ์การแปลงทั้งหมด (Rotation, Scale, Translation)",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeTransposeMatrix": {
+    "name": "Transpose Matrix",
+    "description": "สลับแถวและหลักของเมทริกซ์ (Transpose)",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeAxesToRotation": {
+    "name": "Axes to Rotation",
+    "description": "แปลงข้อมูลแกนทิศทาง (Axes) ไปเป็นการหมุนแบบออยเลอร์ หรือควอเทอร์เนียน",
+    "inputs": {},
+    "outputs": {},
+    "dropdowns": {
+      "primary_axis": [
+        "X",
+        "Y",
+        "Z"
+      ],
+      "secondary_axis": [
+        "X",
+        "Y",
+        "Z"
+      ]
+    },
+    "sub_types": {
+      "primary_axis": {
+        "X": {
+          "name": "Axes to Rotation (แกน X)",
+          "description": "ตัวเลือกโหมด: แกน X"
+        },
+        "Y": {
+          "name": "Axes to Rotation (แกน Y)",
+          "description": "ตัวเลือกโหมด: แกน Y"
+        },
+        "Z": {
+          "name": "Axes to Rotation (แกน Z)",
+          "description": "ตัวเลือกโหมด: แกน Z"
+        }
+      },
+      "secondary_axis": {
+        "X": {
+          "name": "Axes to Rotation (แกน X)",
+          "description": "ตัวเลือกโหมด: แกน X"
+        },
+        "Y": {
+          "name": "Axes to Rotation (แกน Y)",
+          "description": "ตัวเลือกโหมด: แกน Y"
+        },
+        "Z": {
+          "name": "Axes to Rotation (แกน Z)",
+          "description": "ตัวเลือกโหมด: แกน Z"
+        }
+      }
+    }
+  },
+  "FunctionNodeAxisAngleToRotation": {
+    "name": "Axis Angle to Rotation",
+    "description": "แปลงองศาการหมุนรอบแกนที่กำหนดให้เป็นการหมุนมาตรฐาน",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeEulerToRotation": {
+    "name": "Euler to Rotation",
+    "description": "แปลงค่าองศาพิกัดออยเลอร์ (Euler) ให้เป็นข้อมูลการหมุนที่สมบูรณ์",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeInvertRotation": {
+    "name": "Invert Rotation",
+    "description": "สะท้อนหรือกลับทิศทางพิกัดการหมุนไปทิศตรงกันข้าม",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeMixRotation": {
+    "name": "Mix Rotation",
+    "description": "สอดแทรกหรือเฉลี่ยองศาการหมุนสองชุดเข้าด้วยกัน (Slerp)",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeRotateRotation": {
+    "name": "Rotate Rotation",
+    "description": "เพิ่มองศาการหมุนซ้อนเข้าไปในค่าการหมุนเดิมแบบต่อเนื่อง",
+    "inputs": {},
+    "outputs": {},
+    "dropdowns": {
+      "rotation_space": [
+        "GLOBAL",
+        "LOCAL"
+      ]
+    },
+    "sub_types": {
+      "rotation_space": {
+        "GLOBAL": {
+          "name": "Rotate Rotation (สากล (Global))",
+          "description": "ตัวเลือกโหมด: สากล (Global)"
+        },
+        "LOCAL": {
+          "name": "Rotate Rotation (เฉพาะที่ (Local))",
+          "description": "ตัวเลือกโหมด: เฉพาะที่ (Local)"
+        }
+      }
+    }
+  },
+  "FunctionNodeRotationToAxisAngle": {
+    "name": "Rotation to Axis Angle",
+    "description": "แปลงพิกัดการหมุนกลับเป็นเวกเตอร์ของแกนหลักและองศาหมุนรอบแกนนั้น",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeRotationToEuler": {
+    "name": "Rotation to Euler",
+    "description": "แปลงกลับการหมุนเป็นค่าพิกัดออยเลอร์แบบแยกแกน (X, Y, Z)",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeRotationToQuaternion": {
+    "name": "Rotation to Quaternion",
+    "description": "แปลงระบบการหมุนเป็นแบบ Quaternion เพื่อความเสถียร ไม่เกิด Gimbal Lock",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeQuaternionToRotation": {
+    "name": "Quaternion to Rotation",
+    "description": "แปลงพิกัด Quaternion ย้อนกลับเป็นการหมุนสำหรับคำนวณ",
+    "inputs": {},
+    "outputs": {}
+  },
+  "FunctionNodeRandomValue": {
+    "name": "Random Value",
+    "description": "สุ่มค่า (ตัวเลข, เวกเตอร์, Boolean) ตามช่วงต่ำสุดสูงสุดที่กำหนด และขึ้นกับ Seed ประจำองค์ประกอบ",
+    "inputs": {
+      "Min": "ค่าต่ำสุดที่จะสุ่มได้",
+      "Max": "ค่าสูงสุดที่จะสุ่มได้",
+      "Seed": "ตัวเลขรหัสตั้งต้นสำหรับการสุ่ม"
+    },
+    "outputs": {
+      "Value": "ค่าที่ถูกสุ่มขึ้นมา"
+    },
+    "dropdowns": {
+      "data_type": [
+        "FLOAT",
+        "INT",
+        "BOOLEAN",
+        "FLOAT_VECTOR",
+        "FLOAT_COLOR",
+        "QUATERNION",
+        "FLOAT4X4",
+        "STRING",
+        "INT8",
+        "INT16_2D",
+        "INT32_2D",
+        "FLOAT2",
+        "BYTE_COLOR"
+      ]
+    },
+    "sub_types": {
+      "data_type": {
+        "FLOAT": {
+          "name": "ทศนิยม (Float)",
+          "description": "ชนิดข้อมูลตัวเลขทศนิยมเดี่ยว"
+        },
+        "INT": {
+          "name": "จำนวนเต็ม (Integer)",
+          "description": "ชนิดข้อมูลตัวเลขจำนวนเต็ม"
+        },
+        "BOOLEAN": {
+          "name": "ค่าความจริง (Boolean)",
+          "description": "ชนิดข้อมูลตรรกะ จริง/เท็จ"
+        },
+        "FLOAT_VECTOR": {
+          "name": "เวกเตอร์ (Vector)",
+          "description": "ชนิดข้อมูลเวกเตอร์หรือพิกัดทิศทาง"
+        },
+        "FLOAT_COLOR": {
+          "name": "สี (Color)",
+          "description": "ชนิดข้อมูลสี"
+        },
+        "QUATERNION": {
+          "name": "ควอเทอร์เนียน (Quaternion)",
+          "description": "ชนิดข้อมูลการหมุนในรูปแบบ Quaternion"
+        },
+        "FLOAT4X4": {
+          "name": "เมทริกซ์ 4x4 (Float4x4)",
+          "description": "ชนิดข้อมูลเมทริกซ์ 4x4"
+        },
+        "STRING": {
+          "name": "ข้อความ (String)",
+          "description": "ชนิดข้อมูลตัวอักษรหรือข้อความ"
+        },
+        "INT8": {
+          "name": "จำนวนเต็ม 8 บิต (8-bit Integer)",
+          "description": "ชนิดข้อมูลจำนวนเต็ม 8 บิต"
+        },
+        "INT16_2D": {
+          "name": "16-bit 2D Integer",
+          "description": "ชนิดข้อมูล 2D Integer ขนาด 16 บิต"
+        },
+        "INT32_2D": {
+          "name": "32-bit 2D Integer",
+          "description": "ชนิดข้อมูล 2D Integer ขนาด 32 บิต"
+        },
+        "FLOAT2": {
+          "name": "ทศนิยม 2D (Float2)",
+          "description": "เวกเตอร์ทศนิยมแบบ 2 แกน"
+        },
+        "BYTE_COLOR": {
+          "name": "สีแบบไบต์ (Byte Color)",
+          "description": "สีในระดับ 8 บิต (0-255)"
+        }
+      }
+    }
+  },
+  "CompositorNode": {
+    "name": "CompositorNode",
+    "description": ""
+  },
+  "CompositorNodeAlphaOver": {
+    "name": "CompositorNodeAlphaOver",
+    "description": ""
+  },
+  "CompositorNodeAntiAliasing": {
+    "name": "CompositorNodeAntiAliasing",
+    "description": ""
+  },
+  "CompositorNodeBilateralblur": {
+    "name": "CompositorNodeBilateralblur",
+    "description": ""
+  },
+  "CompositorNodeBlur": {
+    "name": "CompositorNodeBlur",
+    "description": ""
+  },
+  "CompositorNodeBokehBlur": {
+    "name": "CompositorNodeBokehBlur",
+    "description": ""
+  },
+  "CompositorNodeBokehImage": {
+    "name": "CompositorNodeBokehImage",
+    "description": ""
+  },
+  "CompositorNodeBoxMask": {
+    "name": "CompositorNodeBoxMask",
+    "description": ""
+  },
+  "CompositorNodeBrightContrast": {
+    "name": "CompositorNodeBrightContrast",
+    "description": ""
+  },
+  "CompositorNodeChannelMatte": {
+    "name": "CompositorNodeChannelMatte",
+    "description": ""
+  },
+  "CompositorNodeChromaMatte": {
+    "name": "CompositorNodeChromaMatte",
+    "description": ""
+  },
+  "CompositorNodeColorBalance": {
+    "name": "CompositorNodeColorBalance",
+    "description": ""
+  },
+  "CompositorNodeColorCorrection": {
+    "name": "CompositorNodeColorCorrection",
+    "description": ""
+  },
+  "CompositorNodeColorMatte": {
+    "name": "CompositorNodeColorMatte",
+    "description": ""
+  },
+  "CompositorNodeColorSpill": {
+    "name": "CompositorNodeColorSpill",
+    "description": ""
+  },
+  "CompositorNodeCombineColor": {
+    "name": "CompositorNodeCombineColor",
+    "description": "",
+    "dropdowns": {
+      "mode": [
+        "RGB",
+        "HSV",
+        "HSL",
+        "YCC",
+        "YUV"
+      ],
+      "ycc_mode": [
+        "ITUBT601",
+        "ITUBT709",
+        "JFIF"
+      ]
+    },
+    "sub_types": {
+      "mode": {
+        "RGB": {
+          "name": "รูปแบบสี RGB",
+          "description": "โหมดสีแบบ Red, Green, Blue"
+        },
+        "HSV": {
+          "name": "รูปแบบสี HSV",
+          "description": "โหมดสีแบบ Hue, Saturation, Value"
+        },
+        "HSL": {
+          "name": "รูปแบบสี HSL",
+          "description": "โหมดสีแบบ Hue, Saturation, Lightness"
+        },
+        "YCC": {
+          "name": "รูปแบบสี YCC",
+          "description": "โหมดสีแบบ YCbCr (Luminance, Chrominance)"
+        },
+        "YUV": {
+          "name": "รูปแบบสี YUV",
+          "description": "โหมดสีแบบ YUV (Luminance, Chrominance)"
+        }
+      },
+      "ycc_mode": {
+        "ITUBT601": {
+          "name": "CompositorNodeCombineColor (ITUBT601)",
+          "description": "ตัวเลือกโหมด: ITUBT601"
+        },
+        "ITUBT709": {
+          "name": "CompositorNodeCombineColor (ITUBT709)",
+          "description": "ตัวเลือกโหมด: ITUBT709"
+        },
+        "JFIF": {
+          "name": "CompositorNodeCombineColor (JFIF)",
+          "description": "ตัวเลือกโหมด: JFIF"
+        }
+      }
+    }
+  },
+  "CompositorNodeConvertColorSpace": {
+    "name": "CompositorNodeConvertColorSpace",
+    "description": "",
+    "dropdowns": {
+      "from_color_space": [
+        "ACES 1.3 sRGB",
+        "ACES 2.0 sRGB",
+        "ACES2065-1",
+        "ACEScc",
+        "ACEScct",
+        "ACEScg",
+        "AgX Base sRGB",
+        "AgX Log",
+        "Display P3",
+        "Filmic Log",
+        "Filmic sRGB",
+        "Khronos PBR Neutral sRGB",
+        "Linear CIE-XYZ D65",
+        "Linear CIE-XYZ E",
+        "Linear DCI-P3 D65",
+        "Linear FilmLight E-Gamut",
+        "Linear Rec.2020",
+        "Linear Rec.709",
+        "Non-Color",
+        "Rec.1886",
+        "Rec.2020",
+        "Rec.2100-HLG",
+        "Rec.2100-PQ",
+        "sRGB",
+        "scene_linear"
+      ],
+      "to_color_space": [
+        "ACES 1.3 sRGB",
+        "ACES 2.0 sRGB",
+        "ACES2065-1",
+        "ACEScc",
+        "ACEScct",
+        "ACEScg",
+        "AgX Base sRGB",
+        "AgX Log",
+        "Display P3",
+        "Filmic Log",
+        "Filmic sRGB",
+        "Khronos PBR Neutral sRGB",
+        "Linear CIE-XYZ D65",
+        "Linear CIE-XYZ E",
+        "Linear DCI-P3 D65",
+        "Linear FilmLight E-Gamut",
+        "Linear Rec.2020",
+        "Linear Rec.709",
+        "Non-Color",
+        "Rec.1886",
+        "Rec.2020",
+        "Rec.2100-HLG",
+        "Rec.2100-PQ",
+        "sRGB",
+        "scene_linear"
+      ]
+    },
+    "sub_types": {
+      "from_color_space": {
+        "ACES 1.3 sRGB": {
+          "name": "CompositorNodeConvertColorSpace (ACES 1.3 sRGB)",
+          "description": "ตัวเลือกโหมด: ACES 1.3 sRGB"
+        },
+        "ACES 2.0 sRGB": {
+          "name": "CompositorNodeConvertColorSpace (ACES 2.0 sRGB)",
+          "description": "ตัวเลือกโหมด: ACES 2.0 sRGB"
+        },
+        "ACES2065-1": {
+          "name": "CompositorNodeConvertColorSpace (ACES2065-1)",
+          "description": "ตัวเลือกโหมด: ACES2065-1"
+        },
+        "ACEScc": {
+          "name": "CompositorNodeConvertColorSpace (ACEScc)",
+          "description": "ตัวเลือกโหมด: ACEScc"
+        },
+        "ACEScct": {
+          "name": "CompositorNodeConvertColorSpace (ACEScct)",
+          "description": "ตัวเลือกโหมด: ACEScct"
+        },
+        "ACEScg": {
+          "name": "CompositorNodeConvertColorSpace (ACEScg)",
+          "description": "ตัวเลือกโหมด: ACEScg"
+        },
+        "AgX Base sRGB": {
+          "name": "CompositorNodeConvertColorSpace (AgX Base sRGB)",
+          "description": "ตัวเลือกโหมด: AgX Base sRGB"
+        },
+        "AgX Log": {
+          "name": "CompositorNodeConvertColorSpace (AgX Log)",
+          "description": "ตัวเลือกโหมด: AgX Log"
+        },
+        "Display P3": {
+          "name": "CompositorNodeConvertColorSpace (Display P3)",
+          "description": "ตัวเลือกโหมด: Display P3"
+        },
+        "Filmic Log": {
+          "name": "CompositorNodeConvertColorSpace (Filmic Log)",
+          "description": "ตัวเลือกโหมด: Filmic Log"
+        },
+        "Filmic sRGB": {
+          "name": "CompositorNodeConvertColorSpace (Filmic sRGB)",
+          "description": "ตัวเลือกโหมด: Filmic sRGB"
+        },
+        "Khronos PBR Neutral sRGB": {
+          "name": "CompositorNodeConvertColorSpace (Khronos PBR Neutral sRGB)",
+          "description": "ตัวเลือกโหมด: Khronos PBR Neutral sRGB"
+        },
+        "Linear CIE-XYZ D65": {
+          "name": "CompositorNodeConvertColorSpace (Linear CIE-XYZ D65)",
+          "description": "ตัวเลือกโหมด: Linear CIE-XYZ D65"
+        },
+        "Linear CIE-XYZ E": {
+          "name": "CompositorNodeConvertColorSpace (Linear CIE-XYZ E)",
+          "description": "ตัวเลือกโหมด: Linear CIE-XYZ E"
+        },
+        "Linear DCI-P3 D65": {
+          "name": "CompositorNodeConvertColorSpace (Linear DCI-P3 D65)",
+          "description": "ตัวเลือกโหมด: Linear DCI-P3 D65"
+        },
+        "Linear FilmLight E-Gamut": {
+          "name": "CompositorNodeConvertColorSpace (Linear FilmLight E-Gamut)",
+          "description": "ตัวเลือกโหมด: Linear FilmLight E-Gamut"
+        },
+        "Linear Rec.2020": {
+          "name": "CompositorNodeConvertColorSpace (Linear Rec.2020)",
+          "description": "ตัวเลือกโหมด: Linear Rec.2020"
+        },
+        "Linear Rec.709": {
+          "name": "CompositorNodeConvertColorSpace (Linear Rec.709)",
+          "description": "ตัวเลือกโหมด: Linear Rec.709"
+        },
+        "Non-Color": {
+          "name": "CompositorNodeConvertColorSpace (Non-Color)",
+          "description": "ตัวเลือกโหมด: Non-Color"
+        },
+        "Rec.1886": {
+          "name": "CompositorNodeConvertColorSpace (Rec.1886)",
+          "description": "ตัวเลือกโหมด: Rec.1886"
+        },
+        "Rec.2020": {
+          "name": "CompositorNodeConvertColorSpace (Rec.2020)",
+          "description": "ตัวเลือกโหมด: Rec.2020"
+        },
+        "Rec.2100-HLG": {
+          "name": "CompositorNodeConvertColorSpace (Rec.2100-HLG)",
+          "description": "ตัวเลือกโหมด: Rec.2100-HLG"
+        },
+        "Rec.2100-PQ": {
+          "name": "CompositorNodeConvertColorSpace (Rec.2100-PQ)",
+          "description": "ตัวเลือกโหมด: Rec.2100-PQ"
+        },
+        "sRGB": {
+          "name": "CompositorNodeConvertColorSpace (sRGB)",
+          "description": "ตัวเลือกโหมด: sRGB"
+        },
+        "scene_linear": {
+          "name": "CompositorNodeConvertColorSpace (scene_linear)",
+          "description": "ตัวเลือกโหมด: scene_linear"
+        }
+      },
+      "to_color_space": {
+        "ACES 1.3 sRGB": {
+          "name": "CompositorNodeConvertColorSpace (ACES 1.3 sRGB)",
+          "description": "ตัวเลือกโหมด: ACES 1.3 sRGB"
+        },
+        "ACES 2.0 sRGB": {
+          "name": "CompositorNodeConvertColorSpace (ACES 2.0 sRGB)",
+          "description": "ตัวเลือกโหมด: ACES 2.0 sRGB"
+        },
+        "ACES2065-1": {
+          "name": "CompositorNodeConvertColorSpace (ACES2065-1)",
+          "description": "ตัวเลือกโหมด: ACES2065-1"
+        },
+        "ACEScc": {
+          "name": "CompositorNodeConvertColorSpace (ACEScc)",
+          "description": "ตัวเลือกโหมด: ACEScc"
+        },
+        "ACEScct": {
+          "name": "CompositorNodeConvertColorSpace (ACEScct)",
+          "description": "ตัวเลือกโหมด: ACEScct"
+        },
+        "ACEScg": {
+          "name": "CompositorNodeConvertColorSpace (ACEScg)",
+          "description": "ตัวเลือกโหมด: ACEScg"
+        },
+        "AgX Base sRGB": {
+          "name": "CompositorNodeConvertColorSpace (AgX Base sRGB)",
+          "description": "ตัวเลือกโหมด: AgX Base sRGB"
+        },
+        "AgX Log": {
+          "name": "CompositorNodeConvertColorSpace (AgX Log)",
+          "description": "ตัวเลือกโหมด: AgX Log"
+        },
+        "Display P3": {
+          "name": "CompositorNodeConvertColorSpace (Display P3)",
+          "description": "ตัวเลือกโหมด: Display P3"
+        },
+        "Filmic Log": {
+          "name": "CompositorNodeConvertColorSpace (Filmic Log)",
+          "description": "ตัวเลือกโหมด: Filmic Log"
+        },
+        "Filmic sRGB": {
+          "name": "CompositorNodeConvertColorSpace (Filmic sRGB)",
+          "description": "ตัวเลือกโหมด: Filmic sRGB"
+        },
+        "Khronos PBR Neutral sRGB": {
+          "name": "CompositorNodeConvertColorSpace (Khronos PBR Neutral sRGB)",
+          "description": "ตัวเลือกโหมด: Khronos PBR Neutral sRGB"
+        },
+        "Linear CIE-XYZ D65": {
+          "name": "CompositorNodeConvertColorSpace (Linear CIE-XYZ D65)",
+          "description": "ตัวเลือกโหมด: Linear CIE-XYZ D65"
+        },
+        "Linear CIE-XYZ E": {
+          "name": "CompositorNodeConvertColorSpace (Linear CIE-XYZ E)",
+          "description": "ตัวเลือกโหมด: Linear CIE-XYZ E"
+        },
+        "Linear DCI-P3 D65": {
+          "name": "CompositorNodeConvertColorSpace (Linear DCI-P3 D65)",
+          "description": "ตัวเลือกโหมด: Linear DCI-P3 D65"
+        },
+        "Linear FilmLight E-Gamut": {
+          "name": "CompositorNodeConvertColorSpace (Linear FilmLight E-Gamut)",
+          "description": "ตัวเลือกโหมด: Linear FilmLight E-Gamut"
+        },
+        "Linear Rec.2020": {
+          "name": "CompositorNodeConvertColorSpace (Linear Rec.2020)",
+          "description": "ตัวเลือกโหมด: Linear Rec.2020"
+        },
+        "Linear Rec.709": {
+          "name": "CompositorNodeConvertColorSpace (Linear Rec.709)",
+          "description": "ตัวเลือกโหมด: Linear Rec.709"
+        },
+        "Non-Color": {
+          "name": "CompositorNodeConvertColorSpace (Non-Color)",
+          "description": "ตัวเลือกโหมด: Non-Color"
+        },
+        "Rec.1886": {
+          "name": "CompositorNodeConvertColorSpace (Rec.1886)",
+          "description": "ตัวเลือกโหมด: Rec.1886"
+        },
+        "Rec.2020": {
+          "name": "CompositorNodeConvertColorSpace (Rec.2020)",
+          "description": "ตัวเลือกโหมด: Rec.2020"
+        },
+        "Rec.2100-HLG": {
+          "name": "CompositorNodeConvertColorSpace (Rec.2100-HLG)",
+          "description": "ตัวเลือกโหมด: Rec.2100-HLG"
+        },
+        "Rec.2100-PQ": {
+          "name": "CompositorNodeConvertColorSpace (Rec.2100-PQ)",
+          "description": "ตัวเลือกโหมด: Rec.2100-PQ"
+        },
+        "sRGB": {
+          "name": "CompositorNodeConvertColorSpace (sRGB)",
+          "description": "ตัวเลือกโหมด: sRGB"
+        },
+        "scene_linear": {
+          "name": "CompositorNodeConvertColorSpace (scene_linear)",
+          "description": "ตัวเลือกโหมด: scene_linear"
+        }
+      }
+    }
+  },
+  "CompositorNodeConvertToDisplay": {
+    "name": "CompositorNodeConvertToDisplay",
+    "description": ""
+  },
+  "CompositorNodeConvolve": {
+    "name": "CompositorNodeConvolve",
+    "description": ""
+  },
+  "CompositorNodeCornerPin": {
+    "name": "CompositorNodeCornerPin",
+    "description": ""
+  },
+  "CompositorNodeCrop": {
+    "name": "CompositorNodeCrop",
+    "description": ""
+  },
+  "CompositorNodeCryptomatte": {
+    "name": "CompositorNodeCryptomatte",
+    "description": ""
+  },
+  "CompositorNodeCryptomatteV2": {
+    "name": "CompositorNodeCryptomatteV2",
+    "description": "",
+    "dropdowns": {
+      "source": [
+        "RENDER",
+        "IMAGE"
+      ],
+      "layer_name": [
+        "CryptoObject",
+        "CryptoMaterial",
+        "CryptoAsset"
+      ]
+    },
+    "sub_types": {
+      "source": {
+        "RENDER": {
+          "name": "CompositorNodeCryptomatteV2 (RENDER)",
+          "description": "ตัวเลือกโหมด: RENDER"
+        },
+        "IMAGE": {
+          "name": "CompositorNodeCryptomatteV2 (ภาพ (Image))",
+          "description": "ตัวเลือกโหมด: ภาพ (Image)"
+        }
+      },
+      "layer_name": {
+        "CryptoObject": {
+          "name": "CompositorNodeCryptomatteV2 (CryptoObject)",
+          "description": "ตัวเลือกโหมด: CryptoObject"
+        },
+        "CryptoMaterial": {
+          "name": "CompositorNodeCryptomatteV2 (CryptoMaterial)",
+          "description": "ตัวเลือกโหมด: CryptoMaterial"
+        },
+        "CryptoAsset": {
+          "name": "CompositorNodeCryptomatteV2 (CryptoAsset)",
+          "description": "ตัวเลือกโหมด: CryptoAsset"
+        }
+      }
+    }
+  },
+  "CompositorNodeCurveRGB": {
+    "name": "CompositorNodeCurveRGB",
+    "description": ""
+  },
+  "CompositorNodeCustomGroup": {
+    "name": "CompositorNodeCustomGroup",
+    "description": ""
+  },
+  "CompositorNodeDBlur": {
+    "name": "CompositorNodeDBlur",
+    "description": ""
+  },
+  "CompositorNodeDefocus": {
+    "name": "CompositorNodeDefocus",
+    "description": "",
+    "dropdowns": {
+      "bokeh": [
+        "OCTAGON",
+        "HEPTAGON",
+        "HEXAGON",
+        "PENTAGON",
+        "SQUARE",
+        "TRIANGLE",
+        "CIRCLE"
+      ]
+    },
+    "sub_types": {
+      "bokeh": {
+        "OCTAGON": {
+          "name": "CompositorNodeDefocus (OCTAGON)",
+          "description": "ตัวเลือกโหมด: OCTAGON"
+        },
+        "HEPTAGON": {
+          "name": "CompositorNodeDefocus (HEPTAGON)",
+          "description": "ตัวเลือกโหมด: HEPTAGON"
+        },
+        "HEXAGON": {
+          "name": "CompositorNodeDefocus (HEXAGON)",
+          "description": "ตัวเลือกโหมด: HEXAGON"
+        },
+        "PENTAGON": {
+          "name": "CompositorNodeDefocus (PENTAGON)",
+          "description": "ตัวเลือกโหมด: PENTAGON"
+        },
+        "SQUARE": {
+          "name": "CompositorNodeDefocus (SQUARE)",
+          "description": "ตัวเลือกโหมด: SQUARE"
+        },
+        "TRIANGLE": {
+          "name": "CompositorNodeDefocus (TRIANGLE)",
+          "description": "ตัวเลือกโหมด: TRIANGLE"
+        },
+        "CIRCLE": {
+          "name": "CompositorNodeDefocus (CIRCLE)",
+          "description": "ตัวเลือกโหมด: CIRCLE"
+        }
+      }
+    }
+  },
+  "CompositorNodeDenoise": {
+    "name": "CompositorNodeDenoise",
+    "description": ""
+  },
+  "CompositorNodeDespeckle": {
+    "name": "CompositorNodeDespeckle",
+    "description": ""
+  },
+  "CompositorNodeDiffMatte": {
+    "name": "CompositorNodeDiffMatte",
+    "description": ""
+  },
+  "CompositorNodeDilateErode": {
+    "name": "CompositorNodeDilateErode",
+    "description": ""
+  },
+  "CompositorNodeDisplace": {
+    "name": "CompositorNodeDisplace",
+    "description": ""
+  },
+  "CompositorNodeDistanceMatte": {
+    "name": "CompositorNodeDistanceMatte",
+    "description": ""
+  },
+  "CompositorNodeDoubleEdgeMask": {
+    "name": "CompositorNodeDoubleEdgeMask",
+    "description": ""
+  },
+  "CompositorNodeEllipseMask": {
+    "name": "CompositorNodeEllipseMask",
+    "description": ""
+  },
+  "CompositorNodeExposure": {
+    "name": "CompositorNodeExposure",
+    "description": ""
+  },
+  "CompositorNodeFilter": {
+    "name": "CompositorNodeFilter",
+    "description": ""
+  },
+  "CompositorNodeFlip": {
+    "name": "CompositorNodeFlip",
+    "description": ""
+  },
+  "CompositorNodeGamma": {
+    "name": "CompositorNodeGamma",
+    "description": ""
+  },
+  "CompositorNodeGlare": {
+    "name": "CompositorNodeGlare",
+    "description": ""
+  },
+  "CompositorNodeGroup": {
+    "name": "CompositorNodeGroup",
+    "description": ""
+  },
+  "CompositorNodeHueCorrect": {
+    "name": "CompositorNodeHueCorrect",
+    "description": ""
+  },
+  "CompositorNodeHueSat": {
+    "name": "CompositorNodeHueSat",
+    "description": ""
+  },
+  "CompositorNodeIDMask": {
+    "name": "CompositorNodeIDMask",
+    "description": ""
+  },
+  "CompositorNodeImage": {
+    "name": "CompositorNodeImage",
+    "description": ""
+  },
+  "CompositorNodeImageCoordinates": {
+    "name": "CompositorNodeImageCoordinates",
+    "description": ""
+  },
+  "CompositorNodeImageInfo": {
+    "name": "CompositorNodeImageInfo",
+    "description": ""
+  },
+  "CompositorNodeInpaint": {
+    "name": "CompositorNodeInpaint",
+    "description": ""
+  },
+  "CompositorNodeInvert": {
+    "name": "CompositorNodeInvert",
+    "description": ""
+  },
+  "CompositorNodeKeying": {
+    "name": "CompositorNodeKeying",
+    "description": ""
+  },
+  "CompositorNodeKeyingScreen": {
+    "name": "CompositorNodeKeyingScreen",
+    "description": ""
+  },
+  "CompositorNodeKuwahara": {
+    "name": "CompositorNodeKuwahara",
+    "description": ""
+  },
+  "CompositorNodeLensdist": {
+    "name": "CompositorNodeLensdist",
+    "description": ""
+  },
+  "CompositorNodeLevels": {
+    "name": "CompositorNodeLevels",
+    "description": ""
+  },
+  "CompositorNodeLumaMatte": {
+    "name": "CompositorNodeLumaMatte",
+    "description": ""
+  },
+  "CompositorNodeMapUV": {
+    "name": "CompositorNodeMapUV",
+    "description": ""
+  },
+  "CompositorNodeMask": {
+    "name": "CompositorNodeMask",
+    "description": ""
+  },
+  "CompositorNodeMaskToSDF": {
+    "name": "CompositorNodeMaskToSDF",
+    "description": ""
+  },
+  "CompositorNodeMovieClip": {
+    "name": "CompositorNodeMovieClip",
+    "description": ""
+  },
+  "CompositorNodeMovieDistortion": {
+    "name": "CompositorNodeMovieDistortion",
+    "description": ""
+  },
+  "CompositorNodeNormal": {
+    "name": "CompositorNodeNormal",
+    "description": ""
+  },
+  "CompositorNodeNormalize": {
+    "name": "CompositorNodeNormalize",
+    "description": ""
+  },
+  "CompositorNodeOutputFile": {
+    "name": "CompositorNodeOutputFile",
+    "description": ""
+  },
+  "CompositorNodePixelate": {
+    "name": "CompositorNodePixelate",
+    "description": ""
+  },
+  "CompositorNodePlaneTrackDeform": {
+    "name": "CompositorNodePlaneTrackDeform",
+    "description": ""
+  },
+  "CompositorNodePosterize": {
+    "name": "CompositorNodePosterize",
+    "description": ""
+  },
+  "CompositorNodePremulKey": {
+    "name": "CompositorNodePremulKey",
+    "description": ""
+  },
+  "CompositorNodeRGB": {
+    "name": "CompositorNodeRGB",
+    "description": ""
+  },
+  "CompositorNodeRGBToBW": {
+    "name": "CompositorNodeRGBToBW",
+    "description": ""
+  },
+  "CompositorNodeRLayers": {
+    "name": "CompositorNodeRLayers",
+    "description": ""
+  },
+  "CompositorNodeRelativeToPixel": {
+    "name": "CompositorNodeRelativeToPixel",
+    "description": "",
+    "dropdowns": {
+      "data_type": [
+        "FLOAT",
+        "VECTOR"
+      ],
+      "reference_dimension": [
+        "PER_DIMENSION",
+        "X",
+        "Y",
+        "Greater",
+        "Smaller",
+        "Diagonal"
+      ]
+    },
+    "sub_types": {
+      "data_type": {
+        "FLOAT": {
+          "name": "ทศนิยม (Float)",
+          "description": "ชนิดข้อมูลตัวเลขทศนิยมเดี่ยว"
+        },
+        "VECTOR": {
+          "name": "เวกเตอร์ (Vector)",
+          "description": "ชนิดข้อมูลเวกเตอร์"
+        }
+      },
+      "reference_dimension": {
+        "PER_DIMENSION": {
+          "name": "CompositorNodeRelativeToPixel (PER_DIMENSION)",
+          "description": "ตัวเลือกโหมด: PER_DIMENSION"
+        },
+        "X": {
+          "name": "CompositorNodeRelativeToPixel (แกน X)",
+          "description": "ตัวเลือกโหมด: แกน X"
+        },
+        "Y": {
+          "name": "CompositorNodeRelativeToPixel (แกน Y)",
+          "description": "ตัวเลือกโหมด: แกน Y"
+        },
+        "Greater": {
+          "name": "CompositorNodeRelativeToPixel (Greater)",
+          "description": "ตัวเลือกโหมด: Greater"
+        },
+        "Smaller": {
+          "name": "CompositorNodeRelativeToPixel (Smaller)",
+          "description": "ตัวเลือกโหมด: Smaller"
+        },
+        "Diagonal": {
+          "name": "CompositorNodeRelativeToPixel (Diagonal)",
+          "description": "ตัวเลือกโหมด: Diagonal"
+        }
+      }
+    }
+  },
+  "CompositorNodeRotate": {
+    "name": "CompositorNodeRotate",
+    "description": ""
+  },
+  "CompositorNodeScale": {
+    "name": "CompositorNodeScale",
+    "description": ""
+  },
+  "CompositorNodeSceneTime": {
+    "name": "CompositorNodeSceneTime",
+    "description": ""
+  },
+  "CompositorNodeSeparateColor": {
+    "name": "CompositorNodeSeparateColor",
+    "description": "",
+    "dropdowns": {
+      "mode": [
+        "RGB",
+        "HSV",
+        "HSL",
+        "YCC",
+        "YUV"
+      ],
+      "ycc_mode": [
+        "ITUBT601",
+        "ITUBT709",
+        "JFIF"
+      ]
+    },
+    "sub_types": {
+      "mode": {
+        "RGB": {
+          "name": "รูปแบบสี RGB",
+          "description": "โหมดสีแบบ Red, Green, Blue"
+        },
+        "HSV": {
+          "name": "รูปแบบสี HSV",
+          "description": "โหมดสีแบบ Hue, Saturation, Value"
+        },
+        "HSL": {
+          "name": "รูปแบบสี HSL",
+          "description": "โหมดสีแบบ Hue, Saturation, Lightness"
+        },
+        "YCC": {
+          "name": "รูปแบบสี YCC",
+          "description": "โหมดสีแบบ YCbCr (Luminance, Chrominance)"
+        },
+        "YUV": {
+          "name": "รูปแบบสี YUV",
+          "description": "โหมดสีแบบ YUV (Luminance, Chrominance)"
+        }
+      },
+      "ycc_mode": {
+        "ITUBT601": {
+          "name": "CompositorNodeSeparateColor (ITUBT601)",
+          "description": "ตัวเลือกโหมด: ITUBT601"
+        },
+        "ITUBT709": {
+          "name": "CompositorNodeSeparateColor (ITUBT709)",
+          "description": "ตัวเลือกโหมด: ITUBT709"
+        },
+        "JFIF": {
+          "name": "CompositorNodeSeparateColor (JFIF)",
+          "description": "ตัวเลือกโหมด: JFIF"
+        }
+      }
+    }
+  },
+  "CompositorNodeSequencerStripInfo": {
+    "name": "CompositorNodeSequencerStripInfo",
+    "description": ""
+  },
+  "CompositorNodeSetAlpha": {
+    "name": "CompositorNodeSetAlpha",
+    "description": ""
+  },
+  "CompositorNodeSplit": {
+    "name": "CompositorNodeSplit",
+    "description": ""
+  },
+  "CompositorNodeStabilize": {
+    "name": "CompositorNodeStabilize",
+    "description": ""
+  },
+  "CompositorNodeSwitch": {
+    "name": "CompositorNodeSwitch",
+    "description": ""
+  },
+  "CompositorNodeSwitchView": {
+    "name": "CompositorNodeSwitchView",
+    "description": ""
+  },
+  "CompositorNodeTime": {
+    "name": "CompositorNodeTime",
+    "description": ""
+  },
+  "CompositorNodeTonemap": {
+    "name": "CompositorNodeTonemap",
+    "description": ""
+  },
+  "CompositorNodeTrackPos": {
+    "name": "CompositorNodeTrackPos",
+    "description": ""
+  },
+  "CompositorNodeTransform": {
+    "name": "CompositorNodeTransform",
+    "description": ""
+  },
+  "CompositorNodeTranslate": {
+    "name": "CompositorNodeTranslate",
+    "description": ""
+  },
+  "CompositorNodeTree": {
+    "name": "CompositorNodeTree",
+    "description": "",
+    "dropdowns": {
+      "id_type": [
+        "ACTION",
+        "ARMATURE",
+        "BRUSH",
+        "CACHEFILE",
+        "CAMERA",
+        "COLLECTION",
+        "CURVE",
+        "CURVES",
+        "FONT",
+        "GREASEPENCIL",
+        "GREASEPENCIL_V3",
+        "IMAGE",
+        "KEY",
+        "LATTICE",
+        "LIBRARY",
+        "LIGHT",
+        "LIGHT_PROBE",
+        "LINESTYLE",
+        "MASK",
+        "MATERIAL",
+        "MESH",
+        "META",
+        "MOVIECLIP",
+        "NODETREE",
+        "OBJECT",
+        "PAINTCURVE",
+        "PALETTE",
+        "PARTICLE",
+        "POINTCLOUD",
+        "SCENE",
+        "SCREEN",
+        "SOUND",
+        "SPEAKER",
+        "TEXT",
+        "TEXTURE",
+        "VOLUME",
+        "WINDOWMANAGER",
+        "WORKSPACE",
+        "WORLD"
+      ]
+    },
+    "sub_types": {
+      "id_type": {
+        "ACTION": {
+          "name": "แอกชัน (Action)",
+          "description": "ชุดข้อมูลแอนิเมชันคีย์เฟรม"
+        },
+        "ARMATURE": {
+          "name": "กระดูก (Armature)",
+          "description": "ข้อมูลโครงสร้างกระดูกแอนิเมชัน"
+        },
+        "BRUSH": {
+          "name": "แปรง (Brush)",
+          "description": "ข้อมูลหัวแปรงสำหรับการปั้นหรือเพนต์"
+        },
+        "CACHEFILE": {
+          "name": "ไฟล์แคช (Cache File)",
+          "description": "ข้อมูลไฟล์แคช เช่น Alembic"
+        },
+        "CAMERA": {
+          "name": "กล้อง (Camera)",
+          "description": "ข้อมูลกล้อง"
+        },
+        "COLLECTION": {
+          "name": "คอลเลกชัน (Collection)",
+          "description": "ชนิดข้อมูลกลุ่มอ็อบเจกต์ (Collection)"
+        },
+        "CURVE": {
+          "name": "เส้นโค้ง (Curve)",
+          "description": "ข้อมูลวัตถุเส้นโค้ง (Curve)"
+        },
+        "CURVES": {
+          "name": "เส้นโค้งแบบเส้นผม (Curves)",
+          "description": "ข้อมูลอ็อบเจกต์เส้นโค้งใหม่ (Hair Curves)"
+        },
+        "FONT": {
+          "name": "ฟอนต์ (Font)",
+          "description": "ชนิดข้อมูลฟอนต์ตัวอักษร"
+        },
+        "GREASEPENCIL": {
+          "name": "กรีซเพนซิล (Grease Pencil)",
+          "description": "ข้อมูลวัตถุวาดเส้น 2 มิติ Grease Pencil"
+        },
+        "GREASEPENCIL_V3": {
+          "name": "กรีซเพนซิล v3 (Grease Pencil v3)",
+          "description": "ข้อมูลวัตถุวาดเส้น Grease Pencil เวอร์ชัน 3"
+        },
+        "IMAGE": {
+          "name": "รูปภาพ (Image)",
+          "description": "ชนิดข้อมูลรูปภาพ"
+        },
+        "KEY": {
+          "name": "เชพคีย์ (Shape Key)",
+          "description": "ข้อมูลรักษารูปทรงการเปลี่ยนรูปร่าง (Shape Keys)"
+        },
+        "LATTICE": {
+          "name": "แลตทิซ (Lattice)",
+          "description": "กรงควบคุมรูปร่างวัตถุ"
+        },
+        "LIBRARY": {
+          "name": "ไลบรารี (Library)",
+          "description": "ข้อมูลไฟล์เชื่อมโยงจากภายนอก"
+        },
+        "LIGHT": {
+          "name": "แสง (Light)",
+          "description": "ข้อมูลดวงไฟ"
+        },
+        "LIGHT_PROBE": {
+          "name": "โพรบแสง (Light Probe)",
+          "description": "ข้อมูลสำหรับการคำนวณแสงตกกระทบ"
+        },
+        "LINESTYLE": {
+          "name": "สไตล์เส้น (Line Style)",
+          "description": "ข้อมูลรูปแบบของเส้น (Freestyle)"
+        },
+        "MASK": {
+          "name": "มาสก์ (Mask)",
+          "description": "ชนิดข้อมูลแบบมาสก์ 2D"
+        },
+        "MATERIAL": {
+          "name": "วัสดุ (Material)",
+          "description": "ชนิดข้อมูลอ้างอิง Material"
+        },
+        "MESH": {
+          "name": "โครงข่าย (Mesh)",
+          "description": "ข้อมูลวัตถุรูปทรง 3 มิติแบบมีหน้าตัด"
+        },
+        "META": {
+          "name": "เมตาบอล (Metaball)",
+          "description": "ข้อมูลวัตถุกลมกลืน (Metaball)"
+        },
+        "MOVIECLIP": {
+          "name": "วิดีโอคลิป (Movie Clip)",
+          "description": "ข้อมูลไฟล์วิดีโอคลิป หรือ Motion Tracking"
+        },
+        "NODETREE": {
+          "name": "โนดทรี (Node Tree)",
+          "description": "ข้อมูลเครือข่ายโนดสำหรับสร้างกระบวนการ"
+        },
+        "OBJECT": {
+          "name": "วัตถุ (Object)",
+          "description": "ชนิดข้อมูลสำหรับอ้างอิงวัตถุ 3 มิติ"
+        },
+        "PAINTCURVE": {
+          "name": "เส้นโค้งวาด (Paint Curve)",
+          "description": "เส้นโค้งที่ใช้ช่วยในการเพนต์"
+        },
+        "PALETTE": {
+          "name": "จานสี (Palette)",
+          "description": "ข้อมูลชุดจานสี"
+        },
+        "PARTICLE": {
+          "name": "อนุภาค (Particle)",
+          "description": "ข้อมูลระบบพาร์ติเคิล"
+        },
+        "POINTCLOUD": {
+          "name": "พอยต์คลาวด์ (Point Cloud)",
+          "description": "ข้อมูลกลุ่มจุดพอยต์คลาวด์"
+        },
+        "SCENE": {
+          "name": "ซีน (Scene)",
+          "description": "ชนิดข้อมูลซีนปัจจุบันหรืออ้างอิง"
+        },
+        "SCREEN": {
+          "name": "หน้าจอ (Screen)",
+          "description": "ข้อมูลการจัดวางเลย์เอาต์หน้าจอ"
+        },
+        "SOUND": {
+          "name": "เสียง (Sound)",
+          "description": "ชนิดข้อมูลคลื่นเสียงออดิโอ"
+        },
+        "SPEAKER": {
+          "name": "ลำโพง (Speaker)",
+          "description": "ข้อมูลจุดกำเนิดเสียงในฉาก 3 มิติ"
+        },
+        "TEXT": {
+          "name": "ข้อความหรือสคริปต์ (Text)",
+          "description": "เชื่อมโยงข้อมูล Text Datablock"
+        },
+        "TEXTURE": {
+          "name": "เทกซ์เจอร์ (Texture)",
+          "description": "ชนิดข้อมูลเทกซ์เจอร์พื้นผิว"
+        },
+        "VOLUME": {
+          "name": "ปริมาตร (Volume)",
+          "description": "ข้อมูลวัตถุจำลองปริมาตร เช่น ควัน หรือเมฆ"
+        },
+        "WINDOWMANAGER": {
+          "name": "ระบบจัดการหน้าต่าง (Window Manager)",
+          "description": "ระบบจัดการหน้าต่างของ Blender"
+        },
+        "WORKSPACE": {
+          "name": "พื้นที่ทำงาน (Workspace)",
+          "description": "ข้อมูลเลย์เอาต์เวิร์กสเปซ"
+        },
+        "WORLD": {
+          "name": "โลก (World)",
+          "description": "สภาพแวดล้อมฉากหลังและแสงโดยรอบ (World Environment)"
+        }
+      }
+    }
+  },
+  "CompositorNodeVecBlur": {
+    "name": "CompositorNodeVecBlur",
+    "description": ""
+  },
+  "CompositorNodeViewer": {
+    "name": "CompositorNodeViewer",
+    "description": ""
+  },
+  "CompositorNodeZcombine": {
+    "name": "CompositorNodeZcombine",
+    "description": ""
+  },
+  "FunctionNode": {
+    "name": "",
+    "description": ""
+  },
+  "FunctionNodeAlignEulerToVector": {
+    "name": "AlignEulerToVector",
+    "description": "",
+    "dropdowns": {
+      "axis": [
+        "X",
+        "Y",
+        "Z"
+      ],
+      "pivot_axis": [
+        "AUTO",
+        "X",
+        "Y",
+        "Z"
+      ]
+    },
+    "sub_types": {
+      "axis": {
+        "X": {
+          "name": "AlignEulerToVector (แกน X)",
+          "description": "ตัวเลือกโหมด: แกน X"
+        },
+        "Y": {
+          "name": "AlignEulerToVector (แกน Y)",
+          "description": "ตัวเลือกโหมด: แกน Y"
+        },
+        "Z": {
+          "name": "AlignEulerToVector (แกน Z)",
+          "description": "ตัวเลือกโหมด: แกน Z"
+        }
+      },
+      "pivot_axis": {
+        "AUTO": {
+          "name": "AlignEulerToVector (อัตโนมัติ (Auto))",
+          "description": "ตัวเลือกโหมด: อัตโนมัติ (Auto)"
+        },
+        "X": {
+          "name": "AlignEulerToVector (แกน X)",
+          "description": "ตัวเลือกโหมด: แกน X"
+        },
+        "Y": {
+          "name": "AlignEulerToVector (แกน Y)",
+          "description": "ตัวเลือกโหมด: แกน Y"
+        },
+        "Z": {
+          "name": "AlignEulerToVector (แกน Z)",
+          "description": "ตัวเลือกโหมด: แกน Z"
+        }
+      }
+    }
+  },
+  "FunctionNodeBitMath": {
+    "name": "BitMath",
+    "description": "",
+    "dropdowns": {
+      "operation": [
+        "AND",
+        "OR",
+        "XOR",
+        "NOT",
+        "SHIFT",
+        "ROTATE"
+      ]
+    },
+    "sub_types": {
+      "operation": {
+        "AND": {
+          "name": "ตรรกะและ (And)",
+          "description": "คืนค่าจริงเมื่อทั้งคู่เป็นจริง"
+        },
+        "OR": {
+          "name": "ตรรกะหรือ (Or)",
+          "description": "คืนค่าจริงเมื่อมีอย่างน้อยหนึ่งค่าเป็นจริง"
+        },
+        "XOR": {
+          "name": "ตรรกะเอ็กซ์ออร์ (Xor)",
+          "description": "เป็นจริงเมื่อค่าความจริงต่างกัน"
+        },
+        "NOT": {
+          "name": "นิเสธ (Not)",
+          "description": "สลับค่าความจริงจากจริงเป็นเท็จ และเท็จเป็นจริง"
+        },
+        "SHIFT": {
+          "name": "เลื่อนบิต (Shift)",
+          "description": "เลื่อนตำแหน่งบิตข้อมูล (Bitwise Shift)"
+        },
+        "ROTATE": {
+          "name": "หมุนบิต (Rotate)",
+          "description": "หมุนตำแหน่งบิตข้อมูล (Bitwise Rotate)"
+        }
+      }
+    }
+  },
+  "FunctionNodeFormatString": {
+    "name": "FormatString",
+    "description": ""
+  },
+  "FunctionNodeInputBool": {
+    "name": "InputBool",
+    "description": ""
+  },
+  "FunctionNodeInputSpecialCharacters": {
+    "name": "InputSpecialCharacters",
+    "description": ""
+  },
+  "FunctionNodeMatchString": {
+    "name": "MatchString",
+    "description": ""
+  },
+  "FunctionNodeMatrixMultiply": {
+    "name": "MatrixMultiply",
+    "description": ""
+  },
+  "FunctionNodeRotateEuler": {
+    "name": "RotateEuler",
+    "description": "",
+    "dropdowns": {
+      "rotation_type": [
+        "AXIS_ANGLE",
+        "EULER"
+      ],
+      "space": [
+        "OBJECT",
+        "LOCAL"
+      ]
+    },
+    "sub_types": {
+      "rotation_type": {
+        "AXIS_ANGLE": {
+          "name": "RotateEuler (แกนและมุม (Axis Angle))",
+          "description": "ตัวเลือกโหมด: แกนและมุม (Axis Angle)"
+        },
+        "EULER": {
+          "name": "RotateEuler (EULER)",
+          "description": "ตัวเลือกโหมด: EULER"
+        }
+      },
+      "space": {
+        "OBJECT": {
+          "name": "RotateEuler (วัตถุ (Object))",
+          "description": "ตัวเลือกโหมด: วัตถุ (Object)"
+        },
+        "LOCAL": {
+          "name": "RotateEuler (เฉพาะที่ (Local))",
+          "description": "ตัวเลือกโหมด: เฉพาะที่ (Local)"
+        }
+      }
+    }
+  },
+  "FunctionNodeRotateVector": {
+    "name": "RotateVector",
+    "description": ""
+  },
+  "GeometryNode": {
+    "name": "",
+    "description": ""
+  },
+  "GeometryNodeCameraInfo": {
+    "name": "CameraInfo",
+    "description": ""
+  },
+  "GeometryNodeCurveQuadraticBezier": {
+    "name": "CurveQuadraticBezier",
+    "description": ""
+  },
+  "GeometryNodeCurveSetHandles": {
+    "name": "CurveSetHandles",
+    "description": "",
+    "dropdowns": {
+      "handle_type": [
+        "FREE",
+        "AUTO",
+        "VECTOR",
+        "ALIGN"
+      ],
+      "mode": [
+        "LEFT",
+        "RIGHT"
+      ]
+    },
+    "sub_types": {
+      "handle_type": {
+        "FREE": {
+          "name": "CurveSetHandles (อิสระ (Free))",
+          "description": "ตัวเลือกโหมด: อิสระ (Free)"
+        },
+        "AUTO": {
+          "name": "CurveSetHandles (อัตโนมัติ (Auto))",
+          "description": "ตัวเลือกโหมด: อัตโนมัติ (Auto)"
+        },
+        "VECTOR": {
+          "name": "CurveSetHandles (เวกเตอร์)",
+          "description": "ตัวเลือกโหมด: เวกเตอร์"
+        },
+        "ALIGN": {
+          "name": "CurveSetHandles (จัดแนว (Align))",
+          "description": "ตัวเลือกโหมด: จัดแนว (Align)"
+        }
+      },
+      "mode": {
+        "LEFT": {
+          "name": "ซ้าย (Left)",
+          "description": "แขนบังคับหรือจุดควบคุมฝั่งซ้าย"
+        },
+        "RIGHT": {
+          "name": "ขวา (Right)",
+          "description": "แขนบังคับหรือจุดควบคุมฝั่งขวา"
+        }
+      }
+    }
+  },
+  "GeometryNodeCurveSpiral": {
+    "name": "CurveSpiral",
+    "description": ""
+  },
+  "GeometryNodeCurveStar": {
+    "name": "CurveStar",
+    "description": ""
+  },
+  "GeometryNodeCustomGroup": {
+    "name": "CustomGroup",
+    "description": ""
+  },
+  "GeometryNodeFieldMinAndMax": {
+    "name": "FieldMinAndMax",
+    "description": "",
+    "dropdowns": {
+      "data_type": [
+        "FLOAT",
+        "INT",
+        "FLOAT_VECTOR"
+      ],
+      "domain": [
+        "POINT",
+        "EDGE",
+        "FACE",
+        "CORNER",
+        "CURVE",
+        "INSTANCE",
+        "LAYER"
+      ]
+    },
+    "sub_types": {
+      "data_type": {
+        "FLOAT": {
+          "name": "ทศนิยม (Float)",
+          "description": "ชนิดข้อมูลตัวเลขทศนิยมเดี่ยว"
+        },
+        "INT": {
+          "name": "จำนวนเต็ม (Integer)",
+          "description": "ชนิดข้อมูลตัวเลขจำนวนเต็ม"
+        },
+        "FLOAT_VECTOR": {
+          "name": "เวกเตอร์ (Vector)",
+          "description": "ชนิดข้อมูลเวกเตอร์หรือพิกัดทิศทาง"
+        }
+      },
+      "domain": {
+        "POINT": {
+          "name": "FieldMinAndMax (จุด)",
+          "description": "ตัวเลือกโหมด: จุด"
+        },
+        "EDGE": {
+          "name": "FieldMinAndMax (เส้น)",
+          "description": "ตัวเลือกโหมด: เส้น"
+        },
+        "FACE": {
+          "name": "FieldMinAndMax (หน้าตัด)",
+          "description": "ตัวเลือกโหมด: หน้าตัด"
+        },
+        "CORNER": {
+          "name": "FieldMinAndMax (มุม)",
+          "description": "ตัวเลือกโหมด: มุม"
+        },
+        "CURVE": {
+          "name": "FieldMinAndMax (เส้นโค้ง)",
+          "description": "ตัวเลือกโหมด: เส้นโค้ง"
+        },
+        "INSTANCE": {
+          "name": "FieldMinAndMax (อินสแตนซ์)",
+          "description": "ตัวเลือกโหมด: อินสแตนซ์"
+        },
+        "LAYER": {
+          "name": "FieldMinAndMax (เลเยอร์)",
+          "description": "ตัวเลือกโหมด: เลเยอร์"
+        }
+      }
+    }
+  },
+  "GeometryNodeFieldToGridItem": {
+    "name": "FieldToGridItem",
+    "description": "",
+    "dropdowns": {
+      "data_type": [
+        "FLOAT",
+        "INT",
+        "BOOLEAN",
+        "VECTOR",
+        "RGBA",
+        "ROTATION",
+        "MATRIX",
+        "STRING",
+        "MENU",
+        "SHADER",
+        "OBJECT",
+        "IMAGE",
+        "GEOMETRY",
+        "COLLECTION",
+        "TEXTURE",
+        "MATERIAL",
+        "BUNDLE",
+        "CLOSURE",
+        "FONT",
+        "SCENE",
+        "TEXT",
+        "MASK",
+        "SOUND"
+      ]
+    },
+    "sub_types": {
+      "data_type": {
+        "FLOAT": {
+          "name": "ทศนิยม (Float)",
+          "description": "ชนิดข้อมูลตัวเลขทศนิยมเดี่ยว"
+        },
+        "INT": {
+          "name": "จำนวนเต็ม (Integer)",
+          "description": "ชนิดข้อมูลตัวเลขจำนวนเต็ม"
+        },
+        "BOOLEAN": {
+          "name": "ค่าความจริง (Boolean)",
+          "description": "ชนิดข้อมูลตรรกะ จริง/เท็จ"
+        },
+        "VECTOR": {
+          "name": "เวกเตอร์ (Vector)",
+          "description": "ชนิดข้อมูลเวกเตอร์"
+        },
+        "RGBA": {
+          "name": "สี RGBA",
+          "description": "ชนิดข้อมูลสีแบบมีค่าอัลฟา"
+        },
+        "ROTATION": {
+          "name": "การหมุน (Rotation)",
+          "description": "ชนิดข้อมูลการหมุนหรือองศา"
+        },
+        "MATRIX": {
+          "name": "เมทริกซ์ (Matrix)",
+          "description": "ชนิดข้อมูลเมทริกซ์การแปลงสภาพ"
+        },
+        "STRING": {
+          "name": "ข้อความ (String)",
+          "description": "ชนิดข้อมูลตัวอักษรหรือข้อความ"
+        },
+        "MENU": {
+          "name": "เมนู (Menu)",
+          "description": "ข้อมูลตัวเลือกจากเมนู"
+        },
+        "SHADER": {
+          "name": "เชเดอร์ (Shader)",
+          "description": "ชนิดข้อมูลสำหรับเชื่อมโยงการแสดงผล Shader"
+        },
+        "OBJECT": {
+          "name": "วัตถุ (Object)",
+          "description": "ชนิดข้อมูลสำหรับอ้างอิงวัตถุ 3 มิติ"
+        },
+        "IMAGE": {
+          "name": "รูปภาพ (Image)",
+          "description": "ชนิดข้อมูลรูปภาพ"
+        },
+        "GEOMETRY": {
+          "name": "เรขาคณิต (Geometry)",
+          "description": "ชนิดข้อมูลรูปทรงตาข่ายหรือเรขาคณิต"
+        },
+        "COLLECTION": {
+          "name": "คอลเลกชัน (Collection)",
+          "description": "ชนิดข้อมูลกลุ่มอ็อบเจกต์ (Collection)"
+        },
+        "TEXTURE": {
+          "name": "เทกซ์เจอร์ (Texture)",
+          "description": "ชนิดข้อมูลเทกซ์เจอร์พื้นผิว"
+        },
+        "MATERIAL": {
+          "name": "วัสดุ (Material)",
+          "description": "ชนิดข้อมูลอ้างอิง Material"
+        },
+        "BUNDLE": {
+          "name": "ชุดข้อมูล (Bundle)",
+          "description": "แพ็กเกจข้อมูลที่มัดรวมไว้"
+        },
+        "CLOSURE": {
+          "name": "คลอสเชอร์ (Closure)",
+          "description": "ผลลัพธ์การคำนวณการตกกระทบแสง (BSDF/Closure)"
+        },
+        "FONT": {
+          "name": "ฟอนต์ (Font)",
+          "description": "ชนิดข้อมูลฟอนต์ตัวอักษร"
+        },
+        "SCENE": {
+          "name": "ซีน (Scene)",
+          "description": "ชนิดข้อมูลซีนปัจจุบันหรืออ้างอิง"
+        },
+        "TEXT": {
+          "name": "ข้อความหรือสคริปต์ (Text)",
+          "description": "เชื่อมโยงข้อมูล Text Datablock"
+        },
+        "MASK": {
+          "name": "มาสก์ (Mask)",
+          "description": "ชนิดข้อมูลแบบมาสก์ 2D"
+        },
+        "SOUND": {
+          "name": "เสียง (Sound)",
+          "description": "ชนิดข้อมูลคลื่นเสียงออดิโอ"
+        }
+      }
+    }
+  },
+  "GeometryNodeFieldToListItem": {
+    "name": "FieldToListItem",
+    "description": "",
+    "dropdowns": {
+      "socket_type": [
+        "FLOAT",
+        "INT",
+        "BOOLEAN",
+        "VECTOR",
+        "RGBA",
+        "ROTATION",
+        "MATRIX",
+        "STRING",
+        "MENU",
+        "SHADER",
+        "OBJECT",
+        "IMAGE",
+        "GEOMETRY",
+        "COLLECTION",
+        "TEXTURE",
+        "MATERIAL",
+        "BUNDLE",
+        "CLOSURE",
+        "FONT",
+        "SCENE",
+        "TEXT",
+        "MASK",
+        "SOUND"
+      ]
+    },
+    "sub_types": {
+      "socket_type": {
+        "FLOAT": {
+          "name": "ทศนิยม (Float)",
+          "description": "ชนิดข้อมูลตัวเลขทศนิยมเดี่ยว"
+        },
+        "INT": {
+          "name": "จำนวนเต็ม (Integer)",
+          "description": "ชนิดข้อมูลตัวเลขจำนวนเต็ม"
+        },
+        "BOOLEAN": {
+          "name": "ค่าความจริง (Boolean)",
+          "description": "ชนิดข้อมูลตรรกะ จริง/เท็จ"
+        },
+        "VECTOR": {
+          "name": "เวกเตอร์ (Vector)",
+          "description": "ชนิดข้อมูลเวกเตอร์"
+        },
+        "RGBA": {
+          "name": "สี RGBA",
+          "description": "ชนิดข้อมูลสีแบบมีค่าอัลฟา"
+        },
+        "ROTATION": {
+          "name": "การหมุน (Rotation)",
+          "description": "ชนิดข้อมูลการหมุนหรือองศา"
+        },
+        "MATRIX": {
+          "name": "เมทริกซ์ (Matrix)",
+          "description": "ชนิดข้อมูลเมทริกซ์การแปลงสภาพ"
+        },
+        "STRING": {
+          "name": "ข้อความ (String)",
+          "description": "ชนิดข้อมูลตัวอักษรหรือข้อความ"
+        },
+        "MENU": {
+          "name": "เมนู (Menu)",
+          "description": "ข้อมูลตัวเลือกจากเมนู"
+        },
+        "SHADER": {
+          "name": "เชเดอร์ (Shader)",
+          "description": "ชนิดข้อมูลสำหรับเชื่อมโยงการแสดงผล Shader"
+        },
+        "OBJECT": {
+          "name": "วัตถุ (Object)",
+          "description": "ชนิดข้อมูลสำหรับอ้างอิงวัตถุ 3 มิติ"
+        },
+        "IMAGE": {
+          "name": "รูปภาพ (Image)",
+          "description": "ชนิดข้อมูลรูปภาพ"
+        },
+        "GEOMETRY": {
+          "name": "เรขาคณิต (Geometry)",
+          "description": "ชนิดข้อมูลรูปทรงตาข่ายหรือเรขาคณิต"
+        },
+        "COLLECTION": {
+          "name": "คอลเลกชัน (Collection)",
+          "description": "ชนิดข้อมูลกลุ่มอ็อบเจกต์ (Collection)"
+        },
+        "TEXTURE": {
+          "name": "เทกซ์เจอร์ (Texture)",
+          "description": "ชนิดข้อมูลเทกซ์เจอร์พื้นผิว"
+        },
+        "MATERIAL": {
+          "name": "วัสดุ (Material)",
+          "description": "ชนิดข้อมูลอ้างอิง Material"
+        },
+        "BUNDLE": {
+          "name": "ชุดข้อมูล (Bundle)",
+          "description": "แพ็กเกจข้อมูลที่มัดรวมไว้"
+        },
+        "CLOSURE": {
+          "name": "คลอสเชอร์ (Closure)",
+          "description": "ผลลัพธ์การคำนวณการตกกระทบแสง (BSDF/Closure)"
+        },
+        "FONT": {
+          "name": "ฟอนต์ (Font)",
+          "description": "ชนิดข้อมูลฟอนต์ตัวอักษร"
+        },
+        "SCENE": {
+          "name": "ซีน (Scene)",
+          "description": "ชนิดข้อมูลซีนปัจจุบันหรืออ้างอิง"
+        },
+        "TEXT": {
+          "name": "ข้อความหรือสคริปต์ (Text)",
+          "description": "เชื่อมโยงข้อมูล Text Datablock"
+        },
+        "MASK": {
+          "name": "มาสก์ (Mask)",
+          "description": "ชนิดข้อมูลแบบมาสก์ 2D"
+        },
+        "SOUND": {
+          "name": "เสียง (Sound)",
+          "description": "ชนิดข้อมูลคลื่นเสียงออดิโอ"
+        }
+      }
+    }
+  },
+  "GeometryNodeForeachGeometryElementInput": {
+    "name": "ForeachGeometryElementInput",
+    "description": ""
+  },
+  "GeometryNodeForeachGeometryElementOutput": {
+    "name": "ForeachGeometryElementOutput",
+    "description": "",
+    "dropdowns": {
+      "domain": [
+        "POINT",
+        "EDGE",
+        "FACE",
+        "CORNER",
+        "CURVE",
+        "INSTANCE",
+        "LAYER"
+      ]
+    },
+    "sub_types": {
+      "domain": {
+        "POINT": {
+          "name": "ForeachGeometryElementOutput (จุด)",
+          "description": "ตัวเลือกโหมด: จุด"
+        },
+        "EDGE": {
+          "name": "ForeachGeometryElementOutput (เส้น)",
+          "description": "ตัวเลือกโหมด: เส้น"
+        },
+        "FACE": {
+          "name": "ForeachGeometryElementOutput (หน้าตัด)",
+          "description": "ตัวเลือกโหมด: หน้าตัด"
+        },
+        "CORNER": {
+          "name": "ForeachGeometryElementOutput (มุม)",
+          "description": "ตัวเลือกโหมด: มุม"
+        },
+        "CURVE": {
+          "name": "ForeachGeometryElementOutput (เส้นโค้ง)",
+          "description": "ตัวเลือกโหมด: เส้นโค้ง"
+        },
+        "INSTANCE": {
+          "name": "ForeachGeometryElementOutput (อินสแตนซ์)",
+          "description": "ตัวเลือกโหมด: อินสแตนซ์"
+        },
+        "LAYER": {
+          "name": "ForeachGeometryElementOutput (เลเยอร์)",
+          "description": "ตัวเลือกโหมด: เลเยอร์"
+        }
+      }
+    }
+  },
+  "GeometryNodeGridAdvect": {
+    "name": "GridAdvect",
+    "description": "",
+    "dropdowns": {
+      "data_type": [
+        "FLOAT",
+        "INT",
+        "BOOLEAN",
+        "VECTOR",
+        "RGBA",
+        "ROTATION",
+        "MATRIX",
+        "STRING",
+        "MENU",
+        "SHADER",
+        "OBJECT",
+        "IMAGE",
+        "GEOMETRY",
+        "COLLECTION",
+        "TEXTURE",
+        "MATERIAL",
+        "BUNDLE",
+        "CLOSURE",
+        "FONT",
+        "SCENE",
+        "TEXT",
+        "MASK",
+        "SOUND"
+      ]
+    },
+    "sub_types": {
+      "data_type": {
+        "FLOAT": {
+          "name": "ทศนิยม (Float)",
+          "description": "ชนิดข้อมูลตัวเลขทศนิยมเดี่ยว"
+        },
+        "INT": {
+          "name": "จำนวนเต็ม (Integer)",
+          "description": "ชนิดข้อมูลตัวเลขจำนวนเต็ม"
+        },
+        "BOOLEAN": {
+          "name": "ค่าความจริง (Boolean)",
+          "description": "ชนิดข้อมูลตรรกะ จริง/เท็จ"
+        },
+        "VECTOR": {
+          "name": "เวกเตอร์ (Vector)",
+          "description": "ชนิดข้อมูลเวกเตอร์"
+        },
+        "RGBA": {
+          "name": "สี RGBA",
+          "description": "ชนิดข้อมูลสีแบบมีค่าอัลฟา"
+        },
+        "ROTATION": {
+          "name": "การหมุน (Rotation)",
+          "description": "ชนิดข้อมูลการหมุนหรือองศา"
+        },
+        "MATRIX": {
+          "name": "เมทริกซ์ (Matrix)",
+          "description": "ชนิดข้อมูลเมทริกซ์การแปลงสภาพ"
+        },
+        "STRING": {
+          "name": "ข้อความ (String)",
+          "description": "ชนิดข้อมูลตัวอักษรหรือข้อความ"
+        },
+        "MENU": {
+          "name": "เมนู (Menu)",
+          "description": "ข้อมูลตัวเลือกจากเมนู"
+        },
+        "SHADER": {
+          "name": "เชเดอร์ (Shader)",
+          "description": "ชนิดข้อมูลสำหรับเชื่อมโยงการแสดงผล Shader"
+        },
+        "OBJECT": {
+          "name": "วัตถุ (Object)",
+          "description": "ชนิดข้อมูลสำหรับอ้างอิงวัตถุ 3 มิติ"
+        },
+        "IMAGE": {
+          "name": "รูปภาพ (Image)",
+          "description": "ชนิดข้อมูลรูปภาพ"
+        },
+        "GEOMETRY": {
+          "name": "เรขาคณิต (Geometry)",
+          "description": "ชนิดข้อมูลรูปทรงตาข่ายหรือเรขาคณิต"
+        },
+        "COLLECTION": {
+          "name": "คอลเลกชัน (Collection)",
+          "description": "ชนิดข้อมูลกลุ่มอ็อบเจกต์ (Collection)"
+        },
+        "TEXTURE": {
+          "name": "เทกซ์เจอร์ (Texture)",
+          "description": "ชนิดข้อมูลเทกซ์เจอร์พื้นผิว"
+        },
+        "MATERIAL": {
+          "name": "วัสดุ (Material)",
+          "description": "ชนิดข้อมูลอ้างอิง Material"
+        },
+        "BUNDLE": {
+          "name": "ชุดข้อมูล (Bundle)",
+          "description": "แพ็กเกจข้อมูลที่มัดรวมไว้"
+        },
+        "CLOSURE": {
+          "name": "คลอสเชอร์ (Closure)",
+          "description": "ผลลัพธ์การคำนวณการตกกระทบแสง (BSDF/Closure)"
+        },
+        "FONT": {
+          "name": "ฟอนต์ (Font)",
+          "description": "ชนิดข้อมูลฟอนต์ตัวอักษร"
+        },
+        "SCENE": {
+          "name": "ซีน (Scene)",
+          "description": "ชนิดข้อมูลซีนปัจจุบันหรืออ้างอิง"
+        },
+        "TEXT": {
+          "name": "ข้อความหรือสคริปต์ (Text)",
+          "description": "เชื่อมโยงข้อมูล Text Datablock"
+        },
+        "MASK": {
+          "name": "มาสก์ (Mask)",
+          "description": "ชนิดข้อมูลแบบมาสก์ 2D"
+        },
+        "SOUND": {
+          "name": "เสียง (Sound)",
+          "description": "ชนิดข้อมูลคลื่นเสียงออดิโอ"
+        }
+      }
+    }
+  },
+  "GeometryNodeGridClip": {
+    "name": "GridClip",
+    "description": "",
+    "dropdowns": {
+      "data_type": [
+        "FLOAT",
+        "INT",
+        "BOOLEAN",
+        "VECTOR",
+        "RGBA",
+        "ROTATION",
+        "MATRIX",
+        "STRING",
+        "MENU",
+        "SHADER",
+        "OBJECT",
+        "IMAGE",
+        "GEOMETRY",
+        "COLLECTION",
+        "TEXTURE",
+        "MATERIAL",
+        "BUNDLE",
+        "CLOSURE",
+        "FONT",
+        "SCENE",
+        "TEXT",
+        "MASK",
+        "SOUND"
+      ]
+    },
+    "sub_types": {
+      "data_type": {
+        "FLOAT": {
+          "name": "ทศนิยม (Float)",
+          "description": "ชนิดข้อมูลตัวเลขทศนิยมเดี่ยว"
+        },
+        "INT": {
+          "name": "จำนวนเต็ม (Integer)",
+          "description": "ชนิดข้อมูลตัวเลขจำนวนเต็ม"
+        },
+        "BOOLEAN": {
+          "name": "ค่าความจริง (Boolean)",
+          "description": "ชนิดข้อมูลตรรกะ จริง/เท็จ"
+        },
+        "VECTOR": {
+          "name": "เวกเตอร์ (Vector)",
+          "description": "ชนิดข้อมูลเวกเตอร์"
+        },
+        "RGBA": {
+          "name": "สี RGBA",
+          "description": "ชนิดข้อมูลสีแบบมีค่าอัลฟา"
+        },
+        "ROTATION": {
+          "name": "การหมุน (Rotation)",
+          "description": "ชนิดข้อมูลการหมุนหรือองศา"
+        },
+        "MATRIX": {
+          "name": "เมทริกซ์ (Matrix)",
+          "description": "ชนิดข้อมูลเมทริกซ์การแปลงสภาพ"
+        },
+        "STRING": {
+          "name": "ข้อความ (String)",
+          "description": "ชนิดข้อมูลตัวอักษรหรือข้อความ"
+        },
+        "MENU": {
+          "name": "เมนู (Menu)",
+          "description": "ข้อมูลตัวเลือกจากเมนู"
+        },
+        "SHADER": {
+          "name": "เชเดอร์ (Shader)",
+          "description": "ชนิดข้อมูลสำหรับเชื่อมโยงการแสดงผล Shader"
+        },
+        "OBJECT": {
+          "name": "วัตถุ (Object)",
+          "description": "ชนิดข้อมูลสำหรับอ้างอิงวัตถุ 3 มิติ"
+        },
+        "IMAGE": {
+          "name": "รูปภาพ (Image)",
+          "description": "ชนิดข้อมูลรูปภาพ"
+        },
+        "GEOMETRY": {
+          "name": "เรขาคณิต (Geometry)",
+          "description": "ชนิดข้อมูลรูปทรงตาข่ายหรือเรขาคณิต"
+        },
+        "COLLECTION": {
+          "name": "คอลเลกชัน (Collection)",
+          "description": "ชนิดข้อมูลกลุ่มอ็อบเจกต์ (Collection)"
+        },
+        "TEXTURE": {
+          "name": "เทกซ์เจอร์ (Texture)",
+          "description": "ชนิดข้อมูลเทกซ์เจอร์พื้นผิว"
+        },
+        "MATERIAL": {
+          "name": "วัสดุ (Material)",
+          "description": "ชนิดข้อมูลอ้างอิง Material"
+        },
+        "BUNDLE": {
+          "name": "ชุดข้อมูล (Bundle)",
+          "description": "แพ็กเกจข้อมูลที่มัดรวมไว้"
+        },
+        "CLOSURE": {
+          "name": "คลอสเชอร์ (Closure)",
+          "description": "ผลลัพธ์การคำนวณการตกกระทบแสง (BSDF/Closure)"
+        },
+        "FONT": {
+          "name": "ฟอนต์ (Font)",
+          "description": "ชนิดข้อมูลฟอนต์ตัวอักษร"
+        },
+        "SCENE": {
+          "name": "ซีน (Scene)",
+          "description": "ชนิดข้อมูลซีนปัจจุบันหรืออ้างอิง"
+        },
+        "TEXT": {
+          "name": "ข้อความหรือสคริปต์ (Text)",
+          "description": "เชื่อมโยงข้อมูล Text Datablock"
+        },
+        "MASK": {
+          "name": "มาสก์ (Mask)",
+          "description": "ชนิดข้อมูลแบบมาสก์ 2D"
+        },
+        "SOUND": {
+          "name": "เสียง (Sound)",
+          "description": "ชนิดข้อมูลคลื่นเสียงออดิโอ"
+        }
+      }
+    }
+  },
+  "GeometryNodeGridDilateAndErode": {
+    "name": "GridDilateAndErode",
+    "description": "",
+    "dropdowns": {
+      "data_type": [
+        "FLOAT",
+        "INT",
+        "BOOLEAN",
+        "VECTOR",
+        "RGBA",
+        "ROTATION",
+        "MATRIX",
+        "STRING",
+        "MENU",
+        "SHADER",
+        "OBJECT",
+        "IMAGE",
+        "GEOMETRY",
+        "COLLECTION",
+        "TEXTURE",
+        "MATERIAL",
+        "BUNDLE",
+        "CLOSURE",
+        "FONT",
+        "SCENE",
+        "TEXT",
+        "MASK",
+        "SOUND"
+      ]
+    },
+    "sub_types": {
+      "data_type": {
+        "FLOAT": {
+          "name": "ทศนิยม (Float)",
+          "description": "ชนิดข้อมูลตัวเลขทศนิยมเดี่ยว"
+        },
+        "INT": {
+          "name": "จำนวนเต็ม (Integer)",
+          "description": "ชนิดข้อมูลตัวเลขจำนวนเต็ม"
+        },
+        "BOOLEAN": {
+          "name": "ค่าความจริง (Boolean)",
+          "description": "ชนิดข้อมูลตรรกะ จริง/เท็จ"
+        },
+        "VECTOR": {
+          "name": "เวกเตอร์ (Vector)",
+          "description": "ชนิดข้อมูลเวกเตอร์"
+        },
+        "RGBA": {
+          "name": "สี RGBA",
+          "description": "ชนิดข้อมูลสีแบบมีค่าอัลฟา"
+        },
+        "ROTATION": {
+          "name": "การหมุน (Rotation)",
+          "description": "ชนิดข้อมูลการหมุนหรือองศา"
+        },
+        "MATRIX": {
+          "name": "เมทริกซ์ (Matrix)",
+          "description": "ชนิดข้อมูลเมทริกซ์การแปลงสภาพ"
+        },
+        "STRING": {
+          "name": "ข้อความ (String)",
+          "description": "ชนิดข้อมูลตัวอักษรหรือข้อความ"
+        },
+        "MENU": {
+          "name": "เมนู (Menu)",
+          "description": "ข้อมูลตัวเลือกจากเมนู"
+        },
+        "SHADER": {
+          "name": "เชเดอร์ (Shader)",
+          "description": "ชนิดข้อมูลสำหรับเชื่อมโยงการแสดงผล Shader"
+        },
+        "OBJECT": {
+          "name": "วัตถุ (Object)",
+          "description": "ชนิดข้อมูลสำหรับอ้างอิงวัตถุ 3 มิติ"
+        },
+        "IMAGE": {
+          "name": "รูปภาพ (Image)",
+          "description": "ชนิดข้อมูลรูปภาพ"
+        },
+        "GEOMETRY": {
+          "name": "เรขาคณิต (Geometry)",
+          "description": "ชนิดข้อมูลรูปทรงตาข่ายหรือเรขาคณิต"
+        },
+        "COLLECTION": {
+          "name": "คอลเลกชัน (Collection)",
+          "description": "ชนิดข้อมูลกลุ่มอ็อบเจกต์ (Collection)"
+        },
+        "TEXTURE": {
+          "name": "เทกซ์เจอร์ (Texture)",
+          "description": "ชนิดข้อมูลเทกซ์เจอร์พื้นผิว"
+        },
+        "MATERIAL": {
+          "name": "วัสดุ (Material)",
+          "description": "ชนิดข้อมูลอ้างอิง Material"
+        },
+        "BUNDLE": {
+          "name": "ชุดข้อมูล (Bundle)",
+          "description": "แพ็กเกจข้อมูลที่มัดรวมไว้"
+        },
+        "CLOSURE": {
+          "name": "คลอสเชอร์ (Closure)",
+          "description": "ผลลัพธ์การคำนวณการตกกระทบแสง (BSDF/Closure)"
+        },
+        "FONT": {
+          "name": "ฟอนต์ (Font)",
+          "description": "ชนิดข้อมูลฟอนต์ตัวอักษร"
+        },
+        "SCENE": {
+          "name": "ซีน (Scene)",
+          "description": "ชนิดข้อมูลซีนปัจจุบันหรืออ้างอิง"
+        },
+        "TEXT": {
+          "name": "ข้อความหรือสคริปต์ (Text)",
+          "description": "เชื่อมโยงข้อมูล Text Datablock"
+        },
+        "MASK": {
+          "name": "มาสก์ (Mask)",
+          "description": "ชนิดข้อมูลแบบมาสก์ 2D"
+        },
+        "SOUND": {
+          "name": "เสียง (Sound)",
+          "description": "ชนิดข้อมูลคลื่นเสียงออดิโอ"
+        }
+      }
+    }
+  },
+  "GeometryNodeGridPrune": {
+    "name": "GridPrune",
+    "description": "",
+    "dropdowns": {
+      "data_type": [
+        "FLOAT",
+        "INT",
+        "BOOLEAN",
+        "VECTOR",
+        "RGBA",
+        "ROTATION",
+        "MATRIX",
+        "STRING",
+        "MENU",
+        "SHADER",
+        "OBJECT",
+        "IMAGE",
+        "GEOMETRY",
+        "COLLECTION",
+        "TEXTURE",
+        "MATERIAL",
+        "BUNDLE",
+        "CLOSURE",
+        "FONT",
+        "SCENE",
+        "TEXT",
+        "MASK",
+        "SOUND"
+      ]
+    },
+    "sub_types": {
+      "data_type": {
+        "FLOAT": {
+          "name": "ทศนิยม (Float)",
+          "description": "ชนิดข้อมูลตัวเลขทศนิยมเดี่ยว"
+        },
+        "INT": {
+          "name": "จำนวนเต็ม (Integer)",
+          "description": "ชนิดข้อมูลตัวเลขจำนวนเต็ม"
+        },
+        "BOOLEAN": {
+          "name": "ค่าความจริง (Boolean)",
+          "description": "ชนิดข้อมูลตรรกะ จริง/เท็จ"
+        },
+        "VECTOR": {
+          "name": "เวกเตอร์ (Vector)",
+          "description": "ชนิดข้อมูลเวกเตอร์"
+        },
+        "RGBA": {
+          "name": "สี RGBA",
+          "description": "ชนิดข้อมูลสีแบบมีค่าอัลฟา"
+        },
+        "ROTATION": {
+          "name": "การหมุน (Rotation)",
+          "description": "ชนิดข้อมูลการหมุนหรือองศา"
+        },
+        "MATRIX": {
+          "name": "เมทริกซ์ (Matrix)",
+          "description": "ชนิดข้อมูลเมทริกซ์การแปลงสภาพ"
+        },
+        "STRING": {
+          "name": "ข้อความ (String)",
+          "description": "ชนิดข้อมูลตัวอักษรหรือข้อความ"
+        },
+        "MENU": {
+          "name": "เมนู (Menu)",
+          "description": "ข้อมูลตัวเลือกจากเมนู"
+        },
+        "SHADER": {
+          "name": "เชเดอร์ (Shader)",
+          "description": "ชนิดข้อมูลสำหรับเชื่อมโยงการแสดงผล Shader"
+        },
+        "OBJECT": {
+          "name": "วัตถุ (Object)",
+          "description": "ชนิดข้อมูลสำหรับอ้างอิงวัตถุ 3 มิติ"
+        },
+        "IMAGE": {
+          "name": "รูปภาพ (Image)",
+          "description": "ชนิดข้อมูลรูปภาพ"
+        },
+        "GEOMETRY": {
+          "name": "เรขาคณิต (Geometry)",
+          "description": "ชนิดข้อมูลรูปทรงตาข่ายหรือเรขาคณิต"
+        },
+        "COLLECTION": {
+          "name": "คอลเลกชัน (Collection)",
+          "description": "ชนิดข้อมูลกลุ่มอ็อบเจกต์ (Collection)"
+        },
+        "TEXTURE": {
+          "name": "เทกซ์เจอร์ (Texture)",
+          "description": "ชนิดข้อมูลเทกซ์เจอร์พื้นผิว"
+        },
+        "MATERIAL": {
+          "name": "วัสดุ (Material)",
+          "description": "ชนิดข้อมูลอ้างอิง Material"
+        },
+        "BUNDLE": {
+          "name": "ชุดข้อมูล (Bundle)",
+          "description": "แพ็กเกจข้อมูลที่มัดรวมไว้"
+        },
+        "CLOSURE": {
+          "name": "คลอสเชอร์ (Closure)",
+          "description": "ผลลัพธ์การคำนวณการตกกระทบแสง (BSDF/Closure)"
+        },
+        "FONT": {
+          "name": "ฟอนต์ (Font)",
+          "description": "ชนิดข้อมูลฟอนต์ตัวอักษร"
+        },
+        "SCENE": {
+          "name": "ซีน (Scene)",
+          "description": "ชนิดข้อมูลซีนปัจจุบันหรืออ้างอิง"
+        },
+        "TEXT": {
+          "name": "ข้อความหรือสคริปต์ (Text)",
+          "description": "เชื่อมโยงข้อมูล Text Datablock"
+        },
+        "MASK": {
+          "name": "มาสก์ (Mask)",
+          "description": "ชนิดข้อมูลแบบมาสก์ 2D"
+        },
+        "SOUND": {
+          "name": "เสียง (Sound)",
+          "description": "ชนิดข้อมูลคลื่นเสียงออดิโอ"
+        }
+      }
+    }
+  },
+  "GeometryNodeGridVoxelize": {
+    "name": "GridVoxelize",
+    "description": "",
+    "dropdowns": {
+      "data_type": [
+        "FLOAT",
+        "INT",
+        "BOOLEAN",
+        "VECTOR",
+        "RGBA",
+        "ROTATION",
+        "MATRIX",
+        "STRING",
+        "MENU",
+        "SHADER",
+        "OBJECT",
+        "IMAGE",
+        "GEOMETRY",
+        "COLLECTION",
+        "TEXTURE",
+        "MATERIAL",
+        "BUNDLE",
+        "CLOSURE",
+        "FONT",
+        "SCENE",
+        "TEXT",
+        "MASK",
+        "SOUND"
+      ]
+    },
+    "sub_types": {
+      "data_type": {
+        "FLOAT": {
+          "name": "ทศนิยม (Float)",
+          "description": "ชนิดข้อมูลตัวเลขทศนิยมเดี่ยว"
+        },
+        "INT": {
+          "name": "จำนวนเต็ม (Integer)",
+          "description": "ชนิดข้อมูลตัวเลขจำนวนเต็ม"
+        },
+        "BOOLEAN": {
+          "name": "ค่าความจริง (Boolean)",
+          "description": "ชนิดข้อมูลตรรกะ จริง/เท็จ"
+        },
+        "VECTOR": {
+          "name": "เวกเตอร์ (Vector)",
+          "description": "ชนิดข้อมูลเวกเตอร์"
+        },
+        "RGBA": {
+          "name": "สี RGBA",
+          "description": "ชนิดข้อมูลสีแบบมีค่าอัลฟา"
+        },
+        "ROTATION": {
+          "name": "การหมุน (Rotation)",
+          "description": "ชนิดข้อมูลการหมุนหรือองศา"
+        },
+        "MATRIX": {
+          "name": "เมทริกซ์ (Matrix)",
+          "description": "ชนิดข้อมูลเมทริกซ์การแปลงสภาพ"
+        },
+        "STRING": {
+          "name": "ข้อความ (String)",
+          "description": "ชนิดข้อมูลตัวอักษรหรือข้อความ"
+        },
+        "MENU": {
+          "name": "เมนู (Menu)",
+          "description": "ข้อมูลตัวเลือกจากเมนู"
+        },
+        "SHADER": {
+          "name": "เชเดอร์ (Shader)",
+          "description": "ชนิดข้อมูลสำหรับเชื่อมโยงการแสดงผล Shader"
+        },
+        "OBJECT": {
+          "name": "วัตถุ (Object)",
+          "description": "ชนิดข้อมูลสำหรับอ้างอิงวัตถุ 3 มิติ"
+        },
+        "IMAGE": {
+          "name": "รูปภาพ (Image)",
+          "description": "ชนิดข้อมูลรูปภาพ"
+        },
+        "GEOMETRY": {
+          "name": "เรขาคณิต (Geometry)",
+          "description": "ชนิดข้อมูลรูปทรงตาข่ายหรือเรขาคณิต"
+        },
+        "COLLECTION": {
+          "name": "คอลเลกชัน (Collection)",
+          "description": "ชนิดข้อมูลกลุ่มอ็อบเจกต์ (Collection)"
+        },
+        "TEXTURE": {
+          "name": "เทกซ์เจอร์ (Texture)",
+          "description": "ชนิดข้อมูลเทกซ์เจอร์พื้นผิว"
+        },
+        "MATERIAL": {
+          "name": "วัสดุ (Material)",
+          "description": "ชนิดข้อมูลอ้างอิง Material"
+        },
+        "BUNDLE": {
+          "name": "ชุดข้อมูล (Bundle)",
+          "description": "แพ็กเกจข้อมูลที่มัดรวมไว้"
+        },
+        "CLOSURE": {
+          "name": "คลอสเชอร์ (Closure)",
+          "description": "ผลลัพธ์การคำนวณการตกกระทบแสง (BSDF/Closure)"
+        },
+        "FONT": {
+          "name": "ฟอนต์ (Font)",
+          "description": "ชนิดข้อมูลฟอนต์ตัวอักษร"
+        },
+        "SCENE": {
+          "name": "ซีน (Scene)",
+          "description": "ชนิดข้อมูลซีนปัจจุบันหรืออ้างอิง"
+        },
+        "TEXT": {
+          "name": "ข้อความหรือสคริปต์ (Text)",
+          "description": "เชื่อมโยงข้อมูล Text Datablock"
+        },
+        "MASK": {
+          "name": "มาสก์ (Mask)",
+          "description": "ชนิดข้อมูลแบบมาสก์ 2D"
+        },
+        "SOUND": {
+          "name": "เสียง (Sound)",
+          "description": "ชนิดข้อมูลคลื่นเสียงออดิโอ"
+        }
+      }
+    }
+  },
+  "GeometryNodeImageTexture": {
+    "name": "ImageTexture",
+    "description": "",
+    "dropdowns": {
+      "interpolation": [
+        "Linear",
+        "Closest",
+        "Cubic"
+      ],
+      "extension": [
+        "REPEAT",
+        "EXTEND",
+        "CLIP",
+        "MIRROR"
+      ]
+    },
+    "sub_types": {
+      "interpolation": {
+        "Linear": {
+          "name": "ImageTexture (เชิงเส้น (Linear))",
+          "description": "ตัวเลือกโหมด: เชิงเส้น (Linear)"
+        },
+        "Closest": {
+          "name": "ImageTexture (ใกล้ที่สุด (Closest))",
+          "description": "ตัวเลือกโหมด: ใกล้ที่สุด (Closest)"
+        },
+        "Cubic": {
+          "name": "ImageTexture (ลูกบาศก์ (Cubic))",
+          "description": "ตัวเลือกโหมด: ลูกบาศก์ (Cubic)"
+        }
+      },
+      "extension": {
+        "REPEAT": {
+          "name": "ImageTexture (ทำซ้ำ (Repeat))",
+          "description": "ตัวเลือกโหมด: ทำซ้ำ (Repeat)"
+        },
+        "EXTEND": {
+          "name": "ImageTexture (ขยาย (Extend))",
+          "description": "ตัวเลือกโหมด: ขยาย (Extend)"
+        },
+        "CLIP": {
+          "name": "ImageTexture (ตัด (Clip))",
+          "description": "ตัวเลือกโหมด: ตัด (Clip)"
+        },
+        "MIRROR": {
+          "name": "ImageTexture (สะท้อน (Mirror))",
+          "description": "ตัวเลือกโหมด: สะท้อน (Mirror)"
+        }
+      }
+    }
+  },
+  "GeometryNodeInputActiveCamera": {
+    "name": "InputActiveCamera",
+    "description": ""
+  },
+  "GeometryNodeInputEdgeSmooth": {
+    "name": "InputEdgeSmooth",
+    "description": ""
+  },
+  "GeometryNodeInputInstanceBounds": {
+    "name": "InputInstanceBounds",
+    "description": ""
+  },
+  "GeometryNodeInputNamedLayerSelection": {
+    "name": "InputNamedLayerSelection",
+    "description": ""
+  },
+  "GeometryNodeInputShadeSmooth": {
+    "name": "InputShadeSmooth",
+    "description": ""
+  },
+  "GeometryNodeInputShortestEdgePaths": {
+    "name": "InputShortestEdgePaths",
+    "description": ""
+  },
+  "GeometryNodeInputVoxelIndex": {
+    "name": "InputVoxelIndex",
+    "description": ""
+  },
+  "GeometryNodeInstanceTransform": {
+    "name": "InstanceTransform",
+    "description": ""
+  },
+  "GeometryNodeListGetItem": {
+    "name": "ListGetItem",
+    "description": "",
+    "dropdowns": {
+      "socket_type": [
+        "FLOAT",
+        "INT",
+        "BOOLEAN",
+        "VECTOR",
+        "RGBA",
+        "ROTATION",
+        "MATRIX",
+        "STRING",
+        "MENU",
+        "SHADER",
+        "OBJECT",
+        "IMAGE",
+        "GEOMETRY",
+        "COLLECTION",
+        "TEXTURE",
+        "MATERIAL",
+        "BUNDLE",
+        "CLOSURE",
+        "FONT",
+        "SCENE",
+        "TEXT",
+        "MASK",
+        "SOUND"
+      ],
+      "structure_type": [
+        "AUTO",
+        "DYNAMIC",
+        "FIELD",
+        "GRID",
+        "LIST",
+        "SINGLE"
+      ]
+    },
+    "sub_types": {
+      "socket_type": {
+        "FLOAT": {
+          "name": "ListGetItem (ทศนิยม (Float))",
+          "description": "ตัวเลือกโหมด: ทศนิยม (Float)"
+        },
+        "INT": {
+          "name": "ListGetItem (จำนวนเต็ม (Int))",
+          "description": "ตัวเลือกโหมด: จำนวนเต็ม (Int)"
+        },
+        "BOOLEAN": {
+          "name": "ListGetItem (ตรรกะ (Boolean))",
+          "description": "ตัวเลือกโหมด: ตรรกะ (Boolean)"
+        },
+        "VECTOR": {
+          "name": "ListGetItem (เวกเตอร์)",
+          "description": "ตัวเลือกโหมด: เวกเตอร์"
+        },
+        "RGBA": {
+          "name": "ListGetItem (สี (RGBA))",
+          "description": "ตัวเลือกโหมด: สี (RGBA)"
+        },
+        "ROTATION": {
+          "name": "ListGetItem (การหมุน (Rotation))",
+          "description": "ตัวเลือกโหมด: การหมุน (Rotation)"
+        },
+        "MATRIX": {
+          "name": "ListGetItem (เมทริกซ์ (Matrix))",
+          "description": "ตัวเลือกโหมด: เมทริกซ์ (Matrix)"
+        },
+        "STRING": {
+          "name": "ListGetItem (ข้อความ (String))",
+          "description": "ตัวเลือกโหมด: ข้อความ (String)"
+        },
+        "MENU": {
+          "name": "ListGetItem (เมนู)",
+          "description": "ตัวเลือกโหมด: เมนู"
+        },
+        "SHADER": {
+          "name": "ListGetItem (เชเดอร์)",
+          "description": "ตัวเลือกโหมด: เชเดอร์"
+        },
+        "OBJECT": {
+          "name": "ListGetItem (วัตถุ (Object))",
+          "description": "ตัวเลือกโหมด: วัตถุ (Object)"
+        },
+        "IMAGE": {
+          "name": "ListGetItem (ภาพ (Image))",
+          "description": "ตัวเลือกโหมด: ภาพ (Image)"
+        },
+        "GEOMETRY": {
+          "name": "ListGetItem (รูปทรง (Geometry))",
+          "description": "ตัวเลือกโหมด: รูปทรง (Geometry)"
+        },
+        "COLLECTION": {
+          "name": "ListGetItem (คอลเลกชัน)",
+          "description": "ตัวเลือกโหมด: คอลเลกชัน"
+        },
+        "TEXTURE": {
+          "name": "ListGetItem (พื้นผิว (Texture))",
+          "description": "ตัวเลือกโหมด: พื้นผิว (Texture)"
+        },
+        "MATERIAL": {
+          "name": "ListGetItem (วัสดุ (Material))",
+          "description": "ตัวเลือกโหมด: วัสดุ (Material)"
+        },
+        "BUNDLE": {
+          "name": "ListGetItem (BUNDLE)",
+          "description": "ตัวเลือกโหมด: BUNDLE"
+        },
+        "CLOSURE": {
+          "name": "ListGetItem (CLOSURE)",
+          "description": "ตัวเลือกโหมด: CLOSURE"
+        },
+        "FONT": {
+          "name": "ListGetItem (FONT)",
+          "description": "ตัวเลือกโหมด: FONT"
+        },
+        "SCENE": {
+          "name": "ListGetItem (SCENE)",
+          "description": "ตัวเลือกโหมด: SCENE"
+        },
+        "TEXT": {
+          "name": "ListGetItem (TEXT)",
+          "description": "ตัวเลือกโหมด: TEXT"
+        },
+        "MASK": {
+          "name": "ListGetItem (MASK)",
+          "description": "ตัวเลือกโหมด: MASK"
+        },
+        "SOUND": {
+          "name": "ListGetItem (SOUND)",
+          "description": "ตัวเลือกโหมด: SOUND"
+        }
+      },
+      "structure_type": {
+        "AUTO": {
+          "name": "ListGetItem (อัตโนมัติ (Auto))",
+          "description": "ตัวเลือกโหมด: อัตโนมัติ (Auto)"
+        },
+        "DYNAMIC": {
+          "name": "ListGetItem (DYNAMIC)",
+          "description": "ตัวเลือกโหมด: DYNAMIC"
+        },
+        "FIELD": {
+          "name": "ListGetItem (FIELD)",
+          "description": "ตัวเลือกโหมด: FIELD"
+        },
+        "GRID": {
+          "name": "ListGetItem (GRID)",
+          "description": "ตัวเลือกโหมด: GRID"
+        },
+        "LIST": {
+          "name": "ListGetItem (LIST)",
+          "description": "ตัวเลือกโหมด: LIST"
+        },
+        "SINGLE": {
+          "name": "ListGetItem (SINGLE)",
+          "description": "ตัวเลือกโหมด: SINGLE"
+        }
+      }
+    }
+  },
+  "GeometryNodeMeshFaceSetBoundaries": {
+    "name": "MeshFaceSetBoundaries",
+    "description": ""
+  },
+  "GeometryNodeRepeatInput": {
+    "name": "RepeatInput",
+    "description": ""
+  },
+  "GeometryNodeRepeatOutput": {
+    "name": "RepeatOutput",
+    "description": ""
+  },
+  "GeometryNodeSimulationInput": {
+    "name": "SimulationInput",
+    "description": ""
+  },
+  "GeometryNodeSimulationOutput": {
+    "name": "SimulationOutput",
+    "description": ""
+  },
+  "GeometryNodeTool3DCursor": {
+    "name": "Tool3DCursor",
+    "description": ""
+  },
+  "GeometryNodeToolActiveElement": {
+    "name": "ToolActiveElement",
+    "description": "",
+    "dropdowns": {
+      "domain": [
+        "POINT",
+        "EDGE",
+        "FACE",
+        "LAYER"
+      ]
+    },
+    "sub_types": {
+      "domain": {
+        "POINT": {
+          "name": "ToolActiveElement (จุด)",
+          "description": "ตัวเลือกโหมด: จุด"
+        },
+        "EDGE": {
+          "name": "ToolActiveElement (เส้น)",
+          "description": "ตัวเลือกโหมด: เส้น"
+        },
+        "FACE": {
+          "name": "ToolActiveElement (หน้าตัด)",
+          "description": "ตัวเลือกโหมด: หน้าตัด"
+        },
+        "LAYER": {
+          "name": "ToolActiveElement (เลเยอร์)",
+          "description": "ตัวเลือกโหมด: เลเยอร์"
+        }
+      }
+    }
+  },
+  "GeometryNodeToolFaceSet": {
+    "name": "ToolFaceSet",
+    "description": ""
+  },
+  "GeometryNodeToolMousePosition": {
+    "name": "ToolMousePosition",
+    "description": ""
+  },
+  "GeometryNodeToolSelection": {
+    "name": "ToolSelection",
+    "description": ""
+  },
+  "GeometryNodeToolSetFaceSet": {
+    "name": "ToolSetFaceSet",
+    "description": ""
+  },
+  "GeometryNodeToolSetSelection": {
+    "name": "ToolSetSelection",
+    "description": "",
+    "dropdowns": {
+      "domain": [
+        "POINT",
+        "EDGE",
+        "FACE",
+        "CURVE"
+      ],
+      "selection_type": [
+        "BOOLEAN",
+        "FLOAT"
+      ]
+    },
+    "sub_types": {
+      "domain": {
+        "POINT": {
+          "name": "ToolSetSelection (จุด)",
+          "description": "ตัวเลือกโหมด: จุด"
+        },
+        "EDGE": {
+          "name": "ToolSetSelection (เส้น)",
+          "description": "ตัวเลือกโหมด: เส้น"
+        },
+        "FACE": {
+          "name": "ToolSetSelection (หน้าตัด)",
+          "description": "ตัวเลือกโหมด: หน้าตัด"
+        },
+        "CURVE": {
+          "name": "ToolSetSelection (เส้นโค้ง)",
+          "description": "ตัวเลือกโหมด: เส้นโค้ง"
+        }
+      },
+      "selection_type": {
+        "BOOLEAN": {
+          "name": "ToolSetSelection (ตรรกะ (Boolean))",
+          "description": "ตัวเลือกโหมด: ตรรกะ (Boolean)"
+        },
+        "FLOAT": {
+          "name": "ToolSetSelection (ทศนิยม (Float))",
+          "description": "ตัวเลือกโหมด: ทศนิยม (Float)"
+        }
+      }
+    }
+  },
+  "GeometryNodeTree": {
+    "name": "Tree",
+    "description": "",
+    "dropdowns": {
+      "id_type": [
+        "ACTION",
+        "ARMATURE",
+        "BRUSH",
+        "CACHEFILE",
+        "CAMERA",
+        "COLLECTION",
+        "CURVE",
+        "CURVES",
+        "FONT",
+        "GREASEPENCIL",
+        "GREASEPENCIL_V3",
+        "IMAGE",
+        "KEY",
+        "LATTICE",
+        "LIBRARY",
+        "LIGHT",
+        "LIGHT_PROBE",
+        "LINESTYLE",
+        "MASK",
+        "MATERIAL",
+        "MESH",
+        "META",
+        "MOVIECLIP",
+        "NODETREE",
+        "OBJECT",
+        "PAINTCURVE",
+        "PALETTE",
+        "PARTICLE",
+        "POINTCLOUD",
+        "SCENE",
+        "SCREEN",
+        "SOUND",
+        "SPEAKER",
+        "TEXT",
+        "TEXTURE",
+        "VOLUME",
+        "WINDOWMANAGER",
+        "WORKSPACE",
+        "WORLD"
+      ]
+    },
+    "sub_types": {
+      "id_type": {
+        "ACTION": {
+          "name": "แอกชัน (Action)",
+          "description": "ชุดข้อมูลแอนิเมชันคีย์เฟรม"
+        },
+        "ARMATURE": {
+          "name": "กระดูก (Armature)",
+          "description": "ข้อมูลโครงสร้างกระดูกแอนิเมชัน"
+        },
+        "BRUSH": {
+          "name": "แปรง (Brush)",
+          "description": "ข้อมูลหัวแปรงสำหรับการปั้นหรือเพนต์"
+        },
+        "CACHEFILE": {
+          "name": "ไฟล์แคช (Cache File)",
+          "description": "ข้อมูลไฟล์แคช เช่น Alembic"
+        },
+        "CAMERA": {
+          "name": "กล้อง (Camera)",
+          "description": "ข้อมูลกล้อง"
+        },
+        "COLLECTION": {
+          "name": "คอลเลกชัน (Collection)",
+          "description": "ชนิดข้อมูลกลุ่มอ็อบเจกต์ (Collection)"
+        },
+        "CURVE": {
+          "name": "เส้นโค้ง (Curve)",
+          "description": "ข้อมูลวัตถุเส้นโค้ง (Curve)"
+        },
+        "CURVES": {
+          "name": "เส้นโค้งแบบเส้นผม (Curves)",
+          "description": "ข้อมูลอ็อบเจกต์เส้นโค้งใหม่ (Hair Curves)"
+        },
+        "FONT": {
+          "name": "ฟอนต์ (Font)",
+          "description": "ชนิดข้อมูลฟอนต์ตัวอักษร"
+        },
+        "GREASEPENCIL": {
+          "name": "กรีซเพนซิล (Grease Pencil)",
+          "description": "ข้อมูลวัตถุวาดเส้น 2 มิติ Grease Pencil"
+        },
+        "GREASEPENCIL_V3": {
+          "name": "กรีซเพนซิล v3 (Grease Pencil v3)",
+          "description": "ข้อมูลวัตถุวาดเส้น Grease Pencil เวอร์ชัน 3"
+        },
+        "IMAGE": {
+          "name": "รูปภาพ (Image)",
+          "description": "ชนิดข้อมูลรูปภาพ"
+        },
+        "KEY": {
+          "name": "เชพคีย์ (Shape Key)",
+          "description": "ข้อมูลรักษารูปทรงการเปลี่ยนรูปร่าง (Shape Keys)"
+        },
+        "LATTICE": {
+          "name": "แลตทิซ (Lattice)",
+          "description": "กรงควบคุมรูปร่างวัตถุ"
+        },
+        "LIBRARY": {
+          "name": "ไลบรารี (Library)",
+          "description": "ข้อมูลไฟล์เชื่อมโยงจากภายนอก"
+        },
+        "LIGHT": {
+          "name": "แสง (Light)",
+          "description": "ข้อมูลดวงไฟ"
+        },
+        "LIGHT_PROBE": {
+          "name": "โพรบแสง (Light Probe)",
+          "description": "ข้อมูลสำหรับการคำนวณแสงตกกระทบ"
+        },
+        "LINESTYLE": {
+          "name": "สไตล์เส้น (Line Style)",
+          "description": "ข้อมูลรูปแบบของเส้น (Freestyle)"
+        },
+        "MASK": {
+          "name": "มาสก์ (Mask)",
+          "description": "ชนิดข้อมูลแบบมาสก์ 2D"
+        },
+        "MATERIAL": {
+          "name": "วัสดุ (Material)",
+          "description": "ชนิดข้อมูลอ้างอิง Material"
+        },
+        "MESH": {
+          "name": "โครงข่าย (Mesh)",
+          "description": "ข้อมูลวัตถุรูปทรง 3 มิติแบบมีหน้าตัด"
+        },
+        "META": {
+          "name": "เมตาบอล (Metaball)",
+          "description": "ข้อมูลวัตถุกลมกลืน (Metaball)"
+        },
+        "MOVIECLIP": {
+          "name": "วิดีโอคลิป (Movie Clip)",
+          "description": "ข้อมูลไฟล์วิดีโอคลิป หรือ Motion Tracking"
+        },
+        "NODETREE": {
+          "name": "โนดทรี (Node Tree)",
+          "description": "ข้อมูลเครือข่ายโนดสำหรับสร้างกระบวนการ"
+        },
+        "OBJECT": {
+          "name": "วัตถุ (Object)",
+          "description": "ชนิดข้อมูลสำหรับอ้างอิงวัตถุ 3 มิติ"
+        },
+        "PAINTCURVE": {
+          "name": "เส้นโค้งวาด (Paint Curve)",
+          "description": "เส้นโค้งที่ใช้ช่วยในการเพนต์"
+        },
+        "PALETTE": {
+          "name": "จานสี (Palette)",
+          "description": "ข้อมูลชุดจานสี"
+        },
+        "PARTICLE": {
+          "name": "อนุภาค (Particle)",
+          "description": "ข้อมูลระบบพาร์ติเคิล"
+        },
+        "POINTCLOUD": {
+          "name": "พอยต์คลาวด์ (Point Cloud)",
+          "description": "ข้อมูลกลุ่มจุดพอยต์คลาวด์"
+        },
+        "SCENE": {
+          "name": "ซีน (Scene)",
+          "description": "ชนิดข้อมูลซีนปัจจุบันหรืออ้างอิง"
+        },
+        "SCREEN": {
+          "name": "หน้าจอ (Screen)",
+          "description": "ข้อมูลการจัดวางเลย์เอาต์หน้าจอ"
+        },
+        "SOUND": {
+          "name": "เสียง (Sound)",
+          "description": "ชนิดข้อมูลคลื่นเสียงออดิโอ"
+        },
+        "SPEAKER": {
+          "name": "ลำโพง (Speaker)",
+          "description": "ข้อมูลจุดกำเนิดเสียงในฉาก 3 มิติ"
+        },
+        "TEXT": {
+          "name": "ข้อความหรือสคริปต์ (Text)",
+          "description": "เชื่อมโยงข้อมูล Text Datablock"
+        },
+        "TEXTURE": {
+          "name": "เทกซ์เจอร์ (Texture)",
+          "description": "ชนิดข้อมูลเทกซ์เจอร์พื้นผิว"
+        },
+        "VOLUME": {
+          "name": "ปริมาตร (Volume)",
+          "description": "ข้อมูลวัตถุจำลองปริมาตร เช่น ควัน หรือเมฆ"
+        },
+        "WINDOWMANAGER": {
+          "name": "ระบบจัดการหน้าต่าง (Window Manager)",
+          "description": "ระบบจัดการหน้าต่างของ Blender"
+        },
+        "WORKSPACE": {
+          "name": "พื้นที่ทำงาน (Workspace)",
+          "description": "ข้อมูลเลย์เอาต์เวิร์กสเปซ"
+        },
+        "WORLD": {
+          "name": "โลก (World)",
+          "description": "สภาพแวดล้อมฉากหลังและแสงโดยรอบ (World Environment)"
+        }
+      }
+    }
+  },
+  "GeometryNodeUVPackIslands": {
+    "name": "UVPackIslands",
+    "description": ""
+  },
+  "GeometryNodeViewportTransform": {
+    "name": "ViewportTransform",
+    "description": ""
+  },
+  "ShaderNode": {
+    "name": "",
+    "description": ""
+  },
+  "ShaderNodeAddShader": {
+    "name": "AddShader",
+    "description": ""
+  },
+  "ShaderNodeAmbientOcclusion": {
+    "name": "AmbientOcclusion",
+    "description": ""
+  },
+  "ShaderNodeAttribute": {
+    "name": "Attribute",
+    "description": "",
+    "dropdowns": {
+      "attribute_type": [
+        "GEOMETRY",
+        "OBJECT",
+        "INSTANCER",
+        "VIEW_LAYER"
+      ]
+    },
+    "sub_types": {
+      "attribute_type": {
+        "GEOMETRY": {
+          "name": "Attribute (รูปทรง (Geometry))",
+          "description": "ตัวเลือกโหมด: รูปทรง (Geometry)"
+        },
+        "OBJECT": {
+          "name": "Attribute (วัตถุ (Object))",
+          "description": "ตัวเลือกโหมด: วัตถุ (Object)"
+        },
+        "INSTANCER": {
+          "name": "Attribute (INSTANCER)",
+          "description": "ตัวเลือกโหมด: INSTANCER"
+        },
+        "VIEW_LAYER": {
+          "name": "Attribute (VIEW_LAYER)",
+          "description": "ตัวเลือกโหมด: VIEW_LAYER"
+        }
+      }
+    }
+  },
+  "ShaderNodeBackground": {
+    "name": "Background",
+    "description": ""
+  },
+  "ShaderNodeBevel": {
+    "name": "Bevel",
+    "description": ""
+  },
+  "ShaderNodeBrightContrast": {
+    "name": "BrightContrast",
+    "description": ""
+  },
+  "ShaderNodeBsdfAnisotropic": {
+    "name": "BsdfAnisotropic",
+    "description": "",
+    "dropdowns": {
+      "distribution": [
+        "BECKMANN",
+        "GGX",
+        "ASHIKHMIN_SHIRLEY",
+        "MULTI_GGX"
+      ]
+    },
+    "sub_types": {
+      "distribution": {
+        "BECKMANN": {
+          "name": "BsdfAnisotropic (BECKMANN)",
+          "description": "ตัวเลือกโหมด: BECKMANN"
+        },
+        "GGX": {
+          "name": "BsdfAnisotropic (GGX)",
+          "description": "ตัวเลือกโหมด: GGX"
+        },
+        "ASHIKHMIN_SHIRLEY": {
+          "name": "BsdfAnisotropic (ASHIKHMIN_SHIRLEY)",
+          "description": "ตัวเลือกโหมด: ASHIKHMIN_SHIRLEY"
+        },
+        "MULTI_GGX": {
+          "name": "BsdfAnisotropic (MULTI_GGX)",
+          "description": "ตัวเลือกโหมด: MULTI_GGX"
+        }
+      }
+    }
+  },
+  "ShaderNodeBsdfDiffuse": {
+    "name": "BsdfDiffuse",
+    "description": ""
+  },
+  "ShaderNodeBsdfGlass": {
+    "name": "BsdfGlass",
+    "description": "",
+    "dropdowns": {
+      "distribution": [
+        "BECKMANN",
+        "GGX",
+        "MULTI_GGX"
+      ]
+    },
+    "sub_types": {
+      "distribution": {
+        "BECKMANN": {
+          "name": "BsdfGlass (BECKMANN)",
+          "description": "ตัวเลือกโหมด: BECKMANN"
+        },
+        "GGX": {
+          "name": "BsdfGlass (GGX)",
+          "description": "ตัวเลือกโหมด: GGX"
+        },
+        "MULTI_GGX": {
+          "name": "BsdfGlass (MULTI_GGX)",
+          "description": "ตัวเลือกโหมด: MULTI_GGX"
+        }
+      }
+    }
+  },
+  "ShaderNodeBsdfHair": {
+    "name": "BsdfHair",
+    "description": "",
+    "dropdowns": {
+      "component": [
+        "Reflection",
+        "Transmission"
+      ]
+    },
+    "sub_types": {
+      "component": {
+        "Reflection": {
+          "name": "BsdfHair (Reflection)",
+          "description": "ตัวเลือกโหมด: Reflection"
+        },
+        "Transmission": {
+          "name": "BsdfHair (Transmission)",
+          "description": "ตัวเลือกโหมด: Transmission"
+        }
+      }
+    }
+  },
+  "ShaderNodeBsdfHairPrincipled": {
+    "name": "BsdfHairPrincipled",
+    "description": "",
+    "dropdowns": {
+      "model": [
+        "CHIANG",
+        "HUANG"
+      ],
+      "parametrization": [
+        "ABSORPTION",
+        "MELANIN",
+        "COLOR"
+      ]
+    },
+    "sub_types": {
+      "model": {
+        "CHIANG": {
+          "name": "BsdfHairPrincipled (CHIANG)",
+          "description": "ตัวเลือกโหมด: CHIANG"
+        },
+        "HUANG": {
+          "name": "BsdfHairPrincipled (HUANG)",
+          "description": "ตัวเลือกโหมด: HUANG"
+        }
+      },
+      "parametrization": {
+        "ABSORPTION": {
+          "name": "BsdfHairPrincipled (ABSORPTION)",
+          "description": "ตัวเลือกโหมด: ABSORPTION"
+        },
+        "MELANIN": {
+          "name": "BsdfHairPrincipled (MELANIN)",
+          "description": "ตัวเลือกโหมด: MELANIN"
+        },
+        "COLOR": {
+          "name": "BsdfHairPrincipled (สี (Color))",
+          "description": "ตัวเลือกโหมด: สี (Color)"
+        }
+      }
+    }
+  },
+  "ShaderNodeBsdfMetallic": {
+    "name": "BsdfMetallic",
+    "description": "",
+    "dropdowns": {
+      "distribution": [
+        "BECKMANN",
+        "GGX",
+        "MULTI_GGX"
+      ],
+      "fresnel_type": [
+        "PHYSICAL_CONDUCTOR",
+        "F82"
+      ]
+    },
+    "sub_types": {
+      "distribution": {
+        "BECKMANN": {
+          "name": "BsdfMetallic (BECKMANN)",
+          "description": "ตัวเลือกโหมด: BECKMANN"
+        },
+        "GGX": {
+          "name": "BsdfMetallic (GGX)",
+          "description": "ตัวเลือกโหมด: GGX"
+        },
+        "MULTI_GGX": {
+          "name": "BsdfMetallic (MULTI_GGX)",
+          "description": "ตัวเลือกโหมด: MULTI_GGX"
+        }
+      },
+      "fresnel_type": {
+        "PHYSICAL_CONDUCTOR": {
+          "name": "BsdfMetallic (PHYSICAL_CONDUCTOR)",
+          "description": "ตัวเลือกโหมด: PHYSICAL_CONDUCTOR"
+        },
+        "F82": {
+          "name": "BsdfMetallic (F82)",
+          "description": "ตัวเลือกโหมด: F82"
+        }
+      }
+    }
+  },
+  "ShaderNodeBsdfPrincipled": {
+    "name": "BsdfPrincipled",
+    "description": "",
+    "dropdowns": {
+      "distribution": [
+        "GGX",
+        "MULTI_GGX"
+      ],
+      "subsurface_method": [
+        "BURLEY",
+        "RANDOM_WALK",
+        "RANDOM_WALK_SKIN"
+      ]
+    },
+    "sub_types": {
+      "distribution": {
+        "GGX": {
+          "name": "BsdfPrincipled (GGX)",
+          "description": "ตัวเลือกโหมด: GGX"
+        },
+        "MULTI_GGX": {
+          "name": "BsdfPrincipled (MULTI_GGX)",
+          "description": "ตัวเลือกโหมด: MULTI_GGX"
+        }
+      },
+      "subsurface_method": {
+        "BURLEY": {
+          "name": "BsdfPrincipled (BURLEY)",
+          "description": "ตัวเลือกโหมด: BURLEY"
+        },
+        "RANDOM_WALK": {
+          "name": "BsdfPrincipled (RANDOM_WALK)",
+          "description": "ตัวเลือกโหมด: RANDOM_WALK"
+        },
+        "RANDOM_WALK_SKIN": {
+          "name": "BsdfPrincipled (RANDOM_WALK_SKIN)",
+          "description": "ตัวเลือกโหมด: RANDOM_WALK_SKIN"
+        }
+      }
+    }
+  },
+  "ShaderNodeBsdfRayPortal": {
+    "name": "BsdfRayPortal",
+    "description": ""
+  },
+  "ShaderNodeBsdfRefraction": {
+    "name": "BsdfRefraction",
+    "description": "",
+    "dropdowns": {
+      "distribution": [
+        "BECKMANN",
+        "GGX"
+      ]
+    },
+    "sub_types": {
+      "distribution": {
+        "BECKMANN": {
+          "name": "BsdfRefraction (BECKMANN)",
+          "description": "ตัวเลือกโหมด: BECKMANN"
+        },
+        "GGX": {
+          "name": "BsdfRefraction (GGX)",
+          "description": "ตัวเลือกโหมด: GGX"
+        }
+      }
+    }
+  },
+  "ShaderNodeBsdfSheen": {
+    "name": "BsdfSheen",
+    "description": "",
+    "dropdowns": {
+      "distribution": [
+        "ASHIKHMIN",
+        "MICROFIBER"
+      ]
+    },
+    "sub_types": {
+      "distribution": {
+        "ASHIKHMIN": {
+          "name": "BsdfSheen (ASHIKHMIN)",
+          "description": "ตัวเลือกโหมด: ASHIKHMIN"
+        },
+        "MICROFIBER": {
+          "name": "BsdfSheen (MICROFIBER)",
+          "description": "ตัวเลือกโหมด: MICROFIBER"
+        }
+      }
+    }
+  },
+  "ShaderNodeBsdfToon": {
+    "name": "BsdfToon",
+    "description": "",
+    "dropdowns": {
+      "component": [
+        "DIFFUSE",
+        "GLOSSY"
+      ]
+    },
+    "sub_types": {
+      "component": {
+        "DIFFUSE": {
+          "name": "BsdfToon (DIFFUSE)",
+          "description": "ตัวเลือกโหมด: DIFFUSE"
+        },
+        "GLOSSY": {
+          "name": "BsdfToon (GLOSSY)",
+          "description": "ตัวเลือกโหมด: GLOSSY"
+        }
+      }
+    }
+  },
+  "ShaderNodeBsdfTranslucent": {
+    "name": "BsdfTranslucent",
+    "description": ""
+  },
+  "ShaderNodeBsdfTransparent": {
+    "name": "BsdfTransparent",
+    "description": ""
+  },
+  "ShaderNodeBump": {
+    "name": "Bump",
+    "description": ""
+  },
+  "ShaderNodeCameraData": {
+    "name": "CameraData",
+    "description": ""
+  },
+  "ShaderNodeCombineColor": {
+    "name": "CombineColor",
+    "description": "",
+    "dropdowns": {
+      "mode": [
+        "RGB",
+        "HSV",
+        "HSL"
+      ]
+    },
+    "sub_types": {
+      "mode": {
+        "RGB": {
+          "name": "รูปแบบสี RGB",
+          "description": "โหมดสีแบบ Red, Green, Blue"
+        },
+        "HSV": {
+          "name": "รูปแบบสี HSV",
+          "description": "โหมดสีแบบ Hue, Saturation, Value"
+        },
+        "HSL": {
+          "name": "รูปแบบสี HSL",
+          "description": "โหมดสีแบบ Hue, Saturation, Lightness"
+        }
+      }
+    }
+  },
+  "ShaderNodeCustomGroup": {
+    "name": "CustomGroup",
+    "description": ""
+  },
+  "ShaderNodeDisplacement": {
+    "name": "Displacement",
+    "description": "",
+    "dropdowns": {
+      "space": [
+        "OBJECT",
+        "WORLD"
+      ]
+    },
+    "sub_types": {
+      "space": {
+        "OBJECT": {
+          "name": "Displacement (วัตถุ (Object))",
+          "description": "ตัวเลือกโหมด: วัตถุ (Object)"
+        },
+        "WORLD": {
+          "name": "Displacement (WORLD)",
+          "description": "ตัวเลือกโหมด: WORLD"
+        }
+      }
+    }
+  },
+  "ShaderNodeEeveeSpecular": {
+    "name": "EeveeSpecular",
+    "description": ""
+  },
+  "ShaderNodeEmission": {
+    "name": "Emission",
+    "description": ""
+  },
+  "ShaderNodeFresnel": {
+    "name": "Fresnel",
+    "description": ""
+  },
+  "ShaderNodeGroup": {
+    "name": "Group",
+    "description": ""
+  },
+  "ShaderNodeHairInfo": {
+    "name": "HairInfo",
+    "description": ""
+  },
+  "ShaderNodeHoldout": {
+    "name": "Holdout",
+    "description": ""
+  },
+  "ShaderNodeHueSaturation": {
+    "name": "HueSaturation",
+    "description": ""
+  },
+  "ShaderNodeInvert": {
+    "name": "Invert",
+    "description": ""
+  },
+  "ShaderNodeLayerWeight": {
+    "name": "LayerWeight",
+    "description": ""
+  },
+  "ShaderNodeLightFalloff": {
+    "name": "LightFalloff",
+    "description": ""
+  },
+  "ShaderNodeLightPath": {
+    "name": "LightPath",
+    "description": ""
+  },
+  "ShaderNodeMapping": {
+    "name": "Mapping",
+    "description": "",
+    "dropdowns": {
+      "vector_type": [
+        "POINT",
+        "TEXTURE",
+        "VECTOR",
+        "NORMAL"
+      ]
+    },
+    "sub_types": {
+      "vector_type": {
+        "POINT": {
+          "name": "Mapping (จุด)",
+          "description": "ตัวเลือกโหมด: จุด"
+        },
+        "TEXTURE": {
+          "name": "Mapping (พื้นผิว (Texture))",
+          "description": "ตัวเลือกโหมด: พื้นผิว (Texture)"
+        },
+        "VECTOR": {
+          "name": "Mapping (เวกเตอร์)",
+          "description": "ตัวเลือกโหมด: เวกเตอร์"
+        },
+        "NORMAL": {
+          "name": "Mapping (NORMAL)",
+          "description": "ตัวเลือกโหมด: NORMAL"
+        }
+      }
+    }
+  },
+  "ShaderNodeMixRGB": {
+    "name": "MixRGB",
+    "description": "",
+    "dropdowns": {
+      "blend_type": [
+        "MIX",
+        "DARKEN",
+        "MULTIPLY",
+        "BURN",
+        "LIGHTEN",
+        "SCREEN",
+        "DODGE",
+        "ADD",
+        "OVERLAY",
+        "SOFT_LIGHT",
+        "LINEAR_LIGHT",
+        "DIFFERENCE",
+        "EXCLUSION",
+        "SUBTRACT",
+        "DIVIDE",
+        "HUE",
+        "SATURATION",
+        "COLOR",
+        "VALUE"
+      ]
+    },
+    "sub_types": {
+      "blend_type": {
+        "MIX": {
+          "name": "MixRGB (ผสม (Mix))",
+          "description": "ตัวเลือกโหมด: ผสม (Mix)"
+        },
+        "DARKEN": {
+          "name": "MixRGB (ทำให้เข้ม (Darken))",
+          "description": "ตัวเลือกโหมด: ทำให้เข้ม (Darken)"
+        },
+        "MULTIPLY": {
+          "name": "MixRGB (คูณ (Multiply))",
+          "description": "ตัวเลือกโหมด: คูณ (Multiply)"
+        },
+        "BURN": {
+          "name": "MixRGB (เบิร์น (Burn))",
+          "description": "ตัวเลือกโหมด: เบิร์น (Burn)"
+        },
+        "LIGHTEN": {
+          "name": "MixRGB (ทำให้สว่าง (Lighten))",
+          "description": "ตัวเลือกโหมด: ทำให้สว่าง (Lighten)"
+        },
+        "SCREEN": {
+          "name": "MixRGB (สกรีน (Screen))",
+          "description": "ตัวเลือกโหมด: สกรีน (Screen)"
+        },
+        "DODGE": {
+          "name": "MixRGB (ดอดจ์ (Dodge))",
+          "description": "ตัวเลือกโหมด: ดอดจ์ (Dodge)"
+        },
+        "ADD": {
+          "name": "MixRGB (บวก (Add))",
+          "description": "ตัวเลือกโหมด: บวก (Add)"
+        },
+        "OVERLAY": {
+          "name": "MixRGB (ซ้อนทับ (Overlay))",
+          "description": "ตัวเลือกโหมด: ซ้อนทับ (Overlay)"
+        },
+        "SOFT_LIGHT": {
+          "name": "MixRGB (แสงนุ่มนวล (Soft Light))",
+          "description": "ตัวเลือกโหมด: แสงนุ่มนวล (Soft Light)"
+        },
+        "LINEAR_LIGHT": {
+          "name": "MixRGB (แสงเชิงเส้น (Linear Light))",
+          "description": "ตัวเลือกโหมด: แสงเชิงเส้น (Linear Light)"
+        },
+        "DIFFERENCE": {
+          "name": "MixRGB (ผลต่าง (Difference))",
+          "description": "ตัวเลือกโหมด: ผลต่าง (Difference)"
+        },
+        "EXCLUSION": {
+          "name": "MixRGB (แยกออก (Exclusion))",
+          "description": "ตัวเลือกโหมด: แยกออก (Exclusion)"
+        },
+        "SUBTRACT": {
+          "name": "MixRGB (ลบ (Subtract))",
+          "description": "ตัวเลือกโหมด: ลบ (Subtract)"
+        },
+        "DIVIDE": {
+          "name": "MixRGB (หาร (Divide))",
+          "description": "ตัวเลือกโหมด: หาร (Divide)"
+        },
+        "HUE": {
+          "name": "MixRGB (เฉดสี (Hue))",
+          "description": "ตัวเลือกโหมด: เฉดสี (Hue)"
+        },
+        "SATURATION": {
+          "name": "MixRGB (ความอิ่มตัว (Saturation))",
+          "description": "ตัวเลือกโหมด: ความอิ่มตัว (Saturation)"
+        },
+        "COLOR": {
+          "name": "MixRGB (สี (Color))",
+          "description": "ตัวเลือกโหมด: สี (Color)"
+        },
+        "VALUE": {
+          "name": "MixRGB (มูลค่า (Value))",
+          "description": "ตัวเลือกโหมด: มูลค่า (Value)"
+        }
+      }
+    }
+  },
+  "ShaderNodeMixShader": {
+    "name": "MixShader",
+    "description": ""
+  },
+  "ShaderNodeNewGeometry": {
+    "name": "NewGeometry",
+    "description": ""
+  },
+  "ShaderNodeNormal": {
+    "name": "Normal",
+    "description": ""
+  },
+  "ShaderNodeNormalMap": {
+    "name": "NormalMap",
+    "description": "",
+    "dropdowns": {
+      "space": [
+        "TANGENT",
+        "OBJECT",
+        "WORLD",
+        "BLENDER_OBJECT",
+        "BLENDER_WORLD"
+      ],
+      "convention": [
+        "OPENGL",
+        "DIRECTX"
+      ],
+      "base": [
+        "ORIGINAL",
+        "DISPLACED"
+      ]
+    },
+    "sub_types": {
+      "space": {
+        "TANGENT": {
+          "name": "NormalMap (TANGENT)",
+          "description": "ตัวเลือกโหมด: TANGENT"
+        },
+        "OBJECT": {
+          "name": "NormalMap (วัตถุ (Object))",
+          "description": "ตัวเลือกโหมด: วัตถุ (Object)"
+        },
+        "WORLD": {
+          "name": "NormalMap (WORLD)",
+          "description": "ตัวเลือกโหมด: WORLD"
+        },
+        "BLENDER_OBJECT": {
+          "name": "NormalMap (BLENDER_OBJECT)",
+          "description": "ตัวเลือกโหมด: BLENDER_OBJECT"
+        },
+        "BLENDER_WORLD": {
+          "name": "NormalMap (BLENDER_WORLD)",
+          "description": "ตัวเลือกโหมด: BLENDER_WORLD"
+        }
+      },
+      "convention": {
+        "OPENGL": {
+          "name": "NormalMap (OPENGL)",
+          "description": "ตัวเลือกโหมด: OPENGL"
+        },
+        "DIRECTX": {
+          "name": "NormalMap (DIRECTX)",
+          "description": "ตัวเลือกโหมด: DIRECTX"
+        }
+      },
+      "base": {
+        "ORIGINAL": {
+          "name": "NormalMap (ต้นฉบับ (Original))",
+          "description": "ตัวเลือกโหมด: ต้นฉบับ (Original)"
+        },
+        "DISPLACED": {
+          "name": "NormalMap (DISPLACED)",
+          "description": "ตัวเลือกโหมด: DISPLACED"
+        }
+      }
+    }
+  },
+  "ShaderNodeObjectInfo": {
+    "name": "ObjectInfo",
+    "description": ""
+  },
+  "ShaderNodeOutputAOV": {
+    "name": "OutputAOV",
+    "description": ""
+  },
+  "ShaderNodeOutputLight": {
+    "name": "OutputLight",
+    "description": "",
+    "dropdowns": {
+      "target": [
+        "ALL",
+        "EEVEE",
+        "CYCLES"
+      ]
+    },
+    "sub_types": {
+      "target": {
+        "ALL": {
+          "name": "OutputLight (ALL)",
+          "description": "ตัวเลือกโหมด: ALL"
+        },
+        "EEVEE": {
+          "name": "OutputLight (EEVEE)",
+          "description": "ตัวเลือกโหมด: EEVEE"
+        },
+        "CYCLES": {
+          "name": "OutputLight (CYCLES)",
+          "description": "ตัวเลือกโหมด: CYCLES"
+        }
+      }
+    }
+  },
+  "ShaderNodeOutputLineStyle": {
+    "name": "OutputLineStyle",
+    "description": "",
+    "dropdowns": {
+      "target": [
+        "ALL",
+        "EEVEE",
+        "CYCLES"
+      ],
+      "blend_type": [
+        "MIX",
+        "DARKEN",
+        "MULTIPLY",
+        "BURN",
+        "LIGHTEN",
+        "SCREEN",
+        "DODGE",
+        "ADD",
+        "OVERLAY",
+        "SOFT_LIGHT",
+        "LINEAR_LIGHT",
+        "DIFFERENCE",
+        "EXCLUSION",
+        "SUBTRACT",
+        "DIVIDE",
+        "HUE",
+        "SATURATION",
+        "COLOR",
+        "VALUE"
+      ]
+    },
+    "sub_types": {
+      "target": {
+        "ALL": {
+          "name": "OutputLineStyle (ALL)",
+          "description": "ตัวเลือกโหมด: ALL"
+        },
+        "EEVEE": {
+          "name": "OutputLineStyle (EEVEE)",
+          "description": "ตัวเลือกโหมด: EEVEE"
+        },
+        "CYCLES": {
+          "name": "OutputLineStyle (CYCLES)",
+          "description": "ตัวเลือกโหมด: CYCLES"
+        }
+      },
+      "blend_type": {
+        "MIX": {
+          "name": "OutputLineStyle (ผสม (Mix))",
+          "description": "ตัวเลือกโหมด: ผสม (Mix)"
+        },
+        "DARKEN": {
+          "name": "OutputLineStyle (ทำให้เข้ม (Darken))",
+          "description": "ตัวเลือกโหมด: ทำให้เข้ม (Darken)"
+        },
+        "MULTIPLY": {
+          "name": "OutputLineStyle (คูณ (Multiply))",
+          "description": "ตัวเลือกโหมด: คูณ (Multiply)"
+        },
+        "BURN": {
+          "name": "OutputLineStyle (เบิร์น (Burn))",
+          "description": "ตัวเลือกโหมด: เบิร์น (Burn)"
+        },
+        "LIGHTEN": {
+          "name": "OutputLineStyle (ทำให้สว่าง (Lighten))",
+          "description": "ตัวเลือกโหมด: ทำให้สว่าง (Lighten)"
+        },
+        "SCREEN": {
+          "name": "OutputLineStyle (สกรีน (Screen))",
+          "description": "ตัวเลือกโหมด: สกรีน (Screen)"
+        },
+        "DODGE": {
+          "name": "OutputLineStyle (ดอดจ์ (Dodge))",
+          "description": "ตัวเลือกโหมด: ดอดจ์ (Dodge)"
+        },
+        "ADD": {
+          "name": "OutputLineStyle (บวก (Add))",
+          "description": "ตัวเลือกโหมด: บวก (Add)"
+        },
+        "OVERLAY": {
+          "name": "OutputLineStyle (ซ้อนทับ (Overlay))",
+          "description": "ตัวเลือกโหมด: ซ้อนทับ (Overlay)"
+        },
+        "SOFT_LIGHT": {
+          "name": "OutputLineStyle (แสงนุ่มนวล (Soft Light))",
+          "description": "ตัวเลือกโหมด: แสงนุ่มนวล (Soft Light)"
+        },
+        "LINEAR_LIGHT": {
+          "name": "OutputLineStyle (แสงเชิงเส้น (Linear Light))",
+          "description": "ตัวเลือกโหมด: แสงเชิงเส้น (Linear Light)"
+        },
+        "DIFFERENCE": {
+          "name": "OutputLineStyle (ผลต่าง (Difference))",
+          "description": "ตัวเลือกโหมด: ผลต่าง (Difference)"
+        },
+        "EXCLUSION": {
+          "name": "OutputLineStyle (แยกออก (Exclusion))",
+          "description": "ตัวเลือกโหมด: แยกออก (Exclusion)"
+        },
+        "SUBTRACT": {
+          "name": "OutputLineStyle (ลบ (Subtract))",
+          "description": "ตัวเลือกโหมด: ลบ (Subtract)"
+        },
+        "DIVIDE": {
+          "name": "OutputLineStyle (หาร (Divide))",
+          "description": "ตัวเลือกโหมด: หาร (Divide)"
+        },
+        "HUE": {
+          "name": "OutputLineStyle (เฉดสี (Hue))",
+          "description": "ตัวเลือกโหมด: เฉดสี (Hue)"
+        },
+        "SATURATION": {
+          "name": "OutputLineStyle (ความอิ่มตัว (Saturation))",
+          "description": "ตัวเลือกโหมด: ความอิ่มตัว (Saturation)"
+        },
+        "COLOR": {
+          "name": "OutputLineStyle (สี (Color))",
+          "description": "ตัวเลือกโหมด: สี (Color)"
+        },
+        "VALUE": {
+          "name": "OutputLineStyle (มูลค่า (Value))",
+          "description": "ตัวเลือกโหมด: มูลค่า (Value)"
+        }
+      }
+    }
+  },
+  "ShaderNodeOutputMaterial": {
+    "name": "OutputMaterial",
+    "description": "",
+    "dropdowns": {
+      "target": [
+        "ALL",
+        "EEVEE",
+        "CYCLES"
+      ]
+    },
+    "sub_types": {
+      "target": {
+        "ALL": {
+          "name": "OutputMaterial (ALL)",
+          "description": "ตัวเลือกโหมด: ALL"
+        },
+        "EEVEE": {
+          "name": "OutputMaterial (EEVEE)",
+          "description": "ตัวเลือกโหมด: EEVEE"
+        },
+        "CYCLES": {
+          "name": "OutputMaterial (CYCLES)",
+          "description": "ตัวเลือกโหมด: CYCLES"
+        }
+      }
+    }
+  },
+  "ShaderNodeOutputWorld": {
+    "name": "OutputWorld",
+    "description": "",
+    "dropdowns": {
+      "target": [
+        "ALL",
+        "EEVEE",
+        "CYCLES"
+      ]
+    },
+    "sub_types": {
+      "target": {
+        "ALL": {
+          "name": "OutputWorld (ALL)",
+          "description": "ตัวเลือกโหมด: ALL"
+        },
+        "EEVEE": {
+          "name": "OutputWorld (EEVEE)",
+          "description": "ตัวเลือกโหมด: EEVEE"
+        },
+        "CYCLES": {
+          "name": "OutputWorld (CYCLES)",
+          "description": "ตัวเลือกโหมด: CYCLES"
+        }
+      }
+    }
+  },
+  "ShaderNodeParticleInfo": {
+    "name": "ParticleInfo",
+    "description": ""
+  },
+  "ShaderNodePointInfo": {
+    "name": "PointInfo",
+    "description": ""
+  },
+  "ShaderNodeRGB": {
+    "name": "RGB",
+    "description": ""
+  },
+  "ShaderNodeRGBToBW": {
+    "name": "RGBToBW",
+    "description": ""
+  },
+  "ShaderNodeRadialTiling": {
+    "name": "RadialTiling",
+    "description": ""
+  },
+  "ShaderNodeRaycast": {
+    "name": "Raycast",
+    "description": ""
+  },
+  "ShaderNodeScript": {
+    "name": "Script",
+    "description": "",
+    "dropdowns": {
+      "mode": [
+        "INTERNAL",
+        "EXTERNAL"
+      ]
+    },
+    "sub_types": {
+      "mode": {
+        "INTERNAL": {
+          "name": "ภายใน (Internal)",
+          "description": "ใช้งานไฟล์ข้อมูลภายใน Blender"
+        },
+        "EXTERNAL": {
+          "name": "ภายนอก (External)",
+          "description": "อ้างอิงไฟล์ข้อมูลจากภายนอกฮาร์ดดิสก์"
+        }
+      }
+    }
+  },
+  "ShaderNodeSeparateColor": {
+    "name": "SeparateColor",
+    "description": "",
+    "dropdowns": {
+      "mode": [
+        "RGB",
+        "HSV",
+        "HSL"
+      ]
+    },
+    "sub_types": {
+      "mode": {
+        "RGB": {
+          "name": "รูปแบบสี RGB",
+          "description": "โหมดสีแบบ Red, Green, Blue"
+        },
+        "HSV": {
+          "name": "รูปแบบสี HSV",
+          "description": "โหมดสีแบบ Hue, Saturation, Value"
+        },
+        "HSL": {
+          "name": "รูปแบบสี HSL",
+          "description": "โหมดสีแบบ Hue, Saturation, Lightness"
+        }
+      }
+    }
+  },
+  "ShaderNodeShaderToRGB": {
+    "name": "ShaderToRGB",
+    "description": ""
+  },
+  "ShaderNodeSqueeze": {
+    "name": "Squeeze",
+    "description": ""
+  },
+  "ShaderNodeSubsurfaceScattering": {
+    "name": "SubsurfaceScattering",
+    "description": "",
+    "dropdowns": {
+      "falloff": [
+        "BURLEY",
+        "RANDOM_WALK",
+        "RANDOM_WALK_SKIN"
+      ]
+    },
+    "sub_types": {
+      "falloff": {
+        "BURLEY": {
+          "name": "SubsurfaceScattering (BURLEY)",
+          "description": "ตัวเลือกโหมด: BURLEY"
+        },
+        "RANDOM_WALK": {
+          "name": "SubsurfaceScattering (RANDOM_WALK)",
+          "description": "ตัวเลือกโหมด: RANDOM_WALK"
+        },
+        "RANDOM_WALK_SKIN": {
+          "name": "SubsurfaceScattering (RANDOM_WALK_SKIN)",
+          "description": "ตัวเลือกโหมด: RANDOM_WALK_SKIN"
+        }
+      }
+    }
+  },
+  "ShaderNodeTangent": {
+    "name": "Tangent",
+    "description": "",
+    "dropdowns": {
+      "direction_type": [
+        "RADIAL",
+        "UV_MAP"
+      ],
+      "axis": [
+        "X",
+        "Y",
+        "Z"
+      ]
+    },
+    "sub_types": {
+      "direction_type": {
+        "RADIAL": {
+          "name": "Tangent (รัศมี (Radial))",
+          "description": "ตัวเลือกโหมด: รัศมี (Radial)"
+        },
+        "UV_MAP": {
+          "name": "Tangent (UV_MAP)",
+          "description": "ตัวเลือกโหมด: UV_MAP"
+        }
+      },
+      "axis": {
+        "X": {
+          "name": "Tangent (แกน X)",
+          "description": "ตัวเลือกโหมด: แกน X"
+        },
+        "Y": {
+          "name": "Tangent (แกน Y)",
+          "description": "ตัวเลือกโหมด: แกน Y"
+        },
+        "Z": {
+          "name": "Tangent (แกน Z)",
+          "description": "ตัวเลือกโหมด: แกน Z"
+        }
+      }
+    }
+  },
+  "ShaderNodeTexCoord": {
+    "name": "TexCoord",
+    "description": ""
+  },
+  "ShaderNodeTexEnvironment": {
+    "name": "TexEnvironment",
+    "description": "",
+    "dropdowns": {
+      "projection": [
+        "EQUIRECTANGULAR",
+        "MIRROR_BALL"
+      ],
+      "interpolation": [
+        "Linear",
+        "Closest",
+        "Cubic",
+        "Smart"
+      ]
+    },
+    "sub_types": {
+      "projection": {
+        "EQUIRECTANGULAR": {
+          "name": "TexEnvironment (EQUIRECTANGULAR)",
+          "description": "ตัวเลือกโหมด: EQUIRECTANGULAR"
+        },
+        "MIRROR_BALL": {
+          "name": "TexEnvironment (MIRROR_BALL)",
+          "description": "ตัวเลือกโหมด: MIRROR_BALL"
+        }
+      },
+      "interpolation": {
+        "Linear": {
+          "name": "TexEnvironment (เชิงเส้น (Linear))",
+          "description": "ตัวเลือกโหมด: เชิงเส้น (Linear)"
+        },
+        "Closest": {
+          "name": "TexEnvironment (ใกล้ที่สุด (Closest))",
+          "description": "ตัวเลือกโหมด: ใกล้ที่สุด (Closest)"
+        },
+        "Cubic": {
+          "name": "TexEnvironment (ลูกบาศก์ (Cubic))",
+          "description": "ตัวเลือกโหมด: ลูกบาศก์ (Cubic)"
+        },
+        "Smart": {
+          "name": "TexEnvironment (อัจฉริยะ (Smart))",
+          "description": "ตัวเลือกโหมด: อัจฉริยะ (Smart)"
+        }
+      }
+    }
+  },
+  "ShaderNodeTexIES": {
+    "name": "TexIES",
+    "description": "",
+    "dropdowns": {
+      "mode": [
+        "INTERNAL",
+        "EXTERNAL"
+      ]
+    },
+    "sub_types": {
+      "mode": {
+        "INTERNAL": {
+          "name": "ภายใน (Internal)",
+          "description": "ใช้งานไฟล์ข้อมูลภายใน Blender"
+        },
+        "EXTERNAL": {
+          "name": "ภายนอก (External)",
+          "description": "อ้างอิงไฟล์ข้อมูลจากภายนอกฮาร์ดดิสก์"
+        }
+      }
+    }
+  },
+  "ShaderNodeTexSky": {
+    "name": "TexSky",
+    "description": "",
+    "dropdowns": {
+      "sky_type": [
+        "SINGLE_SCATTERING",
+        "MULTIPLE_SCATTERING",
+        "PREETHAM",
+        "HOSEK_WILKIE"
+      ]
+    },
+    "sub_types": {
+      "sky_type": {
+        "SINGLE_SCATTERING": {
+          "name": "TexSky (SINGLE_SCATTERING)",
+          "description": "ตัวเลือกโหมด: SINGLE_SCATTERING"
+        },
+        "MULTIPLE_SCATTERING": {
+          "name": "TexSky (MULTIPLE_SCATTERING)",
+          "description": "ตัวเลือกโหมด: MULTIPLE_SCATTERING"
+        },
+        "PREETHAM": {
+          "name": "TexSky (PREETHAM)",
+          "description": "ตัวเลือกโหมด: PREETHAM"
+        },
+        "HOSEK_WILKIE": {
+          "name": "TexSky (HOSEK_WILKIE)",
+          "description": "ตัวเลือกโหมด: HOSEK_WILKIE"
+        }
+      }
+    }
+  },
+  "ShaderNodeTree": {
+    "name": "Tree",
+    "description": "",
+    "dropdowns": {
+      "id_type": [
+        "ACTION",
+        "ARMATURE",
+        "BRUSH",
+        "CACHEFILE",
+        "CAMERA",
+        "COLLECTION",
+        "CURVE",
+        "CURVES",
+        "FONT",
+        "GREASEPENCIL",
+        "GREASEPENCIL_V3",
+        "IMAGE",
+        "KEY",
+        "LATTICE",
+        "LIBRARY",
+        "LIGHT",
+        "LIGHT_PROBE",
+        "LINESTYLE",
+        "MASK",
+        "MATERIAL",
+        "MESH",
+        "META",
+        "MOVIECLIP",
+        "NODETREE",
+        "OBJECT",
+        "PAINTCURVE",
+        "PALETTE",
+        "PARTICLE",
+        "POINTCLOUD",
+        "SCENE",
+        "SCREEN",
+        "SOUND",
+        "SPEAKER",
+        "TEXT",
+        "TEXTURE",
+        "VOLUME",
+        "WINDOWMANAGER",
+        "WORKSPACE",
+        "WORLD"
+      ]
+    },
+    "sub_types": {
+      "id_type": {
+        "ACTION": {
+          "name": "แอกชัน (Action)",
+          "description": "ชุดข้อมูลแอนิเมชันคีย์เฟรม"
+        },
+        "ARMATURE": {
+          "name": "กระดูก (Armature)",
+          "description": "ข้อมูลโครงสร้างกระดูกแอนิเมชัน"
+        },
+        "BRUSH": {
+          "name": "แปรง (Brush)",
+          "description": "ข้อมูลหัวแปรงสำหรับการปั้นหรือเพนต์"
+        },
+        "CACHEFILE": {
+          "name": "ไฟล์แคช (Cache File)",
+          "description": "ข้อมูลไฟล์แคช เช่น Alembic"
+        },
+        "CAMERA": {
+          "name": "กล้อง (Camera)",
+          "description": "ข้อมูลกล้อง"
+        },
+        "COLLECTION": {
+          "name": "คอลเลกชัน (Collection)",
+          "description": "ชนิดข้อมูลกลุ่มอ็อบเจกต์ (Collection)"
+        },
+        "CURVE": {
+          "name": "เส้นโค้ง (Curve)",
+          "description": "ข้อมูลวัตถุเส้นโค้ง (Curve)"
+        },
+        "CURVES": {
+          "name": "เส้นโค้งแบบเส้นผม (Curves)",
+          "description": "ข้อมูลอ็อบเจกต์เส้นโค้งใหม่ (Hair Curves)"
+        },
+        "FONT": {
+          "name": "ฟอนต์ (Font)",
+          "description": "ชนิดข้อมูลฟอนต์ตัวอักษร"
+        },
+        "GREASEPENCIL": {
+          "name": "กรีซเพนซิล (Grease Pencil)",
+          "description": "ข้อมูลวัตถุวาดเส้น 2 มิติ Grease Pencil"
+        },
+        "GREASEPENCIL_V3": {
+          "name": "กรีซเพนซิล v3 (Grease Pencil v3)",
+          "description": "ข้อมูลวัตถุวาดเส้น Grease Pencil เวอร์ชัน 3"
+        },
+        "IMAGE": {
+          "name": "รูปภาพ (Image)",
+          "description": "ชนิดข้อมูลรูปภาพ"
+        },
+        "KEY": {
+          "name": "เชพคีย์ (Shape Key)",
+          "description": "ข้อมูลรักษารูปทรงการเปลี่ยนรูปร่าง (Shape Keys)"
+        },
+        "LATTICE": {
+          "name": "แลตทิซ (Lattice)",
+          "description": "กรงควบคุมรูปร่างวัตถุ"
+        },
+        "LIBRARY": {
+          "name": "ไลบรารี (Library)",
+          "description": "ข้อมูลไฟล์เชื่อมโยงจากภายนอก"
+        },
+        "LIGHT": {
+          "name": "แสง (Light)",
+          "description": "ข้อมูลดวงไฟ"
+        },
+        "LIGHT_PROBE": {
+          "name": "โพรบแสง (Light Probe)",
+          "description": "ข้อมูลสำหรับการคำนวณแสงตกกระทบ"
+        },
+        "LINESTYLE": {
+          "name": "สไตล์เส้น (Line Style)",
+          "description": "ข้อมูลรูปแบบของเส้น (Freestyle)"
+        },
+        "MASK": {
+          "name": "มาสก์ (Mask)",
+          "description": "ชนิดข้อมูลแบบมาสก์ 2D"
+        },
+        "MATERIAL": {
+          "name": "วัสดุ (Material)",
+          "description": "ชนิดข้อมูลอ้างอิง Material"
+        },
+        "MESH": {
+          "name": "โครงข่าย (Mesh)",
+          "description": "ข้อมูลวัตถุรูปทรง 3 มิติแบบมีหน้าตัด"
+        },
+        "META": {
+          "name": "เมตาบอล (Metaball)",
+          "description": "ข้อมูลวัตถุกลมกลืน (Metaball)"
+        },
+        "MOVIECLIP": {
+          "name": "วิดีโอคลิป (Movie Clip)",
+          "description": "ข้อมูลไฟล์วิดีโอคลิป หรือ Motion Tracking"
+        },
+        "NODETREE": {
+          "name": "โนดทรี (Node Tree)",
+          "description": "ข้อมูลเครือข่ายโนดสำหรับสร้างกระบวนการ"
+        },
+        "OBJECT": {
+          "name": "วัตถุ (Object)",
+          "description": "ชนิดข้อมูลสำหรับอ้างอิงวัตถุ 3 มิติ"
+        },
+        "PAINTCURVE": {
+          "name": "เส้นโค้งวาด (Paint Curve)",
+          "description": "เส้นโค้งที่ใช้ช่วยในการเพนต์"
+        },
+        "PALETTE": {
+          "name": "จานสี (Palette)",
+          "description": "ข้อมูลชุดจานสี"
+        },
+        "PARTICLE": {
+          "name": "อนุภาค (Particle)",
+          "description": "ข้อมูลระบบพาร์ติเคิล"
+        },
+        "POINTCLOUD": {
+          "name": "พอยต์คลาวด์ (Point Cloud)",
+          "description": "ข้อมูลกลุ่มจุดพอยต์คลาวด์"
+        },
+        "SCENE": {
+          "name": "ซีน (Scene)",
+          "description": "ชนิดข้อมูลซีนปัจจุบันหรืออ้างอิง"
+        },
+        "SCREEN": {
+          "name": "หน้าจอ (Screen)",
+          "description": "ข้อมูลการจัดวางเลย์เอาต์หน้าจอ"
+        },
+        "SOUND": {
+          "name": "เสียง (Sound)",
+          "description": "ชนิดข้อมูลคลื่นเสียงออดิโอ"
+        },
+        "SPEAKER": {
+          "name": "ลำโพง (Speaker)",
+          "description": "ข้อมูลจุดกำเนิดเสียงในฉาก 3 มิติ"
+        },
+        "TEXT": {
+          "name": "ข้อความหรือสคริปต์ (Text)",
+          "description": "เชื่อมโยงข้อมูล Text Datablock"
+        },
+        "TEXTURE": {
+          "name": "เทกซ์เจอร์ (Texture)",
+          "description": "ชนิดข้อมูลเทกซ์เจอร์พื้นผิว"
+        },
+        "VOLUME": {
+          "name": "ปริมาตร (Volume)",
+          "description": "ข้อมูลวัตถุจำลองปริมาตร เช่น ควัน หรือเมฆ"
+        },
+        "WINDOWMANAGER": {
+          "name": "ระบบจัดการหน้าต่าง (Window Manager)",
+          "description": "ระบบจัดการหน้าต่างของ Blender"
+        },
+        "WORKSPACE": {
+          "name": "พื้นที่ทำงาน (Workspace)",
+          "description": "ข้อมูลเลย์เอาต์เวิร์กสเปซ"
+        },
+        "WORLD": {
+          "name": "โลก (World)",
+          "description": "สภาพแวดล้อมฉากหลังและแสงโดยรอบ (World Environment)"
+        }
+      }
+    }
+  },
+  "ShaderNodeUVAlongStroke": {
+    "name": "UVAlongStroke",
+    "description": ""
+  },
+  "ShaderNodeUVMap": {
+    "name": "UVMap",
+    "description": ""
+  },
+  "ShaderNodeVectorDisplacement": {
+    "name": "VectorDisplacement",
+    "description": "",
+    "dropdowns": {
+      "space": [
+        "TANGENT",
+        "OBJECT",
+        "WORLD"
+      ]
+    },
+    "sub_types": {
+      "space": {
+        "TANGENT": {
+          "name": "VectorDisplacement (TANGENT)",
+          "description": "ตัวเลือกโหมด: TANGENT"
+        },
+        "OBJECT": {
+          "name": "VectorDisplacement (วัตถุ (Object))",
+          "description": "ตัวเลือกโหมด: วัตถุ (Object)"
+        },
+        "WORLD": {
+          "name": "VectorDisplacement (WORLD)",
+          "description": "ตัวเลือกโหมด: WORLD"
+        }
+      }
+    }
+  },
+  "ShaderNodeVectorTransform": {
+    "name": "VectorTransform",
+    "description": "",
+    "dropdowns": {
+      "vector_type": [
+        "POINT",
+        "VECTOR",
+        "NORMAL"
+      ],
+      "convert_from": [
+        "WORLD",
+        "OBJECT",
+        "CAMERA"
+      ],
+      "convert_to": [
+        "WORLD",
+        "OBJECT",
+        "CAMERA"
+      ]
+    },
+    "sub_types": {
+      "vector_type": {
+        "POINT": {
+          "name": "VectorTransform (จุด)",
+          "description": "ตัวเลือกโหมด: จุด"
+        },
+        "VECTOR": {
+          "name": "VectorTransform (เวกเตอร์)",
+          "description": "ตัวเลือกโหมด: เวกเตอร์"
+        },
+        "NORMAL": {
+          "name": "VectorTransform (NORMAL)",
+          "description": "ตัวเลือกโหมด: NORMAL"
+        }
+      },
+      "convert_from": {
+        "WORLD": {
+          "name": "VectorTransform (WORLD)",
+          "description": "ตัวเลือกโหมด: WORLD"
+        },
+        "OBJECT": {
+          "name": "VectorTransform (วัตถุ (Object))",
+          "description": "ตัวเลือกโหมด: วัตถุ (Object)"
+        },
+        "CAMERA": {
+          "name": "VectorTransform (CAMERA)",
+          "description": "ตัวเลือกโหมด: CAMERA"
+        }
+      },
+      "convert_to": {
+        "WORLD": {
+          "name": "VectorTransform (WORLD)",
+          "description": "ตัวเลือกโหมด: WORLD"
+        },
+        "OBJECT": {
+          "name": "VectorTransform (วัตถุ (Object))",
+          "description": "ตัวเลือกโหมด: วัตถุ (Object)"
+        },
+        "CAMERA": {
+          "name": "VectorTransform (CAMERA)",
+          "description": "ตัวเลือกโหมด: CAMERA"
+        }
+      }
+    }
+  },
+  "ShaderNodeVertexColor": {
+    "name": "VertexColor",
+    "description": ""
+  },
+  "ShaderNodeVolumeAbsorption": {
+    "name": "VolumeAbsorption",
+    "description": ""
+  },
+  "ShaderNodeVolumeCoefficients": {
+    "name": "VolumeCoefficients",
+    "description": "",
+    "dropdowns": {
+      "phase": [
+        "HENYEY_GREENSTEIN",
+        "FOURNIER_FORAND",
+        "DRAINE",
+        "RAYLEIGH",
+        "MIE"
+      ]
+    },
+    "sub_types": {
+      "phase": {
+        "HENYEY_GREENSTEIN": {
+          "name": "VolumeCoefficients (HENYEY_GREENSTEIN)",
+          "description": "ตัวเลือกโหมด: HENYEY_GREENSTEIN"
+        },
+        "FOURNIER_FORAND": {
+          "name": "VolumeCoefficients (FOURNIER_FORAND)",
+          "description": "ตัวเลือกโหมด: FOURNIER_FORAND"
+        },
+        "DRAINE": {
+          "name": "VolumeCoefficients (DRAINE)",
+          "description": "ตัวเลือกโหมด: DRAINE"
+        },
+        "RAYLEIGH": {
+          "name": "VolumeCoefficients (RAYLEIGH)",
+          "description": "ตัวเลือกโหมด: RAYLEIGH"
+        },
+        "MIE": {
+          "name": "VolumeCoefficients (MIE)",
+          "description": "ตัวเลือกโหมด: MIE"
+        }
+      }
+    }
+  },
+  "ShaderNodeVolumeInfo": {
+    "name": "VolumeInfo",
+    "description": ""
+  },
+  "ShaderNodeVolumePrincipled": {
+    "name": "VolumePrincipled",
+    "description": ""
+  },
+  "ShaderNodeVolumeScatter": {
+    "name": "VolumeScatter",
+    "description": "",
+    "dropdowns": {
+      "phase": [
+        "HENYEY_GREENSTEIN",
+        "FOURNIER_FORAND",
+        "DRAINE",
+        "RAYLEIGH",
+        "MIE"
+      ]
+    },
+    "sub_types": {
+      "phase": {
+        "HENYEY_GREENSTEIN": {
+          "name": "VolumeScatter (HENYEY_GREENSTEIN)",
+          "description": "ตัวเลือกโหมด: HENYEY_GREENSTEIN"
+        },
+        "FOURNIER_FORAND": {
+          "name": "VolumeScatter (FOURNIER_FORAND)",
+          "description": "ตัวเลือกโหมด: FOURNIER_FORAND"
+        },
+        "DRAINE": {
+          "name": "VolumeScatter (DRAINE)",
+          "description": "ตัวเลือกโหมด: DRAINE"
+        },
+        "RAYLEIGH": {
+          "name": "VolumeScatter (RAYLEIGH)",
+          "description": "ตัวเลือกโหมด: RAYLEIGH"
+        },
+        "MIE": {
+          "name": "VolumeScatter (MIE)",
+          "description": "ตัวเลือกโหมด: MIE"
+        }
+      }
+    }
+  },
+  "ShaderNodeWavelength": {
+    "name": "Wavelength",
+    "description": ""
+  },
+  "ShaderNodeWireframe": {
+    "name": "Wireframe",
+    "description": ""
+  }
+}
