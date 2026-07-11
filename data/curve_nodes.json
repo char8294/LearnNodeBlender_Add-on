@@ -1,796 +1,1138 @@
 {
-  "GeometryNodeInputCurveHandlePositions": {
-    "name": "Curve Handle Positions",
-    "description": "ดึงข้อมูลตำแหน่งของแขนควบคุมทิศทาง (Handles) ของเส้นโค้งแบบเบซิเยร์ (Bézier Curve)",
-    "inputs": {},
-    "outputs": {
-      "Left": "ตำแหน่งของแขนควบคุมฝั่งซ้าย",
-      "Right": "ตำแหน่งของแขนควบคุมฝั่งขวา"
-    }
-  },
-  "GeometryNodeCurveLength": {
-    "name": "Curve Length",
-    "description": "ดึงข้อมูลความยาวทั้งหมดของเส้นโค้งแต่ละเส้น",
-    "inputs": {
-      "Curve": "เส้นโค้งที่ต้องการวัด"
-    },
-    "outputs": {
-      "Length": "ความยาวรวมทั้งหมดของเส้นโค้ง"
-    }
-  },
-  "GeometryNodeInputCurveTilt": {
-    "name": "Curve Tilt",
-    "description": "ดึงข้อมูลองศาหรือการบิดตัว (Tilt) ของเส้นโค้ง",
-    "inputs": {},
-    "outputs": {
-      "Tilt": "ค่ามุมหรือการบิดของเส้น"
-    }
-  },
-  "GeometryNodeCurveEndpointSelection": {
-    "name": "Endpoint Selection",
-    "description": "สร้างเงื่อนไขสำหรับเลือกจุดเริ่มต้น (Start) หรือจุดสุดท้าย (End) ของแต่ละเส้นโค้ง",
-    "inputs": {
-      "Start Size": "จำนวนจุดเริ่มต้นที่จะนับรวมการเลือก",
-      "End Size": "จำนวนจุดปลายที่จะนับรวมการเลือก"
-    },
-    "outputs": {
-      "Selection": "ผลลัพธ์การเลือก (True/False)"
-    }
-  },
-  "GeometryNodeCurveHandleTypeSelection": {
-    "name": "Handle Type Selection",
-    "description": "เลือกจุดควบคุมเส้นโค้งอ้างอิงตามประเภทของแขนควบคุม เช่น Free, Vector, Auto",
-    "inputs": {
-      "Handle Type": "ประเภทแขนที่ต้องการใช้ตรวจสอบ"
-    },
-    "outputs": {
-      "Selection": "ผลลัพธ์การเลือก (True/False)"
-    },
-    "dropdowns": {
-      "handle_type": [
-        "FREE",
-        "AUTO",
-        "VECTOR",
-        "ALIGN"
-      ],
-      "mode": [
-        "LEFT",
-        "RIGHT"
-      ]
-    },
-    "sub_types": {
-      "handle_type": {
-        "FREE": {
-          "name": "Handle Type Selection (อิสระ (Free))",
-          "description": "ตัวเลือกโหมด: อิสระ (Free)"
-        },
-        "AUTO": {
-          "name": "Handle Type Selection (อัตโนมัติ (Auto))",
-          "description": "ตัวเลือกโหมด: อัตโนมัติ (Auto)"
-        },
-        "VECTOR": {
-          "name": "Handle Type Selection (เวกเตอร์)",
-          "description": "ตัวเลือกโหมด: เวกเตอร์"
-        },
-        "ALIGN": {
-          "name": "Handle Type Selection (จัดแนว (Align))",
-          "description": "ตัวเลือกโหมด: จัดแนว (Align)"
+    "GeometryNodeInputCurveHandlePositions": {
+        "name": "Curve Handle Positions",
+        "description": "ดึงข้อมูลตำแหน่งของแขนควบคุมทิศทาง (Handles) ของเส้นโค้งแบบเบซิเยร์ (Bézier Curve)",
+        "inputs": {},
+        "outputs": {
+            "Left": {
+                "name": "ซ้าย (Left)",
+                "description": "ตำแหน่งของแขนควบคุมฝั่งซ้าย"
+            },
+            "Right": {
+                "name": "ขวา (Right)",
+                "description": "ตำแหน่งของแขนควบคุมฝั่งขวา"
+            }
         }
-      },
-      "mode": {
-        "LEFT": {
-          "name": "ซ้าย (Left)",
-          "description": "แขนบังคับหรือจุดควบคุมฝั่งซ้าย"
+    },
+    "GeometryNodeCurveLength": {
+        "name": "Curve Length",
+        "description": "ดึงข้อมูลความยาวทั้งหมดของเส้นโค้งแต่ละเส้น",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งที่ต้องการวัด"
+            }
         },
-        "RIGHT": {
-          "name": "ขวา (Right)",
-          "description": "แขนบังคับหรือจุดควบคุมฝั่งขวา"
+        "outputs": {
+            "Length": {
+                "name": "ความยาว (Length)",
+                "description": "ความยาวรวมทั้งหมดของเส้นโค้ง"
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeInputSplineCyclic": {
-    "name": "Is Spline Cyclic",
-    "description": "ตรวจสอบสถานะของเส้นสไปลน์ (Spline) ว่าเป็นวงปิดบรรจบกันหรือไม่",
-    "inputs": {},
-    "outputs": {
-      "Cyclic": "วงเส้นปิดสมบูรณ์จะเป็นจริง (True)"
-    }
-  },
-  "GeometryNodeSplineLength": {
-    "name": "Spline Length",
-    "description": "วัดความยาวและจำนวนจุดของแต่ละเส้นโค้งย่อย (Spline) แยกกัน",
-    "inputs": {},
-    "outputs": {
-      "Length": "ความยาว",
-      "Point Count": "จำนวนจุดในเส้นย่อยนั้น"
-    }
-  },
-  "GeometryNodeSplineParameter": {
-    "name": "Spline Parameter",
-    "description": "ดึงค่าระยะร้อยละ 0 ถึง 1 บนความยาวของเส้นโค้ง เพื่อนำไปไล่ระดับสีหรือใช้ปรับค่าระหว่างทาง",
-    "inputs": {},
-    "outputs": {
-      "Factor": "อัตราส่วนร้อยละ (0.0 ถึง 1.0)",
-      "Length": "ระยะที่วัดตามความยาวจริง",
-      "Index": "ลำดับของจุดควบคุม"
-    }
-  },
-  "GeometryNodeInputSplineResolution": {
-    "name": "Spline Resolution",
-    "description": "ดึงค่าระดับความละเอียด (ความเนียน) ปัจจุบันของเส้นโค้ง",
-    "inputs": {},
-    "outputs": {
-      "Resolution": "ค่าตัวเลขความละเอียด"
-    }
-  },
-  "GeometryNodeSampleCurve": {
-    "name": "Sample Curve",
-    "description": "ดึงข้อมูลจากจุดใดจุดหนึ่งบนเส้นโค้งโดยระบุความยาวที่ต้องการ",
-    "inputs": {
-      "Curve": "เส้นโค้งต้นทาง",
-      "Length": "ระยะความยาวจุดที่ต้องการค้นหา"
     },
-    "outputs": {
-      "Value": "ข้อมูลในจุดนั้น",
-      "Position": "ตำแหน่ง",
-      "Tangent": "ความลาดชันในจุดนั้น",
-      "Normal": "เวกเตอร์ตั้งฉาก"
-    },
-    "dropdowns": {
-      "mode": [
-        "FACTOR",
-        "LENGTH"
-      ],
-      "data_type": [
-        "FLOAT",
-        "INT",
-        "BOOLEAN",
-        "FLOAT_VECTOR",
-        "FLOAT_COLOR",
-        "QUATERNION",
-        "FLOAT4X4",
-        "STRING",
-        "INT8",
-        "INT16_2D",
-        "INT32_2D",
-        "FLOAT2",
-        "BYTE_COLOR"
-      ]
-    },
-    "sub_types": {
-      "mode": {
-        "FACTOR": {
-          "name": "Sample Curve (สัดส่วน (Factor))",
-          "description": "ตัวเลือกโหมด: สัดส่วน (Factor)"
-        },
-        "LENGTH": {
-          "name": "Sample Curve (ความยาว (Length))",
-          "description": "ตัวเลือกโหมด: ความยาว (Length)"
+    "GeometryNodeInputCurveTilt": {
+        "name": "Curve Tilt",
+        "description": "ดึงข้อมูลองศาหรือการบิดตัว (Tilt) ของเส้นโค้ง",
+        "inputs": {},
+        "outputs": {
+            "Tilt": {
+                "name": "การบิดตัว (Tilt)",
+                "description": "ค่ามุมหรือการบิดของเส้น"
+            }
         }
-      },
-      "data_type": {
-        "FLOAT": {
-          "name": "ทศนิยม (Float)",
-          "description": "ชนิดข้อมูลตัวเลขทศนิยมเดี่ยว"
+    },
+    "GeometryNodeCurveEndpointSelection": {
+        "name": "Endpoint Selection",
+        "description": "สร้างเงื่อนไขสำหรับเลือกจุดเริ่มต้น (Start) หรือจุดสุดท้าย (End) ของแต่ละเส้นโค้ง",
+        "inputs": {
+            "Start Size": {
+                "name": "ขนาดจุดเริ่มต้น (Start Size)",
+                "description": "จำนวนจุดเริ่มต้นที่จะนับรวมการเลือก"
+            },
+            "End Size": {
+                "name": "ขนาดจุดปลาย (End Size)",
+                "description": "จำนวนจุดปลายที่จะนับรวมการเลือก"
+            }
         },
-        "INT": {
-          "name": "จำนวนเต็ม (Integer)",
-          "description": "ชนิดข้อมูลตัวเลขจำนวนเต็ม"
-        },
-        "BOOLEAN": {
-          "name": "ค่าความจริง (Boolean)",
-          "description": "ชนิดข้อมูลตรรกะ จริง/เท็จ"
-        },
-        "FLOAT_VECTOR": {
-          "name": "เวกเตอร์ (Vector)",
-          "description": "ชนิดข้อมูลเวกเตอร์หรือพิกัดทิศทาง"
-        },
-        "FLOAT_COLOR": {
-          "name": "สี (Color)",
-          "description": "ชนิดข้อมูลสี"
-        },
-        "QUATERNION": {
-          "name": "ควอเทอร์เนียน (Quaternion)",
-          "description": "ชนิดข้อมูลการหมุนในรูปแบบ Quaternion"
-        },
-        "FLOAT4X4": {
-          "name": "เมทริกซ์ 4x4 (Float4x4)",
-          "description": "ชนิดข้อมูลเมทริกซ์ 4x4"
-        },
-        "STRING": {
-          "name": "ข้อความ (String)",
-          "description": "ชนิดข้อมูลตัวอักษรหรือข้อความ"
-        },
-        "INT8": {
-          "name": "จำนวนเต็ม 8 บิต (8-bit Integer)",
-          "description": "ชนิดข้อมูลจำนวนเต็ม 8 บิต"
-        },
-        "INT16_2D": {
-          "name": "16-bit 2D Integer",
-          "description": "ชนิดข้อมูล 2D Integer ขนาด 16 บิต"
-        },
-        "INT32_2D": {
-          "name": "32-bit 2D Integer",
-          "description": "ชนิดข้อมูล 2D Integer ขนาด 32 บิต"
-        },
-        "FLOAT2": {
-          "name": "ทศนิยม 2D (Float2)",
-          "description": "เวกเตอร์ทศนิยมแบบ 2 แกน"
-        },
-        "BYTE_COLOR": {
-          "name": "สีแบบไบต์ (Byte Color)",
-          "description": "สีในระดับ 8 บิต (0-255)"
+        "outputs": {
+            "Selection": {
+                "name": "การเลือก (Selection)",
+                "description": "ผลลัพธ์การเลือก (True/False)"
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeSetCurveNormal": {
-    "name": "Set Curve Normal",
-    "description": "บังคับหรือกำหนดทิศทางเวกเตอร์แนวฉาก (Normal) สำหรับเส้นโค้งใหม่",
-    "inputs": {
-      "Curve": "เส้นโค้งต้นทาง",
-      "Selection": "พื้นที่ที่เลือก",
-      "Normal": "ค่าทิศทางเวกเตอร์ใหม่"
     },
-    "outputs": {
-      "Curve": "เส้นโค้งที่เปลี่ยนทิศทางแล้ว"
-    }
-  },
-  "GeometryNodeSetCurveRadius": {
-    "name": "Set Curve Radius",
-    "description": "กำหนดขนาดรัศมี (ความอ้วน) ให้กับแต่ละจุดบนเส้นโค้ง",
-    "inputs": {
-      "Curve": "เส้นโค้งต้นทาง",
-      "Selection": "พื้นที่ที่เลือก",
-      "Radius": "ค่ารัศมีที่ต้องการ"
-    },
-    "outputs": {
-      "Curve": "เส้นโค้งที่มีรัศมีเปลี่ยนไป"
-    }
-  },
-  "GeometryNodeSetCurveTilt": {
-    "name": "Set Curve Tilt",
-    "description": "กำหนดองศาการบิดเกลียว (Tilt) ของรูปร่างตามแนวเส้นโค้ง",
-    "inputs": {
-      "Curve": "เส้นโค้งต้นทาง",
-      "Selection": "พื้นที่ที่เลือก",
-      "Tilt": "องศาการบิดที่ต้องการ"
-    },
-    "outputs": {
-      "Curve": "เส้นโค้งที่ถูกบิดแล้ว"
-    }
-  },
-  "GeometryNodeSetCurveHandlePositions": {
-    "name": "Set Handle Positions",
-    "description": "กำหนดตำแหน่งหรือระยะแขนควบคุม (Handles) ของเส้นโค้งแบบ Bézier ใหม่",
-    "inputs": {
-      "Curve": "เส้นโค้งเป้าหมาย",
-      "Selection": "พื้นที่ที่เลือก",
-      "Position": "ตำแหน่งใหม่ของแขนควบคุม"
-    },
-    "outputs": {
-      "Curve": "เส้นโค้งที่แขนควบคุมเปลี่ยนไป"
-    },
-    "dropdowns": {
-      "mode": [
-        "LEFT",
-        "RIGHT"
-      ]
-    },
-    "sub_types": {
-      "mode": {
-        "LEFT": {
-          "name": "ซ้าย (Left)",
-          "description": "แขนบังคับหรือจุดควบคุมฝั่งซ้าย"
+    "GeometryNodeCurveHandleTypeSelection": {
+        "name": "Handle Type Selection",
+        "description": "เลือกจุดควบคุมเส้นโค้งอ้างอิงตามประเภทของแขนควบคุม เช่น Free, Vector, Auto",
+        "inputs": {
+            "Handle Type": {
+                "name": "ประเภทแขนควบคุม (Handle Type)",
+                "description": "ประเภทแขนที่ต้องการใช้ตรวจสอบ"
+            }
         },
-        "RIGHT": {
-          "name": "ขวา (Right)",
-          "description": "แขนบังคับหรือจุดควบคุมฝั่งขวา"
+        "outputs": {
+            "Selection": {
+                "name": "การเลือก (Selection)",
+                "description": "ผลลัพธ์การเลือก (True/False)"
+            }
+        },
+        "dropdowns": {
+            "handle_type": [
+                "FREE",
+                "AUTO",
+                "VECTOR",
+                "ALIGN"
+            ],
+            "mode": [
+                "LEFT",
+                "RIGHT"
+            ]
+        },
+        "sub_types": {
+            "handle_type": {
+                "FREE": {
+                    "name": "Handle Type Selection (อิสระ (Free))",
+                    "description": "ตัวเลือกโหมด: อิสระ (Free)"
+                },
+                "AUTO": {
+                    "name": "Handle Type Selection (อัตโนมัติ (Auto))",
+                    "description": "ตัวเลือกโหมด: อัตโนมัติ (Auto)"
+                },
+                "VECTOR": {
+                    "name": "Handle Type Selection (Vector)",
+                    "description": "ตัวเลือกโหมด: Vector"
+                },
+                "ALIGN": {
+                    "name": "Handle Type Selection (จัดแนว (Align))",
+                    "description": "ตัวเลือกโหมด: จัดแนว (Align)"
+                }
+            },
+            "mode": {
+                "LEFT": {
+                    "name": "ซ้าย (Left)",
+                    "description": "แขนบังคับหรือจุดควบคุมฝั่งซ้าย"
+                },
+                "RIGHT": {
+                    "name": "ขวา (Right)",
+                    "description": "แขนบังคับหรือจุดควบคุมฝั่งขวา"
+                }
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeCurveSetHandleType": {
-    "name": "Set Handle Type",
-    "description": "เปลี่ยนแปลงประเภทแขนควบคุมของจุดบนเส้นโค้ง เช่น Free, Vector, Auto, Align",
-    "inputs": {
-      "Curve": "เส้นโค้งเป้าหมาย",
-      "Selection": "พื้นที่ที่เลือก"
     },
-    "outputs": {
-      "Curve": "เส้นโค้งที่เปลี่ยนประเภทแขนควบคุมแล้ว"
-    }
-  },
-  "GeometryNodeSetSplineCyclic": {
-    "name": "Set Spline Cyclic",
-    "description": "บังคับเปิดหรือปิดการเชื่อมต่อกันระหว่างปลายและต้นเส้น (Cyclic) เพื่อให้เป็นวงปิดหรือเปิด",
-    "inputs": {
-      "Curve": "เส้นโค้งเป้าหมาย",
-      "Selection": "พื้นที่ที่เลือก",
-      "Cyclic": "กำหนดค่าความเป็นวงปิด (True/False)"
-    },
-    "outputs": {
-      "Curve": "เส้นโค้งที่ถูกเปลี่ยนสถานะแล้ว"
-    }
-  },
-  "GeometryNodeSetSplineResolution": {
-    "name": "Set Spline Resolution",
-    "description": "กำหนดค่าความละเอียด (Resolution) ของเส้นโค้งแต่ละเส้น",
-    "inputs": {
-      "Curve": "เส้นโค้งเป้าหมาย",
-      "Selection": "พื้นที่ที่เลือก",
-      "Resolution": "ค่าความเนียนที่ต้องการกำหนด"
-    },
-    "outputs": {
-      "Curve": "เส้นโค้งที่ปรับความเนียนแล้ว"
-    }
-  },
-  "GeometryNodeCurveSplineType": {
-    "name": "Set Spline Type",
-    "description": "แปลงหรือกำหนดรูปแบบประเภทของเส้นโค้ง เช่น Bézier, NURBS, Poly",
-    "inputs": {
-      "Curve": "เส้นโค้งเป้าหมาย",
-      "Selection": "พื้นที่ที่เลือก"
-    },
-    "outputs": {
-      "Curve": "เส้นโค้งที่แปลงรูปแบบแล้ว"
-    },
-    "dropdowns": {
-      "spline_type": [
-        "CATMULL_ROM",
-        "POLY",
-        "BEZIER",
-        "NURBS"
-      ]
-    },
-    "sub_types": {
-      "spline_type": {
-        "CATMULL_ROM": {
-          "name": "Set Spline Type (แคทมัล-รอม (Catmull-Rom))",
-          "description": "ตัวเลือกโหมด: แคทมัล-รอม (Catmull-Rom)"
-        },
-        "POLY": {
-          "name": "Set Spline Type (โพลี (Poly))",
-          "description": "ตัวเลือกโหมด: โพลี (Poly)"
-        },
-        "BEZIER": {
-          "name": "Set Spline Type (เบซิเยร์ (Bezier))",
-          "description": "ตัวเลือกโหมด: เบซิเยร์ (Bezier)"
-        },
-        "NURBS": {
-          "name": "Set Spline Type (เนิร์บส์ (NURBS))",
-          "description": "ตัวเลือกโหมด: เนิร์บส์ (NURBS)"
+    "GeometryNodeInputSplineCyclic": {
+        "name": "Is Spline Cyclic",
+        "description": "ตรวจสอบสถานะของเส้นSpline ว่าเป็นวงปิดบรรจบกันหรือไม่",
+        "inputs": {},
+        "outputs": {
+            "Cyclic": {
+                "name": "วงปิด (Cyclic)",
+                "description": "วงเส้นปิดสมบูรณ์จะเป็นจริง (True)"
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeCurveToMesh": {
-    "name": "Curve to Mesh",
-    "description": "แปลงเส้นโค้ง (Curve) ให้กลายเป็นพื้นผิวรูปทรง 3 มิติ (Mesh) โดยใช้เส้นหน้าตัดโปรไฟล์",
-    "inputs": {
-      "Curve": "เส้นโค้งต้นทาง",
-      "Profile Curve": "เส้นโค้งหน้าตัดที่จะใช้วิ่งตามเส้นหลัก",
-      "Fill Caps": "ปิดฝาหัวท้ายให้ทึบหรือไม่"
     },
-    "outputs": {
-      "Mesh": "พื้นผิว Mesh ที่ได้จากการแปลง"
-    }
-  },
-  "GeometryNodeCurveToPoints": {
-    "name": "Curve to Points",
-    "description": "แปลงเส้นโค้งให้กลายเป็นกลุ่มจุด (Point Cloud) เพื่อนำไปใช้งานต่อ เช่น การกระจายวัตถุ",
-    "inputs": {
-      "Curve": "เส้นโค้งเป้าหมาย",
-      "Count": "จำนวนจุดทั้งหมด",
-      "Length": "ระยะห่างระหว่างจุด"
-    },
-    "outputs": {
-      "Points": "กลุ่มจุดที่กระจายตามเส้นโค้ง",
-      "Tangent": "ทิศทางสัมผัสที่แต่ละจุด",
-      "Normal": "แนวฉากที่แต่ละจุด",
-      "Rotation": "องศาการหมุน"
-    },
-    "dropdowns": {
-      "mode": [
-        "EVALUATED",
-        "COUNT",
-        "LENGTH"
-      ]
-    },
-    "sub_types": {
-      "mode": {
-        "EVALUATED": {
-          "name": "ค่าที่คำนวณแล้ว (Evaluated)",
-          "description": "อิงจากจุดที่คำนวณและประมวลผลแล้วบนเส้นโค้ง"
-        },
-        "COUNT": {
-          "name": "จำนวน (Count)",
-          "description": "ระบุด้วยจำนวนรวมที่แน่นอน"
-        },
-        "LENGTH": {
-          "name": "ความยาว (Length)",
-          "description": "หาขนาดหรือความยาวของเวกเตอร์"
+    "GeometryNodeSplineLength": {
+        "name": "Spline Length",
+        "description": "วัดความยาวและจำนวนจุดของแต่ละเส้นโค้งย่อย (Spline) แยกกัน",
+        "inputs": {},
+        "outputs": {
+            "Length": {
+                "name": "ความยาว (Length)",
+                "description": "ความยาว"
+            },
+            "Point Count": {
+                "name": "จำนวนจุด (Point Count)",
+                "description": "จำนวนจุดในเส้นย่อยนั้น"
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeCurvesToGreasePencil": {
-    "name": "Curves to Grease Pencil",
-    "description": "แปลงเส้นโค้งให้เป็นเส้นวาด Grease Pencil",
-    "inputs": {
-      "Curve": "เส้นโค้งต้นทาง"
     },
-    "outputs": {
-      "Grease Pencil": "เส้นวาดแบบ Grease Pencil"
-    }
-  },
-  "GeometryNodeDeformCurvesOnSurface": {
-    "name": "Deform Curves on Surface",
-    "description": "ดัดหรือแปลงรูปเส้นโค้งให้แนบสนิทไปตามพื้นผิว (Surface)",
-    "inputs": {
-      "Curves": "เส้นโค้งเป้าหมาย",
-      "Surface": "รูปทรงพื้นผิว"
-    },
-    "outputs": {
-      "Curves": "เส้นโค้งที่แนบพื้นผิวแล้ว"
-    }
-  },
-  "GeometryNodeFillCurve": {
-    "name": "Fill Curve",
-    "description": "สร้างพื้นผิวทึบให้เต็มช่องว่างของเส้นโค้งที่เป็นวงปิด (2D Curve)",
-    "inputs": {
-      "Curve": "เส้นโค้งวงปิด"
-    },
-    "outputs": {
-      "Mesh": "รูปทรง 2 มิติที่เติมเต็มแล้ว"
-    }
-  },
-  "GeometryNodeFilletCurve": {
-    "name": "Fillet Curve",
-    "description": "ลบมุมเหลี่ยมของเส้นโค้งให้มีความโค้งมน (Fillet)",
-    "inputs": {
-      "Curve": "เส้นโค้งต้นทาง",
-      "Radius": "รัศมีความโค้งมน",
-      "Limit Radius": "จำกัดรัศมีไม่ให้ทับซ้อนกัน"
-    },
-    "outputs": {
-      "Curve": "เส้นที่ถูกลบมุมแล้ว"
-    }
-  },
-  "GeometryNodeInterpolateCurves": {
-    "name": "Interpolate Curves",
-    "description": "เกลี่ยและสร้างเส้นโค้งใหม่ระหว่างเส้นโค้งหลักเพื่อเพิ่มความหนาแน่น เช่น เส้นผม",
-    "inputs": {
-      "Guide Curves": "เส้นโค้งหลักที่ใช้อ้างอิง",
-      "Guide Up": "ทิศทางขึ้นของเส้นหลัก",
-      "Amount": "จำนวนเส้นที่จะสร้างแทรก"
-    },
-    "outputs": {
-      "Curves": "เส้นโค้งใหม่ที่แทรกเพิ่มขึ้นมา"
-    }
-  },
-  "GeometryNodeResampleCurve": {
-    "name": "Resample Curve",
-    "description": "ปรับจำนวนจุดควบคุมของเส้นโค้งใหม่ให้มีความละเอียดมากหรือน้อยลง",
-    "inputs": {
-      "Curve": "เส้นโค้งต้นทาง",
-      "Selection": "พื้นที่ที่ต้องการ",
-      "Count": "จำนวนจุดใหม่",
-      "Length": "ระยะห่างของจุด"
-    },
-    "outputs": {
-      "Curve": "เส้นโค้งที่ปรับจำนวนจุดแล้ว"
-    }
-  },
-  "GeometryNodeReverseCurve": {
-    "name": "Reverse Curve",
-    "description": "สลับทิศทางจุดเริ่มต้นและจุดสิ้นสุดของเส้นโค้ง",
-    "inputs": {
-      "Curve": "เส้นโค้งต้นทาง",
-      "Selection": "บริเวณเส้นที่ต้องการกลับด้าน"
-    },
-    "outputs": {
-      "Curve": "เส้นโค้งที่ถูกสลับทิศทาง"
-    }
-  },
-  "GeometryNodeSubdivideCurve": {
-    "name": "Subdivide Curve",
-    "description": "เพิ่มความละเอียดให้เส้นโค้งโดยการแบ่งครึ่งและเพิ่มจุดเข้าไป",
-    "inputs": {
-      "Curve": "เส้นโค้งต้นทาง",
-      "Cuts": "จำนวนรอยตัดที่เพิ่มเข้าไปในแต่ละท่อน"
-    },
-    "outputs": {
-      "Curve": "เส้นโค้งที่มีรายละเอียดมากขึ้น"
-    }
-  },
-  "GeometryNodeTrimCurve": {
-    "name": "Trim Curve",
-    "description": "ตัดหัวท้ายของเส้นโค้งให้สั้นลงโดยระบุอัตราส่วนร้อยละหรือความยาวจริง",
-    "inputs": {
-      "Curve": "เส้นโค้งต้นทาง",
-      "Start": "จุดเริ่มต้นการตัด",
-      "End": "จุดสิ้นสุดการตัด"
-    },
-    "outputs": {
-      "Curve": "เส้นโค้งที่ถูกตัดแล้ว"
-    },
-    "dropdowns": {
-      "mode": [
-        "FACTOR",
-        "LENGTH"
-      ]
-    },
-    "sub_types": {
-      "mode": {
-        "FACTOR": {
-          "name": "อัตราส่วน (Factor)",
-          "description": "ใช้ค่าอัตราส่วนตั้งแต่ 0.0 ถึง 1.0"
-        },
-        "LENGTH": {
-          "name": "ความยาว (Length)",
-          "description": "หาขนาดหรือความยาวของเวกเตอร์"
+    "GeometryNodeSplineParameter": {
+        "name": "Spline Parameter",
+        "description": "ดึงค่าระยะร้อยละ 0 ถึง 1 บนความยาวของเส้นโค้ง เพื่อนำไปไล่ระดับสีหรือใช้ปรับค่าระหว่างทาง",
+        "inputs": {},
+        "outputs": {
+            "Factor": {
+                "name": "สัดส่วน (Factor)",
+                "description": "อัตราส่วนร้อยละ (0.0 ถึง 1.0)"
+            },
+            "Length": {
+                "name": "ความยาว (Length)",
+                "description": "ระยะที่วัดตามความยาวจริง"
+            },
+            "Index": {
+                "name": "Index",
+                "description": "ลำดับของจุดควบคุม"
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeCurveArc": {
-    "name": "Arc",
-    "description": "สร้างเส้นโค้งที่เป็นรูปส่วนโค้งของวงกลม (Arc)",
-    "inputs": {},
-    "outputs": {
-      "Curve": "เส้นโค้งรูปส่วนโค้ง",
-      "Center": "ตำแหน่งจุดศูนย์กลาง",
-      "Normal": "แนวทิศทางตั้งฉาก",
-      "Radius": "รัศมีของวงกลม"
     },
-    "dropdowns": {
-      "mode": [
-        "POINTS",
-        "RADIUS"
-      ]
-    },
-    "sub_types": {
-      "mode": {
-        "POINTS": {
-          "name": "จุด (Points)",
-          "description": "ทำงานในระดับจุดหรือคลาวด์พอยต์ (Point Cloud)"
-        },
-        "RADIUS": {
-          "name": "รัศมี (Radius)",
-          "description": "กำหนดด้วยรัศมี"
+    "GeometryNodeInputSplineResolution": {
+        "name": "Spline Resolution",
+        "description": "ดึงค่าระดับความละเอียด (ความเนียน) ปัจจุบันของเส้นโค้ง",
+        "inputs": {},
+        "outputs": {
+            "Resolution": {
+                "name": "ความละเอียด (Resolution)",
+                "description": "ค่าตัวเลขความละเอียด"
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeCurvePrimitiveBezierSegment": {
-    "name": "Bézier Segment",
-    "description": "สร้างเส้นโค้งเบซิเยร์สั้นๆ (1 ท่อน) ที่มีจุดควบคุมสองจุด",
-    "inputs": {},
-    "outputs": {
-      "Curve": "เส้นโค้งเบซิเยร์ 1 ท่อน"
     },
-    "dropdowns": {
-      "mode": [
-        "POSITION",
-        "OFFSET"
-      ]
-    },
-    "sub_types": {
-      "mode": {
-        "POSITION": {
-          "name": "ตำแหน่ง (Position)",
-          "description": "อ้างอิงหรือใช้ค่าตำแหน่ง (Position)"
+    "GeometryNodeSampleCurve": {
+        "name": "Sample Curve",
+        "description": "ดึงข้อมูลจากจุดใดจุดหนึ่งบนเส้นโค้งโดยระบุความยาวที่ต้องการ",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งต้นทาง"
+            },
+            "Length": {
+                "name": "ความยาว (Length)",
+                "description": "ระยะความยาวจุดที่ต้องการค้นหา"
+            }
         },
-        "OFFSET": {
-          "name": "ระยะห่าง (Offset)",
-          "description": "อ้างอิงหรือใช้ค่าการเลื่อนตำแหน่ง (Offset)"
+        "outputs": {
+            "Value": {
+                "name": "ค่าตัวเลข (Value)",
+                "description": "ข้อมูลในจุดนั้น"
+            },
+            "Position": {
+                "name": "ตำแหน่ง (Position)",
+                "description": "ตำแหน่ง"
+            },
+            "Tangent": {
+                "name": "แทนเจนต์ (Tangent)",
+                "description": "ความลาดชันในจุดนั้น"
+            },
+            "Normal": {
+                "name": "Normal",
+                "description": "Vectorตั้งฉาก"
+            }
+        },
+        "dropdowns": {
+            "mode": [
+                "FACTOR",
+                "LENGTH"
+            ],
+            "data_type": [
+                "FLOAT",
+                "INT",
+                "BOOLEAN",
+                "FLOAT_VECTOR",
+                "FLOAT_COLOR",
+                "QUATERNION",
+                "FLOAT4X4",
+                "STRING",
+                "INT8",
+                "INT16_2D",
+                "INT32_2D",
+                "FLOAT2",
+                "BYTE_COLOR"
+            ]
+        },
+        "sub_types": {
+            "mode": {
+                "FACTOR": {
+                    "name": "Sample Curve (สัดส่วน (Factor))",
+                    "description": "ตัวเลือกโหมด: สัดส่วน (Factor)"
+                },
+                "LENGTH": {
+                    "name": "Sample Curve (ความยาว (Length))",
+                    "description": "ตัวเลือกโหมด: ความยาว (Length)"
+                }
+            },
+            "data_type": {
+                "FLOAT": {
+                    "name": "Float",
+                    "description": "ชนิดข้อมูลตัวเลขFloatเดี่ยว"
+                },
+                "INT": {
+                    "name": "Integer",
+                    "description": "ชนิดข้อมูลตัวเลขจำนวนเต็ม"
+                },
+                "BOOLEAN": {
+                    "name": "ค่าความจริง (Boolean)",
+                    "description": "ชนิดข้อมูลตรรกะ จริง/เท็จ"
+                },
+                "FLOAT_VECTOR": {
+                    "name": "Vector",
+                    "description": "ชนิดข้อมูลVectorหรือพิกัดทิศทาง"
+                },
+                "FLOAT_COLOR": {
+                    "name": "สี (Color)",
+                    "description": "ชนิดข้อมูลสี"
+                },
+                "QUATERNION": {
+                    "name": "ควอเทอร์เนียน (Quaternion)",
+                    "description": "ชนิดข้อมูลการหมุนในรูปแบบ Quaternion"
+                },
+                "FLOAT4X4": {
+                    "name": "เมทริกซ์ 4x4 (Float4x4)",
+                    "description": "ชนิดข้อมูลเมทริกซ์ 4x4"
+                },
+                "STRING": {
+                    "name": "ข้อความ (String)",
+                    "description": "ชนิดข้อมูลตัวอักษรหรือข้อความ"
+                },
+                "INT8": {
+                    "name": "จำนวนเต็ม 8 บิต (8-bit Integer)",
+                    "description": "ชนิดข้อมูลจำนวนเต็ม 8 บิต"
+                },
+                "INT16_2D": {
+                    "name": "16-bit 2D Integer",
+                    "description": "ชนิดข้อมูล 2D Integer ขนาด 16 บิต"
+                },
+                "INT32_2D": {
+                    "name": "32-bit 2D Integer",
+                    "description": "ชนิดข้อมูล 2D Integer ขนาด 32 บิต"
+                },
+                "FLOAT2": {
+                    "name": "Float 2D (Float2)",
+                    "description": "VectorFloatแบบ 2 แกน"
+                },
+                "BYTE_COLOR": {
+                    "name": "สีแบบไบต์ (Byte Color)",
+                    "description": "สีในระดับ 8 บิต (0-255)"
+                }
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeCurvePrimitiveCircle": {
-    "name": "Curve Circle",
-    "description": "สร้างเส้นโค้งรูปวงกลมพื้นฐาน",
-    "inputs": {},
-    "outputs": {
-      "Curve": "เส้นโค้งวงกลม"
     },
-    "dropdowns": {
-      "mode": [
-        "POINTS",
-        "RADIUS"
-      ]
-    },
-    "sub_types": {
-      "mode": {
-        "POINTS": {
-          "name": "จุด (Points)",
-          "description": "ทำงานในระดับจุดหรือคลาวด์พอยต์ (Point Cloud)"
+    "GeometryNodeSetCurveNormal": {
+        "name": "Set Curve Normal",
+        "description": "บังคับหรือกำหนดทิศทางVectorแนวฉาก (Normal) สำหรับเส้นโค้งใหม่",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งต้นทาง"
+            },
+            "Selection": {
+                "name": "การเลือก (Selection)",
+                "description": "พื้นที่ที่เลือก"
+            },
+            "Normal": {
+                "name": "Normal",
+                "description": "ค่าทิศทางVectorใหม่"
+            }
         },
-        "RADIUS": {
-          "name": "รัศมี (Radius)",
-          "description": "กำหนดด้วยรัศมี"
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งที่เปลี่ยนทิศทางแล้ว"
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeCurvePrimitiveLine": {
-    "name": "Curve Line",
-    "description": "สร้างเส้นโค้งที่เป็นเส้นตรงยาว 1 ท่อน จากจุดเริ่มต้นถึงจุดสิ้นสุด",
-    "inputs": {},
-    "outputs": {
-      "Curve": "เส้นตรง"
     },
-    "dropdowns": {
-      "mode": [
-        "POINTS",
-        "DIRECTION"
-      ]
-    },
-    "sub_types": {
-      "mode": {
-        "POINTS": {
-          "name": "จุด (Points)",
-          "description": "ทำงานในระดับจุดหรือคลาวด์พอยต์ (Point Cloud)"
+    "GeometryNodeSetCurveRadius": {
+        "name": "Set Curve Radius",
+        "description": "กำหนดขนาดรัศมี (ความอ้วน) ให้กับแต่ละจุดบนเส้นโค้ง",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งต้นทาง"
+            },
+            "Selection": {
+                "name": "การเลือก (Selection)",
+                "description": "พื้นที่ที่เลือก"
+            },
+            "Radius": {
+                "name": "รัศมี (Radius)",
+                "description": "ค่ารัศมีที่ต้องการ"
+            }
         },
-        "DIRECTION": {
-          "name": "ทิศทาง (Direction)",
-          "description": "อ้างอิงหรือระบุค่าด้วยทิศทางเวกเตอร์"
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งที่มีรัศมีเปลี่ยนไป"
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeCurvePrimitiveSpiral": {
-    "name": "Spiral",
-    "description": "สร้างเส้นโค้งขดเป็นรูปสปริงหรือเกลียววงก้นหอย",
-    "inputs": {},
-    "outputs": {
-      "Curve": "เส้นเกลียวสปริง"
-    }
-  },
-  "GeometryNodeCurvePrimitiveQuadraticBezier": {
-    "name": "Quadratic Bézier",
-    "description": "สร้างเส้นโค้งกำลังสองพาราโบลาแบบเบซิเยร์",
-    "inputs": {},
-    "outputs": {
-      "Curve": "เส้นโค้งกำลังสอง"
-    }
-  },
-  "GeometryNodeCurvePrimitiveQuadrilateral": {
-    "name": "Quadrilateral",
-    "description": "สร้างเส้นโค้งรูปสี่เหลี่ยมแบบอิสระ (กำหนดความกว้างยาวได้)",
-    "inputs": {},
-    "outputs": {
-      "Curve": "รูปสี่เหลี่ยม"
     },
-    "dropdowns": {
-      "mode": [
-        "RECTANGLE",
-        "PARALLELOGRAM",
-        "TRAPEZOID",
-        "KITE",
-        "POINTS"
-      ]
-    },
-    "sub_types": {
-      "mode": {
-        "RECTANGLE": {
-          "name": "สี่เหลี่ยมผืนผ้า (Rectangle)",
-          "description": "รูปทรงสี่เหลี่ยมผืนผ้า"
+    "GeometryNodeSetCurveTilt": {
+        "name": "Set Curve Tilt",
+        "description": "กำหนดองศาการบิดเกลียว (Tilt) ของรูปร่างตามแนวเส้นโค้ง",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งต้นทาง"
+            },
+            "Selection": {
+                "name": "การเลือก (Selection)",
+                "description": "พื้นที่ที่เลือก"
+            },
+            "Tilt": {
+                "name": "การบิดตัว (Tilt)",
+                "description": "องศาการบิดที่ต้องการ"
+            }
         },
-        "PARALLELOGRAM": {
-          "name": "สี่เหลี่ยมด้านขนาน (Parallelogram)",
-          "description": "รูปทรงสี่เหลี่ยมด้านขนาน"
-        },
-        "TRAPEZOID": {
-          "name": "สี่เหลี่ยมคางหมู (Trapezoid)",
-          "description": "รูปทรงสี่เหลี่ยมคางหมู"
-        },
-        "KITE": {
-          "name": "รูปว่าว (Kite)",
-          "description": "รูปทรงว่าว"
-        },
-        "POINTS": {
-          "name": "จุด (Points)",
-          "description": "ทำงานในระดับจุดหรือคลาวด์พอยต์ (Point Cloud)"
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งที่ถูกบิดแล้ว"
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeCurvePrimitiveStar": {
-    "name": "Star",
-    "description": "สร้างเส้นโค้งรูปแบบแฉกดาว",
-    "inputs": {},
-    "outputs": {
-      "Curve": "เส้นโค้งรูปดาว"
-    }
-  },
-  "GeometryNodeGreasePencilToCurves": {
-    "name": "Grease Pencil to Curves",
-    "description": "แปลงข้อมูลภาพวาด Grease Pencil ให้เป็นเส้นโค้ง (Curve) แบบ 3 มิติ",
-    "inputs": {},
-    "outputs": {
-      "Curve": "เส้นโค้ง 3 มิติ"
-    }
-  },
-  "GeometryNodeEdgePathsToCurves": {
-    "name": "Edge Paths to Curves",
-    "description": "สร้างเส้นโค้งจากเส้นทาง (Path) ที่เดินไปตามเส้นขอบของตาข่าย",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeMeshToCurve": {
-    "name": "Mesh to Curve",
-    "description": "แปลงเส้นขอบ (Edge) ของรูปทรงตาข่ายให้กลายเป็นเส้นโค้งอิสระ",
-    "inputs": {
-      "Mesh": "ตาข่ายเป้าหมาย",
-      "Selection": "เส้นขอบที่ต้องการแปลง"
     },
-    "outputs": {
-      "Curve": "เส้นโค้งที่แปลงได้"
-    },
-    "dropdowns": {
-      "mode": [
-        "EDGES",
-        "FACES"
-      ]
-    },
-    "sub_types": {
-      "mode": {
-        "EDGES": {
-          "name": "เส้น (Edges)",
-          "description": "ทำงานในระดับเส้นขอบ (Edges)"
+    "GeometryNodeSetCurveHandlePositions": {
+        "name": "Set Handle Positions",
+        "description": "กำหนดตำแหน่งหรือระยะแขนควบคุม (Handles) ของเส้นโค้งแบบ Bézier ใหม่",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งเป้าหมาย"
+            },
+            "Selection": {
+                "name": "การเลือก (Selection)",
+                "description": "พื้นที่ที่เลือก"
+            },
+            "Position": {
+                "name": "ตำแหน่ง (Position)",
+                "description": "ตำแหน่งใหม่ของแขนควบคุม"
+            }
         },
-        "FACES": {
-          "name": "หน้าตัด (Faces)",
-          "description": "ทำงานในระดับพื้นผิวหรือหน้าตัด (Faces)"
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งที่แขนควบคุมเปลี่ยนไป"
+            }
+        },
+        "dropdowns": {
+            "mode": [
+                "LEFT",
+                "RIGHT"
+            ]
+        },
+        "sub_types": {
+            "mode": {
+                "LEFT": {
+                    "name": "ซ้าย (Left)",
+                    "description": "แขนบังคับหรือจุดควบคุมฝั่งซ้าย"
+                },
+                "RIGHT": {
+                    "name": "ขวา (Right)",
+                    "description": "แขนบังคับหรือจุดควบคุมฝั่งขวา"
+                }
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeCurveOfPoint": {
-    "name": "Curve of Point",
-    "description": "ค้นหาว่าจุดดังกล่าวอยู่บนเส้นโค้งใดในกลุ่มเส้นโค้ง",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeOffsetPointInCurve": {
-    "name": "Offset Point in Curve",
-    "description": "เลื่อนจุดเป้าหมาย (Point) ไปยังตำแหน่งลำดับข้างหน้าหรือข้างหลังในเส้นโค้งเดียวกัน",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodePointsOfCurve": {
-    "name": "Points of Curve",
-    "description": "ดึงจุดทั้งหมดที่อยู่ในเส้นโค้ง (Curve) ที่กำหนด",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodePointsToCurves": {
-    "name": "Points to Curves",
-    "description": "ลากเส้นเชื่อมต่อกลุ่มจุดเข้าด้วยกันให้กลายเป็นเส้นโค้ง",
-    "inputs": {},
-    "outputs": {}
-  },
-  "ShaderNodeRGBCurve": {
-    "name": "RGB Curves",
-    "description": "ปรับแก้ช่วงสีด้วยกราฟเส้นโค้ง (Curves) ทั้งช่อง Master และ RGB",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeStringToCurves": {
-    "name": "String to Curves",
-    "description": "แปลงข้อมูลข้อความ (String) ให้กลายเป็นเส้นโค้งรูปตัวอักษร 3 มิติ (Text Curve)",
-    "inputs": {
-      "String": "ข้อความ",
-      "Size": "ขนาด",
-      "Character Spacing": "ช่องไฟ",
-      "Line Spacing": "ระยะห่างบรรทัด"
     },
-    "outputs": {
-      "Curve Instances": "ตัวอักษรที่แปลงเป็น Instance"
+    "GeometryNodeCurveSetHandleType": {
+        "name": "Set Handle Type",
+        "description": "เปลี่ยนแปลงประเภทแขนควบคุมของจุดบนเส้นโค้ง เช่น Free, Vector, Auto, Align",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งเป้าหมาย"
+            },
+            "Selection": {
+                "name": "การเลือก (Selection)",
+                "description": "พื้นที่ที่เลือก"
+            }
+        },
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งที่เปลี่ยนประเภทแขนควบคุมแล้ว"
+            }
+        }
+    },
+    "GeometryNodeSetSplineCyclic": {
+        "name": "Set Spline Cyclic",
+        "description": "บังคับเปิดหรือปิดการเชื่อมต่อกันระหว่างปลายและต้นเส้น (Cyclic) เพื่อให้เป็นวงปิดหรือเปิด",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งเป้าหมาย"
+            },
+            "Selection": {
+                "name": "การเลือก (Selection)",
+                "description": "พื้นที่ที่เลือก"
+            },
+            "Cyclic": {
+                "name": "วงปิด (Cyclic)",
+                "description": "กำหนดค่าความเป็นวงปิด (True/False)"
+            }
+        },
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งที่ถูกเปลี่ยนสถานะแล้ว"
+            }
+        }
+    },
+    "GeometryNodeSetSplineResolution": {
+        "name": "Set Spline Resolution",
+        "description": "กำหนดค่าความละเอียด (Resolution) ของเส้นโค้งแต่ละเส้น",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งเป้าหมาย"
+            },
+            "Selection": {
+                "name": "การเลือก (Selection)",
+                "description": "พื้นที่ที่เลือก"
+            },
+            "Resolution": {
+                "name": "ความละเอียด (Resolution)",
+                "description": "ค่าความเนียนที่ต้องการกำหนด"
+            }
+        },
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งที่ปรับความเนียนแล้ว"
+            }
+        }
+    },
+    "GeometryNodeCurveSplineType": {
+        "name": "Set Spline Type",
+        "description": "แปลงหรือกำหนดรูปแบบประเภทของเส้นโค้ง เช่น Bézier, NURBS, Poly",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งเป้าหมาย"
+            },
+            "Selection": {
+                "name": "การเลือก (Selection)",
+                "description": "พื้นที่ที่เลือก"
+            }
+        },
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งที่แปลงรูปแบบแล้ว"
+            }
+        },
+        "dropdowns": {
+            "spline_type": [
+                "CATMULL_ROM",
+                "POLY",
+                "BEZIER",
+                "NURBS"
+            ]
+        },
+        "sub_types": {
+            "spline_type": {
+                "CATMULL_ROM": {
+                    "name": "Set Spline Type (แคทมัล-รอม (Catmull-Rom))",
+                    "description": "ตัวเลือกโหมด: แคทมัล-รอม (Catmull-Rom)"
+                },
+                "POLY": {
+                    "name": "Set Spline Type (โพลี (Poly))",
+                    "description": "ตัวเลือกโหมด: โพลี (Poly)"
+                },
+                "BEZIER": {
+                    "name": "Set Spline Type (เบซิเยร์ (Bezier))",
+                    "description": "ตัวเลือกโหมด: เบซิเยร์ (Bezier)"
+                },
+                "NURBS": {
+                    "name": "Set Spline Type (เนิร์บส์ (NURBS))",
+                    "description": "ตัวเลือกโหมด: เนิร์บส์ (NURBS)"
+                }
+            }
+        }
+    },
+    "GeometryNodeCurveToMesh": {
+        "name": "Curve to Mesh",
+        "description": "แปลงเส้นโค้ง (Curve) ให้กลายเป็นพื้นผิวรูปทรง 3 มิติ (Mesh) โดยใช้เส้นหน้าตัดโปรไฟล์",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งต้นทาง"
+            },
+            "Profile Curve": {
+                "name": "หน้าตัดเส้นโค้ง (Profile Curve)",
+                "description": "เส้นโค้งหน้าตัดที่จะใช้วิ่งตามเส้นหลัก"
+            },
+            "Fill Caps": {
+                "name": "ปิดฝา (Fill Caps)",
+                "description": "ปิดฝาหัวท้ายให้ทึบหรือไม่"
+            }
+        },
+        "outputs": {
+            "Mesh": {
+                "name": "โครงข่าย (Mesh)",
+                "description": "พื้นผิว Mesh ที่ได้จากการแปลง"
+            }
+        }
+    },
+    "GeometryNodeCurveToPoints": {
+        "name": "Curve to Points",
+        "description": "แปลงเส้นโค้งให้กลายเป็นกลุ่มจุด (Point Cloud) เพื่อนำไปใช้งานต่อ เช่น การกระจายวัตถุ",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งเป้าหมาย"
+            },
+            "Count": {
+                "name": "จำนวน (Count)",
+                "description": "จำนวนจุดทั้งหมด"
+            },
+            "Length": {
+                "name": "ความยาว (Length)",
+                "description": "ระยะห่างระหว่างจุด"
+            }
+        },
+        "outputs": {
+            "Points": {
+                "name": "จุด (Points)",
+                "description": "กลุ่มจุดที่กระจายตามเส้นโค้ง"
+            },
+            "Tangent": {
+                "name": "แทนเจนต์ (Tangent)",
+                "description": "ทิศทางสัมผัสที่แต่ละจุด"
+            },
+            "Normal": {
+                "name": "Normal",
+                "description": "แนวฉากที่แต่ละจุด"
+            },
+            "Rotation": {
+                "name": "การหมุน (Rotation)",
+                "description": "องศาการหมุน"
+            }
+        },
+        "dropdowns": {
+            "mode": [
+                "EVALUATED",
+                "COUNT",
+                "LENGTH"
+            ]
+        },
+        "sub_types": {
+            "mode": {
+                "EVALUATED": {
+                    "name": "ค่าที่คำนวณแล้ว (Evaluated)",
+                    "description": "อิงจากจุดที่คำนวณและประมวลผลแล้วบนเส้นโค้ง"
+                },
+                "COUNT": {
+                    "name": "จำนวน (Count)",
+                    "description": "ระบุด้วยจำนวนรวมที่แน่นอน"
+                },
+                "LENGTH": {
+                    "name": "ความยาว (Length)",
+                    "description": "หาขนาดหรือความยาวของVector"
+                }
+            }
+        }
+    },
+    "GeometryNodeCurvesToGreasePencil": {
+        "name": "Curves to Grease Pencil",
+        "description": "แปลงเส้นโค้งให้เป็นเส้นวาด Grease Pencil",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งต้นทาง"
+            }
+        },
+        "outputs": {
+            "Grease Pencil": {
+                "name": "ดินสอไข (Grease Pencil)",
+                "description": "เส้นวาดแบบ Grease Pencil"
+            }
+        }
+    },
+    "GeometryNodeDeformCurvesOnSurface": {
+        "name": "Deform Curves on Surface",
+        "description": "ดัดหรือแปลงรูปเส้นโค้งให้แนบสนิทไปตามพื้นผิว (Surface)",
+        "inputs": {
+            "Curves": {
+                "name": "เส้นโค้ง (Curves)",
+                "description": "เส้นโค้งเป้าหมาย"
+            },
+            "Surface": {
+                "name": "พื้นผิว (Surface)",
+                "description": "รูปทรงพื้นผิว"
+            }
+        },
+        "outputs": {
+            "Curves": {
+                "name": "เส้นโค้ง (Curves)",
+                "description": "เส้นโค้งที่แนบพื้นผิวแล้ว"
+            }
+        }
+    },
+    "GeometryNodeFillCurve": {
+        "name": "Fill Curve",
+        "description": "สร้างพื้นผิวทึบให้เต็มช่องว่างของเส้นโค้งที่เป็นวงปิด (2D Curve)",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งวงปิด"
+            }
+        },
+        "outputs": {
+            "Mesh": {
+                "name": "โครงข่าย (Mesh)",
+                "description": "รูปทรง 2 มิติที่เติมเต็มแล้ว"
+            }
+        }
+    },
+    "GeometryNodeFilletCurve": {
+        "name": "Fillet Curve",
+        "description": "ลบมุมเหลี่ยมของเส้นโค้งให้มีความโค้งมน (Fillet)",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งต้นทาง"
+            },
+            "Radius": {
+                "name": "รัศมี (Radius)",
+                "description": "รัศมีความโค้งมน"
+            },
+            "Limit Radius": {
+                "name": "จำกัดรัศมี (Limit Radius)",
+                "description": "จำกัดรัศมีไม่ให้ทับซ้อนกัน"
+            }
+        },
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นที่ถูกลบมุมแล้ว"
+            }
+        }
+    },
+    "GeometryNodeInterpolateCurves": {
+        "name": "Interpolate Curves",
+        "description": "เกลี่ยและสร้างเส้นโค้งใหม่ระหว่างเส้นโค้งหลักเพื่อเพิ่มความหนาแน่น เช่น เส้นผม",
+        "inputs": {
+            "Guide Curves": {
+                "name": "เส้นโค้งไกด์ (Guide Curves)",
+                "description": "เส้นโค้งหลักที่ใช้อ้างอิง"
+            },
+            "Guide Up": {
+                "name": "ไกด์ทิศทางขึ้น (Guide Up)",
+                "description": "ทิศทางขึ้นของเส้นหลัก"
+            },
+            "Amount": {
+                "name": "จำนวน (Amount)",
+                "description": "จำนวนเส้นที่จะสร้างแทรก"
+            }
+        },
+        "outputs": {
+            "Curves": {
+                "name": "เส้นโค้ง (Curves)",
+                "description": "เส้นโค้งใหม่ที่แทรกเพิ่มขึ้นมา"
+            }
+        }
+    },
+    "GeometryNodeResampleCurve": {
+        "name": "Resample Curve",
+        "description": "ปรับจำนวนจุดควบคุมของเส้นโค้งใหม่ให้มีความละเอียดมากหรือน้อยลง",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งต้นทาง"
+            },
+            "Selection": {
+                "name": "การเลือก (Selection)",
+                "description": "พื้นที่ที่ต้องการ"
+            },
+            "Count": {
+                "name": "จำนวน (Count)",
+                "description": "จำนวนจุดใหม่"
+            },
+            "Length": {
+                "name": "ความยาว (Length)",
+                "description": "ระยะห่างของจุด"
+            }
+        },
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งที่ปรับจำนวนจุดแล้ว"
+            }
+        }
+    },
+    "GeometryNodeReverseCurve": {
+        "name": "Reverse Curve",
+        "description": "สลับทิศทางจุดเริ่มต้นและจุดสิ้นสุดของเส้นโค้ง",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งต้นทาง"
+            },
+            "Selection": {
+                "name": "การเลือก (Selection)",
+                "description": "บริเวณเส้นที่ต้องการกลับด้าน"
+            }
+        },
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งที่ถูกสลับทิศทาง"
+            }
+        }
+    },
+    "GeometryNodeSubdivideCurve": {
+        "name": "Subdivide Curve",
+        "description": "เพิ่มความละเอียดให้เส้นโค้งโดยการแบ่งครึ่งและเพิ่มจุดเข้าไป",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งต้นทาง"
+            },
+            "Cuts": {
+                "name": "รอยตัด (Cuts)",
+                "description": "จำนวนรอยตัดที่เพิ่มเข้าไปในแต่ละท่อน"
+            }
+        },
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งที่มีรายละเอียดมากขึ้น"
+            }
+        }
+    },
+    "GeometryNodeTrimCurve": {
+        "name": "Trim Curve",
+        "description": "ตัดหัวท้ายของเส้นโค้งให้สั้นลงโดยระบุอัตราส่วนร้อยละหรือความยาวจริง",
+        "inputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งต้นทาง"
+            },
+            "Start": {
+                "name": "เริ่มต้น (Start)",
+                "description": "จุดเริ่มต้นการตัด"
+            },
+            "End": {
+                "name": "สิ้นสุด (End)",
+                "description": "จุดสิ้นสุดการตัด"
+            }
+        },
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งที่ถูกตัดแล้ว"
+            }
+        },
+        "dropdowns": {
+            "mode": [
+                "FACTOR",
+                "LENGTH"
+            ]
+        },
+        "sub_types": {
+            "mode": {
+                "FACTOR": {
+                    "name": "อัตราส่วน (Factor)",
+                    "description": "ใช้ค่าอัตราส่วนตั้งแต่ 0.0 ถึง 1.0"
+                },
+                "LENGTH": {
+                    "name": "ความยาว (Length)",
+                    "description": "หาขนาดหรือความยาวของVector"
+                }
+            }
+        }
+    },
+    "GeometryNodeCurveArc": {
+        "name": "Arc",
+        "description": "สร้างเส้นโค้งที่เป็นรูปส่วนโค้งของวงกลม (Arc)",
+        "inputs": {},
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งรูปส่วนโค้ง"
+            },
+            "Center": {
+                "name": "จุดศูนย์กลาง (Center)",
+                "description": "ตำแหน่งจุดศูนย์กลาง"
+            },
+            "Normal": {
+                "name": "Normal",
+                "description": "แนวทิศทางตั้งฉาก"
+            },
+            "Radius": {
+                "name": "รัศมี (Radius)",
+                "description": "รัศมีของวงกลม"
+            }
+        },
+        "dropdowns": {
+            "mode": [
+                "POINTS",
+                "RADIUS"
+            ]
+        },
+        "sub_types": {
+            "mode": {
+                "POINTS": {
+                    "name": "จุด (Points)",
+                    "description": "ทำงานในระดับจุดหรือคลาวด์พอยต์ (Point Cloud)"
+                },
+                "RADIUS": {
+                    "name": "รัศมี (Radius)",
+                    "description": "กำหนดด้วยรัศมี"
+                }
+            }
+        }
+    },
+    "GeometryNodeCurvePrimitiveBezierSegment": {
+        "name": "Bézier Segment",
+        "description": "สร้างเส้นโค้งเบซิเยร์สั้นๆ (1 ท่อน) ที่มีจุดควบคุมสองจุด",
+        "inputs": {},
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งเบซิเยร์ 1 ท่อน"
+            }
+        },
+        "dropdowns": {
+            "mode": [
+                "POSITION",
+                "OFFSET"
+            ]
+        },
+        "sub_types": {
+            "mode": {
+                "POSITION": {
+                    "name": "ตำแหน่ง (Position)",
+                    "description": "อ้างอิงหรือใช้ค่าตำแหน่ง (Position)"
+                },
+                "OFFSET": {
+                    "name": "ระยะห่าง (Offset)",
+                    "description": "อ้างอิงหรือใช้ค่าการเลื่อนตำแหน่ง (Offset)"
+                }
+            }
+        }
+    },
+    "GeometryNodeCurvePrimitiveCircle": {
+        "name": "Curve Circle",
+        "description": "สร้างเส้นโค้งรูปวงกลมพื้นฐาน",
+        "inputs": {},
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งวงกลม"
+            }
+        },
+        "dropdowns": {
+            "mode": [
+                "POINTS",
+                "RADIUS"
+            ]
+        },
+        "sub_types": {
+            "mode": {
+                "POINTS": {
+                    "name": "จุด (Points)",
+                    "description": "ทำงานในระดับจุดหรือคลาวด์พอยต์ (Point Cloud)"
+                },
+                "RADIUS": {
+                    "name": "รัศมี (Radius)",
+                    "description": "กำหนดด้วยรัศมี"
+                }
+            }
+        }
+    },
+    "GeometryNodeCurvePrimitiveLine": {
+        "name": "Curve Line",
+        "description": "สร้างเส้นโค้งที่เป็นเส้นตรงยาว 1 ท่อน จากจุดเริ่มต้นถึงจุดสิ้นสุด",
+        "inputs": {},
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นตรง"
+            }
+        },
+        "dropdowns": {
+            "mode": [
+                "POINTS",
+                "DIRECTION"
+            ]
+        },
+        "sub_types": {
+            "mode": {
+                "POINTS": {
+                    "name": "จุด (Points)",
+                    "description": "ทำงานในระดับจุดหรือคลาวด์พอยต์ (Point Cloud)"
+                },
+                "DIRECTION": {
+                    "name": "ทิศทาง (Direction)",
+                    "description": "อ้างอิงหรือระบุค่าด้วยทิศทางVector"
+                }
+            }
+        }
+    },
+    "GeometryNodeCurvePrimitiveSpiral": {
+        "name": "Spiral",
+        "description": "สร้างเส้นโค้งขดเป็นรูปสปริงหรือเกลียววงก้นหอย",
+        "inputs": {},
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นเกลียวสปริง"
+            }
+        }
+    },
+    "GeometryNodeCurvePrimitiveQuadraticBezier": {
+        "name": "Quadratic Bézier",
+        "description": "สร้างเส้นโค้งกำลังสองพาราโบลาแบบเบซิเยร์",
+        "inputs": {},
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งกำลังสอง"
+            }
+        }
+    },
+    "GeometryNodeCurvePrimitiveQuadrilateral": {
+        "name": "Quadrilateral",
+        "description": "สร้างเส้นโค้งรูปสี่เหลี่ยมแบบอิสระ (กำหนดความกว้างยาวได้)",
+        "inputs": {},
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "รูปสี่เหลี่ยม"
+            }
+        },
+        "dropdowns": {
+            "mode": [
+                "RECTANGLE",
+                "PARALLELOGRAM",
+                "TRAPEZOID",
+                "KITE",
+                "POINTS"
+            ]
+        },
+        "sub_types": {
+            "mode": {
+                "RECTANGLE": {
+                    "name": "สี่เหลี่ยมผืนผ้า (Rectangle)",
+                    "description": "รูปทรงสี่เหลี่ยมผืนผ้า"
+                },
+                "PARALLELOGRAM": {
+                    "name": "สี่เหลี่ยมด้านขนาน (Parallelogram)",
+                    "description": "รูปทรงสี่เหลี่ยมด้านขนาน"
+                },
+                "TRAPEZOID": {
+                    "name": "สี่เหลี่ยมคางหมู (Trapezoid)",
+                    "description": "รูปทรงสี่เหลี่ยมคางหมู"
+                },
+                "KITE": {
+                    "name": "รูปว่าว (Kite)",
+                    "description": "รูปทรงว่าว"
+                },
+                "POINTS": {
+                    "name": "จุด (Points)",
+                    "description": "ทำงานในระดับจุดหรือคลาวด์พอยต์ (Point Cloud)"
+                }
+            }
+        }
+    },
+    "GeometryNodeCurvePrimitiveStar": {
+        "name": "Star",
+        "description": "สร้างเส้นโค้งรูปแบบแฉกดาว",
+        "inputs": {},
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งรูปดาว"
+            }
+        }
+    },
+    "GeometryNodeGreasePencilToCurves": {
+        "name": "Grease Pencil to Curves",
+        "description": "แปลงข้อมูลภาพวาด Grease Pencil ให้เป็นเส้นโค้ง (Curve) แบบ 3 มิติ",
+        "inputs": {},
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้ง 3 มิติ"
+            }
+        }
+    },
+    "GeometryNodeEdgePathsToCurves": {
+        "name": "Edge Paths to Curves",
+        "description": "สร้างเส้นโค้งจากเส้นทาง (Path) ที่เดินไปตามเส้นขอบของตาข่าย",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeMeshToCurve": {
+        "name": "Mesh to Curve",
+        "description": "แปลงเส้นขอบ (Edge) ของรูปทรงตาข่ายให้กลายเป็นเส้นโค้งอิสระ",
+        "inputs": {
+            "Mesh": {
+                "name": "โครงข่าย (Mesh)",
+                "description": "ตาข่ายเป้าหมาย"
+            },
+            "Selection": {
+                "name": "การเลือก (Selection)",
+                "description": "เส้นขอบที่ต้องการแปลง"
+            }
+        },
+        "outputs": {
+            "Curve": {
+                "name": "เส้นโค้ง (Curve)",
+                "description": "เส้นโค้งที่แปลงได้"
+            }
+        },
+        "dropdowns": {
+            "mode": [
+                "EDGES",
+                "FACES"
+            ]
+        },
+        "sub_types": {
+            "mode": {
+                "EDGES": {
+                    "name": "เส้น (Edges)",
+                    "description": "ทำงานในระดับเส้นขอบ (Edges)"
+                },
+                "FACES": {
+                    "name": "หน้าตัด (Faces)",
+                    "description": "ทำงานในระดับพื้นผิวหรือหน้าตัด (Faces)"
+                }
+            }
+        }
+    },
+    "GeometryNodeCurveOfPoint": {
+        "name": "Curve of Point",
+        "description": "ค้นหาว่าจุดดังกล่าวอยู่บนเส้นโค้งใดในกลุ่มเส้นโค้ง",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeOffsetPointInCurve": {
+        "name": "Offset Point in Curve",
+        "description": "เลื่อนจุดเป้าหมาย (Point) ไปยังตำแหน่งลำดับข้างหน้าหรือข้างหลังในเส้นโค้งเดียวกัน",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodePointsOfCurve": {
+        "name": "Points of Curve",
+        "description": "ดึงจุดทั้งหมดที่อยู่ในเส้นโค้ง (Curve) ที่กำหนด",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodePointsToCurves": {
+        "name": "Points to Curves",
+        "description": "ลากเส้นเชื่อมต่อกลุ่มจุดเข้าด้วยกันให้กลายเป็นเส้นโค้ง",
+        "inputs": {},
+        "outputs": {}
+    },
+    "ShaderNodeRGBCurve": {
+        "name": "RGB Curves",
+        "description": "ปรับแก้ช่วงสีด้วยกราฟเส้นโค้ง (Curves) ทั้งช่อง Master และ RGB",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeStringToCurves": {
+        "name": "String to Curves",
+        "description": "แปลงข้อมูลข้อความ (String) ให้กลายเป็นเส้นโค้งรูปตัวอักษร 3 มิติ (Text Curve)",
+        "inputs": {
+            "String": {
+                "name": "ข้อความ (String)",
+                "description": "ข้อความ"
+            },
+            "Size": {
+                "name": "ขนาด (Size)",
+                "description": "ขนาด"
+            },
+            "Character Spacing": {
+                "name": "ระยะห่างตัวอักษร (Character Spacing)",
+                "description": "ช่องไฟ"
+            },
+            "Line Spacing": {
+                "name": "ระยะห่างบรรทัด (Line Spacing)",
+                "description": "ระยะห่างบรรทัด"
+            }
+        },
+        "outputs": {
+            "Curve Instances": {
+                "name": "Instanceเส้นโค้ง (Curve Instances)",
+                "description": "ตัวอักษรที่แปลงเป็น Instance"
+            }
+        }
     }
-  }
 }

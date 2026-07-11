@@ -1,640 +1,736 @@
 {
-  "GeometryNodeExtrudeMesh": {
-    "name": "Extrude Mesh",
-    "description": "ยืดหน้าตัด (Faces) หรือเส้น (Edges) ของรูปทรงออกไปตามแนวที่กำหนด",
-    "inputs": {
-      "Mesh": "รูปทรงตาข่ายต้นฉบับ",
-      "Selection": "เงื่อนไขการเลือกส่วนที่จะยืด (True/False)",
-      "Offset": "เวกเตอร์ระยะทางที่จะยืดออกไป",
-      "Offset Scale": "ตัวคูณระยะทางยืด",
-      "Individual": "ยืดแยกกันแต่ละส่วนหรือไม่"
-    },
-    "outputs": {
-      "Mesh": "ผลลัพธ์รูปทรงที่ยืดแล้ว",
-      "Top": "ส่วนหน้าตัดที่เกิดใหม่ด้านบนสุด",
-      "Side": "ส่วนหน้าตัดที่เกิดใหม่ด้านข้าง"
-    },
-    "dropdowns": {
-      "mode": [
-        "VERTICES",
-        "EDGES",
-        "FACES"
-      ]
-    },
-    "sub_types": {
-      "mode": {
-        "VERTICES": {
-          "name": "จุด (Vertices)",
-          "description": "ทำงานในระดับจุดยอดเรขาคณิต (Vertices)"
+    "GeometryNodeExtrudeMesh": {
+        "name": "Extrude Mesh",
+        "description": "ยืดหน้าตัด (Faces) หรือเส้น (Edges) ของรูปทรงออกไปตามแนวที่กำหนด",
+        "inputs": {
+            "Mesh": {
+                "name": "โครงข่าย (Mesh)",
+                "description": "รูปทรงตาข่ายต้นฉบับ"
+            },
+            "Selection": {
+                "name": "การเลือก (Selection)",
+                "description": "เงื่อนไขการเลือกส่วนที่จะยืด (True/False)"
+            },
+            "Offset": {
+                "name": "ระยะชดเชย (Offset)",
+                "description": "Vectorระยะทางที่จะยืดออกไป"
+            },
+            "Offset Scale": {
+                "name": "Scaleระยะชดเชย (Offset Scale)",
+                "description": "ตัวคูณระยะทางยืด"
+            },
+            "Individual": {
+                "name": "อิสระ (Individual)",
+                "description": "ยืดแยกกันแต่ละส่วนหรือไม่"
+            }
         },
-        "EDGES": {
-          "name": "เส้น (Edges)",
-          "description": "ทำงานในระดับเส้นขอบ (Edges)"
+        "outputs": {
+            "Mesh": {
+                "name": "โครงข่าย (Mesh)",
+                "description": "ผลลัพธ์รูปทรงที่ยืดแล้ว"
+            },
+            "Top": {
+                "name": "บน (Top)",
+                "description": "ส่วนหน้าตัดที่เกิดใหม่ด้านบนสุด"
+            },
+            "Side": {
+                "name": "ด้าน (Side)",
+                "description": "ส่วนหน้าตัดที่เกิดใหม่ด้านข้าง"
+            }
         },
-        "FACES": {
-          "name": "หน้าตัด (Faces)",
-          "description": "ทำงานในระดับพื้นผิวหรือหน้าตัด (Faces)"
+        "dropdowns": {
+            "mode": [
+                "VERTICES",
+                "EDGES",
+                "FACES"
+            ]
+        },
+        "sub_types": {
+            "mode": {
+                "VERTICES": {
+                    "name": "จุด (Vertices)",
+                    "description": "ทำงานในระดับจุดยอดเรขาคณิต (Vertices)"
+                },
+                "EDGES": {
+                    "name": "เส้น (Edges)",
+                    "description": "ทำงานในระดับเส้นขอบ (Edges)"
+                },
+                "FACES": {
+                    "name": "หน้าตัด (Faces)",
+                    "description": "ทำงานในระดับพื้นผิวหรือหน้าตัด (Faces)"
+                }
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeEdgesToFaceGroups": {
-    "name": "Edges to Face Groups",
-    "description": "สร้างรหัสกลุ่มหน้าตัด โดยวิเคราะห์จากเส้นแบ่งเขต",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeFaceGroupBoundaries": {
-    "name": "Face Group Boundaries",
-    "description": "ตรวจสอบเส้นรอบนอกหรือเส้นขอบแบ่งระหว่างกลุ่มหน้าตัดที่กำหนด",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeMeshFaceSet": {
-    "name": "Face Set",
-    "description": "ดึงข้อมูลชุดของหน้าตัดหรือกลุ่มที่ถูกกำหนดค่าไว้",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeMeshEdgePaths": {
-    "name": "Shortest Edge Paths",
-    "description": "ค้นหาเส้นทางหรือเส้นขอบที่สั้นที่สุดจากจุดเริ่มต้น (Start) เพื่อประมวลผลเครือข่ายจุด",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeSampleNearestSurface": {
-    "name": "Sample Nearest Surface",
-    "description": "ดึงข้อมูลพื้นผิวบน Mesh หรือตาข่ายที่อยู่ใกล้พิกัดที่กำหนดที่สุด",
-    "inputs": {},
-    "outputs": {},
-    "dropdowns": {
-      "data_type": [
-        "FLOAT",
-        "INT",
-        "BOOLEAN",
-        "FLOAT_VECTOR",
-        "FLOAT_COLOR",
-        "QUATERNION",
-        "FLOAT4X4",
-        "STRING",
-        "INT8",
-        "INT16_2D",
-        "INT32_2D",
-        "FLOAT2",
-        "BYTE_COLOR"
-      ]
     },
-    "sub_types": {
-      "data_type": {
-        "FLOAT": {
-          "name": "ทศนิยม (Float)",
-          "description": "ชนิดข้อมูลตัวเลขทศนิยมเดี่ยว"
+    "GeometryNodeEdgesToFaceGroups": {
+        "name": "Edges to Face Groups",
+        "description": "สร้างรหัสกลุ่มหน้าตัด โดยวิเคราะห์จากเส้นแบ่งเขต",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeFaceGroupBoundaries": {
+        "name": "Face Group Boundaries",
+        "description": "ตรวจสอบเส้นรอบนอกหรือเส้นขอบแบ่งระหว่างกลุ่มหน้าตัดที่กำหนด",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeMeshFaceSet": {
+        "name": "Face Set",
+        "description": "ดึงข้อมูลชุดของหน้าตัดหรือกลุ่มที่ถูกกำหนดค่าไว้",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeMeshEdgePaths": {
+        "name": "Shortest Edge Paths",
+        "description": "ค้นหาเส้นทางหรือเส้นขอบที่สั้นที่สุดจากจุดเริ่มต้น (Start) เพื่อประมวลผลเครือข่ายจุด",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeSampleNearestSurface": {
+        "name": "Sample Nearest Surface",
+        "description": "ดึงข้อมูลพื้นผิวบน Mesh หรือตาข่ายที่อยู่ใกล้พิกัดที่กำหนดที่สุด",
+        "inputs": {},
+        "outputs": {},
+        "dropdowns": {
+            "data_type": [
+                "FLOAT",
+                "INT",
+                "BOOLEAN",
+                "FLOAT_VECTOR",
+                "FLOAT_COLOR",
+                "QUATERNION",
+                "FLOAT4X4",
+                "STRING",
+                "INT8",
+                "INT16_2D",
+                "INT32_2D",
+                "FLOAT2",
+                "BYTE_COLOR"
+            ]
         },
-        "INT": {
-          "name": "จำนวนเต็ม (Integer)",
-          "description": "ชนิดข้อมูลตัวเลขจำนวนเต็ม"
-        },
-        "BOOLEAN": {
-          "name": "ค่าความจริง (Boolean)",
-          "description": "ชนิดข้อมูลตรรกะ จริง/เท็จ"
-        },
-        "FLOAT_VECTOR": {
-          "name": "เวกเตอร์ (Vector)",
-          "description": "ชนิดข้อมูลเวกเตอร์หรือพิกัดทิศทาง"
-        },
-        "FLOAT_COLOR": {
-          "name": "สี (Color)",
-          "description": "ชนิดข้อมูลสี"
-        },
-        "QUATERNION": {
-          "name": "ควอเทอร์เนียน (Quaternion)",
-          "description": "ชนิดข้อมูลการหมุนในรูปแบบ Quaternion"
-        },
-        "FLOAT4X4": {
-          "name": "เมทริกซ์ 4x4 (Float4x4)",
-          "description": "ชนิดข้อมูลเมทริกซ์ 4x4"
-        },
-        "STRING": {
-          "name": "ข้อความ (String)",
-          "description": "ชนิดข้อมูลตัวอักษรหรือข้อความ"
-        },
-        "INT8": {
-          "name": "จำนวนเต็ม 8 บิต (8-bit Integer)",
-          "description": "ชนิดข้อมูลจำนวนเต็ม 8 บิต"
-        },
-        "INT16_2D": {
-          "name": "16-bit 2D Integer",
-          "description": "ชนิดข้อมูล 2D Integer ขนาด 16 บิต"
-        },
-        "INT32_2D": {
-          "name": "32-bit 2D Integer",
-          "description": "ชนิดข้อมูล 2D Integer ขนาด 32 บิต"
-        },
-        "FLOAT2": {
-          "name": "ทศนิยม 2D (Float2)",
-          "description": "เวกเตอร์ทศนิยมแบบ 2 แกน"
-        },
-        "BYTE_COLOR": {
-          "name": "สีแบบไบต์ (Byte Color)",
-          "description": "สีในระดับ 8 บิต (0-255)"
+        "sub_types": {
+            "data_type": {
+                "FLOAT": {
+                    "name": "Float",
+                    "description": "ชนิดข้อมูลตัวเลขFloatเดี่ยว"
+                },
+                "INT": {
+                    "name": "Integer",
+                    "description": "ชนิดข้อมูลตัวเลขจำนวนเต็ม"
+                },
+                "BOOLEAN": {
+                    "name": "ค่าความจริง (Boolean)",
+                    "description": "ชนิดข้อมูลตรรกะ จริง/เท็จ"
+                },
+                "FLOAT_VECTOR": {
+                    "name": "Vector",
+                    "description": "ชนิดข้อมูลVectorหรือพิกัดทิศทาง"
+                },
+                "FLOAT_COLOR": {
+                    "name": "สี (Color)",
+                    "description": "ชนิดข้อมูลสี"
+                },
+                "QUATERNION": {
+                    "name": "ควอเทอร์เนียน (Quaternion)",
+                    "description": "ชนิดข้อมูลการหมุนในรูปแบบ Quaternion"
+                },
+                "FLOAT4X4": {
+                    "name": "เมทริกซ์ 4x4 (Float4x4)",
+                    "description": "ชนิดข้อมูลเมทริกซ์ 4x4"
+                },
+                "STRING": {
+                    "name": "ข้อความ (String)",
+                    "description": "ชนิดข้อมูลตัวอักษรหรือข้อความ"
+                },
+                "INT8": {
+                    "name": "จำนวนเต็ม 8 บิต (8-bit Integer)",
+                    "description": "ชนิดข้อมูลจำนวนเต็ม 8 บิต"
+                },
+                "INT16_2D": {
+                    "name": "16-bit 2D Integer",
+                    "description": "ชนิดข้อมูล 2D Integer ขนาด 16 บิต"
+                },
+                "INT32_2D": {
+                    "name": "32-bit 2D Integer",
+                    "description": "ชนิดข้อมูล 2D Integer ขนาด 32 บิต"
+                },
+                "FLOAT2": {
+                    "name": "Float 2D (Float2)",
+                    "description": "VectorFloatแบบ 2 แกน"
+                },
+                "BYTE_COLOR": {
+                    "name": "สีแบบไบต์ (Byte Color)",
+                    "description": "สีในระดับ 8 บิต (0-255)"
+                }
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeSampleUVSurface": {
-    "name": "Sample UV Surface",
-    "description": "ดึงข้อมูลพื้นผิวโดยอิงพิกัด UV (พื้นผิวระนาบแผนที่ภาพ)",
-    "inputs": {},
-    "outputs": {},
-    "dropdowns": {
-      "data_type": [
-        "FLOAT",
-        "INT",
-        "BOOLEAN",
-        "FLOAT_VECTOR",
-        "FLOAT_COLOR",
-        "QUATERNION",
-        "FLOAT4X4",
-        "STRING",
-        "INT8",
-        "INT16_2D",
-        "INT32_2D",
-        "FLOAT2",
-        "BYTE_COLOR"
-      ]
     },
-    "sub_types": {
-      "data_type": {
-        "FLOAT": {
-          "name": "ทศนิยม (Float)",
-          "description": "ชนิดข้อมูลตัวเลขทศนิยมเดี่ยว"
+    "GeometryNodeSampleUVSurface": {
+        "name": "Sample UV Surface",
+        "description": "ดึงข้อมูลพื้นผิวโดยอิงพิกัด UV (พื้นผิวระนาบแผนที่ภาพ)",
+        "inputs": {},
+        "outputs": {},
+        "dropdowns": {
+            "data_type": [
+                "FLOAT",
+                "INT",
+                "BOOLEAN",
+                "FLOAT_VECTOR",
+                "FLOAT_COLOR",
+                "QUATERNION",
+                "FLOAT4X4",
+                "STRING",
+                "INT8",
+                "INT16_2D",
+                "INT32_2D",
+                "FLOAT2",
+                "BYTE_COLOR"
+            ]
         },
-        "INT": {
-          "name": "จำนวนเต็ม (Integer)",
-          "description": "ชนิดข้อมูลตัวเลขจำนวนเต็ม"
-        },
-        "BOOLEAN": {
-          "name": "ค่าความจริง (Boolean)",
-          "description": "ชนิดข้อมูลตรรกะ จริง/เท็จ"
-        },
-        "FLOAT_VECTOR": {
-          "name": "เวกเตอร์ (Vector)",
-          "description": "ชนิดข้อมูลเวกเตอร์หรือพิกัดทิศทาง"
-        },
-        "FLOAT_COLOR": {
-          "name": "สี (Color)",
-          "description": "ชนิดข้อมูลสี"
-        },
-        "QUATERNION": {
-          "name": "ควอเทอร์เนียน (Quaternion)",
-          "description": "ชนิดข้อมูลการหมุนในรูปแบบ Quaternion"
-        },
-        "FLOAT4X4": {
-          "name": "เมทริกซ์ 4x4 (Float4x4)",
-          "description": "ชนิดข้อมูลเมทริกซ์ 4x4"
-        },
-        "STRING": {
-          "name": "ข้อความ (String)",
-          "description": "ชนิดข้อมูลตัวอักษรหรือข้อความ"
-        },
-        "INT8": {
-          "name": "จำนวนเต็ม 8 บิต (8-bit Integer)",
-          "description": "ชนิดข้อมูลจำนวนเต็ม 8 บิต"
-        },
-        "INT16_2D": {
-          "name": "16-bit 2D Integer",
-          "description": "ชนิดข้อมูล 2D Integer ขนาด 16 บิต"
-        },
-        "INT32_2D": {
-          "name": "32-bit 2D Integer",
-          "description": "ชนิดข้อมูล 2D Integer ขนาด 32 บิต"
-        },
-        "FLOAT2": {
-          "name": "ทศนิยม 2D (Float2)",
-          "description": "เวกเตอร์ทศนิยมแบบ 2 แกน"
-        },
-        "BYTE_COLOR": {
-          "name": "สีแบบไบต์ (Byte Color)",
-          "description": "สีในระดับ 8 บิต (0-255)"
+        "sub_types": {
+            "data_type": {
+                "FLOAT": {
+                    "name": "Float",
+                    "description": "ชนิดข้อมูลตัวเลขFloatเดี่ยว"
+                },
+                "INT": {
+                    "name": "Integer",
+                    "description": "ชนิดข้อมูลตัวเลขจำนวนเต็ม"
+                },
+                "BOOLEAN": {
+                    "name": "ค่าความจริง (Boolean)",
+                    "description": "ชนิดข้อมูลตรรกะ จริง/เท็จ"
+                },
+                "FLOAT_VECTOR": {
+                    "name": "Vector",
+                    "description": "ชนิดข้อมูลVectorหรือพิกัดทิศทาง"
+                },
+                "FLOAT_COLOR": {
+                    "name": "สี (Color)",
+                    "description": "ชนิดข้อมูลสี"
+                },
+                "QUATERNION": {
+                    "name": "ควอเทอร์เนียน (Quaternion)",
+                    "description": "ชนิดข้อมูลการหมุนในรูปแบบ Quaternion"
+                },
+                "FLOAT4X4": {
+                    "name": "เมทริกซ์ 4x4 (Float4x4)",
+                    "description": "ชนิดข้อมูลเมทริกซ์ 4x4"
+                },
+                "STRING": {
+                    "name": "ข้อความ (String)",
+                    "description": "ชนิดข้อมูลตัวอักษรหรือข้อความ"
+                },
+                "INT8": {
+                    "name": "จำนวนเต็ม 8 บิต (8-bit Integer)",
+                    "description": "ชนิดข้อมูลจำนวนเต็ม 8 บิต"
+                },
+                "INT16_2D": {
+                    "name": "16-bit 2D Integer",
+                    "description": "ชนิดข้อมูล 2D Integer ขนาด 16 บิต"
+                },
+                "INT32_2D": {
+                    "name": "32-bit 2D Integer",
+                    "description": "ชนิดข้อมูล 2D Integer ขนาด 32 บิต"
+                },
+                "FLOAT2": {
+                    "name": "Float 2D (Float2)",
+                    "description": "VectorFloatแบบ 2 แกน"
+                },
+                "BYTE_COLOR": {
+                    "name": "สีแบบไบต์ (Byte Color)",
+                    "description": "สีในระดับ 8 บิต (0-255)"
+                }
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeSetFaceSet": {
-    "name": "Set Face Set",
-    "description": "กำหนดชุดกลุ่มให้แก่หน้าตัด (Face Set) เพื่อใช้กับระบบปั้นแต่ง (Sculpting) หรือแก้ไขภายหลัง",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeSetMeshNormal": {
-    "name": "Set Mesh Normal",
-    "description": "กำหนดหรือบังคับทิศทางแสงเงาของหน้าตัด (Normal Vector) เพื่อควบคุมความคมชัดของเหลี่ยม",
-    "inputs": {},
-    "outputs": {},
-    "dropdowns": {
-      "mode": [
-        "SHARPNESS",
-        "FREE",
-        "TANGENT_SPACE"
-      ],
-      "domain": [
-        "POINT",
-        "FACE",
-        "CORNER"
-      ]
     },
-    "sub_types": {
-      "mode": {
-        "SHARPNESS": {
-          "name": "ความคมชัด (Sharpness)",
-          "description": "ปรับตามระดับความคมหรือความแข็งของพื้นผิว"
+    "GeometryNodeSetFaceSet": {
+        "name": "Set Face Set",
+        "description": "กำหนดชุดกลุ่มให้แก่หน้าตัด (Face Set) เพื่อใช้กับระบบปั้นแต่ง (Sculpting) หรือแก้ไขภายหลัง",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeSetMeshNormal": {
+        "name": "Set Mesh Normal",
+        "description": "กำหนดหรือบังคับทิศทางแสงเงาของหน้าตัด (Normal Vector) เพื่อควบคุมความคมชัดของเหลี่ยม",
+        "inputs": {},
+        "outputs": {},
+        "dropdowns": {
+            "mode": [
+                "SHARPNESS",
+                "FREE",
+                "TANGENT_SPACE"
+            ],
+            "domain": [
+                "POINT",
+                "FACE",
+                "CORNER"
+            ]
         },
-        "FREE": {
-          "name": "อิสระ (Free)",
-          "description": "โหมดกำหนดค่าการทำงานแบบอิสระ"
-        },
-        "TANGENT_SPACE": {
-          "name": "พื้นที่แทนเจนต์ (Tangent Space)",
-          "description": "ทำงานในระบบพิกัดอ้างอิงแบบ Tangent Space"
+        "sub_types": {
+            "mode": {
+                "SHARPNESS": {
+                    "name": "ความคมชัด (Sharpness)",
+                    "description": "ปรับตามระดับความคมหรือความแข็งของพื้นผิว"
+                },
+                "FREE": {
+                    "name": "อิสระ (Free)",
+                    "description": "โหมดกำหนดค่าการทำงานแบบอิสระ"
+                },
+                "TANGENT_SPACE": {
+                    "name": "พื้นที่แทนเจนต์ (Tangent Space)",
+                    "description": "ทำงานในระบบพิกัดอ้างอิงแบบ Tangent Space"
+                }
+            },
+            "domain": {
+                "POINT": {
+                    "name": "Set Mesh Normal (จุด)",
+                    "description": "ตัวเลือกโหมด: จุด"
+                },
+                "FACE": {
+                    "name": "Set Mesh Normal (หน้าตัด)",
+                    "description": "ตัวเลือกโหมด: หน้าตัด"
+                },
+                "CORNER": {
+                    "name": "Set Mesh Normal (มุม)",
+                    "description": "ตัวเลือกโหมด: มุม"
+                }
+            }
         }
-      },
-      "domain": {
-        "POINT": {
-          "name": "Set Mesh Normal (จุด)",
-          "description": "ตัวเลือกโหมด: จุด"
+    },
+    "GeometryNodeDualMesh": {
+        "name": "Dual Mesh",
+        "description": "แปลงรูปทรงตาข่ายแบบ Dual โดยสลับตำแหน่งระหว่างจุด (Vertex) กับหน้าตัด (Face)",
+        "inputs": {
+            "Mesh": {
+                "name": "โครงข่าย (Mesh)",
+                "description": "ตาข่ายต้นฉบับ"
+            }
         },
-        "FACE": {
-          "name": "Set Mesh Normal (หน้าตัด)",
-          "description": "ตัวเลือกโหมด: หน้าตัด"
-        },
-        "CORNER": {
-          "name": "Set Mesh Normal (มุม)",
-          "description": "ตัวเลือกโหมด: มุม"
+        "outputs": {
+            "Dual Mesh": {
+                "name": "โครงข่ายคู่ขนาน (Dual Mesh)",
+                "description": "ตาข่ายที่ถูกกลับด้านแล้ว"
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeDualMesh": {
-    "name": "Dual Mesh",
-    "description": "แปลงรูปทรงตาข่ายแบบ Dual โดยสลับตำแหน่งระหว่างจุด (Vertex) กับหน้าตัด (Face)",
-    "inputs": {
-      "Mesh": "ตาข่ายต้นฉบับ"
     },
-    "outputs": {
-      "Dual Mesh": "ตาข่ายที่ถูกกลับด้านแล้ว"
-    }
-  },
-  "GeometryNodeEdgePathsToSelection": {
-    "name": "Edge Paths to Selection",
-    "description": "แปลงเส้นทางของเส้นขอบให้เป็นเงื่อนไขการเลือกพื้นที่ (Selection)",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeFlipFaces": {
-    "name": "Flip Faces",
-    "description": "สลับทิศทางแสงเงาและเวกเตอร์แนวฉากของหน้าตัดให้หันไปทิศตรงกันข้าม",
-    "inputs": {
-      "Mesh": "ตาข่ายต้นฉบับ",
-      "Selection": "หน้าตัดที่ต้องการพลิก"
+    "GeometryNodeEdgePathsToSelection": {
+        "name": "Edge Paths to Selection",
+        "description": "แปลงเส้นทางของเส้นขอบให้เป็นเงื่อนไขการเลือกพื้นที่ (Selection)",
+        "inputs": {},
+        "outputs": {}
     },
-    "outputs": {
-      "Mesh": "ตาข่ายที่หน้าตัดถูกพลิกแล้ว"
-    }
-  },
-  "GeometryNodeMeshToDensityGrid": {
-    "name": "Mesh to Density Grid",
-    "description": "แปลงรูปทรงตาข่ายให้เป็นกลุ่มปริมาตร (Volume Grid) แบบใช้ความหนาแน่น",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeMeshToPoints": {
-    "name": "Mesh to Points",
-    "description": "แปลงแต่ละจุด, เส้น, หรือหน้าตัดให้เป็นกลุ่มจุด (Point Cloud)",
-    "inputs": {
-      "Mesh": "ตาข่ายเป้าหมาย"
-    },
-    "outputs": {
-      "Points": "กลุ่มจุดที่แปลงเสร็จแล้ว"
-    },
-    "dropdowns": {
-      "mode": [
-        "VERTICES",
-        "EDGES",
-        "FACES",
-        "CORNERS"
-      ]
-    },
-    "sub_types": {
-      "mode": {
-        "VERTICES": {
-          "name": "จุด (Vertices)",
-          "description": "ทำงานในระดับจุดยอดเรขาคณิต (Vertices)"
+    "GeometryNodeFlipFaces": {
+        "name": "Flip Faces",
+        "description": "สลับทิศทางแสงเงาและVectorแนวฉากของหน้าตัดให้หันไปทิศตรงกันข้าม",
+        "inputs": {
+            "Mesh": {
+                "name": "โครงข่าย (Mesh)",
+                "description": "ตาข่ายต้นฉบับ"
+            },
+            "Selection": {
+                "name": "การเลือก (Selection)",
+                "description": "หน้าตัดที่ต้องการพลิก"
+            }
         },
-        "EDGES": {
-          "name": "เส้น (Edges)",
-          "description": "ทำงานในระดับเส้นขอบ (Edges)"
-        },
-        "FACES": {
-          "name": "หน้าตัด (Faces)",
-          "description": "ทำงานในระดับพื้นผิวหรือหน้าตัด (Faces)"
-        },
-        "CORNERS": {
-          "name": "มุม (Corners)",
-          "description": "ทำงานในระดับมุมหรือจุดต่อของหน้าตัด (Face Corners)"
+        "outputs": {
+            "Mesh": {
+                "name": "โครงข่าย (Mesh)",
+                "description": "ตาข่ายที่หน้าตัดถูกพลิกแล้ว"
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeMeshToSDFGrid": {
-    "name": "Mesh to SDF Grid",
-    "description": "แปลงรูปทรงตาข่ายให้เป็นระยะทางปริมาตรแบบ Signed Distance Field (SDF)",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeMeshToVolume": {
-    "name": "Mesh to Volume",
-    "description": "แปลงรูปทรงตาข่ายให้กลายเป็นรูปทรงควันหรือปริมาตรทึบ (Volume)",
-    "inputs": {
-      "Mesh": "ตาข่ายเป้าหมาย"
     },
-    "outputs": {
-      "Volume": "ปริมาตรที่สร้างขึ้น"
-    }
-  },
-  "GeometryNodeSplitEdges": {
-    "name": "Split Edges",
-    "description": "แยกเส้นขอบที่ติดกันให้หลุดออก ทำให้หน้าตัดที่อยู่ติดกันแยกเป็นชิ้นๆ",
-    "inputs": {
-      "Mesh": "ตาข่ายเป้าหมาย"
+    "GeometryNodeMeshToDensityGrid": {
+        "name": "Mesh to Density Grid",
+        "description": "แปลงรูปทรงตาข่ายให้เป็นกลุ่มปริมาตร (Volume Grid) แบบใช้ความหนาแน่น",
+        "inputs": {},
+        "outputs": {}
     },
-    "outputs": {
-      "Mesh": "ตาข่ายที่ถูกฉีกหรือแยกเส้นขอบแล้ว"
-    }
-  },
-  "GeometryNodeSubdivideMesh": {
-    "name": "Subdivide Mesh",
-    "description": "เพิ่มความละเอียดให้รูปทรงตาข่ายโดยการซอยหน้าตัดเป็นส่วนย่อยๆ (ระนาบเดิม)",
-    "inputs": {
-      "Mesh": "ตาข่ายเป้าหมาย",
-      "Level": "ระดับการซอยย่อย"
-    },
-    "outputs": {
-      "Mesh": "ตาข่ายที่ละเอียดขึ้น"
-    }
-  },
-  "GeometryNodeSubdivisionSurface": {
-    "name": "Subdivision Surface",
-    "description": "เพิ่มความละเอียดให้รูปทรงตาข่ายและทำความโค้งมนเนียน (Catmull-Clark)",
-    "inputs": {
-      "Mesh": "ตาข่ายเป้าหมาย",
-      "Level": "ระดับความละเอียด"
-    },
-    "outputs": {
-      "Mesh": "ตาข่ายที่มีความโค้งมนและละเอียดขึ้น"
-    }
-  },
-  "GeometryNodeMeshCone": {
-    "name": "Cone",
-    "description": "สร้างรูปทรงเรขาคณิตรูปกรวย",
-    "inputs": {},
-    "outputs": {},
-    "dropdowns": {
-      "fill_type": [
-        "NONE",
-        "NGON",
-        "TRIANGLE_FAN"
-      ]
-    },
-    "sub_types": {
-      "fill_type": {
-        "NONE": {
-          "name": "Cone (ไม่มี (None))",
-          "description": "ตัวเลือกโหมด: ไม่มี (None)"
+    "GeometryNodeMeshToPoints": {
+        "name": "Mesh to Points",
+        "description": "แปลงแต่ละจุด, เส้น, หรือหน้าตัดให้เป็นกลุ่มจุด (Point Cloud)",
+        "inputs": {
+            "Mesh": {
+                "name": "โครงข่าย (Mesh)",
+                "description": "ตาข่ายเป้าหมาย"
+            }
         },
-        "NGON": {
-          "name": "Cone (หลายเหลี่ยม (N-gon))",
-          "description": "ตัวเลือกโหมด: หลายเหลี่ยม (N-gon)"
+        "outputs": {
+            "Points": {
+                "name": "จุด (Points)",
+                "description": "กลุ่มจุดที่แปลงเสร็จแล้ว"
+            }
         },
-        "TRIANGLE_FAN": {
-          "name": "Cone (พัดสามเหลี่ยม (Triangle Fan))",
-          "description": "ตัวเลือกโหมด: พัดสามเหลี่ยม (Triangle Fan)"
+        "dropdowns": {
+            "mode": [
+                "VERTICES",
+                "EDGES",
+                "FACES",
+                "CORNERS"
+            ]
+        },
+        "sub_types": {
+            "mode": {
+                "VERTICES": {
+                    "name": "จุด (Vertices)",
+                    "description": "ทำงานในระดับจุดยอดเรขาคณิต (Vertices)"
+                },
+                "EDGES": {
+                    "name": "เส้น (Edges)",
+                    "description": "ทำงานในระดับเส้นขอบ (Edges)"
+                },
+                "FACES": {
+                    "name": "หน้าตัด (Faces)",
+                    "description": "ทำงานในระดับพื้นผิวหรือหน้าตัด (Faces)"
+                },
+                "CORNERS": {
+                    "name": "มุม (Corners)",
+                    "description": "ทำงานในระดับมุมหรือจุดต่อของหน้าตัด (Face Corners)"
+                }
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeMeshCube": {
-    "name": "Cube",
-    "description": "สร้างรูปทรงเรขาคณิตรูปลูกบาศก์",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeMeshCylinder": {
-    "name": "Cylinder",
-    "description": "สร้างรูปทรงเรขาคณิตรูปทรงกระบอก",
-    "inputs": {},
-    "outputs": {},
-    "dropdowns": {
-      "fill_type": [
-        "NONE",
-        "NGON",
-        "TRIANGLE_FAN"
-      ]
     },
-    "sub_types": {
-      "fill_type": {
-        "NONE": {
-          "name": "Cylinder (ไม่มี (None))",
-          "description": "ตัวเลือกโหมด: ไม่มี (None)"
+    "GeometryNodeMeshToSDFGrid": {
+        "name": "Mesh to SDF Grid",
+        "description": "แปลงรูปทรงตาข่ายให้เป็นระยะทางปริมาตรแบบ Signed Distance Field (SDF)",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeMeshToVolume": {
+        "name": "Mesh to Volume",
+        "description": "แปลงรูปทรงตาข่ายให้กลายเป็นรูปทรงควันหรือปริมาตรทึบ (Volume)",
+        "inputs": {
+            "Mesh": {
+                "name": "โครงข่าย (Mesh)",
+                "description": "ตาข่ายเป้าหมาย"
+            }
         },
-        "NGON": {
-          "name": "Cylinder (หลายเหลี่ยม (N-gon))",
-          "description": "ตัวเลือกโหมด: หลายเหลี่ยม (N-gon)"
-        },
-        "TRIANGLE_FAN": {
-          "name": "Cylinder (พัดสามเหลี่ยม (Triangle Fan))",
-          "description": "ตัวเลือกโหมด: พัดสามเหลี่ยม (Triangle Fan)"
+        "outputs": {
+            "Volume": {
+                "name": "ปริมาตร (Volume)",
+                "description": "ปริมาตรที่สร้างขึ้น"
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeMeshGrid": {
-    "name": "Grid",
-    "description": "สร้างแผ่นตารางสี่เหลี่ยมระนาบแบนที่มีการซอยย่อยหน้าตัด",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeMeshIcoSphere": {
-    "name": "Ico Sphere",
-    "description": "สร้างทรงกลมที่มีหน้าตัดประกอบจากสามเหลี่ยมเท่าๆ กัน",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeMeshCircle": {
-    "name": "Mesh Circle",
-    "description": "สร้างแผ่นวงกลมแบบมีหน้าตัด หรือกรอบเส้นรอบนอกรูปวงกลม",
-    "inputs": {},
-    "outputs": {},
-    "dropdowns": {
-      "fill_type": [
-        "NONE",
-        "NGON",
-        "TRIANGLE_FAN"
-      ]
     },
-    "sub_types": {
-      "fill_type": {
-        "NONE": {
-          "name": "Mesh Circle (ไม่มี (None))",
-          "description": "ตัวเลือกโหมด: ไม่มี (None)"
+    "GeometryNodeSplitEdges": {
+        "name": "Split Edges",
+        "description": "แยกเส้นขอบที่ติดกันให้หลุดออก ทำให้หน้าตัดที่อยู่ติดกันแยกเป็นชิ้นๆ",
+        "inputs": {
+            "Mesh": {
+                "name": "โครงข่าย (Mesh)",
+                "description": "ตาข่ายเป้าหมาย"
+            }
         },
-        "NGON": {
-          "name": "Mesh Circle (หลายเหลี่ยม (N-gon))",
-          "description": "ตัวเลือกโหมด: หลายเหลี่ยม (N-gon)"
-        },
-        "TRIANGLE_FAN": {
-          "name": "Mesh Circle (พัดสามเหลี่ยม (Triangle Fan))",
-          "description": "ตัวเลือกโหมด: พัดสามเหลี่ยม (Triangle Fan)"
+        "outputs": {
+            "Mesh": {
+                "name": "โครงข่าย (Mesh)",
+                "description": "ตาข่ายที่ถูกฉีกหรือแยกเส้นขอบแล้ว"
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeMeshLine": {
-    "name": "Mesh Line",
-    "description": "สร้างเส้นประกอบจากจุดตามแนวทางที่กำหนด (แบบ Mesh)",
-    "inputs": {},
-    "outputs": {},
-    "dropdowns": {
-      "mode": [
-        "OFFSET",
-        "END_POINTS"
-      ],
-      "count_mode": [
-        "TOTAL",
-        "RESOLUTION"
-      ]
     },
-    "sub_types": {
-      "mode": {
-        "OFFSET": {
-          "name": "ระยะห่าง (Offset)",
-          "description": "อ้างอิงหรือใช้ค่าการเลื่อนตำแหน่ง (Offset)"
+    "GeometryNodeSubdivideMesh": {
+        "name": "Subdivide Mesh",
+        "description": "เพิ่มความละเอียดให้รูปทรงตาข่ายโดยการซอยหน้าตัดเป็นส่วนย่อยๆ (ระนาบเดิม)",
+        "inputs": {
+            "Mesh": {
+                "name": "โครงข่าย (Mesh)",
+                "description": "ตาข่ายเป้าหมาย"
+            },
+            "Level": {
+                "name": "ระดับ (Level)",
+                "description": "ระดับการซอยย่อย"
+            }
         },
-        "END_POINTS": {
-          "name": "จุดปลาย (End Points)",
-          "description": "กำหนดจากตำแหน่งจุดเริ่มต้นจนถึงจุดสิ้นสุด"
+        "outputs": {
+            "Mesh": {
+                "name": "โครงข่าย (Mesh)",
+                "description": "ตาข่ายที่ละเอียดขึ้น"
+            }
         }
-      },
-      "count_mode": {
-        "TOTAL": {
-          "name": "Mesh Line (ทั้งหมด (Total))",
-          "description": "ตัวเลือกโหมด: ทั้งหมด (Total)"
+    },
+    "GeometryNodeSubdivisionSurface": {
+        "name": "Subdivision Surface",
+        "description": "เพิ่มความละเอียดให้รูปทรงตาข่ายและทำความโค้งมนเนียน (Catmull-Clark)",
+        "inputs": {
+            "Mesh": {
+                "name": "โครงข่าย (Mesh)",
+                "description": "ตาข่ายเป้าหมาย"
+            },
+            "Level": {
+                "name": "ระดับ (Level)",
+                "description": "ระดับความละเอียด"
+            }
         },
-        "RESOLUTION": {
-          "name": "Mesh Line (ความละเอียด (Resolution))",
-          "description": "ตัวเลือกโหมด: ความละเอียด (Resolution)"
+        "outputs": {
+            "Mesh": {
+                "name": "โครงข่าย (Mesh)",
+                "description": "ตาข่ายที่มีความโค้งมนและละเอียดขึ้น"
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeMeshUVSphere": {
-    "name": "UV Sphere",
-    "description": "สร้างทรงกลมที่มีหน้าตัดแบบตารางคล้ายเส้นรุ้งเส้นแวง",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeCornersOfEdge": {
-    "name": "Corners of Edge",
-    "description": "ดึงข้อมูลมุมของหน้าตัด (Face Corners) ที่เชื่อมต่อกับเส้นขอบที่ระบุ",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeCornersOfFace": {
-    "name": "Corners of Face",
-    "description": "ดึงข้อมูลมุมของหน้าตัดทั้งหมดที่อยู่บนหน้าตัดนั้นๆ",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeCornersOfVertex": {
-    "name": "Corners of Vertex",
-    "description": "ดึงข้อมูลมุมของหน้าตัดที่มีการเชื่อมต่อกับจุด (Vertex) ที่ระบุ",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeEdgesOfCorner": {
-    "name": "Edges of Corner",
-    "description": "ดึงเส้นขอบที่อยู่ข้างเคียงมุมของหน้าตัด",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeEdgesOfVertex": {
-    "name": "Edges of Vertex",
-    "description": "ดึงข้อมูลเส้นขอบทั้งหมดที่พุ่งออกจากจุดศูนย์กลางจุดใดจุดหนึ่ง",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeFaceOfCorner": {
-    "name": "Face of Corner",
-    "description": "หาหน้าที่มุม (Corner) ระบุสังกัดอยู่",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeOffsetCornerInFace": {
-    "name": "Offset Corner in Face",
-    "description": "ขยับหรือชดเชยการอ้างอิงลำดับมุมของหน้าตัดให้เลื่อนไปตามหน้าตัดนั้น",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeVertexOfCorner": {
-    "name": "Vertex of Corner",
-    "description": "หาตำแหน่งจุด (Vertex) ที่เชื่อมต่อกับมุมของหน้าตัด",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeDistributePointsOnFaces": {
-    "name": "Distribute Points on Faces",
-    "description": "สุ่มกระจายจุดต่างๆ บนพื้นผิวของหน้าตัดรูปทรงเรขาคณิต (มักใช้สำหรับการปลูกต้นไม้ วางก้อนหิน)",
-    "inputs": {
-      "Mesh": "ตาข่ายเป้าหมาย",
-      "Density": "ความหนาแน่นของจุด",
-      "Distance Min": "ระยะห่างต่ำสุด (กรณีใช้ Poisson Disk)"
     },
-    "outputs": {
-      "Points": "จุดที่ถูกกระจาย"
-    },
-    "dropdowns": {
-      "distribute_method": [
-        "RANDOM",
-        "POISSON"
-      ]
-    },
-    "sub_types": {
-      "distribute_method": {
-        "RANDOM": {
-          "name": "Distribute Points on Faces (สุ่ม (Random))",
-          "description": "ตัวเลือกโหมด: สุ่ม (Random)"
+    "GeometryNodeMeshCone": {
+        "name": "Cone",
+        "description": "สร้างรูปทรงเรขาคณิตรูปกรวย",
+        "inputs": {},
+        "outputs": {},
+        "dropdowns": {
+            "fill_type": [
+                "NONE",
+                "NGON",
+                "TRIANGLE_FAN"
+            ]
         },
-        "POISSON": {
-          "name": "Distribute Points on Faces (ปัวซง (Poisson))",
-          "description": "ตัวเลือกโหมด: ปัวซง (Poisson)"
+        "sub_types": {
+            "fill_type": {
+                "NONE": {
+                    "name": "Cone (ไม่มี (None))",
+                    "description": "ตัวเลือกโหมด: ไม่มี (None)"
+                },
+                "NGON": {
+                    "name": "Cone (หลายเหลี่ยม (N-gon))",
+                    "description": "ตัวเลือกโหมด: หลายเหลี่ยม (N-gon)"
+                },
+                "TRIANGLE_FAN": {
+                    "name": "Cone (พัดสามเหลี่ยม (Triangle Fan))",
+                    "description": "ตัวเลือกโหมด: พัดสามเหลี่ยม (Triangle Fan)"
+                }
+            }
         }
-      }
-    }
-  },
-  "GeometryNodeGridToMesh": {
-    "name": "Grid to Mesh",
-    "description": "แปลงตารางกริดปริมาตร (Volume) กลับมาเป็นรูปทรงตาข่าย 3 มิติ (Mesh)",
-    "inputs": {},
-    "outputs": {}
-  },
-  "GeometryNodeVolumeToMesh": {
-    "name": "VolumeToMesh",
-    "description": "แปลงปริมาตรทั้งหมดกลับไปเป็นผิวตาข่าย Mesh ทึบ",
-    "inputs": {
-      "Volume": "ปริมาตรต้นทาง",
-      "Threshold": "ระดับความทึบแสงขั้นต่ำที่จะสร้างผิว"
     },
-    "outputs": {
-      "Mesh": "ตาข่ายล้อมรอบรูปทรงปริมาตร"
+    "GeometryNodeMeshCube": {
+        "name": "Cube",
+        "description": "สร้างรูปทรงเรขาคณิตรูปลูกบาศก์",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeMeshCylinder": {
+        "name": "Cylinder",
+        "description": "สร้างรูปทรงเรขาคณิตรูปทรงกระบอก",
+        "inputs": {},
+        "outputs": {},
+        "dropdowns": {
+            "fill_type": [
+                "NONE",
+                "NGON",
+                "TRIANGLE_FAN"
+            ]
+        },
+        "sub_types": {
+            "fill_type": {
+                "NONE": {
+                    "name": "Cylinder (ไม่มี (None))",
+                    "description": "ตัวเลือกโหมด: ไม่มี (None)"
+                },
+                "NGON": {
+                    "name": "Cylinder (หลายเหลี่ยม (N-gon))",
+                    "description": "ตัวเลือกโหมด: หลายเหลี่ยม (N-gon)"
+                },
+                "TRIANGLE_FAN": {
+                    "name": "Cylinder (พัดสามเหลี่ยม (Triangle Fan))",
+                    "description": "ตัวเลือกโหมด: พัดสามเหลี่ยม (Triangle Fan)"
+                }
+            }
+        }
+    },
+    "GeometryNodeMeshGrid": {
+        "name": "Grid",
+        "description": "สร้างแผ่นตารางสี่เหลี่ยมระนาบแบนที่มีการซอยย่อยหน้าตัด",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeMeshIcoSphere": {
+        "name": "Ico Sphere",
+        "description": "สร้างทรงกลมที่มีหน้าตัดประกอบจากสามเหลี่ยมเท่าๆ กัน",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeMeshCircle": {
+        "name": "Mesh Circle",
+        "description": "สร้างแผ่นวงกลมแบบมีหน้าตัด หรือกรอบเส้นรอบนอกรูปวงกลม",
+        "inputs": {},
+        "outputs": {},
+        "dropdowns": {
+            "fill_type": [
+                "NONE",
+                "NGON",
+                "TRIANGLE_FAN"
+            ]
+        },
+        "sub_types": {
+            "fill_type": {
+                "NONE": {
+                    "name": "Mesh Circle (ไม่มี (None))",
+                    "description": "ตัวเลือกโหมด: ไม่มี (None)"
+                },
+                "NGON": {
+                    "name": "Mesh Circle (หลายเหลี่ยม (N-gon))",
+                    "description": "ตัวเลือกโหมด: หลายเหลี่ยม (N-gon)"
+                },
+                "TRIANGLE_FAN": {
+                    "name": "Mesh Circle (พัดสามเหลี่ยม (Triangle Fan))",
+                    "description": "ตัวเลือกโหมด: พัดสามเหลี่ยม (Triangle Fan)"
+                }
+            }
+        }
+    },
+    "GeometryNodeMeshLine": {
+        "name": "Mesh Line",
+        "description": "สร้างเส้นประกอบจากจุดตามแนวทางที่กำหนด (แบบ Mesh)",
+        "inputs": {},
+        "outputs": {},
+        "dropdowns": {
+            "mode": [
+                "OFFSET",
+                "END_POINTS"
+            ],
+            "count_mode": [
+                "TOTAL",
+                "RESOLUTION"
+            ]
+        },
+        "sub_types": {
+            "mode": {
+                "OFFSET": {
+                    "name": "ระยะห่าง (Offset)",
+                    "description": "อ้างอิงหรือใช้ค่าการเลื่อนตำแหน่ง (Offset)"
+                },
+                "END_POINTS": {
+                    "name": "จุดปลาย (End Points)",
+                    "description": "กำหนดจากตำแหน่งจุดเริ่มต้นจนถึงจุดสิ้นสุด"
+                }
+            },
+            "count_mode": {
+                "TOTAL": {
+                    "name": "Mesh Line (ทั้งหมด (Total))",
+                    "description": "ตัวเลือกโหมด: ทั้งหมด (Total)"
+                },
+                "RESOLUTION": {
+                    "name": "Mesh Line (ความละเอียด (Resolution))",
+                    "description": "ตัวเลือกโหมด: ความละเอียด (Resolution)"
+                }
+            }
+        }
+    },
+    "GeometryNodeMeshUVSphere": {
+        "name": "UV Sphere",
+        "description": "สร้างทรงกลมที่มีหน้าตัดแบบตารางคล้ายเส้นรุ้งเส้นแวง",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeCornersOfEdge": {
+        "name": "Corners of Edge",
+        "description": "ดึงข้อมูลมุมของหน้าตัด (Face Corners) ที่เชื่อมต่อกับเส้นขอบที่ระบุ",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeCornersOfFace": {
+        "name": "Corners of Face",
+        "description": "ดึงข้อมูลมุมของหน้าตัดทั้งหมดที่อยู่บนหน้าตัดนั้นๆ",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeCornersOfVertex": {
+        "name": "Corners of Vertex",
+        "description": "ดึงข้อมูลมุมของหน้าตัดที่มีการเชื่อมต่อกับจุด (Vertex) ที่ระบุ",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeEdgesOfCorner": {
+        "name": "Edges of Corner",
+        "description": "ดึงเส้นขอบที่อยู่ข้างเคียงมุมของหน้าตัด",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeEdgesOfVertex": {
+        "name": "Edges of Vertex",
+        "description": "ดึงข้อมูลเส้นขอบทั้งหมดที่พุ่งออกจากจุดศูนย์กลางจุดใดจุดหนึ่ง",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeFaceOfCorner": {
+        "name": "Face of Corner",
+        "description": "หาหน้าที่มุม (Corner) ระบุสังกัดอยู่",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeOffsetCornerInFace": {
+        "name": "Offset Corner in Face",
+        "description": "ขยับหรือชดเชยการอ้างอิงลำดับมุมของหน้าตัดให้เลื่อนไปตามหน้าตัดนั้น",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeVertexOfCorner": {
+        "name": "Vertex of Corner",
+        "description": "หาตำแหน่งจุด (Vertex) ที่เชื่อมต่อกับมุมของหน้าตัด",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeDistributePointsOnFaces": {
+        "name": "Distribute Points on Faces",
+        "description": "สุ่มกระจายจุดต่างๆ บนพื้นผิวของหน้าตัดรูปทรงเรขาคณิต (มักใช้สำหรับการปลูกต้นไม้ วางก้อนหิน)",
+        "inputs": {
+            "Mesh": {
+                "name": "โครงข่าย (Mesh)",
+                "description": "ตาข่ายเป้าหมาย"
+            },
+            "Density": {
+                "name": "ความหนาแน่น (Density)",
+                "description": "ความหนาแน่นของจุด"
+            },
+            "Distance Min": {
+                "name": "ระยะทางต่ำสุด (Distance Min)",
+                "description": "ระยะห่างต่ำสุด (กรณีใช้ Poisson Disk)"
+            }
+        },
+        "outputs": {
+            "Points": {
+                "name": "จุด (Points)",
+                "description": "จุดที่ถูกกระจาย"
+            }
+        },
+        "dropdowns": {
+            "distribute_method": [
+                "RANDOM",
+                "POISSON"
+            ]
+        },
+        "sub_types": {
+            "distribute_method": {
+                "RANDOM": {
+                    "name": "Distribute Points on Faces (สุ่ม (Random))",
+                    "description": "ตัวเลือกโหมด: สุ่ม (Random)"
+                },
+                "POISSON": {
+                    "name": "Distribute Points on Faces (ปัวซง (Poisson))",
+                    "description": "ตัวเลือกโหมด: ปัวซง (Poisson)"
+                }
+            }
+        }
+    },
+    "GeometryNodeGridToMesh": {
+        "name": "Grid to Mesh",
+        "description": "แปลงตารางกริดปริมาตร (Volume) กลับมาเป็นรูปทรงตาข่าย 3 มิติ (Mesh)",
+        "inputs": {},
+        "outputs": {}
+    },
+    "GeometryNodeVolumeToMesh": {
+        "name": "VolumeToMesh",
+        "description": "แปลงปริมาตรทั้งหมดกลับไปเป็นผิวตาข่าย Mesh ทึบ",
+        "inputs": {
+            "Volume": {
+                "name": "ปริมาตร (Volume)",
+                "description": "ปริมาตรต้นทาง"
+            },
+            "Threshold": {
+                "name": "เกณฑ์ (Threshold)",
+                "description": "ระดับความทึบแสงขั้นต่ำที่จะสร้างผิว"
+            }
+        },
+        "outputs": {
+            "Mesh": {
+                "name": "โครงข่าย (Mesh)",
+                "description": "ตาข่ายล้อมรอบรูปทรงปริมาตร"
+            }
+        }
     }
-  }
 }

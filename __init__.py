@@ -37,6 +37,8 @@ def get_node_data():
                         print(f"Error loading {filepath}: {e}")
     return node_data_cache
 
+THAI_COMBINING = set('\u0e31\u0e33\u0e34\u0e35\u0e36\u0e37\u0e38\u0e39\u0e3a\u0e47\u0e48\u0e49\u0e4a\u0e4b\u0e4c\u0e4d\u0e4e')
+
 def draw_text_multiline(font_id, text, x, y, max_width, size=16, color=(1,1,1,1)):
     blf.size(font_id, size)
     blf.color(font_id, *color)
@@ -47,7 +49,8 @@ def draw_text_multiline(font_id, text, x, y, max_width, size=16, color=(1,1,1,1)
         for char in paragraph:
             test_line = current_line + char
             width, _ = blf.dimensions(font_id, test_line)
-            if width <= max_width:
+            # Never break line if character is a combining mark
+            if width <= max_width or char in THAI_COMBINING:
                 current_line = test_line
             else:
                 if char == ' ':
@@ -161,15 +164,19 @@ def draw_callback_px():
     # Draw Background
     gpu.state.blend_set('ALPHA')
     shader.bind()
-    shader.uniform_float("color", (0.1, 0.1, 0.1, 0.85))
+    shader.uniform_float("color", (0.1, 0.1, 0.1, prefs.hud_bg_opacity))
     batch.draw(shader)
     gpu.state.blend_set('NONE')
     
     # Draw Lock Warning if unlocked
     if not prefs.hud_locked:
         shader.uniform_float("color", (0.8, 0.2, 0.2, 0.5))
-        # Draw a small border or highlight
         batch.draw(shader)
+        
+        blf.size(font_id, int(14 * scale))
+        blf.color(font_id, 1, 1, 1, 1)
+        blf.position(font_id, x + int(15 * scale), y + int(10 * scale), 0)
+        blf.draw(font_id, "Right Click or ESC to Lock")
     
     # Draw Text
     font_id = 0
@@ -177,12 +184,11 @@ def draw_callback_px():
     text_y = start_y - 30
     
     if node_info:
-        # Title
-        blf.size(font_id, int(24 * scale))
+        # Title (English, multiline)
         blf.color(font_id, 1, 0.8, 0.2, 1)
-        blf.position(font_id, text_x, text_y, 0)
-        blf.draw(font_id, node_info.get("name", active_node.name))
-        text_y -= int(40 * scale)
+        title = active_node.label if active_node.label else active_node.bl_label
+        text_y = draw_text_multiline(font_id, title, text_x, text_y, box_width - int(30 * scale), size=int(24 * scale))
+        text_y -= int(15 * scale)
         
         # Description
         desc = node_info.get("description", "")
@@ -204,17 +210,40 @@ def draw_callback_px():
                 if not trans and hasattr(socket, 'identifier'):
                     trans = json_inputs.get(socket.identifier, "")
                 
-                trans_name = trans
                 trans_desc = ""
                 if isinstance(trans, dict):
-                    trans_name = trans.get("name", "")
                     trans_desc = trans.get("description", "")
+                elif isinstance(trans, str) and trans:
+                    pass
                 
-                display_text = f"- {socket.name}: {trans_name}" if trans_name else f"- {socket.name}"
+                # Get socket color
+                s_color = socket.draw_color(context, active_node)
+                # Boost brightness slightly if it's too dark
+                s_color = (min(1.0, s_color[0] * 1.2), min(1.0, s_color[1] * 1.2), min(1.0, s_color[2] * 1.2), 1.0)
+                blf.color(font_id, *s_color)
+                
+                # Map internal socket type to readable name
+                type_map = {
+                    'VALUE': 'Float', 'INT': 'Integer', 'BOOLEAN': 'Boolean',
+                    'VECTOR': 'Vector', 'STRING': 'String', 'RGBA': 'Color',
+                    'SHADER': 'Shader', 'OBJECT': 'Object', 'IMAGE': 'Image',
+                    'GEOMETRY': 'Geometry', 'COLLECTION': 'Collection',
+                    'TEXTURE': 'Texture', 'MATERIAL': 'Material'
+                }
+                s_type = type_map.get(getattr(socket, 'type', ''), getattr(socket, 'type', '').title())
+                
+                # Check if it's a field
+                shape = getattr(socket, 'display_shape', '')
+                if shape == 'DIAMOND':
+                    s_type += " Field"
+                
+                type_suffix = f" ({s_type})" if s_type else ""
+                
+                display_text = f"- {socket.name}{type_suffix}"
+                text_y = draw_text_multiline(font_id, display_text, text_x, text_y, box_width - int(30 * scale), size=int(14 * scale), color=s_color)
                 if trans_desc:
-                    display_text += f"\n   {trans_desc}"
-                    
-                text_y = draw_text_multiline(font_id, display_text, text_x, text_y, box_width - int(30 * scale), size=int(14 * scale))
+                    text_y = draw_text_multiline(font_id, f"  {trans_desc}", text_x, text_y, box_width - int(30 * scale), size=int(14 * scale), color=s_color)
+                text_y -= int(5 * scale)
                 
         text_y -= int(10 * scale)
         
@@ -233,29 +262,56 @@ def draw_callback_px():
                 if not trans and hasattr(socket, 'identifier'):
                     trans = json_outputs.get(socket.identifier, "")
                 
-                trans_name = trans
                 trans_desc = ""
                 if isinstance(trans, dict):
-                    trans_name = trans.get("name", "")
                     trans_desc = trans.get("description", "")
                 
-                display_text = f"- {socket.name}: {trans_name}" if trans_name else f"- {socket.name}"
+                # Get socket color
+                s_color = socket.draw_color(context, active_node)
+                s_color = (min(1.0, s_color[0] * 1.2), min(1.0, s_color[1] * 1.2), min(1.0, s_color[2] * 1.2), 1.0)
+                blf.color(font_id, *s_color)
+                
+                type_map = {
+                    'VALUE': 'Float', 'INT': 'Integer', 'BOOLEAN': 'Boolean',
+                    'VECTOR': 'Vector', 'STRING': 'String', 'RGBA': 'Color',
+                    'SHADER': 'Shader', 'OBJECT': 'Object', 'IMAGE': 'Image',
+                    'GEOMETRY': 'Geometry', 'COLLECTION': 'Collection',
+                    'TEXTURE': 'Texture', 'MATERIAL': 'Material'
+                }
+                s_type = type_map.get(getattr(socket, 'type', ''), getattr(socket, 'type', '').title())
+                
+                # Check if it's a field
+                shape = getattr(socket, 'display_shape', '')
+                if shape == 'DIAMOND':
+                    s_type += " Field"
+                
+                type_suffix = f" ({s_type})" if s_type else ""
+                
+                display_text = f"- {socket.name}{type_suffix}"
+                text_y = draw_text_multiline(font_id, display_text, text_x, text_y, box_width - int(30 * scale), size=int(14 * scale), color=s_color)
                 if trans_desc:
-                    display_text += f"\n   {trans_desc}"
-                    
-                text_y = draw_text_multiline(font_id, display_text, text_x, text_y, box_width - int(30 * scale), size=int(14 * scale))
+                    text_y = draw_text_multiline(font_id, f"  {trans_desc}", text_x, text_y, box_width - int(30 * scale), size=int(14 * scale), color=s_color)
+                text_y -= int(5 * scale)
     else:
         # Fallback if node not found
-        blf.size(font_id, int(20 * scale))
         blf.color(font_id, 1, 1, 1, 1)
-        blf.position(font_id, text_x, text_y, 0)
-        blf.draw(font_id, active_node.name)
-        text_y -= int(30 * scale)
+        title = active_node.label if active_node.label else active_node.bl_label
+        text_y = draw_text_multiline(font_id, title, text_x, text_y, box_width - int(30 * scale), size=int(20 * scale))
+        text_y -= int(15 * scale)
         text_y = draw_text_multiline(font_id, "ยังไม่มีคำอธิบายสำหรับ Node นี้ในระบบ", text_x, text_y, box_width - int(30 * scale), size=int(16 * scale))
 
     # Calculate actual height for next frame's box drawing
     global_box_height = start_y - text_y + 20
 
+
+def update_hud_scale(self, context):
+    try:
+        for window in context.window_manager.windows:
+            for area in window.screen.areas:
+                if area.type == 'NODE_EDITOR':
+                    area.tag_redraw()
+    except Exception as e:
+        print("Error in update_hud_scale:", e)
 
 class LearnNodePreferences(bpy.types.AddonPreferences):
     bl_idname = __name__
@@ -271,7 +327,14 @@ class LearnNodePreferences(bpy.types.AddonPreferences):
     hud_scale: bpy.props.FloatProperty(
         name="HUD Scale", 
         description="Scale the size of the HUD", 
-        default=1.0, min=0.5, max=3.0, step=10
+        default=1.0, min=0.5, max=3.0, step=10,
+        update=update_hud_scale
+    )
+    hud_bg_opacity: bpy.props.FloatProperty(
+        name="HUD Opacity",
+        description="Opacity of the background frame",
+        default=0.85, min=0.0, max=1.0, step=5,
+        update=update_hud_scale
     )
 
     def draw(self, context):
@@ -295,15 +358,17 @@ class NODE_PT_learn_node(bpy.types.Panel):
         layout = self.layout
         prefs = context.preferences.addons[__name__].preferences
         
-        layout.prop(prefs, "show_hud", text="เปิดแสดงผล (HUD)", toggle=True)
+        layout.prop(prefs, "show_hud", text="Toggle HUD", toggle=True)
+        layout.prop(prefs, "hud_scale", text="HUD Scale", slider=True)
+        layout.prop(prefs, "hud_bg_opacity", text="Background Opacity", slider=True)
         
         if prefs.hud_locked:
-            layout.operator("learn_node.unlock_hud", text="ปลดล็อคเพื่อลาก (Unlock)", icon='UNLOCKED')
+            layout.operator("learn_node.unlock_hud", text="Unlock to Move", icon='UNLOCKED')
         else:
-            layout.operator("learn_node.lock_hud", text="ล็อคตำแหน่ง (Lock)", icon='LOCKED')
+            layout.operator("learn_node.lock_hud", text="Lock Position", icon='LOCKED')
             
         layout.separator()
-        layout.operator("learn_node.reload_data", text="โหลดข้อมูล JSON ใหม่", icon='FILE_REFRESH')
+        layout.operator("learn_node.reload_data", text="Reload JSON Data", icon='FILE_REFRESH')
 
 
 class NODE_OT_learn_node_reload(bpy.types.Operator):
@@ -378,6 +443,11 @@ class NODE_OT_learn_node_drag_hud(bpy.types.Operator):
             prefs.hud_y = mouse_y - self.offset_y
             context.area.tag_redraw()
             return {'RUNNING_MODAL'}
+            
+        elif event.type in {'RIGHTMOUSE', 'ESC'} and event.value == 'PRESS':
+            prefs.hud_locked = True
+            context.area.tag_redraw()
+            return {'FINISHED'}
             
         if not self.dragging:
             return {'PASS_THROUGH'}
