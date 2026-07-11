@@ -37,6 +37,7 @@ PROBE_DATA_TYPE_BY_SOCKET_TYPE = {
     'VECTOR': 'FLOAT_VECTOR',
     'RGBA': 'FLOAT_COLOR',
 }
+GEOMETRY_SOCKET_TYPE = 'GEOMETRY'
 RUNTIME_VALUE_REFRESH_SECONDS = 0.3
 runtime_value_cache = {"key": None, "values": {}}
 runtime_probe_index = 0
@@ -97,18 +98,107 @@ def runtime_socket_key(socket):
 def find_socket_by_identifier(sockets, identifier):
     return next((socket for socket in sockets if socket.identifier == identifier), None)
 
+def socket_can_be_live_target(socket):
+    if socket.type == GEOMETRY_SOCKET_TYPE:
+        return True
+    return getattr(socket, 'inferred_structure_type', None) == 'SINGLE'
+
 def get_runtime_value_targets(valid_inputs, valid_outputs):
     """Map HUD sockets to the output sockets that provide their live values."""
     targets = []
     for socket in valid_inputs:
         if socket.is_linked:
             source_socket = socket.links[0].from_socket
-            if source_socket.inferred_structure_type == 'SINGLE':
+            if socket_can_be_live_target(source_socket):
                 targets.append((runtime_socket_key(socket), source_socket))
     for socket in valid_outputs:
-        if socket.inferred_structure_type == 'SINGLE':
+        if socket_can_be_live_target(socket):
             targets.append((runtime_socket_key(socket), socket))
     return targets
+
+def pluralize_count(count, singular, plural):
+    return singular if count == 1 else plural
+
+def format_geometry_mesh_summary(mesh):
+    vertex_count = len(mesh.vertices)
+    edge_count = len(mesh.edges)
+    face_count = len(mesh.polygons)
+    if vertex_count == 0 and edge_count == 0 and face_count == 0:
+        return None
+    return (
+        f"Mesh: {vertex_count} {pluralize_count(vertex_count, 'vertex', 'vertices')}, "
+        f"{edge_count} {pluralize_count(edge_count, 'edge', 'edges')}, "
+        f"{face_count} {pluralize_count(face_count, 'face', 'faces')}"
+    )
+
+def object_uses_node_group(obj, tree):
+    if not obj or obj.type != 'MESH':
+        return False
+    return any(
+        modifier.type == 'NODES' and modifier.node_group == tree
+        for modifier in obj.modifiers
+    )
+
+def find_node_group_owner_mesh(tree):
+    active_object = bpy.context.object
+    if object_uses_node_group(active_object, tree):
+        return active_object.data
+
+    for obj in bpy.context.scene.objects:
+        if object_uses_node_group(obj, tree):
+            return obj.data
+    return None
+
+def create_point_probe_mesh(probe_prefix):
+    probe_mesh = bpy.data.meshes.new(f"{probe_prefix}mesh")
+    probe_mesh.from_pydata([(0.0, 0.0, 0.0)], [], [])
+    probe_mesh.update()
+    return probe_mesh
+
+def create_probe_mesh(tree, probe_prefix, use_owner_mesh):
+    if use_owner_mesh:
+        owner_mesh = find_node_group_owner_mesh(tree)
+        return owner_mesh.copy() if owner_mesh else None
+    return create_point_probe_mesh(probe_prefix)
+
+class ProbeContext:
+    def __init__(self, prefix):
+        self.prefix = prefix
+        self.node_tree = None
+        self.mesh = None
+        self.obj = None
+
+    def cleanup(self):
+        if self.obj:
+            bpy.data.objects.remove(self.obj, do_unlink=True)
+            self.obj = None
+        if self.mesh:
+            bpy.data.meshes.remove(self.mesh)
+            self.mesh = None
+        if self.node_tree:
+            bpy.data.node_groups.remove(self.node_tree)
+            self.node_tree = None
+
+def create_probe_context(tree, use_owner_mesh=False):
+    global runtime_probe_index
+
+    runtime_probe_index += 1
+    probe_prefix = f"__learn_node_probe_{runtime_probe_index}_"
+    probe = ProbeContext(probe_prefix)
+    try:
+        probe.node_tree = tree.copy()
+        probe.mesh = create_probe_mesh(tree, probe.prefix, use_owner_mesh)
+        if not probe.mesh:
+            probe.cleanup()
+            return None
+        probe.obj = bpy.data.objects.new(f"{probe.prefix}object", probe.mesh)
+        bpy.context.scene.collection.objects.link(probe.obj)
+        modifier = probe.obj.modifiers.new(f"{probe.prefix}modifier", 'NODES')
+        modifier.node_group = probe.node_tree
+        return probe
+    except Exception:
+        probe.cleanup()
+        raise
 
 def read_attribute_value(attribute):
     if not attribute.data:
@@ -121,30 +211,18 @@ def read_attribute_value(attribute):
             pass
     return None
 
-def evaluate_runtime_values(tree, targets):
-    """Evaluate socket outputs on a temporary point, matching the Viewer-node model."""
-    global runtime_probe_index
-
-    supported_targets = [
-        (display_key, source_socket)
-        for display_key, source_socket in targets
-        if source_socket.type in PROBE_DATA_TYPE_BY_SOCKET_TYPE
-    ]
-    if not supported_targets:
-        return {}
-
-    probe_tree = None
-    probe_mesh = None
-    probe_object = None
+def evaluate_attribute_runtime_values(tree, supported_targets):
+    """Evaluate value-like socket outputs on a temporary point."""
+    probe = None
     values = {}
-    runtime_probe_index += 1
-    probe_prefix = f"__learn_node_probe_{runtime_probe_index}_"
 
     try:
-        probe_tree = tree.copy()
-        group_input = next(node for node in probe_tree.nodes if node.bl_idname == 'NodeGroupInput')
+        probe = create_probe_context(tree)
+        if not probe:
+            return {}
+        group_input = next(node for node in probe.node_tree.nodes if node.bl_idname == 'NodeGroupInput')
         group_output = next(
-            node for node in probe_tree.nodes
+            node for node in probe.node_tree.nodes
             if node.bl_idname == 'NodeGroupOutput' and node.is_active_output
         )
         geometry_input = next(socket for socket in group_input.outputs if socket.type == 'GEOMETRY')
@@ -153,37 +231,29 @@ def evaluate_runtime_values(tree, targets):
         current_geometry = geometry_input
         captured_targets = []
         for index, (display_key, source_socket) in enumerate(supported_targets):
-            probe_node = probe_tree.nodes.get(source_socket.node.name)
+            probe_node = probe.node_tree.nodes.get(source_socket.node.name)
             if not probe_node:
                 continue
             probe_socket = find_socket_by_identifier(probe_node.outputs, source_socket.identifier)
             if not probe_socket:
                 continue
 
-            attribute_name = f"{probe_prefix}{index}"
-            store = probe_tree.nodes.new('GeometryNodeStoreNamedAttribute')
+            attribute_name = f"{probe.prefix}{index}"
+            store = probe.node_tree.nodes.new('GeometryNodeStoreNamedAttribute')
             store.data_type = PROBE_DATA_TYPE_BY_SOCKET_TYPE[source_socket.type]
             store.domain = 'POINT'
             store.inputs['Name'].default_value = attribute_name
-            probe_tree.links.new(current_geometry, store.inputs['Geometry'])
-            probe_tree.links.new(probe_socket, store.inputs['Value'])
+            probe.node_tree.links.new(current_geometry, store.inputs['Geometry'])
+            probe.node_tree.links.new(probe_socket, store.inputs['Value'])
             current_geometry = store.outputs['Geometry']
             captured_targets.append((display_key, source_socket, attribute_name))
 
         if not captured_targets:
             return {}
-        probe_tree.links.new(current_geometry, geometry_output)
-
-        probe_mesh = bpy.data.meshes.new(f"{probe_prefix}mesh")
-        probe_mesh.from_pydata([(0.0, 0.0, 0.0)], [], [])
-        probe_mesh.update()
-        probe_object = bpy.data.objects.new(f"{probe_prefix}object", probe_mesh)
-        bpy.context.scene.collection.objects.link(probe_object)
-        modifier = probe_object.modifiers.new(f"{probe_prefix}modifier", 'NODES')
-        modifier.node_group = probe_tree
+        probe.node_tree.links.new(current_geometry, geometry_output)
 
         bpy.context.view_layer.update()
-        evaluated_object = probe_object.evaluated_get(bpy.context.evaluated_depsgraph_get())
+        evaluated_object = probe.obj.evaluated_get(bpy.context.evaluated_depsgraph_get())
         attributes = evaluated_object.data.attributes
         for display_key, source_socket, attribute_name in captured_targets:
             attribute = attributes.get(attribute_name)
@@ -194,13 +264,71 @@ def evaluate_runtime_values(tree, targets):
     except (AttributeError, KeyError, RuntimeError, StopIteration, TypeError, ValueError) as error:
         print(f"Learn Node: could not evaluate runtime values: {error}")
     finally:
-        if probe_object:
-            bpy.data.objects.remove(probe_object, do_unlink=True)
-        if probe_mesh:
-            bpy.data.meshes.remove(probe_mesh)
-        if probe_tree:
-            bpy.data.node_groups.remove(probe_tree)
+        if probe:
+            probe.cleanup()
 
+    return values
+
+def evaluate_geometry_runtime_value(tree, source_socket):
+    """Evaluate a geometry socket and summarize the mesh component Blender exposes."""
+    probe = None
+
+    try:
+        probe = create_probe_context(tree, use_owner_mesh=True)
+        if not probe:
+            return None
+        group_output = next(
+            node for node in probe.node_tree.nodes
+            if node.bl_idname == 'NodeGroupOutput' and node.is_active_output
+        )
+        geometry_output = next(socket for socket in group_output.inputs if socket.type == GEOMETRY_SOCKET_TYPE)
+        probe_node = probe.node_tree.nodes.get(source_socket.node.name)
+        if not probe_node:
+            return None
+        probe_socket = find_socket_by_identifier(probe_node.outputs, source_socket.identifier)
+        if not probe_socket:
+            return None
+
+        for link in list(geometry_output.links):
+            probe.node_tree.links.remove(link)
+        probe.node_tree.links.new(probe_socket, geometry_output)
+
+        bpy.context.view_layer.update()
+        evaluated_object = probe.obj.evaluated_get(bpy.context.evaluated_depsgraph_get())
+        evaluated_mesh = evaluated_object.to_mesh()
+        try:
+            return format_geometry_mesh_summary(evaluated_mesh) if evaluated_mesh else None
+        finally:
+            if evaluated_mesh:
+                evaluated_object.to_mesh_clear()
+    except (AttributeError, KeyError, RuntimeError, StopIteration, TypeError, ValueError) as error:
+        print(f"Learn Node: could not evaluate geometry value: {error}")
+    finally:
+        if probe:
+            probe.cleanup()
+
+    return None
+
+def evaluate_runtime_values(tree, targets):
+    """Evaluate socket outputs away from drawing, matching Blender tooltip values."""
+    values = {}
+    attribute_targets = [
+        (display_key, source_socket)
+        for display_key, source_socket in targets
+        if source_socket.type in PROBE_DATA_TYPE_BY_SOCKET_TYPE
+    ]
+    geometry_targets = [
+        (display_key, source_socket)
+        for display_key, source_socket in targets
+        if source_socket.type == GEOMETRY_SOCKET_TYPE
+    ]
+
+    if attribute_targets:
+        values.update(evaluate_attribute_runtime_values(tree, attribute_targets))
+    for display_key, source_socket in geometry_targets:
+        value = evaluate_geometry_runtime_value(tree, source_socket)
+        if value is not None:
+            values[display_key] = value
     return values
 
 def runtime_values_cache_key(tree, active_node, targets):
@@ -261,6 +389,8 @@ def get_socket_runtime_value(socket, live_values):
     """Return only the value Blender can show for a socket, never link metadata."""
     live_value = live_values.get(runtime_socket_key(socket))
     if live_value is not None:
+        if socket.type == GEOMETRY_SOCKET_TYPE:
+            return live_value
         return f"Value: {live_value}"
 
     if not socket.is_output and not socket.hide_value and socket.type in PROBE_DATA_TYPE_BY_SOCKET_TYPE:
