@@ -1,7 +1,7 @@
 {
     "ShaderNodeValue": {
         "name": "Value",
-        "description": "กำหนดและส่งออกค่าตัวเลขFloat ค่าเดียว ใช้สำหรับปรับค่าต่างๆ",
+        "description": "หลักการ: สร้างกล่องกรอกค่าตัวเลข (Float) ค่าเดียวเพื่อส่งไปให้โหนดอื่นๆ ใช้ร่วมกัน\nการประยุกษ์ใช้: ใช้ตั้งค่าความเร็วของแอนิเมชันให้เท่ากันทั้งระบบ โดยเปลี่ยนแค่จุดเดียว",
         "inputs": {},
         "outputs": {
             "Value": {
@@ -12,31 +12,31 @@
     },
     "NodeGroupOutput": {
         "name": "Group Output",
-        "description": "ส่งผลลัพธ์ของข้อมูลออกจากกลุ่มโหนด (Node Group)",
+        "description": "หลักการ: ส่งข้อมูลผลลัพธ์สุดท้ายออกจาก Node Group หรือ Geometry Nodes สู่ภายนอก\nการประยุกษ์ใช้: ใช้ส่งรูปทรงตาข่ายไปแสดงผล หรือส่งตัวแปรออกไปปรับแก้ในแถบ Modifier",
         "inputs": {},
         "outputs": {}
     },
     "ShaderNodeBlackbody": {
         "name": "Blackbody",
-        "description": "คำนวณค่าสีจากการแผ่รังสีความร้อนอุณหภูมิเคลวิน (Kelvin) คล้ายแสงไฟหรือไฟไหม้",
+        "description": "หลักการ: แปลงค่าอุณหภูมิ (Kelvin) ให้กลายเป็นสีแสงสว่างอ้างอิงตามหลักฟิสิกส์ (Blackbody Radiation)\nการประยุกษ์ใช้: ใช้ทำแสงไฟหลอดไส้ (3000K) หรือไฟเชื่อมเหล็ก (6000K) ให้สีสมจริง",
         "inputs": {},
         "outputs": {}
     },
     "ShaderNodeGamma": {
         "name": "Gamma",
-        "description": "ปรับค่าความสว่างหรือค่าแกมมา (Gamma) ของสี",
+        "description": "หลักการ: ปรับความสว่างมืดของสีโดยใช้หลักการแกมม่า (Gamma Correction)\nการประยุกษ์ใช้: ใช้แก้ภาพพื้นผิวที่สว่างจ้าเกินไปให้ดูนุ่มนวลและเป็นธรรมชาติขึ้น",
         "inputs": {},
         "outputs": {}
     },
     "ShaderNodeValToRGB": {
         "name": "Color Ramp",
-        "description": "ไล่ระดับสีหรือใช้ทำตัวกำหนดช่วงน้ำหนักสีตามค่า 0-1",
+        "description": "หลักการ: ไล่ระดับเฉดสี (Color Ramp) โดยอิงตามค่าตัวเลข 0 ถึง 1\nการประยุกษ์ใช้: ใช้ย้อมสีก้อนเมฆจากขาวไปดำตามความสูง หรือทำลวดลายขอบไหม้",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeCombineColor": {
         "name": "Combine Color",
-        "description": "รวมค่าแยกส่วนกลับเป็นข้อมูลสี เช่น HSL, HSV, RGB",
+        "description": "หลักการ: นำค่าตัวเลขแยกช่อง (เช่น R, G, B หรือ H, S, V) มารวมกันเป็นสี 1 สี\nการประยุกษ์ใช้: ใช้ดึงเฉพาะช่องสีแดง (R) มาบวกเพิ่มแล้วรวมกลับเพื่อเปลี่ยนสีเสื้อ",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -65,7 +65,7 @@
     },
     "FunctionNodeSeparateColor": {
         "name": "Separate Color",
-        "description": "แยกค่าสีออกเป็นส่วนๆ เช่น Red, Green, Blue หรือ Hue, Saturation, Value",
+        "description": "หลักการ: แยกสี 1 สีออกเป็นช่องค่าตัวเลขเดี่ยวๆ (เช่น R, G, B หรือ H, S, V)\nการประยุกษ์ใช้: ใช้แยกเอาความสว่าง (Value) ของสีเพื่อนำไปเป็นหน้ากาก (Mask)",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -94,19 +94,19 @@
     },
     "ShaderNodeTexBrick": {
         "name": "Brick Texture",
-        "description": "สร้างลวดลายอิฐเรียงกัน",
+        "description": "หลักการ: สร้างลวดลายอิฐหรือกำแพงก่อแบบ Procedural ปรับขนาดร่องได้\nการประยุกษ์ใช้: ใช้ทำกำแพงบ้าน ปูพื้นกระเบื้อง โดยไม่ต้องพึ่งไฟล์รูปภาพ",
         "inputs": {},
         "outputs": {}
     },
     "ShaderNodeTexChecker": {
         "name": "Checker Texture",
-        "description": "สร้างลวดลายตารางหมากรุก",
+        "description": "หลักการ: สร้างลวดลายตารางหมากรุกสลับ 2 สี\nการประยุกษ์ใช้: ใช้ทำพื้นกระเบื้องลายตารางหมากรุก หรือตรวจสอบความบิดเบี้ยวของ UV",
         "inputs": {},
         "outputs": {}
     },
     "ShaderNodeTexGabor": {
         "name": "Gabor Texture",
-        "description": "สร้างลวดลายนอยส์แบบมีทิศทาง (Gabor Noise) เพื่อทำลายไม้หรือลายพู่กัน",
+        "description": "หลักการ: สร้างลวดลายคลื่นแบบ Gabor มีลักษณะเป็นเส้นๆ กระจายตัวมีทิศทาง\nการประยุกษ์ใช้: ใช้ทำลายเส้นพู่กัน ลายขนสัตว์ ลายรอยขีดข่วน หรือรอยนิ้วมือ",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -130,7 +130,7 @@
     },
     "ShaderNodeTexGradient": {
         "name": "Gradient Texture",
-        "description": "สร้างลวดลายไล่ระดับสี (Gradient)",
+        "description": "หลักการ: สร้างลวดลายการไล่ระดับจากสีดำไปขาว ในหลายรูปแบบ (เส้นตรง วงกลม รัศมี)\nการประยุกษ์ใช้: ใช้ทำแสงเงาแบบจำลอง สปอตไลต์ หรือทำเลเยอร์แผ่กระจายแบบเรดาร์",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -179,7 +179,7 @@
     },
     "ShaderNodeTexImage": {
         "name": "Image Texture",
-        "description": "ดึงข้อมูลจากไฟล์รูปภาพมาใช้เป็นลวดลายหรือแมพสี",
+        "description": "หลักการ: ดึงข้อมูลไฟล์รูปภาพ 2 มิติ (Texture) เข้ามาในระบบโหนด\nการประยุกษ์ใช้: ใช้อ่านภาพวาดลวดลายใบไม้เพื่อนำไปตัดขอบ (Alpha) สร้างใบไม้ 3 มิติ",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -261,13 +261,13 @@
     },
     "ShaderNodeTexMagic": {
         "name": "Magic Texture",
-        "description": "สร้างลวดลายสีสันแปลกตาแนวเวทมนตร์หรือภาพลวงตา",
+        "description": "หลักการ: สร้างลวดลายสีสันแปลกตาคล้ายหมึกสะท้อนแสง มีโครงสร้างแบบทฤษฎี Fractal\nการประยุกษ์ใช้: ใช้ทำคราบน้ำมันบนถนน หลอดไฟดิสโก้ หรือคลื่นพลังเวทมนตร์",
         "inputs": {},
         "outputs": {}
     },
     "ShaderNodeTexNoise": {
         "name": "Noise Texture",
-        "description": "สร้างลวดลายคลื่นรบกวน (Perlin Noise) คล้ายก้อนเมฆ หรือหมอก",
+        "description": "หลักการ: สร้างลวดลายจุดสุ่ม (Noise) แบบก้อนเมฆ หรือ Perlin Noise พื้นฐาน\nการประยุกษ์ใช้: ใช้สร้างความขรุขระบนผิวน้ำ สุ่มตำแหน่งพืช หรือสั่นกล้อง",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -330,7 +330,7 @@
     },
     "ShaderNodeTexVoronoi": {
         "name": "Voronoi Texture",
-        "description": "สร้างลวดลายเซลล์คล้ายผิวหนัง รังผึ้ง หรือกระจกแตก (Voronoi)",
+        "description": "หลักการ: สร้างลวดลายเซลล์แตกร้าว หรือจุดศูนย์กลาง (Voronoi) คล้ายหนังจระเข้\nการประยุกษ์ใช้: ใช้ทำเกล็ดปลา รอยดินแห้งแตก หรือฟองน้ำบับเบิ้ล",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -417,7 +417,7 @@
     },
     "ShaderNodeTexWave": {
         "name": "Wave Texture",
-        "description": "สร้างลวดลายคลื่นน้ำ คลื่นริ้ว หรือลายไม้สลับสี",
+        "description": "หลักการ: สร้างลวดลายคลื่นสลับสีดำขาวเป็นแถบๆ แบบเส้นตรงหรือวงแหวน\nการประยุกษ์ใช้: ใช้ทำลายวงปีของไม้ ลายทางม้าลาย หรือคลื่นผิวน้ำ",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -508,7 +508,7 @@
     },
     "ShaderNodeTexWhiteNoise": {
         "name": "White Noise Texture",
-        "description": "สร้างคลื่นรบกวนแบบสุ่ม 100% ไม่มีทิศทางหรือความต่อเนื่อง (คล้ายจอซ่าทีวี)",
+        "description": "หลักการ: สร้างค่าสุ่มแบบ White Noise ที่ทุกจุด (Pixel/Vertex) ไม่มีทางเหมือนกันเลย\nการประยุกษ์ใช้: ใช้สุ่มตัวเลขแบบรุนแรงเพื่อสุ่มค่าสีของแต่ละ Instance โดยไม่ให้เกิดแพทเทิร์นซ้ำ",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -542,7 +542,7 @@
     },
     "ShaderNodeClamp": {
         "name": "Clamp",
-        "description": "จำกัดค่าไม่ให้เกินช่วงต่ำสุดและสูงสุดที่กำหนด",
+        "description": "หลักการ: ตัดและจำกัดขอบเขตของค่าตัวเลขไม่ให้เกินค่าต่ำสุด (Min) และสูงสุด (Max) ที่กำหนด\nการประยุกษ์ใช้: ใช้ป้องกันไม่ให้โมเดลถูกย่อขนาดจนติดลบ หรือค่าสีแสงทะลุพิกัด",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -566,7 +566,7 @@
     },
     "FunctionNodeCompare": {
         "name": "Compare",
-        "description": "เปรียบเทียบค่าสองค่า (เช่น มากกว่า น้อยกว่า เท่ากับ) เพื่อส่งออกเป็น Boolean",
+        "description": "หลักการ: เปรียบเทียบค่า 2 ค่าว่า มากกว่า, น้อยกว่า, หรือเท่ากัน แล้วส่งคืนผลลัพธ์จริง/เท็จ\nการประยุกษ์ใช้: ใช้ตรวจสอบว่าความสูงของจุดมากกว่า 5 เมตรหรือไม่ เพื่อสั่งให้มีหิมะเกาะ",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -768,7 +768,7 @@
     },
     "FunctionNodeHashValue": {
         "name": "Hash Value",
-        "description": "แปลงข้อมูลใดๆ ให้เป็นค่ารหัส Hash ตัวเลขสุ่มที่ไม่ซ้ำกัน",
+        "description": "หลักการ: แปลงข้อมูลใดๆ (ตัวเลข, ข้อความ) ให้เป็นรหัสตัวเลขสุ่ม (Hash) ที่คงที่เสมอ\nการประยุกษ์ใช้: ใช้สุ่มสีรถยนต์ โดยโยนชื่อรุ่น (String) เข้าไปเพื่อได้ค่าสีประจำรุ่นคงที่",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -897,7 +897,7 @@
     },
     "ShaderNodeMapRange": {
         "name": "Map Range",
-        "description": "คำนวณและปรับลดอัตราส่วนช่วงตัวเลขจากช่วงหนึ่งไปยังอีกช่วงหนึ่งแบบบัญญัติไตรยางศ์",
+        "description": "หลักการ: เปลี่ยนช่วงตัวเลขเก่า (เช่น 0-1) ให้กลายเป็นช่วงตัวเลขใหม่ (เช่น 10-100) แบบอัตราส่วน\nการประยุกษ์ใช้: ใช้แปลงค่า Noise (0 ถึง 1) ไปเป็นระยะความสูงของภูเขา (-50 ถึง 200)",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -945,7 +945,7 @@
     },
     "ShaderNodeMix": {
         "name": "Mix",
-        "description": "ผสมข้อมูลสองชุดเข้าด้วยกันตามเปอร์เซ็นต์ (Factor) เช่น สี ตัวเลข หรือVector",
+        "description": "หลักการ: ผสมค่า 2 ค่าเข้าด้วยกัน (สี, ตัวเลข, Vector) ตามสัดส่วนเปอร์เซ็นต์ (Factor)\nการประยุกษ์ใช้: ใช้ผสมสีดินและสีหญ้าเข้าด้วยกัน โดยมี Noise เป็นหน้ากากกำหนดพื้นที่",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -1092,31 +1092,31 @@
     },
     "FunctionNodeReplaceString": {
         "name": "Replace String",
-        "description": "แทนที่คำหรือข้อความบางส่วนด้วยข้อความใหม่",
+        "description": "หลักการ: ค้นหาข้อความเดิมและแทนที่ด้วยข้อความใหม่\nการประยุกษ์ใช้: ใช้แก้ชื่อไฟล์ หรือแทนที่คำว่า 'Day' เป็น 'Night' ในข้อมูลแอตทริบิวต์",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeSliceString": {
         "name": "Slice String",
-        "description": "ตัดแบ่งเอาเฉพาะข้อความบางส่วนตามตำแหน่งเริ่มและจบ",
+        "description": "หลักการ: ตัดข้อความเอาเฉพาะบางส่วน (ระบุจุดเริ่มต้นและความยาว)\nการประยุกษ์ใช้: ใช้ตัดเฉพาะอักษร 3 ตัวหน้าของรหัสสินค้ามาประมวลผล",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeFindInString": {
         "name": "Find in String",
-        "description": "หาตำแหน่ง Index ของคำย่อยที่ซ่อนอยู่ในข้อความ",
+        "description": "หลักการ: ค้นหาว่ามีข้อความหรือคำย่อยอยู่ในประโยคหลักหรือไม่\nการประยุกษ์ใช้: ใช้เช็คว่ามีคำว่า '_broken' อยู่ในชื่อโมเดลไหม เพื่อจะใส่เอฟเฟกต์ควัน",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeStringLength": {
         "name": "String Length",
-        "description": "นับจำนวนตัวอักษรทั้งหมดในข้อความ",
+        "description": "หลักการ: นับจำนวนตัวอักษรในข้อความ\nการประยุกษ์ใช้: ใช้คำนวณระยะเว้นวรรคพื้นหลังให้ป้ายชื่อ 3 มิติกว้างพอดีกับตัวอักษร",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeStringToValue": {
         "name": "String to Value",
-        "description": "พยายามแปลงข้อความที่มีตัวเลขให้กลายเป็นค่าตัวเลขคณิตศาสตร์จริงๆ",
+        "description": "หลักการ: แปลงข้อความตัวเลข (String) ให้กลายเป็นค่าตัวเลข (Value/Float) เอาไปคำนวณต่อ\nการประยุกษ์ใช้: ใช้ดึงข้อมูลราคา '100' จากไฟล์ Text มาคูณสัดส่วนแท่งกราฟ",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -1140,7 +1140,7 @@
     },
     "FunctionNodeValueToString": {
         "name": "Value to String",
-        "description": "แปลงข้อมูลตัวเลขให้กลายเป็นรูปแบบข้อความเพื่อนำไปแสดงผล",
+        "description": "หลักการ: แปลงค่าตัวเลข (Value/Float) ให้กลายเป็นรูปแบบข้อความ (String)\nการประยุกษ์ใช้: ใช้แปลงค่าความเร็ว 10.5 ไปแสดงเป็นป้ายหน้าปัด 3 มิติ",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -1164,97 +1164,97 @@
     },
     "FunctionNodeSpecialCharacters": {
         "name": "Special Characters",
-        "description": "ดึงตัวอักษรหรืออักขระพิเศษมาใช้งาน (เช่น เว้นวรรค, ขึ้นบรรทัดใหม่, Tab)",
+        "description": "หลักการ: เรียกใช้ตัวอักษรพิเศษต่างๆ เช่น การขึ้นบรรทัดใหม่ (Line Break) หรือ Tab\nการประยุกษ์ใช้: ใช้ตัดคำขึ้นบรรทัดใหม่ให้ป้ายบอกทางใน Geometry Nodes",
         "inputs": {},
         "outputs": {}
     },
     "ShaderNodeCombineXYZ": {
         "name": "Combine XYZ",
-        "description": "รวมค่าเดี่ยว 3 ตัวเป็นVector 3 มิติ (X, Y, Z)",
+        "description": "หลักการ: นำตัวเลขอิสระ 3 ตัวมารวมเป็นข้อมูลพิกัด (Vector X,Y,Z)\nการประยุกษ์ใช้: ใช้สั่งเลื่อนโมเดลขึ้นเฉพาะแกน Z โดยที่แกน X และ Y เป็น 0 เหมือนเดิม",
         "inputs": {},
         "outputs": {}
     },
     "ShaderNodeSeparateXYZ": {
         "name": "Separate XYZ",
-        "description": "แยกค่าVectorออกเป็นแกนอิสระ (X, Y, Z)",
+        "description": "หลักการ: แยกพิกัด Vector ออกเป็นตัวเลขเดี่ยวแกน X, Y และ Z\nการประยุกษ์ใช้: ใช้ดึงเฉพาะความสูง (แกน Z) มาเช็คว่าส่วนไหนอยู่ใต้ผิวน้ำ",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeCombineMatrix": {
         "name": "Combine Matrix",
-        "description": "สร้างตารางเมทริกซ์ 4x4 จากองค์ประกอบย่อย",
+        "description": "หลักการ: รวบรวมข้อมูล Vector หลายเส้นเพื่อสร้างเมทริกซ์การแปลงสภาพ 4x4 (Transform Matrix)\nการประยุกษ์ใช้: ใช้สร้างระบบพิกัดใหม่เพื่อหมุนและเลื่อนโมเดลแบบกำหนดแกนเอง",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeCombineTransform": {
         "name": "Combine Transform",
-        "description": "รวมค่า ตำแหน่ง (Location) หมุน (Rotation) Scale ให้เป็นเมทริกซ์การแปลง (Transform Matrix)",
+        "description": "หลักการ: รวมพิกัดตำแหน่ง (Location), การหมุน (Rotation) และขนาด (Scale) เพื่อสร้าง Transform Matrix\nการประยุกษ์ใช้: ใช้เตรียมข้อมูลก่อนจะส่งไปปรับโครงร่างกระดูกทั้งหมดทีเดียว",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeMatrixDeterminant": {
         "name": "Determinant",
-        "description": "หาค่าดีเทอร์มิแนนต์ของเมทริกซ์",
+        "description": "หลักการ: หาค่าดีเทอร์มิแนนต์ (Determinant) ของเมทริกซ์ ซึ่งบ่งบอกสัดส่วนการขยาย\nการประยุกษ์ใช้: ใช้ตรวจสอบว่าโมเดลถูกกลับด้านจากข้างในออกมาข้างนอก (สเกลติดลบ) หรือไม่",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeInvertMatrix": {
         "name": "Invert Matrix",
-        "description": "กลับด้านหรือสลับเมทริกซ์ให้เป็น Invert Matrix (คล้ายหารออก)",
+        "description": "หลักการ: สร้างเมทริกซ์ผกผัน (Inverse Matrix) สำหรับแปลงการเคลื่อนที่ย้อนกลับ\nการประยุกษ์ใช้: ใช้หาพิกัดสัมพัทธ์ (Relative Local Space) ภายในกรอบวัตถุอื่น",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeMultiplyMatrices": {
         "name": "Multiply Matrices",
-        "description": "คูณเมทริกซ์เข้าด้วยกันเพื่อสะสมพิกัดการแปลงหลายๆ ชุด",
+        "description": "หลักการ: นำเมทริกซ์ 2 ตัวมาคูณกัน เพื่อซ้อนทับการเคลื่อนไหวเข้าด้วยกัน\nการประยุกษ์ใช้: ใช้ทำระบบลูกหมุนตามแม่ (Parenting) ใน Geometry Nodes",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeMatrixSVD": {
         "name": "Matrix SVD",
-        "description": "แยกองค์ประกอบของเมทริกซ์ด้วย Singular Value Decomposition",
+        "description": "หลักการ: ถอดแยกส่วนประกอบการหมุนและการยืดของเมทริกซ์ด้วยคณิตศาสตร์ (SVD)\nการประยุกษ์ใช้: ใช้แก้ไขโมเดลที่มีสเกลเบี้ยว (Shear) ให้กลับมาเป็นมุมฉากปกติ",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeProjectPoint": {
         "name": "Project Point",
-        "description": "แปลงหรือฉายพิกัดจุด 3 มิติผ่านเมทริกซ์โปรเจคชัน",
+        "description": "หลักการ: แปลงตำแหน่งจุดผ่านการโปรเจกต์ 2D/3D (เช่น การทำงานของกล้อง)\nการประยุกษ์ใช้: ใช้ฉายพิกัด 3 มิติบนหน้าจอเพื่อทำอินเตอร์เฟซ UI 2D ตามตัวละคร",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeSeparateMatrix": {
         "name": "Separate Matrix",
-        "description": "แตกเมทริกซ์ออกเป็นตัวแปรย่อยต่างๆ",
+        "description": "หลักการ: แตกตารางข้อมูลเมทริกซ์ 4x4 กลับออกเป็น Vector แนวตั้ง\nการประยุกษ์ใช้: ใช้ล้วงหาค่าทิศทางชี้แกน Y ของเมทริกซ์วัตถุเพื่อควบคุมลม",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeSeparateTransform": {
         "name": "Separate Transform",
-        "description": "สกัดแยกตำแหน่ง, องศาหมุน, Scale ออกจากเมทริกซ์เดียว",
+        "description": "หลักการ: แตกค่า Transform Matrix ออกมาเป็นแกนเลื่อน (Location), หมุน (Rotation), ขนาด (Scale)\nการประยุกษ์ใช้: ใช้ดึงเฉพาะองศาการหมุนของกระดูกที่ถูกรวมค่ามา",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeTransformDirection": {
         "name": "Transform Direction",
-        "description": "ประยุกต์ทิศทางกับเมทริกซ์ (ใช้เฉพาะข้อมูล Rotation ของเมทริกซ์เท่านั้น)",
+        "description": "หลักการ: หมุนVectorทิศทางไปตามเมทริกซ์ที่กำหนด โดยไม่ได้รับผลจากสเกลหรือตำแหน่ง\nการประยุกษ์ใช้: ใช้บังคับทิศทางยิงเลเซอร์ให้หันตามการหมุนของป้อมปืน",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeTransformPoint": {
         "name": "Transform Point",
-        "description": "คูณพิกัดจุดกับเมทริกซ์การแปลงทั้งหมด (Rotation, Scale, Translation)",
+        "description": "หลักการ: ย้ายและหมุนจุดพิกัด 3 มิติอิงตาม Transform Matrix ของอ็อบเจกต์\nการประยุกษ์ใช้: ใช้คำนวณตำแหน่งปลอกกระสุนกระเด็นเมื่อป้อมปืนขยับที่",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeTransposeMatrix": {
         "name": "Transpose Matrix",
-        "description": "สลับแถวและหลักของเมทริกซ์ (Transpose)",
+        "description": "หลักการ: สลับแถวกับคอลัมน์ของตารางเมทริกซ์ 4x4\nการประยุกษ์ใช้: ใช้สลับระบบพิกัดอ้างอิงเพื่อคำนวณกระดูกแอนิเมชันขั้นสูง",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeAxesToRotation": {
         "name": "Axes to Rotation",
-        "description": "แปลงข้อมูลแกนทิศทาง (Axes) ไปเป็นการหมุนแบบออยเลอร์ หรือควอเทอร์เนียน",
+        "description": "หลักการ: คำนวณองศาการหมุนจากทิศทางแกนหลัก 2 แกนที่ระบุ (เช่น ตั้งแกน Z ขึ้น และแกน X ชี้ไปข้างหน้า)\nการประยุกษ์ใช้: ใช้จัดให้จรวดหันหัวไปตามทิศทางลมขณะบิน",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -1302,31 +1302,31 @@
     },
     "FunctionNodeAxisAngleToRotation": {
         "name": "Axis Angle to Rotation",
-        "description": "แปลงองศาการหมุนรอบแกนที่กำหนดให้เป็นการหมุนมาตรฐาน",
+        "description": "หลักการ: เปลี่ยนค่ามุมและทิศทางแกนหมุน (Axis-Angle) ให้เป็นข้อมูลแบบ Rotation (Euler/Quaternion)\nการประยุกษ์ใช้: ใช้หมุนวงล้อตามแกนเพลาล้อที่มีทิศทางเอียงๆ",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeEulerToRotation": {
         "name": "Euler to Rotation",
-        "description": "แปลงค่าองศาพิกัดออยเลอร์ (Euler) ให้เป็นข้อมูลการหมุนที่สมบูรณ์",
+        "description": "หลักการ: แปลงค่าองศาการหมุนแบบออยเลอร์ (Euler XYZ) ให้เป็นข้อมูล Rotation ภายใน\nการประยุกษ์ใช้: ใช้ดึงพารามิเตอร์หมุนจากตารางเข้ามาสั่งหมุนวัตถุ",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeInvertRotation": {
         "name": "Invert Rotation",
-        "description": "สะท้อนหรือกลับทิศทางพิกัดการหมุนไปทิศตรงกันข้าม",
+        "description": "หลักการ: สลับหรือตีกลับทิศทางการหมุนให้เป็นตรงข้าม\nการประยุกษ์ใช้: ใช้ทำระบบล้อเกียร์สองอันที่หมุนสวนทิศทางกัน",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeMixRotation": {
         "name": "Mix Rotation",
-        "description": "สอดแทรกหรือเฉลี่ยองศาการหมุนสองชุดเข้าด้วยกัน (Slerp)",
+        "description": "หลักการ: ผสมหรือเกลี่ยองศาการหมุน 2 แบบเข้าด้วยกันตามเปอร์เซ็นต์คล้ายโหนด Mix\nการประยุกษ์ใช้: ใช้ทำเอนิเมชันให้กล้องค่อยๆ หันจากเป้า A ไปยังเป้า B",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeRotateRotation": {
         "name": "Rotate Rotation",
-        "description": "เพิ่มองศาการหมุนซ้อนเข้าไปในค่าการหมุนเดิมแบบต่อเนื่อง",
+        "description": "หลักการ: เพิ่มการหมุนซ้อนเข้าไปในค่า Rotation เดิมที่มีอยู่\nการประยุกษ์ใช้: ใช้สั่งหมุนพัดลมหมุนส่ายซ้ายขวา ไปพร้อมๆ กับใบพัดที่หมุนอยู่แล้ว",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -1350,31 +1350,31 @@
     },
     "FunctionNodeRotationToAxisAngle": {
         "name": "Rotation to Axis Angle",
-        "description": "แปลงพิกัดการหมุนกลับเป็นVectorของแกนหลักและองศาหมุนรอบแกนนั้น",
+        "description": "หลักการ: แปลงค่าตัวแปร Rotation กลับไปเป็นแนวแกนและองศาหมุน (Axis-Angle)\nการประยุกษ์ใช้: ใช้หาแกนหมุนหลักของประตูเพื่อตรวจสอบขอบเขตการเปิด-ปิด",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeRotationToEuler": {
         "name": "Rotation to Euler",
-        "description": "แปลงกลับการหมุนเป็นค่าพิกัดออยเลอร์แบบแยกแกน (X, Y, Z)",
+        "description": "หลักการ: แปลงค่าตัวแปร Rotation กลับไปเป็นพิกัดออยเลอร์ (Euler XYZ) สำหรับแสดงผล\nการประยุกษ์ใช้: ใช้แปลงค่าหมุนกลับมาตรวจสอบว่าหมุนเกิน 360 องศาแล้วหรือยัง",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeRotationToQuaternion": {
         "name": "Rotation to Quaternion",
-        "description": "แปลงระบบการหมุนเป็นแบบ Quaternion เพื่อความเสถียร ไม่เกิด Gimbal Lock",
+        "description": "หลักการ: ถอดค่า Rotation ให้กลายเป็นรหัสควอเทอร์เนียน (W,X,Y,Z)\nการประยุกษ์ใช้: ใช้แปลงเพื่อส่งต่อให้ซอฟต์แวร์ข้างนอก หรือเกมเอนจินที่รองรับ Quaternion",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeQuaternionToRotation": {
         "name": "Quaternion to Rotation",
-        "description": "แปลงพิกัด Quaternion ย้อนกลับเป็นการหมุนสำหรับคำนวณ",
+        "description": "หลักการ: แปลงค่าควอเทอร์เนียน (W,X,Y,Z) ให้กลับมาเป็นข้อมูล Rotation ที่ Blender ใช้งานได้\nการประยุกษ์ใช้: ใช้รับค่าหมุนจากเซ็นเซอร์ (Motion Capture) เข้ามาขับเคลื่อนกระดูก",
         "inputs": {},
         "outputs": {}
     },
     "FunctionNodeRandomValue": {
         "name": "Random Value",
-        "description": "สุ่มค่า (ตัวเลข, Vector, Boolean) ตามช่วงต่ำสุดสูงสุดที่กำหนด และขึ้นกับ Seed ประจำองค์ประกอบ",
+        "description": "หลักการ: สุ่มตัวเลข ทศนิยม หรือพิกัดภายในช่วงที่กำหนด (Min-Max)\nการประยุกษ์ใช้: ใช้สุ่มความสูงของตึก หรือสุ่มสีใบไม้ในป่าให้ดูหลากหลายแบบธรรมชาติ",
         "inputs": {
             "Min": {
                 "name": "ค่าต่ำสุด (Min)",
@@ -1471,67 +1471,67 @@
     },
     "CompositorNode": {
         "name": "CompositorNode",
-        "description": "โหนด CompositorNode สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: โหนดแม่สำหรับงาน Compositor รวม (แก้ไขภาพหลังเรนเดอร์)\nการประยุกษ์ใช้: ใช้รวมภาพที่เรนเดอร์เสร็จแล้วเข้ากับวิดีโอตัวเต็ม"
     },
     "CompositorNodeAlphaOver": {
         "name": "CompositorNodeAlphaOver",
-        "description": "โหนด CompositorNodeAlphaOver สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: วางภาพหนึ่งซ้อนทับอีกภาพโดยอิงตามค่าความโปร่งใส (Alpha)\nการประยุกษ์ใช้: ใช้ซ้อนโมเดล 3 มิติลงบนรูปฉากหลัง หรือซ้อนควันลงบนวิดีโอ"
     },
     "CompositorNodeAntiAliasing": {
         "name": "CompositorNodeAntiAliasing",
-        "description": "โหนด CompositorNodeAntiAliasing สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ลบรอยหยักบริเวณขอบภาพ (Anti-Aliasing) ให้เนียนขึ้น\nการประยุกษ์ใช้: ใช้แก้ไขโมเดลที่มีเส้นขอบเป็นฟันปลาหลังการใช้เอฟเฟกต์หนักๆ"
     },
     "CompositorNodeBilateralblur": {
         "name": "CompositorNodeBilateralblur",
-        "description": "โหนด CompositorNodeBilateralblur สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: เบลอภาพแต่มองหาและรักษาขอบภาพ (Edge) ไว้ไม่ให้ฟุ้งกลืนกัน\nการประยุกษ์ใช้: ใช้ลบสัญญาณรบกวน (Noise) ออกจากภาพเรนเดอร์โดยไม่ทำให้รายละเอียดภาพเสีย"
     },
     "CompositorNodeBlur": {
         "name": "CompositorNodeBlur",
-        "description": "โหนด CompositorNodeBlur สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ทำภาพให้เบลอฟุ้ง (Blur) ตามแกน X และ Y\nการประยุกษ์ใช้: ใช้ทำเงาตกกระทบให้ดูฟุ้ง หรือจำลองระยะชัดตื้น (Depth of Field) อย่างง่าย"
     },
     "CompositorNodeBokehBlur": {
         "name": "CompositorNodeBokehBlur",
-        "description": "โหนด CompositorNodeBokehBlur สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: เบลอภาพเลียนแบบเลนส์กล้องของจริง (Bokeh) สามารถปรับรูปร่างเบลอได้\nการประยุกษ์ใช้: ใช้ทำฉากหลังเบลอที่มีดวงไฟเป็นรูปทรงหกเหลี่ยมวิบวับ"
     },
     "CompositorNodeBokehImage": {
         "name": "CompositorNodeBokehImage",
-        "description": "โหนด CompositorNodeBokehImage สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างรูปทรงแฟลร์ (Flare/Bokeh) อัตโนมัติสำหรับนำไปซ้อนภาพ\nการประยุกษ์ใช้: ใช้สร้างเม็ดดวงไฟสว่างแวววาวประดับไฟหน้าคริสต์มาส"
     },
     "CompositorNodeBoxMask": {
         "name": "CompositorNodeBoxMask",
-        "description": "โหนด CompositorNodeBoxMask สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างหน้ากาก (Mask) สีขาว-ดำเป็นรูปสี่เหลี่ยมตามขนาดที่กำหนด\nการประยุกษ์ใช้: ใช้ครอบเพื่อเบลอหน้าคน (เซ็นเซอร์) หรือกำหนดกรอบการแต่งสี"
     },
     "CompositorNodeBrightContrast": {
         "name": "CompositorNodeBrightContrast",
-        "description": "โหนด CompositorNodeBrightContrast สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ปรับระดับความสว่าง (Brightness) และความคมชัด (Contrast) ของภาพ\nการประยุกษ์ใช้: ใช้ปรับแสงภาพที่มืดเกินไปให้สว่าง และดึงสีให้เข้มขึ้น"
     },
     "CompositorNodeChannelMatte": {
         "name": "CompositorNodeChannelMatte",
-        "description": "โหนด CompositorNodeChannelMatte สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ดึงช่องสี (RGB/HSV) ออกมาวิเคราะห์และแยกเป็นหน้ากากความทึบแสง\nการประยุกษ์ใช้: ใช้คัดเลือกเฉพาะบริเวณที่มีสีแดงเข้มที่สุดออกมาปรับแก้สีแยกต่างหาก"
     },
     "CompositorNodeChromaMatte": {
         "name": "CompositorNodeChromaMatte",
-        "description": "โหนด CompositorNodeChromaMatte สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: เจาะฉากเขียวหรือฉากสี (Chroma Key) แบบละเอียด\nการประยุกษ์ใช้: ใช้ไดคัท (Die-cut) ตัวละครคนจริงที่ถ่ายบนฉากเขียวเพื่อนำมาซ้อนฉาก 3 มิติ"
     },
     "CompositorNodeColorBalance": {
         "name": "CompositorNodeColorBalance",
-        "description": "โหนด CompositorNodeColorBalance สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ปรับสมดุลสี (Color Balance) แบบ 3 ล้อ (เงา, สีกลาง, ไฮไลต์)\nการประยุกษ์ใช้: ใช้ย้อมสีโทนภาพยนตร์ (Color Grading) เช่น ทำให้เงาอมฟ้า และไฮไลต์อมส้ม"
     },
     "CompositorNodeColorCorrection": {
         "name": "CompositorNodeColorCorrection",
-        "description": "โหนด CompositorNodeColorCorrection สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: เครื่องมือปรับสีและแสงครอบจักรวาล (ความสว่าง, คอนทราสต์, ความอิ่มสี)\nการประยุกษ์ใช้: ใช้ลดความสดของสี (Saturation) ในเงามืดไม่ให้สีดูแปร๋นเกินจริง"
     },
     "CompositorNodeColorMatte": {
         "name": "CompositorNodeColorMatte",
-        "description": "โหนด CompositorNodeColorMatte สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างหน้ากาก (Mask) ทึบแสงโดยเลือกดูดจากสีที่เจาะจง\nการประยุกษ์ใช้: ใช้ดูดสีเสื้อสีฟ้าของตัวละคร แล้วเอาหน้ากากไปสั่งเปลี่ยนเสื้อเป็นสีแดงแทน"
     },
     "CompositorNodeColorSpill": {
         "name": "CompositorNodeColorSpill",
-        "description": "โหนด CompositorNodeColorSpill สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ลบสีสะท้อนที่รั่วเข้ามาจากฉากหลัง (Spill Suppression)\nการประยุกษ์ใช้: ใช้ลบแสงสีเขียวที่สะท้อนติดบนผมและไหล่ของนักแสดงตอนถ่ายฉากเขียว"
     },
     "CompositorNodeCombineColor": {
         "name": "CompositorNodeCombineColor",
-        "description": "โหนด CompositorNodeCombineColor สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: นำช่องสีที่ถูกแยก (เช่น R, G, B) มารวมกลับเป็นภาพเต็ม\nการประยุกษ์ใช้: ใช้รวมช่องสีแดงที่ถูกเบลอเข้าไปกับช่องสีอื่น เพื่อทำเอฟเฟกต์ภาพเหลื่อมสีขอบเลนส์ (Chromatic Aberration)",
         "dropdowns": {
             "mode": [
                 "RGB",
@@ -1587,7 +1587,7 @@
     },
     "CompositorNodeConvertColorSpace": {
         "name": "CompositorNodeConvertColorSpace",
-        "description": "โหนด CompositorNodeConvertColorSpace สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: แปลงพื้นที่สี (Color Space) จากมาตรฐานหนึ่งไปอีกมาตรฐานหนึ่ง (เช่น sRGB เป็น Linear)\nการประยุกษ์ใช้: ใช้ปรับภาพวิดีโอจากกล้องถ่ายทำจริงให้มีค่าความสว่างตรงกับระบบไฟ 3 มิติ",
         "dropdowns": {
             "from_color_space": [
                 "ACES 1.3 sRGB",
@@ -1853,27 +1853,27 @@
     },
     "CompositorNodeConvertToDisplay": {
         "name": "CompositorNodeConvertToDisplay",
-        "description": "โหนด CompositorNodeConvertToDisplay สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: แปลงสีข้อมูลภาพให้แสดงผลตรงกับที่ตั้งไว้ใน Color Management\nการประยุกษ์ใช้: ใช้บังคับให้ภาพ 3 มิติที่บันทึกออกไป มีสีตรงกับที่มองเห็นบนหน้าจอเป๊ะๆ"
     },
     "CompositorNodeConvolve": {
         "name": "CompositorNodeConvolve",
-        "description": "โหนด CompositorNodeConvolve สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ประมวลผลภาพผ่านตารางเมทริกซ์ (Convolution Matrix) 3x3 หรือ 5x5\nการประยุกษ์ใช้: ใช้สร้างฟิลเตอร์แต่งภาพด้วยตนเอง เช่น ทำให้ภาพคมกริบ (Sharpen) หรือทำเส้นนูน (Emboss)"
     },
     "CompositorNodeCornerPin": {
         "name": "CompositorNodeCornerPin",
-        "description": "โหนด CompositorNodeCornerPin สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: นำภาพมาแปะบิดเบี้ยวโดยดึงมุมทั้ง 4 ด้านให้ตรงกับเป้าหมาย\nการประยุกษ์ใช้: ใช้เอาคลิปวิดีโอไปแปะลงบนหน้าจอทีวีหรือมือถือในฉากที่กล้องกำลังเคลื่อนไหว"
     },
     "CompositorNodeCrop": {
         "name": "CompositorNodeCrop",
-        "description": "โหนด CompositorNodeCrop สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ครอป (Crop) หรือตัดขอบภาพด้านนอกทิ้งไป\nการประยุกษ์ใช้: ใช้หั่นภาพแนวนอนให้กลายเป็นกรอบสี่เหลี่ยมจัตุรัสสำหรับลง Social Media"
     },
     "CompositorNodeCryptomatte": {
         "name": "CompositorNodeCryptomatte",
-        "description": "โหนด CompositorNodeCryptomatte สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างหน้ากากอัตโนมัติแบบแยกอ็อบเจกต์หรือวัสดุได้อย่างแม่นยำสูง (Cryptomatte)\nการประยุกษ์ใช้: ใช้จิ้มเลือกเฉพาะหมวกของตัวละครเพื่อปรับสีใน Compositor โดยไม่ต้องเรนเดอร์ใหม่"
     },
     "CompositorNodeCryptomatteV2": {
         "name": "CompositorNodeCryptomatteV2",
-        "description": "โหนด CompositorNodeCryptomatteV2 สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: เวอร์ชันอัปเดตของ Cryptomatte ใช้งานและเจาะทะลุได้แม่นยำขึ้น\nการประยุกษ์ใช้: ใช้แก้ไขสีดวงตาตัวละครที่อยู่หลังกระจกขุ่นได้อย่างอิสระ",
         "dropdowns": {
             "source": [
                 "RENDER",
@@ -1914,19 +1914,19 @@
     },
     "CompositorNodeCurveRGB": {
         "name": "CompositorNodeCurveRGB",
-        "description": "โหนด CompositorNodeCurveRGB สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ปรับแต่งสีและความคมชัดของภาพด้วยเส้นโค้งกราฟ (Curves)\nการประยุกษ์ใช้: ใช้ดึงกราฟรูปตัว S เพื่อเร่งคอนทราสต์ให้ภาพดูดุดันมีมิติมากขึ้น"
     },
     "CompositorNodeCustomGroup": {
         "name": "CompositorNodeCustomGroup",
-        "description": "โหนด CompositorNodeCustomGroup สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: กลุ่มโหนดที่ถูกผู้ใช้รวบรวมและตั้งค่าเป็นกล่องเครื่องมือพิเศษ\nการประยุกษ์ใช้: ใช้แพ็คฟิลเตอร์ 'ฟิล์มเก่า' เก็บไว้ใช้กับงานอื่นๆ"
     },
     "CompositorNodeDBlur": {
         "name": "CompositorNodeDBlur",
-        "description": "โหนด CompositorNodeDBlur สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: เบลอภาพแบบมีทิศทางเฉพาะ (Directional Blur)\nการประยุกษ์ใช้: ใช้สร้างเอฟเฟกต์ภาพสั่นสะเทือนเวลาตัวละครโดนระเบิด หรือหมัดพุ่งชนกล้อง"
     },
     "CompositorNodeDefocus": {
         "name": "CompositorNodeDefocus",
-        "description": "โหนด CompositorNodeDefocus สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: เบลอระยะชัดตื้น (Depth of Field) โดยอ่านค่า Z-Depth จากกล้อง\nการประยุกษ์ใช้: ใช้ทำฉากหน้าชัดหลังเบลอ (หรือหน้าเบลอหลังชัด) ในขั้นตอนปรับแต่งภาพ",
         "dropdowns": {
             "bokeh": [
                 "OCTAGON",
@@ -1973,179 +1973,179 @@
     },
     "CompositorNodeDenoise": {
         "name": "CompositorNodeDenoise",
-        "description": "โหนด CompositorNodeDenoise สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ใช้ระบบ AI ช่วยเกลี่ยลบรอยเม็ดกวน (Noise) ออกจากการเรนเดอร์\nการประยุกษ์ใช้: ใช้เปิดเพื่อลบสัญญาณรบกวนในภาพแสงเงาสะท้อน ช่วยให้ใช้เวลาเรนเดอร์น้อยลงเยอะ"
     },
     "CompositorNodeDespeckle": {
         "name": "CompositorNodeDespeckle",
-        "description": "โหนด CompositorNodeDespeckle สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ลบจุดกระดำกระด่างที่กระโดดโดดๆ ออกจากภาพ\nการประยุกษ์ใช้: ใช้ลบเม็ดสว่างวาบ (Fireflies) ที่มักจะเกิดขึ้นเมื่อเรนเดอร์วัสดุแก้วหรือเหล็ก"
     },
     "CompositorNodeDiffMatte": {
         "name": "CompositorNodeDiffMatte",
-        "description": "โหนด CompositorNodeDiffMatte สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างหน้ากากเปรียบเทียบภาพ 2 ภาพ ว่ามีความแตกต่างกันตรงไหน\nการประยุกษ์ใช้: ใช้หาจุดที่โมเดลมีการเคลื่อนไหวจากเฟรมที่แล้ว เพื่อใส่ความเบลอ"
     },
     "CompositorNodeDilateErode": {
         "name": "CompositorNodeDilateErode",
-        "description": "โหนด CompositorNodeDilateErode สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ขยายหรือกัดกินหน้ากากภาพให้พองขึ้นหรือเล็กลง (Dilate/Erode)\nการประยุกษ์ใช้: ใช้ลดขนาดหน้ากากฉากเขียวที่ขอบล้นเกินไปเข้าไป 1 พิกเซลให้พอดีตัว"
     },
     "CompositorNodeDisplace": {
         "name": "CompositorNodeDisplace",
-        "description": "โหนด CompositorNodeDisplace สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: บิดเบือนพิกัดภาพให้บิดเบี้ยวตามลวดลายของอีกภาพหนึ่ง\nการประยุกษ์ใช้: ใช้เอาลายคลื่นมาบิดภาพวิดีโอ เพื่อทำเอฟเฟกต์ไอร้อนเหนือถนน หรือมองผ่านกระจกสเตนกลาส"
     },
     "CompositorNodeDistanceMatte": {
         "name": "CompositorNodeDistanceMatte",
-        "description": "โหนด CompositorNodeDistanceMatte สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างหน้ากากแยกฉากโดยดูระยะห่างจากสีที่ต้องการ\nการประยุกษ์ใช้: ใช้ไดคัทแยกหมอกในฉาก 3 มิติออกมาแต่งเติมสีพิเศษ"
     },
     "CompositorNodeDoubleEdgeMask": {
         "name": "CompositorNodeDoubleEdgeMask",
-        "description": "โหนด CompositorNodeDoubleEdgeMask สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สกัดหาพื้นที่ขอบ (Edge) เฉพาะตรงรอยต่อของหน้ากาก 2 แผ่น\nการประยุกษ์ใช้: ใช้เน้นขอบเรืองแสงระหว่างตัวละครกำลังรวมร่างกัน"
     },
     "CompositorNodeEllipseMask": {
         "name": "CompositorNodeEllipseMask",
-        "description": "โหนด CompositorNodeEllipseMask สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างหน้ากากรูปวงรีหรือวงกลม\nการประยุกษ์ใช้: ใช้ทำขอบมืด (Vignette) ล้อมรอบภาพเพื่อเน้นจุดสนใจตรงกลาง"
     },
     "CompositorNodeExposure": {
         "name": "CompositorNodeExposure",
-        "description": "โหนด CompositorNodeExposure สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ปรับระดับการรับแสง (Exposure) เหมือนการเปิดรูรับแสงกล้องให้กว้างขึ้น\nการประยุกษ์ใช้: ใช้ปรับภาพท้องฟ้าที่มืดสนิทให้สว่างขึ้นเพื่อให้เห็นดวงดาวชัดๆ"
     },
     "CompositorNodeFilter": {
         "name": "CompositorNodeFilter",
-        "description": "โหนด CompositorNodeFilter สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ใส่ฟิลเตอร์พิเศษแต่งภาพมาตรฐาน (Soften, Sharpen, Laplace)\nการประยุกษ์ใช้: ใช้ใส่ฟิลเตอร์ Sharpen เพื่อให้ลวดลายของพื้นผิวอิฐดูคมชัดมากขึ้น"
     },
     "CompositorNodeFlip": {
         "name": "CompositorNodeFlip",
-        "description": "โหนด CompositorNodeFlip สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: พลิกกลับด้านภาพแบบกระจกเงา (ซ้ายขวา หรือ บนลงล่าง)\nการประยุกษ์ใช้: ใช้กลับด้านภาพวิดีโอถ่ายคนขับรถที่ถ่ายจากฝั่งผิดให้มาอยู่ฝั่งขวา"
     },
     "CompositorNodeGamma": {
         "name": "CompositorNodeGamma",
-        "description": "โหนด CompositorNodeGamma สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ปรับระดับแกมม่า (Gamma) เพื่อดันความสว่างของเฉดสีระดับกลาง\nการประยุกษ์ใช้: ใช้ปรับภาพห้องภายในที่ดูทึบให้สว่างขึ้น โดยที่ไฮไลต์และเงามืดยังคงเดิม"
     },
     "CompositorNodeGlare": {
         "name": "CompositorNodeGlare",
-        "description": "โหนด CompositorNodeGlare สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างเอฟเฟกต์แสงสะท้อนเปล่งประกาย (Bloom, Streaks, Ghosts) จากจุดที่สว่าง\nการประยุกษ์ใช้: ใช้ทำแสงแฉกออกจากไฟหน้ารถ หรือทำดวงอาทิตย์เปล่งออร่าสะท้อนเลนส์"
     },
     "CompositorNodeGroup": {
         "name": "CompositorNodeGroup",
-        "description": "โหนด CompositorNodeGroup สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: กลุ่มโหนดที่มัดรวมเครื่องมือปรับภาพที่ใช้ร่วมกัน\nการประยุกษ์ใช้: ใช้แพ็คโหนดแต่งสีท้องฟ้า เพื่อเอาไปใช้กับโปรเจกต์อื่นๆ ต่อ"
     },
     "CompositorNodeHueCorrect": {
         "name": "CompositorNodeHueCorrect",
-        "description": "โหนด CompositorNodeHueCorrect สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ปรับความอิ่มตัวหรือความสว่างของสีเจาะจง ผ่านเส้นกราฟสีสเปกตรัม\nการประยุกษ์ใช้: ใช้จิ้มเฉพาะสีเขียวของต้นไม้ เพื่อดึงความสดให้เป็นสีเขียวฤดูใบไม้ผลิ โดยไม่กระทบสีท้องฟ้า"
     },
     "CompositorNodeHueSat": {
         "name": "CompositorNodeHueSat",
-        "description": "โหนด CompositorNodeHueSat สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: เลื่อนโทนสี (Hue), ปรับความอิ่มตัว (Saturation) และความสว่าง (Value)\nการประยุกษ์ใช้: ใช้ย้อมสีเสื้อจากสีเหลืองเป็นสีม่วง (เลื่อน Hue) หรือทำภาพขาวดำ (Saturation = 0)"
     },
     "CompositorNodeIDMask": {
         "name": "CompositorNodeIDMask",
-        "description": "โหนด CompositorNodeIDMask สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างหน้ากากแยกวัตถุจากหมายเลขรหัสประจำตัวอ็อบเจกต์ (Object/Material ID)\nการประยุกษ์ใช้: ใช้ระบุรหัส 1 ให้โมเดลตาข่าย เพื่อให้มันเปล่งแสงสีส้มหลังเรนเดอร์เสร็จ"
     },
     "CompositorNodeImage": {
         "name": "CompositorNodeImage",
-        "description": "โหนด CompositorNodeImage สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: โหลดไฟล์รูปภาพหรือวิดีโอจากนอกโปรแกรมเข้ามาใช้\nการประยุกษ์ใช้: โหลดรูปโลโก้สถานีโทรทัศน์มาแปะตรงมุมขวาบนของภาพ"
     },
     "CompositorNodeImageCoordinates": {
         "name": "CompositorNodeImageCoordinates",
-        "description": "โหนด CompositorNodeImageCoordinates สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างข้อมูลพิกัด (X, Y) สำหรับนำไปใช้งานกับรูปภาพ\nการประยุกษ์ใช้: ใช้หาพิกัดกึ่งกลางจอเพื่อทำเอฟเฟกต์บีบอัดศูนย์กลาง (Pinch)"
     },
     "CompositorNodeImageInfo": {
         "name": "CompositorNodeImageInfo",
-        "description": "โหนด CompositorNodeImageInfo สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: อ่านข้อมูลสเปคภาพ (ความกว้าง ความสูง แชนเนลสี) มาเป็นตัวเลข\nการประยุกษ์ใช้: ใช้ดึงขนาดภาพเพื่อเป็นตัวแปรสร้างตารางหมากรุกที่มีขนาดกว้างยาวพอดีเป๊ะ"
     },
     "CompositorNodeInpaint": {
         "name": "CompositorNodeInpaint",
-        "description": "โหนด CompositorNodeInpaint สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างพิกเซลเติมเต็มพื้นที่ว่าง (Alpha) โดยดึงสีจากขอบข้างเคียงมาถม\nการประยุกษ์ใช้: ใช้กลบรอยแตกของโมเดลฉากหลัง หรืออุดรูรั่วของการไดคัทหน้ากากผม (Hair Mask)"
     },
     "CompositorNodeInvert": {
         "name": "CompositorNodeInvert",
-        "description": "โหนด CompositorNodeInvert สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สลับสีภาพแบบตรงข้าม (Invert Color / Negative) จากขาวเป็นดำ\nการประยุกษ์ใช้: ใช้สลับสีหน้ากากขาวดำ (Mask) ให้ครอบคลุมพื้นที่ด้านตรงข้ามแทน"
     },
     "CompositorNodeKeying": {
         "name": "CompositorNodeKeying",
-        "description": "โหนด CompositorNodeKeying สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: เจาะฉากหลังสีเดียว (Chroma Key) แบบมือโปร มีระบบลบขอบครบถ้วน\nการประยุกษ์ใช้: ใช้เจาะฉากเขียว/ฉากน้ำเงินขั้นสูง สำหรับงานตัดต่อทำเอฟเฟกต์ภาพยนตร์"
     },
     "CompositorNodeKeyingScreen": {
         "name": "CompositorNodeKeyingScreen",
-        "description": "โหนด CompositorNodeKeyingScreen สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: เจาะฉากและปรับโทนสีฉากหลังให้ราบเรียบสม่ำเสมอกันก่อนทำการเจาะ\nการประยุกษ์ใช้: ใช้แก้ไขแผ่นฉากเขียวที่ส่องไฟมาไม่เท่ากัน ให้เรียบเนียนเพื่อเจาะได้ง่ายขึ้น"
     },
     "CompositorNodeKuwahara": {
         "name": "CompositorNodeKuwahara",
-        "description": "โหนด CompositorNodeKuwahara สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: เบลอภาพสไตล์ภาพสีน้ำ (Kuwahara Filter) โดยเกลี่ยสีเป็นปื้นๆ แต่ขอบคม\nการประยุกษ์ใช้: ใช้เปลี่ยนภาพเรนเดอร์สมจริงให้กลายเป็นภาพวาดสีน้ำมันคลาสสิก"
     },
     "CompositorNodeLensdist": {
         "name": "CompositorNodeLensdist",
-        "description": "โหนด CompositorNodeLensdist สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: บิดเบือนภาพโค้งตามขอบเลนส์ (Lens Distortion) คล้ายมองผ่านกล้องจริง\nการประยุกษ์ใช้: ใช้ทำเอฟเฟกต์ภาพโค้งตาปลา (Fisheye) หรือแสงแตกสีรุ้งขอบเลนส์ (Chromatic Aberration)"
     },
     "CompositorNodeLevels": {
         "name": "CompositorNodeLevels",
-        "description": "โหนด CompositorNodeLevels สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ปรับความสว่างแบบกำหนดขีดจำกัดสีดำและสีขาว (Black/White Level)\nการประยุกษ์ใช้: ใช้ดึงสีดำที่จมอยู่ให้เห็นรายละเอียด (Lift) หรือกดแสงจ้าให้มืดลง"
     },
     "CompositorNodeLumaMatte": {
         "name": "CompositorNodeLumaMatte",
-        "description": "โหนด CompositorNodeLumaMatte สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างหน้ากากความโปร่งใส (Alpha Mask) จากความสว่าง (Luminance) ของภาพ\nการประยุกษ์ใช้: ใช้แยกท้องฟ้าที่สว่างจ้าออกจากภูเขาที่มืดกว่า เพื่อแปะภาพก้อนเมฆใหม่"
     },
     "CompositorNodeMapUV": {
         "name": "CompositorNodeMapUV",
-        "description": "โหนด CompositorNodeMapUV สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: บิดพิกเซลภาพตามพิกัดแผนที่ 2 มิติ (UV Map) ที่ป้อนเข้าไป\nการประยุกษ์ใช้: ใช้ติดสติกเกอร์บาร์โค้ดลงบนกระป๋องในกระบวนการ Compositing โดยไม่ต้องพึ่ง Material"
     },
     "CompositorNodeMask": {
         "name": "CompositorNodeMask",
-        "description": "โหนด CompositorNodeMask สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ดึงหน้ากาก (Mask) ที่เคยวาดและตั้งชื่อไว้ในโปรแกรม มาใช้ซ้อนภาพ\nการประยุกษ์ใช้: ใช้เอาเส้นพาธที่เคยวาดบังหน้ารถ นำมาทำหน้ากากบังสีเอฟเฟกต์ไฟ"
     },
     "CompositorNodeMaskToSDF": {
         "name": "CompositorNodeMaskToSDF",
-        "description": "โหนด CompositorNodeMaskToSDF สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: แปลงข้อมูล Mask (ขาวดำ) ให้กลายเป็นค่าบอกระยะทางจากขอบ (SDF)\nการประยุกษ์ใช้: ใช้ทำแสงเรืองรอง (Glow) ออกมาจากขอบหน้ากากที่เรียบเนียนสมบูรณ์"
     },
     "CompositorNodeMovieClip": {
         "name": "CompositorNodeMovieClip",
-        "description": "โหนด CompositorNodeMovieClip สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: โหลดไฟล์วิดีโอ (Movie Clip) สำหรับระบบ Tracking มาใช้งาน\nการประยุกษ์ใช้: โหลดคลิปคนเดินบนถนน เพื่อนำมาใส่กราฟิก 3 มิติวิ่งตามหลัง"
     },
     "CompositorNodeMovieDistortion": {
         "name": "CompositorNodeMovieDistortion",
-        "description": "โหนด CompositorNodeMovieDistortion สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: แก้อาการภาพเบี้ยวจากเลนส์กล้องวิดีโอ (Undistort) หรือทำให้ภาพ 3 มิติเบี้ยวตามเลนส์กล้องจริง\nการประยุกษ์ใช้: ใช้บิดโมเดลสัตว์ประหลาดให้โค้งเบี้ยวเข้ากับขอบเลนส์วิดีโอที่ถ่ายมาด้วยกล้อง GoPro"
     },
     "CompositorNodeNormal": {
         "name": "CompositorNodeNormal",
-        "description": "โหนด CompositorNodeNormal สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างทิศทาง Vector (Normal) แบบ 3 มิติ ขึ้นมาจากโหนดกลมๆ\nการประยุกษ์ใช้: ใช้ป้อนทิศทางแสงเงาแบบจำลอง เพื่อใช้ประมวลผลพื้นผิวให้สว่างตามทิศนั้น"
     },
     "CompositorNodeNormalize": {
         "name": "CompositorNodeNormalize",
-        "description": "โหนด CompositorNodeNormalize สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: บีบค่าทุกอย่างที่เข้ามา ไม่ว่าจะมากแค่ไหน ให้ตกอยู่ในช่วง 0 ถึง 1\nการประยุกษ์ใช้: ใช้แปลงค่าพิกัด Z-Depth ที่ลึกเป็นหลักร้อยเมตร ให้กลายเป็นสีขาวดำ (0-1) เพื่อทำหน้ากากหน้าชัดหลังเบลอ"
     },
     "CompositorNodeOutputFile": {
         "name": "CompositorNodeOutputFile",
-        "description": "โหนด CompositorNodeOutputFile สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ส่งออกภาพไปยังไฟล์ภาพหรือลำดับภาพ (Image Sequence) แยกโฟลเดอร์\nการประยุกษ์ใช้: ใช้สั่งให้ตอนเรนเดอร์ ให้บันทึกภาพหน้ากากสีดำขาว แยกโฟลเดอร์ไว้เพื่อเอาไปทำเกม"
     },
     "CompositorNodePixelate": {
         "name": "CompositorNodePixelate",
-        "description": "โหนด CompositorNodePixelate สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ลดความละเอียดภาพ (Downscale) ให้ภาพแตกเป็นเม็ดพิกเซลเหลี่ยมๆ\nการประยุกษ์ใช้: ใช้แปลงภาพเรนเดอร์คมชัด 4K ให้กลายเป็นกราฟิกสไตล์เกม Retro 8-bit"
     },
     "CompositorNodePlaneTrackDeform": {
         "name": "CompositorNodePlaneTrackDeform",
-        "description": "โหนด CompositorNodePlaneTrackDeform สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ดึงรูปภาพไปแปะและบิดเบี้ยวตามพิกัด Plane Tracking ของกล้อง\nการประยุกษ์ใช้: ใช้แทนที่ป้ายโฆษณาบนหน้าปัดรถที่กำลังวิ่งอยู่ ด้วยภาพโฆษณาอันใหม่"
     },
     "CompositorNodePosterize": {
         "name": "CompositorNodePosterize",
-        "description": "โหนด CompositorNodePosterize สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ตัดเฉดสีของภาพให้เหลือเพียงไม่กี่ระดับ (Posterize) เหมือนงานพิมพ์สีจำกัด\nการประยุกษ์ใช้: ใช้ทำสไตล์ภาพป๊อปอาร์ต (Pop-Art) ที่มีเงาหน้าเป็นเส้นทึบสีดำ-เทาชัดเจน"
     },
     "CompositorNodePremulKey": {
         "name": "CompositorNodePremulKey",
-        "description": "โหนด CompositorNodePremulKey สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ปรับความสัมพันธ์ระหว่างสีและค่าความโปร่งใส (Premultiplied Alpha)\nการประยุกษ์ใช้: ใช้แก้ปัญหาขอบภาพฉากเขียวที่ไดคัทแล้วมีรอยขอบดำสลัวๆ ติดมา"
     },
     "CompositorNodeRGB": {
         "name": "CompositorNodeRGB",
-        "description": "โหนด CompositorNodeRGB สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: กล่องเลือกสี 1 สี เพื่อป้อนเข้าไปใช้ในโหนดอื่นๆ\nการประยุกษ์ใช้: ใช้จิ้มเลือกสีแดงอมส้ม แล้วป้อนเข้าโหนด Color Balance เพื่อย้อมสีแสงแดดยามเย็น"
     },
     "CompositorNodeRGBToBW": {
         "name": "CompositorNodeRGBToBW",
-        "description": "โหนด CompositorNodeRGBToBW สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: แปลงภาพสีให้กลายเป็นภาพขาวดำ (Grayscale/Black & White)\nการประยุกษ์ใช้: ใช้แปลงลายไม้สีน้ำตาล ให้เป็นภาพขาวดำสำหรับทำเป็นหน้ากากความขรุขระ (Bump Map)"
     },
     "CompositorNodeRLayers": {
         "name": "CompositorNodeRLayers",
-        "description": "โหนด CompositorNodeRLayers สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: โหนดทางเข้ารับข้อมูลหลักจากการเรนเดอร์ (Render Layers) ของ Blender 3D\nการประยุกษ์ใช้: รับภาพฉาก แสงเงา แสงสะท้อน และสี มาผสมผสานกันในตอนสุดท้าย"
     },
     "CompositorNodeRelativeToPixel": {
         "name": "CompositorNodeRelativeToPixel",
-        "description": "โหนด CompositorNodeRelativeToPixel สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: สลับหน่วยวัดพิกัดระหว่างสัดส่วนเป้าหมาย (0-1) กับขนาดพิกเซลจริง\nการประยุกษ์ใช้: ใช้ขยับรูปโลโก้ให้ชิดขอบจอเป็นจำนวน 100 พิกเซลพอดี โดยไม่สนขนาดจอ",
         "dropdowns": {
             "data_type": [
                 "FLOAT",
@@ -2201,19 +2201,19 @@
     },
     "CompositorNodeRotate": {
         "name": "CompositorNodeRotate",
-        "description": "โหนด CompositorNodeRotate สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: หมุนภาพเป็นองศาตามต้องการ\nการประยุกษ์ใช้: ใช้หมุนภาพวิดีโอที่ถ่ายตีลังกามา 180 องศา ให้กลับมาตั้งตรงปกติ"
     },
     "CompositorNodeScale": {
         "name": "CompositorNodeScale",
-        "description": "โหนด CompositorNodeScale สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ย่อและขยายขนาดของภาพ\nการประยุกษ์ใช้: ใช้ย่อภาพโลโก้ 4K ให้เล็กลงเหลือ 10% เพื่อไปแปะตรงมุมหน้าต่าง"
     },
     "CompositorNodeSceneTime": {
         "name": "CompositorNodeSceneTime",
-        "description": "โหนด CompositorNodeSceneTime สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ดึงข้อมูลหมายเลขเฟรม (Frame) วินาทีที่เล่นอยู่ขณะนั้นมาเป็นตัวเลข\nการประยุกษ์ใช้: ใช้ตั้งค่าให้กะพริบสว่างขึ้นทุกๆ 24 เฟรม"
     },
     "CompositorNodeSeparateColor": {
         "name": "CompositorNodeSeparateColor",
-        "description": "โหนด CompositorNodeSeparateColor สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: แยกภาพสีช่องทาง RGB/HSV ออกเป็นภาพขาวดำแยกตามช่อง\nการประยุกษ์ใช้: ใช้ดึงภาพช่อง Blue ที่มักจะมีสิวของตัวละครโผล่ชัดเจน ออกมาทำหน้ากากเบลอสิว",
         "dropdowns": {
             "mode": [
                 "RGB",
@@ -2269,51 +2269,51 @@
     },
     "CompositorNodeSequencerStripInfo": {
         "name": "CompositorNodeSequencerStripInfo",
-        "description": "โหนด CompositorNodeSequencerStripInfo สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: อ่านข้อมูลคลิปจากช่องตัดต่อวิดีโอ (VSE) มาประมวลผลต่อ\nการประยุกษ์ใช้: ใช้ดึงเวลาเริ่มและเวลาจบของคลิป มาทำกราฟิกสเกลเวลาให้ตรงกันพอดี"
     },
     "CompositorNodeSetAlpha": {
         "name": "CompositorNodeSetAlpha",
-        "description": "โหนด CompositorNodeSetAlpha สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: เอาภาพขาวดำมาใช้เป็นค่าความโปร่งใส (Alpha) ทับลงบนภาพเป้าหมาย\nการประยุกษ์ใช้: ใช้เอาภาพหน้ากากที่เจาะฉากเขียวเสร็จแล้ว มาเซ็ตความใสให้ภาพคนอีกที"
     },
     "CompositorNodeSplit": {
         "name": "CompositorNodeSplit",
-        "description": "โหนด CompositorNodeSplit สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: แยกมุมมองภาพซ้าย-ขวา เปรียบเทียบผลก่อน-หลังแต่ง (Split Viewer)\nการประยุกษ์ใช้: ใช้ดึงเส้นแถบกลางเพื่อเทียบดูว่าการดึงแสงให้ภาพสว่างขึ้น มันดีกว่าเดิมไหม"
     },
     "CompositorNodeStabilize": {
         "name": "CompositorNodeStabilize",
-        "description": "โหนด CompositorNodeStabilize สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: นำภาพที่กล้องสั่นมาทำให้หยุดนิ่ง (Stabilize) โดยใช้ข้อมูลจาก Motion Tracking\nการประยุกษ์ใช้: ใช้แก้คลิปเดินถือกล้องมือเปล่าที่ภาพสั่นไหว ให้เนียนเรียบราวกับใช้กิมบอล"
     },
     "CompositorNodeSwitch": {
         "name": "CompositorNodeSwitch",
-        "description": "โหนด CompositorNodeSwitch สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สลับเปิดปิดสวิตช์ระหว่างตัวเลือก 2 สาย (True/False)\nการประยุกษ์ใช้: ใช้สลับว่าถ้าเรนเดอร์ให้โชว์เลเยอร์ควัน แต่ถ้าไม่ให้ซ่อนเลเยอร์ควัน"
     },
     "CompositorNodeSwitchView": {
         "name": "CompositorNodeSwitchView",
-        "description": "โหนด CompositorNodeSwitchView สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สลับการแสดงผลสำหรับงานแว่น 3D เสมือนจริง ซ้าย-ขวา (Stereo 3D)\nการประยุกษ์ใช้: ใช้ป้อนภาพคนละมุมเข้าไป เพื่อให้ตาซ้ายและตาขวาเห็นภาพซ้อนกันอย่างมีมิติ"
     },
     "CompositorNodeTime": {
         "name": "CompositorNodeTime",
-        "description": "โหนด CompositorNodeTime สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างเส้นกราฟความชันตามกรอบเวลา (Frame) ของแอนิเมชัน (คล้าย Scene Time)\nการประยุกษ์ใช้: ใช้สั่งให้แสงจ้าเพิ่มขึ้นจาก 0 ไป 1 ภายในเวลา 5 วินาที"
     },
     "CompositorNodeTonemap": {
         "name": "CompositorNodeTonemap",
-        "description": "โหนด CompositorNodeTonemap สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: บีบอัดค่าสี (HDR) ให้พอดีกับการแสดงผลบนจอภาพปกติโดยรักษาแสงไฮไลต์ (Tone Mapping)\nการประยุกษ์ใช้: ใช้เกลี่ยภาพท้องฟ้าที่สว่างเกินไป (ขาวจ้า) ให้เห็นลวดลายเมฆโดยที่พื้นดินไม่มืด"
     },
     "CompositorNodeTrackPos": {
         "name": "CompositorNodeTrackPos",
-        "description": "โหนด CompositorNodeTrackPos สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: อ่านตำแหน่งของจุด Track (Marker) จากคลิปวิดีโอที่ใช้ Motion Tracking\nการประยุกษ์ใช้: ใช้อ่านพิกัดป้ายทะเบียนรถที่กำลังวิ่ง เพื่อนำแผ่นเซ็นเซอร์ไปบังให้วิ่งตามป้ายเป๊ะๆ"
     },
     "CompositorNodeTransform": {
         "name": "CompositorNodeTransform",
-        "description": "โหนด CompositorNodeTransform สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ขยับ (Translate), หมุน (Rotate), และย่อขยาย (Scale) ภาพทั้งหมดในโหนดเดียว\nการประยุกษ์ใช้: ใช้จัดองค์ประกอบภาพใหม่ เอาป้ายลงมา ขยายให้ใหญ่ แล้วเอียง 15 องศา"
     },
     "CompositorNodeTranslate": {
         "name": "CompositorNodeTranslate",
-        "description": "โหนด CompositorNodeTranslate สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: เลื่อนภาพในแนวแกน X และ Y เท่านั้น\nการประยุกษ์ใช้: ใช้ขยับตำแหน่งเครดิตตัวอักษรท้ายคลิปขึ้นไปด้านบนทีละนิด"
     },
     "CompositorNodeTree": {
         "name": "CompositorNodeTree",
-        "description": "โหนด CompositorNodeTree สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: ตัวแทนการทำงานของกลุ่มโหนด Compositing ย่อย (Node Group)\nการประยุกษ์ใช้: ใช้จัดระเบียบโหนดที่มีเป็นร้อยๆ ให้เหลือเป็นก้อนโมดูลเดี่ยวๆ เรียบร้อย",
         "dropdowns": {
             "id_type": [
                 "ACTION",
@@ -2520,23 +2520,23 @@
     },
     "CompositorNodeVecBlur": {
         "name": "CompositorNodeVecBlur",
-        "description": "โหนด CompositorNodeVecBlur สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างการเบลอตามการเคลื่อนไหว (Vector/Motion Blur) จากความเร็ว 3 มิติ\nการประยุกษ์ใช้: ใช้ใส่ความสั่นไหวเบลอๆ ให้ลูกธนูที่กำลังพุ่งผ่านกล้องไปอย่างรวดเร็ว"
     },
     "CompositorNodeViewer": {
         "name": "CompositorNodeViewer",
-        "description": "โหนด CompositorNodeViewer สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ดึงภาพตรงจุดนั้นๆ ขึ้นไปแสดงที่หน้าจอฉากหลัง (Backdrop Viewer)\nการประยุกษ์ใช้: ใช้ดูความก้าวหน้าการปรับสีทีละโหนด ว่าสีเปลี่ยนไปตามที่หวังไหม"
     },
     "CompositorNodeZcombine": {
         "name": "CompositorNodeZcombine",
-        "description": "โหนด CompositorNodeZcombine สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: นำภาพ 2 ภาพมาทับซ้อนกัน โดยอิงจากความลึก Z-Depth ทะลุมิติ\nการประยุกษ์ใช้: ใช้รวมคน 3 มิติ ให้ไปเดินบังต้นไม้ด้านหลัง แต่มุดอยู่ใต้ต้นไม้ด้านหน้าอย่างแนบเนียน"
     },
     "FunctionNode": {
         "name": "",
-        "description": "โหนดฟังก์ชันพื้นฐาน (Function Node)"
+        "description": "หลักการ: โหนดมาตรฐานสำหรับการทำงานทางคณิตศาสตร์หรือตรรกะ\nการประยุกษ์ใช้: ใช้ประมวลผลข้อมูลตัวเลขพื้นฐานก่อนนำไปเชื่อมต่อกับโหนดอื่นๆ"
     },
     "FunctionNodeAlignEulerToVector": {
         "name": "AlignEulerToVector",
-        "description": "โหนดสำหรับหมุนแกนออยเลอร์ให้สอดคล้องกับทิศทางของVector (Align Euler to Vector)",
+        "description": "หลักการ: ปรับแนวการหมุนแกนออยเลอร์ (Euler) ให้ชี้ไปในทิศทางของ Vector ที่กำหนด\nการประยุกษ์ใช้: ใช้บังคับให้จมูกเครื่องบินหันตามเส้นทางโค้งที่บินไปเสมอ",
         "dropdowns": {
             "axis": [
                 "X",
@@ -2587,7 +2587,7 @@
     },
     "FunctionNodeBitMath": {
         "name": "BitMath",
-        "description": "โหนดสำหรับคำนวณคณิตศาสตร์ระดับบิต (Bitwise Operations)",
+        "description": "หลักการ: คำนวณตัวเลขทางตรรกะระดับบิต (Bitwise Operations) เช่น AND, OR, XOR\nการประยุกษ์ใช้: ใช้จัดการและจัดเก็บชุดข้อมูล Boolean หลายตัวพร้อมกันในตัวเลขเดียวเพื่อลดหน่วยความจำ",
         "dropdowns": {
             "operation": [
                 "AND",
@@ -2629,27 +2629,27 @@
     },
     "FunctionNodeFormatString": {
         "name": "FormatString",
-        "description": "โหนดสำหรับจัดรูปแบบข้อความ (Format String) โดยแทนที่ค่าตัวแปรลงในข้อความ"
+        "description": "หลักการ: ใส่ค่าตัวแปรลงในข้อความแบบมีรูปแบบ (Formatted String)\nการประยุกษ์ใช้: ใช้สร้างข้อความว่า 'ผู้เล่นมีพลังชีวิต 100 หน่วย' โดยเลข 100 เปลี่ยนไปตามค่าจริง"
     },
     "FunctionNodeInputBool": {
         "name": "InputBool",
-        "description": "โหนดรับค่าความจริง (Boolean) แบบคงที่ (True/False)"
+        "description": "หลักการ: สร้างปุ่มสวิตช์ ค่าความจริง-เท็จ (True/False) เป็นตัวแปรควบคุม\nการประยุกษ์ใช้: ใช้เป็นสวิตช์ปิด/เปิดสำหรับตัวเลือกว่าจะใช้ความหนาแน่นมากหรือน้อย"
     },
     "FunctionNodeInputSpecialCharacters": {
         "name": "InputSpecialCharacters",
-        "description": "โหนดสำหรับสร้างอักขระพิเศษ เช่น แท็บหรือการขึ้นบรรทัดใหม่"
+        "description": "หลักการ: ใส่ตัวอักษรพิเศษในการจัดหน้าพิมพ์ (เช่น Tab, การขึ้นบรรทัดใหม่)\nการประยุกษ์ใช้: ใช้เว้นบรรทัดระหว่างป้ายชื่อกับนามสกุลในระบบ Text 3D"
     },
     "FunctionNodeMatchString": {
         "name": "MatchString",
-        "description": "โหนดสำหรับตรวจสอบว่าข้อความตรงกับรูปแบบที่กำหนดหรือไม่ (Match String)"
+        "description": "หลักการ: จับคู่และตรวจสอบว่าข้อความ (String) ตรงกับเงื่อนไขที่กำหนดหรือไม่ (รองรับ Regex)\nการประยุกษ์ใช้: ใช้กรองเอาเฉพาะไฟล์ที่มีคำว่า 'texture' อยู่ในชื่อ"
     },
     "FunctionNodeMatrixMultiply": {
         "name": "MatrixMultiply",
-        "description": "โหนดสำหรับคูณเมทริกซ์การแปลงสภาพ (Matrix Multiply)"
+        "description": "หลักการ: นำเมทริกซ์ 2 ตัวมาคูณกัน เพื่อซ้อนทับการย้าย ขยาย หมุน (Transform)\nการประยุกษ์ใช้: ใช้รวมการแปลงของแขนเข้ากับการแปลงของข้อมือ เพื่อหาตำแหน่งนิ้วที่ถูกต้อง"
     },
     "FunctionNodeRotateEuler": {
         "name": "RotateEuler",
-        "description": "โหนดสำหรับหมุนค่าออยเลอร์ (Rotate Euler)",
+        "description": "หลักการ: หมุนค่าองศาออยเลอร์ (Euler) เพิ่มเติมเข้าไปในแนวแกนที่กำหนด\nการประยุกษ์ใช้: ใช้รับค่าเลี้ยวซ้าย-ขวาจากพวงมาลัย ไปหมุนล้อรถที่กำลังหมุนไปข้างหน้าอยู่แล้ว",
         "dropdowns": {
             "rotation_type": [
                 "AXIS_ANGLE",
@@ -2685,23 +2685,23 @@
     },
     "FunctionNodeRotateVector": {
         "name": "RotateVector",
-        "description": "โหนดสำหรับหมุนVectorด้วยจุดศูนย์กลางที่กำหนด (Rotate Vector)"
+        "description": "หลักการ: หมุนทิศทางของ Vector รอบจุดศูนย์กลาง\nการประยุกษ์ใช้: ใช้หมุนทิศทางลมให้พัดเฉียงขึ้น 45 องศาก่อนนำไปปะทะผ้า"
     },
     "GeometryNode": {
         "name": "",
-        "description": "โหนดเรขาคณิตพื้นฐาน (Geometry Node)"
+        "description": "หลักการ: โหนดมาตรฐานเปล่าๆ สำหรับทำงานในระบบ Geometry Nodes\nการประยุกษ์ใช้: ใช้เป็นโหนดพื้นฐานก่อนป้อนฟังก์ชันเข้าไป"
     },
     "GeometryNodeCameraInfo": {
         "name": "CameraInfo",
-        "description": "โหนดสำหรับดึงข้อมูลและคุณสมบัติของกล้อง (Camera Info)"
+        "description": "หลักการ: ดึงข้อมูลและค่าพารามิเตอร์ต่างๆ จากกล้องที่ตั้งไว้ในฉาก\nการประยุกษ์ใช้: ใช้อ่านระยะโฟกัส (Focal Length) เพื่อทำแสงแฟลร์ (Lens Flare) ให้มีขนาดสมจริง"
     },
     "GeometryNodeCurveQuadraticBezier": {
         "name": "CurveQuadraticBezier",
-        "description": "โหนดสำหรับสร้างเส้นโค้งเบซิเยร์แบบควอดราติก (Quadratic Bézier Curve)"
+        "description": "หลักการ: สร้างเส้นโค้ง Bézier กำลังสอง ด้วยจุดเริ่มต้น จุดกลาง และจุดสิ้นสุด\nการประยุกษ์ใช้: ใช้โยงสายไฟตกท้องช้างระหว่างเสา 2 ต้นอย่างง่ายๆ"
     },
     "GeometryNodeCurveSetHandles": {
         "name": "CurveSetHandles",
-        "description": "โหนดสำหรับกำหนดตำแหน่งและประเภทแขนควบคุมเส้นโค้งเบซิเยร์",
+        "description": "หลักการ: ตั้งค่าแขนควบคุมเส้นโค้งแบบใหม่ให้กับเส้น Bézier\nการประยุกษ์ใช้: ใช้สั่งให้เส้นทางรถไฟหักมุมแหลมทันทีตรงทางแยก",
         "dropdowns": {
             "handle_type": [
                 "FREE",
@@ -2747,19 +2747,19 @@
     },
     "GeometryNodeCurveSpiral": {
         "name": "CurveSpiral",
-        "description": "โหนดสำหรับสร้างเส้นโค้งรูปเกลียว (Spiral Curve)"
+        "description": "หลักการ: สร้างเส้นโค้งเกลียวสปริง 3 มิติ\nการประยุกษ์ใช้: ใช้ทำขดลวดในหลอดไฟ หรือเส้นลวดทำสปริงปากกา"
     },
     "GeometryNodeCurveStar": {
         "name": "CurveStar",
-        "description": "โหนดสำหรับสร้างเส้นโค้งรูปดาว (Star Curve)"
+        "description": "หลักการ: สร้างเส้นโค้งรูปดาว\nการประยุกษ์ใช้: ใช้สร้างตรานายอำเภอ หรือดาวกระจายของนินจา"
     },
     "GeometryNodeCustomGroup": {
         "name": "CustomGroup",
-        "description": "โหนดกลุ่มที่สร้างขึ้นเอง (Custom Node Group)"
+        "description": "หลักการ: กลุ่มโหนดเรขาคณิตที่ถูกรวบรวมโดยผู้ใช้เพื่อความสะดวกในการเรียกใช้ซ้ำ\nการประยุกษ์ใช้: ใช้มัดรวมสูตร 'สร้างบ้านอัตโนมัติ' ไว้กดเรียกใช้ทีเดียว"
     },
     "GeometryNodeFieldMinAndMax": {
         "name": "FieldMinAndMax",
-        "description": "โหนดสำหรับหาค่าสูงสุดและต่ำสุดจากฟิลด์ข้อมูล",
+        "description": "หลักการ: ค้นหาขีดจำกัดน้อยสุดและมากสุดของข้อมูลที่กระจายตัวอยู่ (Field)\nการประยุกษ์ใช้: ใช้หาจุดที่เตี้ยที่สุดและสูงที่สุดของภูเขา เพื่อสร้างการไล่ระดับสีหิมะและหิน",
         "dropdowns": {
             "data_type": [
                 "FLOAT",
@@ -2825,7 +2825,7 @@
     },
     "GeometryNodeFieldToGridItem": {
         "name": "FieldToGridItem",
-        "description": "โหนดสำหรับแปลงข้อมูลฟิลด์ให้เป็นไอเทมในกริด",
+        "description": "หลักการ: ประทับหรือส่งค่าตัวแปรลงไปเก็บไว้ในช่อง Voxel ของกริดปริมาตร\nการประยุกษ์ใช้: ใช้บันทึกพิกัดของควันในแต่ละช่อง เพื่อคำนวณการกระจายตัวของควัน",
         "dropdowns": {
             "data_type": [
                 "FLOAT",
@@ -2952,7 +2952,7 @@
     },
     "GeometryNodeFieldToListItem": {
         "name": "FieldToListItem",
-        "description": "โหนดสำหรับแปลงข้อมูลฟิลด์ให้เป็นไอเทมในลิสต์",
+        "description": "หลักการ: ดึงข้อมูลประมวลผล (Field) มาบันทึกลงเป็นรายการ (List) แถวๆ\nการประยุกษ์ใช้: ใช้เก็บรวบรวมรหัสสีของใบไม้ทุกใบไว้ในลิสต์เพื่อเตรียมนำไปใช้เป็น Material",
         "dropdowns": {
             "socket_type": [
                 "FLOAT",
@@ -3079,11 +3079,11 @@
     },
     "GeometryNodeForeachGeometryElementInput": {
         "name": "ForeachGeometryElementInput",
-        "description": "โหนดนำเข้าข้อมูลสำหรับการประมวลผลลูปแต่ละชิ้นส่วนเรขาคณิต (Foreach Geometry Element Input)"
+        "description": "หลักการ: จุดรับข้อมูลเข้าสู่ลูปทำซ้ำแบบแยกชิ้น (For Each)\nการประยุกษ์ใช้: รับชิ้นส่วนใบไม้แต่ละใบเข้าไปคำนวณในลูป เพื่อให้แต่ละใบหมุนต่างกัน"
     },
     "GeometryNodeForeachGeometryElementOutput": {
         "name": "ForeachGeometryElementOutput",
-        "description": "โหนดส่งออกข้อมูลจากการประมวลผลลูปแต่ละชิ้นส่วนเรขาคณิต (Foreach Geometry Element Output)",
+        "description": "หลักการ: จุดส่งออกข้อมูลหลังผ่านการทำงานลูปแบบแยกชิ้นเสร็จสิ้น\nการประยุกษ์ใช้: ส่งเอาใบไม้ที่หมุนเสร็จแล้วทั้งหมดมารวมเป็นพุ่มไม้เหมือนเดิม",
         "dropdowns": {
             "domain": [
                 "POINT",
@@ -3130,7 +3130,7 @@
     },
     "GeometryNodeGridAdvect": {
         "name": "GridAdvect",
-        "description": "โหนดสำหรับจำลองการไหลหรือเคลื่อนที่ของกริดปริมาตร (Grid Advect)",
+        "description": "หลักการ: เคลื่อนย้ายข้อมูลปริมาตร (Volume Grid) ไปตามทิศทาง Vector (ลม/น้ำ)\nการประยุกษ์ใช้: ใช้จำลองพายุทอร์นาโดปั่นควันฝุ่นให้หมุนไปตามทิศทางลมกรด",
         "dropdowns": {
             "data_type": [
                 "FLOAT",
@@ -3257,7 +3257,7 @@
     },
     "GeometryNodeGridClip": {
         "name": "GridClip",
-        "description": "โหนดสำหรับตัดกริดปริมาตรให้อยู่ในขอบเขตที่กำหนด",
+        "description": "หลักการ: ตัดขอบเขตกริดข้อมูลปริมาตรทิ้งเพื่อประหยัดหน่วยความจำ\nการประยุกษ์ใช้: ตัดก้อนเมฆส่วนที่มองไม่เห็นผ่านกล้องทิ้ง เพื่อความรวดเร็วตอนเรนเดอร์",
         "dropdowns": {
             "data_type": [
                 "FLOAT",
@@ -3384,7 +3384,7 @@
     },
     "GeometryNodeGridDilateAndErode": {
         "name": "GridDilateAndErode",
-        "description": "โหนดสำหรับขยายหรือหดขนาดขอบเขตของกริดปริมาตร",
+        "description": "หลักการ: ทำให้กริดข้อมูลพองขึ้น (Dilate) หรือหดเล็กลง (Erode)\nการประยุกษ์ใช้: ใช้เพิ่มความหนาให้กลุ่มหมอกรอบตัวปีศาจ หรือกัดกร่อนควันให้จางหายไป",
         "dropdowns": {
             "data_type": [
                 "FLOAT",
@@ -3511,7 +3511,7 @@
     },
     "GeometryNodeGridPrune": {
         "name": "GridPrune",
-        "description": "โหนดสำหรับลบพื้นที่ในกริดปริมาตรที่ไม่มีข้อมูลสำคัญออก (Prune)",
+        "description": "หลักการ: ตัดช่องว่าง Voxel ที่ไม่มีค่าหรือค่าต่ำมากๆ ออกไป (คลีนข้อมูล)\nการประยุกษ์ใช้: ล้างเศษควันประปรายที่ความหนาแน่นน้อยกว่า 1% ทิ้งเพื่อไม่ให้กิน RAM เครื่อง",
         "dropdowns": {
             "data_type": [
                 "FLOAT",
@@ -3638,7 +3638,7 @@
     },
     "GeometryNodeGridVoxelize": {
         "name": "GridVoxelize",
-        "description": "โหนดสำหรับแปลงเรขาคณิตให้เป็นกริดปริมาตรแบบว็อกเซล (Voxelize)",
+        "description": "หลักการ: แปลงรูปทรงโพลีกอนปกติ ให้กลายเป็นจุดพิกเซลลูกเต๋า 3 มิติแบบตาราง (Voxel)\nการประยุกษ์ใช้: ทำโมเดลตัวละครสไตล์ 8-bit เหมือนหลุดมาจากเกมยุคเก่า",
         "dropdowns": {
             "data_type": [
                 "FLOAT",
@@ -3765,7 +3765,7 @@
     },
     "GeometryNodeImageTexture": {
         "name": "ImageTexture",
-        "description": "โหนดสำหรับดึงสีและข้อมูลจากภาพเท็กซ์เจอร์",
+        "description": "หลักการ: โหลดและอ่านข้อมูลจากไฟล์ภาพเพื่อใช้ทำงานร่วมกับโมเดล\nการประยุกษ์ใช้: ใช้ดึงภาพแผนที่ความสูง (Height Map) มาดันพื้นราบให้กลายเป็นภูเขาตามสีภาพ",
         "dropdowns": {
             "interpolation": [
                 "Linear",
@@ -3816,39 +3816,39 @@
     },
     "GeometryNodeInputActiveCamera": {
         "name": "InputActiveCamera",
-        "description": "โหนดสำหรับดึงข้อมูลกล้องที่กำลังใช้งานอยู่ (Active Camera)"
+        "description": "หลักการ: ดึงข้อมูลกล้องมุมมองหลัก ณ ขณะนั้น\nการประยุกษ์ใช้: ใช้อ้างอิงพิกัดกล้องเพื่อทำป้ายชื่อตัวละครที่หันหน้าเข้าหากล้องเสมอ"
     },
     "GeometryNodeInputEdgeSmooth": {
         "name": "InputEdgeSmooth",
-        "description": "โหนดสำหรับดึงค่าความเรียบของเส้นขอบ (Edge Smooth)"
+        "description": "หลักการ: ตรวจสอบเส้นขอบว่าถูกตั้งค่าความนุ่มนวล (Smooth) ไว้หรือไม่\nการประยุกษ์ใช้: ใช้คัดเลือกเส้นขอบที่คมจัดมาใส่แสงสีสว่างเพื่อเน้นลายเส้นโมเดล"
     },
     "GeometryNodeInputInstanceBounds": {
         "name": "InputInstanceBounds",
-        "description": "โหนดสำหรับดึงขนาดกล่องครอบคลุม (Bounding Box) ของInstance"
+        "description": "หลักการ: อ่านค่าขนาดต่ำสุดและสูงสุด (Bounding Box) ของตัวแปร Instance ปัจจุบัน\nการประยุกษ์ใช้: ใช้เช็คขนาดก้อนหินว่าใหญ่พอไหม ถ้าเล็กเกินไปจะลบทิ้ง"
     },
     "GeometryNodeInputNamedLayerSelection": {
         "name": "InputNamedLayerSelection",
-        "description": "โหนดสำหรับดึงข้อมูลการเลือกจากเลเยอร์ที่มีชื่อ"
+        "description": "หลักการ: เลือกใช้งานเลเยอร์ที่ถูกตั้งชื่อไว้จากระบบวาดเส้น (เช่น Grease Pencil)\nการประยุกษ์ใช้: ใช้ดึงลายเส้นสเก็ตช์ร่างที่ชื่อ 'Draft' ออกมาลบทิ้งตอนเรนเดอร์"
     },
     "GeometryNodeInputShadeSmooth": {
         "name": "InputShadeSmooth",
-        "description": "โหนดสำหรับดึงสถานะการแรเงาพื้นผิวแบบเรียบ (Shade Smooth)"
+        "description": "หลักการ: อ่านสถานะความนุ่มนวล (Smooth Shading) บนแต่ละหน้าตัดเรขาคณิต\nการประยุกษ์ใช้: ใช้แยกพื้นที่เรียบเนียนออกจากพื้นที่ผิวหยาบ เพื่อใส่ Material คนละแบบ"
     },
     "GeometryNodeInputShortestEdgePaths": {
         "name": "InputShortestEdgePaths",
-        "description": "โหนดสำหรับคำนวณหาเส้นทางขอบที่สั้นที่สุด"
+        "description": "หลักการ: ตรวจสอบและดึงข้อมูลเส้นทางลัดขอบตาข่าย (Shortest Path) ที่สร้างไว้\nการประยุกษ์ใช้: ใช้ดึงเส้นทางรากไม้แผ่ขยายเพื่อเอาไปทำเป็นท่อ 3 มิติ"
     },
     "GeometryNodeInputVoxelIndex": {
         "name": "InputVoxelIndex",
-        "description": "โหนดสำหรับดึงดัชนีของว็อกเซลในกริดปริมาตร"
+        "description": "หลักการ: ดึงรหัสประจำช่องปริมาตร (Voxel Index) มาใช้งานอ้างอิง\nการประยุกษ์ใช้: ใช้แยกพิกเซลช่องลูกบาศก์ที่อยู่ด้านนอกสุดเพื่อทาสีต่างจากด้านใน"
     },
     "GeometryNodeInstanceTransform": {
         "name": "InstanceTransform",
-        "description": "โหนดสำหรับดึงหรือปรับเปลี่ยนข้อมูลการแปลงสภาพของInstance"
+        "description": "หลักการ: อ่านและดึงค่า Transform (ขยับ/หมุน/สเกล) ของตัว Instance ออกมาวิเคราะห์\nการประยุกษ์ใช้: ใช้อ่านทิศทางการหมุนของเกียร์แต่ละตัวเพื่อคำนวณเงื่อนไขแสงสะท้อน"
     },
     "GeometryNodeListGetItem": {
         "name": "ListGetItem",
-        "description": "โหนดสำหรับดึงไอเทมจากรายการ (List) ด้วยดัชนีที่กำหนด",
+        "description": "หลักการ: ล้วงเอาข้อมูล 1 ชิ้น ที่ซ่อนอยู่ในกล่องข้อมูลรายการ (List) ออกมาใช้\nการประยุกษ์ใช้: ดึงสีแบบที่ 5 ออกมาจากพาเลทสีที่เตรียมไว้ เอามาทาสีรถ",
         "dropdowns": {
             "socket_type": [
                 "FLOAT",
@@ -4009,31 +4009,31 @@
     },
     "GeometryNodeMeshFaceSetBoundaries": {
         "name": "MeshFaceSetBoundaries",
-        "description": "โหนดสำหรับหาเส้นขอบเขตของกลุ่มหน้าตัด (Face Set Boundaries)"
+        "description": "หลักการ: ตรวจหารอยต่อกั้นระหว่างกลุ่มหน้าตัดย่อยๆ (Face Set)\nการประยุกษ์ใช้: สร้างเส้นขอบหนาๆ ระหว่างสีเสื้อกับสีกางเกงเพื่อเน้นลายสไตล์ตูน (Cel-shade)"
     },
     "GeometryNodeRepeatInput": {
         "name": "RepeatInput",
-        "description": "โหนดนำเข้าสำหรับการทำซ้ำแบบวนลูป (Repeat Zone Input)"
+        "description": "หลักการ: ตัวรับข้อมูลเข้าสู่จุดเริ่มต้นของการทำซ้ำ (Repeat Zone)\nการประยุกษ์ใช้: นำโมเดลขั้นบันไดแรกส่งเข้าลูป เพื่อใช้ปั๊มเพิ่มไปเรื่อยๆ จนครบ 100 ขั้น"
     },
     "GeometryNodeRepeatOutput": {
         "name": "RepeatOutput",
-        "description": "โหนดส่งออกจากการทำซ้ำแบบวนลูป (Repeat Zone Output)"
+        "description": "หลักการ: ส่งข้อมูลจากการวนลูปทำซ้ำ กลับออกมาใช้งานข้างนอก\nการประยุกษ์ใช้: ส่งมอบบันไดเวียนความสูง 100 ขั้นที่ต่อยอดเสร็จเรียบร้อยแล้วไปทำสีต่อ"
     },
     "GeometryNodeSimulationInput": {
         "name": "SimulationInput",
-        "description": "โหนดนำเข้าสำหรับโซนการจำลองฟิสิกส์หรือการเปลี่ยนรูป (Simulation Zone Input)"
+        "description": "หลักการ: จุดรับข้อมูลเข้าสู่ระบบจำลองฟิสิกส์ทีละเฟรม (Simulation Zone)\nการประยุกษ์ใช้: รับพิกัดดั้งเดิมของลูกบอลเข้ามาทุกเฟรมเพื่อคำนวณแรงโน้มถ่วงให้มันตกลงมา"
     },
     "GeometryNodeSimulationOutput": {
         "name": "SimulationOutput",
-        "description": "โหนดส่งออกสำหรับโซนการจำลองฟิสิกส์ (Simulation Zone Output)"
+        "description": "หลักการ: ส่งออกและบันทึกผลลัพธ์ของระบบจำลองกลับไปวนลูปในเฟรมต่อไป\nการประยุกษ์ใช้: บันทึกความเร็วลูกบอลตอนนี้ เพื่อเอาไปบวกเพิ่มความเร็วตอนตกในเฟรมหน้า"
     },
     "GeometryNodeTool3DCursor": {
         "name": "Tool3DCursor",
-        "description": "โหนดสำหรับดึงตำแหน่ง 3D Cursor ปัจจุบัน (สำหรับ Geometry Nodes Tool)"
+        "description": "หลักการ: อ่านพิกัด 3D Cursor บนหน้าจอผู้ใช้ (สำหรับโหมดเครื่องมือ Add-on)\nการประยุกษ์ใช้: ใช้เป็นเป้าหมายว่าถ้าผู้ใช้คลิกวาง Cursor ตรงไหน ให้ระเบิดเกิดตรงนั้น"
     },
     "GeometryNodeToolActiveElement": {
         "name": "ToolActiveElement",
-        "description": "โหนดสำหรับดึงชิ้นส่วนเรขาคณิตที่กำลังแอคทีฟอยู่ (Active Element)",
+        "description": "หลักการ: อ่านข้อมูลส่วนประกอบ (จุด/เส้น/หน้า) ล่าสุดที่ผู้ใช้เมาส์คลิกโดน\nการประยุกษ์ใช้: ใช้ดึงเฉพาะหน้าตัดที่คลิก เพื่อกดแล้วดึงให้หลังคาหน้าตัดนั้นสูงขึ้น",
         "dropdowns": {
             "domain": [
                 "POINT",
@@ -4065,23 +4065,23 @@
     },
     "GeometryNodeToolFaceSet": {
         "name": "ToolFaceSet",
-        "description": "โหนดสำหรับดึงข้อมูล Face Set ในโหมด Sculpt (Tool)"
+        "description": "หลักการ: ตรวจสอบกลุ่มหน้าตัด (Face Set) ปัจจุบันที่กำลังใช้งาน\nการประยุกษ์ใช้: ใช้เปลี่ยนสีทั้งหมดของชิ้นส่วนร่างกายเดียวกันให้เป็นสีทอง (ทำผ่านโหมดเครื่องมือ)"
     },
     "GeometryNodeToolMousePosition": {
         "name": "ToolMousePosition",
-        "description": "โหนดสำหรับดึงตำแหน่งของเมาส์บนหน้าจอ (Tool)"
+        "description": "หลักการ: อ่านพิกัด X/Y ของเมาส์ผู้ใช้ที่หน้าจอ Viewport ขณะนั้น\nการประยุกษ์ใช้: ใช้สร้างแปรงระบายที่โมเดลจะหดเล็กลงเวลาเมาส์วิ่งผ่าน"
     },
     "GeometryNodeToolSelection": {
         "name": "ToolSelection",
-        "description": "โหนดสำหรับดึงข้อมูลส่วนที่ถูกเลือกอยู่ (Tool Selection)"
+        "description": "หลักการ: อ่านสถานะการครอบตัดหรือเลือกส่วนต่างๆ (Selection) ด้วยเมาส์\nการประยุกษ์ใช้: ใช้แยกเฉพาะพื้นที่ที่ผู้ใช้ตีกรอบไว้มาทำเป็นต้นไม้กระถางเดี่ยว"
     },
     "GeometryNodeToolSetFaceSet": {
         "name": "ToolSetFaceSet",
-        "description": "โหนดสำหรับกำหนด Face Set ของเรขาคณิต"
+        "description": "หลักการ: เปลี่ยนแปลงรหัสกลุ่มหน้าตัด (Face Set) แบบอินเทอร์แอคทีฟด้วยเครื่องมือ\nการประยุกษ์ใช้: สร้างแปรงทาสีเพื่อกำหนดกลุ่มเสื้อผ้าใหม่ก่อนเอาไปทำ Sculpt"
     },
     "GeometryNodeToolSetSelection": {
         "name": "ToolSetSelection",
-        "description": "โหนดสำหรับกำหนดหรือเปลี่ยนแปลงส่วนที่ถูกเลือก",
+        "description": "หลักการ: ตั้งค่าพื้นที่เลือก (Selection) อัตโนมัติจากเครื่องมือ (Tool Mode)\nการประยุกษ์ใช้: เมื่อรันเครื่องมือนี้ ให้มาร์คจุดที่แหลมเกิน 45 องศาว่าถูกเลือก (Select) ทันที",
         "dropdowns": {
             "domain": [
                 "POINT",
@@ -4127,7 +4127,7 @@
     },
     "GeometryNodeTree": {
         "name": "Tree",
-        "description": "แผนผังโหนดเรขาคณิต (Geometry Node Tree)",
+        "description": "หลักการ: ตัวแทนภาพรวมของกลุ่ม Geometry Nodes (โหนดรวมศูนย์)\nการประยุกษ์ใช้: การแพ็คชุดข้อมูลเพื่อย่อขนาดให้ใช้งานเป็นก้อนฟังก์ชันย่อย",
         "dropdowns": {
             "id_type": [
                 "ACTION",
@@ -4334,27 +4334,27 @@
     },
     "GeometryNodeUVPackIslands": {
         "name": "UVPackIslands",
-        "description": "โหนดสำหรับจัดเรียงชิ้นส่วน UV ให้พอดีกับพื้นที่ (Pack Islands)"
+        "description": "หลักการ: จัดเรียงชิ้นส่วน UV ย่อยให้พอดีกับกรอบสี่เหลี่ยมภาพ 2 มิติอย่างชาญฉลาด\nการประยุกษ์ใช้: รวบรวมแผ่น UV ของหน้าต่าง กำแพง ประตูที่กระจัดกระจาย มาแพ็ครวมในภาพเดียวกันเพื่อประหยัด RAM"
     },
     "GeometryNodeViewportTransform": {
         "name": "ViewportTransform",
-        "description": "โหนดสำหรับดึงค่าการแปลงสภาพมุมมองของ Viewport"
+        "description": "หลักการ: อ่านเมทริกซ์การแสดงผลของหน้าจอ (Viewport Camera)\nการประยุกษ์ใช้: ใช้สั่งให้ป้าย UI พุ่งหันหน้าเข้าหาจอเราเป๊ะๆ ตลอดเวลาไม่ว่าจะหมุนมุมกล้องยังไง"
     },
     "ShaderNode": {
         "name": "",
-        "description": "โหนด สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: โหนดมาตรฐานเปล่าๆ พื้นฐานสำหรับ Material/Shader\nการประยุกษ์ใช้: เป็นรากฐานสำหรับคำนวณแสงสี"
     },
     "ShaderNodeAddShader": {
         "name": "AddShader",
-        "description": "โหนด AddShader สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: นำคุณสมบัติพื้นผิวแสง 2 แบบมาบวก (Add) ผสมแสงเข้าด้วยกัน 100%\nการประยุกษ์ใช้: ใช้รวมพื้นผิวโลหะเข้ากับพื้นผิวเรืองแสง เพื่อทำหุ่นยนต์ที่ตาเรืองแสงสว่างจ้า"
     },
     "ShaderNodeAmbientOcclusion": {
         "name": "AmbientOcclusion",
-        "description": "โหนด AmbientOcclusion สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: คำนวณหาบริเวณเงาอับแสง หรือซอกหลืบ (Ambient Occlusion)\nการประยุกษ์ใช้: ใช้ใส่คราบฝุ่นสกปรกเฉพาะตามร่องลึกของอิฐ หรือตามมุมซอกกำแพงห้อง"
     },
     "ShaderNodeAttribute": {
         "name": "Attribute",
-        "description": "โหนด Attribute สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: ดึงค่าตัวแปร (Attribute) ที่ซ่อนอยู่ในโมเดลมาใช้กับสี (เช่น Vertex Color)\nการประยุกษ์ใช้: ใช้อ่านข้อมูลความเสียหายไฟไหม้ที่โหนดเรขาคณิตสร้างไว้ เพื่อเอามาทำสีรอยไหม้ 3 มิติ",
         "dropdowns": {
             "attribute_type": [
                 "GEOMETRY",
@@ -4386,19 +4386,19 @@
     },
     "ShaderNodeBackground": {
         "name": "Background",
-        "description": "โหนด Background สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ปล่อยแสงสีรอบทิศทางจากฉากหลัง (World Environment)\nการประยุกษ์ใช้: ใช้ใส่ภาพท้องฟ้า HDRI เพื่อให้แสงและเงาสะท้อนลงบนรถยนต์อย่างสมจริง"
     },
     "ShaderNodeBevel": {
         "name": "Bevel",
-        "description": "โหนด Bevel สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ลบคมขอบเหลี่ยมของโมเดลให้ดูโค้งมนในระดับการคำนวณแสง (ไม่ต้องเพิ่มโพลีกอน)\nการประยุกษ์ใช้: ใช้ลบคมขอบลูกเต๋าหรือขอบโต๊ะไม้ให้สะท้อนแสงดูสมจริงยิ่งขึ้นโดยที่เครื่องไม่กระตุก"
     },
     "ShaderNodeBrightContrast": {
         "name": "BrightContrast",
-        "description": "โหนด BrightContrast สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ปรับระดับความสว่าง (Brightness) และความคมชัด (Contrast) ของสี/ภาพ Texture\nการประยุกษ์ใช้: ใช้ดันความสว่างของลายไม้ที่มืดเกินไปให้สว่างขึ้น"
     },
     "ShaderNodeBsdfAnisotropic": {
         "name": "BsdfAnisotropic",
-        "description": "โหนด BsdfAnisotropic สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: สร้างพื้นผิวสะท้อนแสงแบบมีทิศทางยาวตามรอยขัดเงา\nการประยุกษ์ใช้: ใช้ทำก้นหม้อสแตนเลส หรือแผ่นสังกะสีที่มีรอยขัดเป็นวงกลม",
         "dropdowns": {
             "distribution": [
                 "BECKMANN",
@@ -4430,11 +4430,11 @@
     },
     "ShaderNodeBsdfDiffuse": {
         "name": "BsdfDiffuse",
-        "description": "โหนด BsdfDiffuse สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: พื้นผิวแบบด้าน (Matte) ที่ดูดกลืนและกระจายแสงออกรอบทิศทางโดยไม่สะท้อนเป็นเงา\nการประยุกษ์ใช้: ใช้ทำสีกำแพงปูน กระดาษ หรือผ้าฝ้าย"
     },
     "ShaderNodeBsdfGlass": {
         "name": "BsdfGlass",
-        "description": "โหนด BsdfGlass สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: สร้างวัสดุแก้วที่สามารถสะท้อนแสงและหักเหแสง (Refraction) ทะลุผ่านได้\nการประยุกษ์ใช้: ใช้ทำแก้วน้ำ กระจกหน้าต่าง หรือเพชร",
         "dropdowns": {
             "distribution": [
                 "BECKMANN",
@@ -4461,7 +4461,7 @@
     },
     "ShaderNodeBsdfHair": {
         "name": "BsdfHair",
-        "description": "โหนด BsdfHair สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: วัสดุเฉพาะสำหรับเส้นผมที่สะท้อนแสงทะลุปรุโปร่งตามหลักฟิสิกส์เส้นใย\nการประยุกษ์ใช้: ใช้ทำขนสัตว์ หรือผมตัวละครที่มีแสงตกกระทบดูเป็นประกาย",
         "dropdowns": {
             "component": [
                 "Reflection",
@@ -4483,7 +4483,7 @@
     },
     "ShaderNodeBsdfHairPrincipled": {
         "name": "BsdfHairPrincipled",
-        "description": "โหนด BsdfHairPrincipled สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: วัสดุเส้นผมขั้นสูงที่มีพารามิเตอร์สำเร็จรูป เช่น ความหยาบ เมลานิน (สีผม)\nการประยุกษ์ใช้: ใช้ตั้งค่าสีผมอย่างรวดเร็ว เช่น ใส่เมลานิน 0 เป็นผมขาว, ใส่เยอะเป็นผมดำ",
         "dropdowns": {
             "model": [
                 "CHIANG",
@@ -4524,7 +4524,7 @@
     },
     "ShaderNodeBsdfMetallic": {
         "name": "BsdfMetallic",
-        "description": "โหนด BsdfMetallic สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: พื้นผิวโลหะสะท้อนแสงทึบเงางาม\nการประยุกษ์ใช้: ใช้ทำทองคำ เงิน ทองแดง หรือตัวถังรถยนต์",
         "dropdowns": {
             "distribution": [
                 "BECKMANN",
@@ -4565,7 +4565,7 @@
     },
     "ShaderNodeBsdfPrincipled": {
         "name": "BsdfPrincipled",
-        "description": "โหนด BsdfPrincipled สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: โหนดวัสดุครอบจักรวาล (PBR) ที่รวมทุกคุณสมบัติ (โลหะ, แก้ว, การสะท้อน, แสงทะลุ) ไว้ในที่เดียว\nการประยุกษ์ใช้: ใช้ทำวัสดุเกือบ 90% ในงาน 3 มิติ ทั้งพลาสติก ไม้ โลหะ แก้ว ในโหนดเดียว",
         "dropdowns": {
             "distribution": [
                 "GGX",
@@ -4606,11 +4606,11 @@
     },
     "ShaderNodeBsdfRayPortal": {
         "name": "BsdfRayPortal",
-        "description": "โหนด BsdfRayPortal สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างประตูมิติสำหรับแสง (Ray) ให้พุ่งทะลุไปโผล่อีกที่หนึ่ง (ใช้กับ Eevee)\nการประยุกษ์ใช้: ใช้จำลองกระจกเงาสะท้อนสมบูรณ์แบบใน Eevee หรือทำพอร์ทัลวาร์ปข้ามมิติ"
     },
     "ShaderNodeBsdfRefraction": {
         "name": "BsdfRefraction",
-        "description": "โหนด BsdfRefraction สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: หักเหแสงที่เดินทางผ่านวัตถุใส แต่ไม่มีการสะท้อนเงาบนพื้นผิว\nการประยุกษ์ใช้: ใช้ทำของเหลวใส หรือพลาสติกขุ่นๆ ที่แสงผ่านได้แต่ไม่สะท้อนเงาห้อง",
         "dropdowns": {
             "distribution": [
                 "BECKMANN",
@@ -4632,7 +4632,7 @@
     },
     "ShaderNodeBsdfSheen": {
         "name": "BsdfSheen",
-        "description": "โหนด BsdfSheen สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: สร้างเอฟเฟกต์แสงสะท้อนสว่างบริเวณขอบขนอ่อนๆ\nการประยุกษ์ใช้: ใช้ทำผ้ากำมะหยี่ ผ้าไหม หรือลูกพีชที่มีขนอ่อนๆ ล้อมรอบ",
         "dropdowns": {
             "distribution": [
                 "ASHIKHMIN",
@@ -4654,7 +4654,7 @@
     },
     "ShaderNodeBsdfToon": {
         "name": "BsdfToon",
-        "description": "โหนด BsdfToon สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: พื้นผิวเงาตัดขอบแบบการ์ตูน (Cel-Shading)\nการประยุกษ์ใช้: ใช้ทำตัวละครสไตล์อนิเมะญี่ปุ่นที่มีสีเงาแบ่งแยกชัดเจนไม่ไล่โทน",
         "dropdowns": {
             "component": [
                 "DIFFUSE",
@@ -4676,23 +4676,23 @@
     },
     "ShaderNodeBsdfTranslucent": {
         "name": "BsdfTranslucent",
-        "description": "โหนด BsdfTranslucent สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: พื้นผิวแสงส่องทะลุ (สว่างจากด้านหลัง) แต่อ่านเงาสะท้อนไม่ได้\nการประยุกษ์ใช้: ใช้ทำใบไม้ กระดาษไข หรืองานโคมไฟกระดาษ"
     },
     "ShaderNodeBsdfTransparent": {
         "name": "BsdfTransparent",
-        "description": "โหนด BsdfTransparent สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: พื้นผิวโปร่งใส 100% (มองทะลุเหมือนไม่มีอะไรอยู่)\nการประยุกษ์ใช้: ใช้ผสม (Mix) กับโหนดอื่นเพื่อสร้างหน้ากากเจาะรูใบไม้ให้แหว่ง"
     },
     "ShaderNodeBump": {
         "name": "Bump",
-        "description": "โหนด Bump สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: หลอกตาให้พื้นผิวดูนูนต่ำขรุขระ โดยใช้ภาพขาวดำ (ไม่ทำให้ทรงโมเดลเปลี่ยน)\nการประยุกษ์ใช้: ใช้ทำรอยขรุขระบนผิวส้ม หรือรอยนูนบนเหรียญทอง"
     },
     "ShaderNodeCameraData": {
         "name": "CameraData",
-        "description": "โหนด CameraData สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ดึงข้อมูลพิกัดและระยะความลึกจากกล้องมองภาพ\nการประยุกษ์ใช้: ใช้เปลี่ยนสีวัตถุตามระยะห่างจากกล้อง (ยิ่งไกลยิ่งสีจาง)"
     },
     "ShaderNodeCombineColor": {
         "name": "CombineColor",
-        "description": "โหนด CombineColor สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: จับช่องข้อมูลอิสระ 3 ช่องมารวมเป็นสี RGB/HSV 1 สี\nการประยุกษ์ใช้: ใช้ป้อนค่า R=1, G=0, B=0 เพื่อสร้างสีแดงล้วนแบบคณิตศาสตร์",
         "dropdowns": {
             "mode": [
                 "RGB",
@@ -4719,11 +4719,11 @@
     },
     "ShaderNodeCustomGroup": {
         "name": "CustomGroup",
-        "description": "โหนด CustomGroup สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: กลุ่มโหนดที่ถูกตั้งขึ้นเองเพื่อรวมสูตร Shader ยุ่งยากไว้ในกล่องเดียว\nการประยุกษ์ใช้: โหนด 'สนิมอัตโนมัติ' ที่เซ็ตไว้ใช้กับเหล็กทุกชิ้นในโปรเจกต์"
     },
     "ShaderNodeDisplacement": {
         "name": "Displacement",
-        "description": "โหนด Displacement สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: ดันพื้นผิวโมเดลให้ปูดนูนขึ้นมาจริงๆ ตามภาพ Texture (ส่งผลต่อรูปทรงเรขาคณิต)\nการประยุกษ์ใช้: ใช้ดันหน้าตัดบนก้อนสี่เหลี่ยมให้กลายเป็นภูเขาขรุขระสูงชัน (ใช้กับ Cycles)",
         "dropdowns": {
             "space": [
                 "OBJECT",
@@ -4745,51 +4745,51 @@
     },
     "ShaderNodeEeveeSpecular": {
         "name": "EeveeSpecular",
-        "description": "โหนด EeveeSpecular สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ควบคุมแสงสะท้อน (Specular) แบบเก่าที่ใช้ในเอนจินเกม\nการประยุกษ์ใช้: ใช้จำลองวัสดุโมเดลแบบเก่าๆ ที่พอร์ตมาจากเกมเก่า"
     },
     "ShaderNodeEmission": {
         "name": "Emission",
-        "description": "โหนด Emission สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: พื้นผิวปล่อยแสงสว่างในตัวเอง\nการประยุกษ์ใช้: ใช้ทำหลอดไฟนีออน หน้าจอทีวีสว่างๆ หรือดวงอาทิตย์"
     },
     "ShaderNodeFresnel": {
         "name": "Fresnel",
-        "description": "โหนด Fresnel สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: คำนวณความเข้มของการสะท้อนแสงบริเวณขอบด้านข้างของวัตถุ (ตามมุมมองกล้อง)\nการประยุกษ์ใช้: ใช้ทำผิวน้ำที่จะใสเมื่อมองตรงๆ แต่จะสะท้อนแสงท้องฟ้าเมื่อมองเฉียงๆ บริเวณขอบ"
     },
     "ShaderNodeGroup": {
         "name": "Group",
-        "description": "โหนด Group สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: โหนดแม่สำหรับ Node Group ของฝั่ง Shader\nการประยุกษ์ใช้: ใช้ดึงสูตรสีที่จัดกลุ่มไว้มาใช้ใน Material อื่น"
     },
     "ShaderNodeHairInfo": {
         "name": "HairInfo",
-        "description": "โหนด HairInfo สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ดึงข้อมูลเส้นผมแต่ละเส้น เช่น ความยาว ความหนา รากจรดปลาย\nการประยุกษ์ใช้: ใช้ทาสีผมแบบไล่ระดับ จากโคนสีดำไล่ไปหาปลายผมสีทอง"
     },
     "ShaderNodeHoldout": {
         "name": "Holdout",
-        "description": "โหนด Holdout สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างพื้นผิวเจาะทะลุสีดำ (Mask) กัดให้โปร่งใสเมื่อนำไปคอมโพสิต\nการประยุกษ์ใช้: ใช้ซ่อนหินที่อยู่หลังตัวละคร เพื่อเจาะรูหินนั้นทิ้งไปเวลาเอาไปตัดต่อซ้อนภาพคน"
     },
     "ShaderNodeHueSaturation": {
         "name": "HueSaturation",
-        "description": "โหนด HueSaturation สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ปรับความเข้มสี (Saturation) เลื่อนวงล้อสี (Hue) และปรับสว่าง (Value)\nการประยุกษ์ใช้: ใช้เปลี่ยนสีเสื้อจากลายดอกกุหลาบสีแดง เป็นกุหลาบสีน้ำเงิน"
     },
     "ShaderNodeInvert": {
         "name": "Invert",
-        "description": "โหนด Invert สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สลับค่าสีและตัวเลขให้กลับด้าน (Negative/ขาวเป็นดำ ดำเป็นขาว)\nการประยุกษ์ใช้: ใช้กลับด้านภาพหน้ากากขรุขระ ให้รอยปูดนูนกลายเป็นรอยยุบแทน"
     },
     "ShaderNodeLayerWeight": {
         "name": "LayerWeight",
-        "description": "โหนด LayerWeight สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: คล้ายโหนด Fresnel แต่ควบคุมง่ายกว่า ใช้ผสมสีตามความโค้งมุมมอง\nการประยุกษ์ใช้: ใช้ผสมสีทำสีมุก หรือทำรถยนต์สีเกล็ดประกายที่จะเปลี่ยนสีเมื่อมองจากขอบด้านข้าง"
     },
     "ShaderNodeLightFalloff": {
         "name": "LightFalloff",
-        "description": "โหนด LightFalloff สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ปรับรูปแบบการค่อยๆ จางหายไปของแสงจากหลอดไฟ\nการประยุกษ์ใช้: ใช้ปรับแสงแฟลชที่สว่างวาบใกล้ๆ แต่ดับสนิทในระยะไกลอย่างรวดเร็ว (Inverse Square)"
     },
     "ShaderNodeLightPath": {
         "name": "LightPath",
-        "description": "โหนด LightPath สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ดึงข้อมูลพฤติกรรมแสง (ตกกระทบ, สะท้อน, ทะลุ) มาใช้เป็นเงื่อนไขแยกแยะ\nการประยุกษ์ใช้: ใช้ทำกระจกใสที่แสงส่องผ่านได้ 100% (เงาไม่มืด) แต่กล้องมองเห็นเป็นเงาสะท้อนปกติ"
     },
     "ShaderNodeMapping": {
         "name": "Mapping",
-        "description": "โหนด Mapping สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: เลื่อน ขยาย และหมุน (Transform) ลวดลาย Texture บนพื้นผิว\nการประยุกษ์ใช้: ใช้ย่อขนาดลายอิฐบนกำแพงให้เล็กลง หรือหมุนลายไม้ให้เป็นแนวตั้ง",
         "dropdowns": {
             "vector_type": [
                 "POINT",
@@ -4821,7 +4821,7 @@
     },
     "ShaderNodeMixRGB": {
         "name": "MixRGB",
-        "description": "โหนด MixRGB สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: ผสมภาพ 2 ภาพเข้าด้วยกันแบบเลเยอร์ Photoshop (Multiply, Screen, Add, Overlay)\nการประยุกษ์ใช้: ใช้เอาภาพรอยคราบเลือด (Multiply) ทับลงบนภาพผิวหนังคน",
         "dropdowns": {
             "blend_type": [
                 "MIX",
@@ -4928,19 +4928,19 @@
     },
     "ShaderNodeMixShader": {
         "name": "MixShader",
-        "description": "โหนด MixShader สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ผสมคุณสมบัติวัสดุ (Shader) 2 ชนิดเข้าด้วยกัน\nการประยุกษ์ใช้: ใช้ผสมพื้นผิวแก้วใส เข้ากับพื้นผิวทองคำ โดยใช้รูปแตกร้าวเป็นตัวกั้นกลาง"
     },
     "ShaderNodeNewGeometry": {
         "name": "NewGeometry",
-        "description": "โหนด NewGeometry สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ดึงพิกัด ข้อมูลทิศทาง และลักษณะทางเรขาคณิตของชิ้นส่วนที่กำลังประมวลผล (ชื่อเก่าของโหนด Geometry)\nการประยุกษ์ใช้: ใช้ดึงพิกัด (Position) เพื่อสร้างสีรุ้งไล่ตามแนวความสูงของโมเดล"
     },
     "ShaderNodeNormal": {
         "name": "Normal",
-        "description": "โหนด Normal สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: กล่องรับค่าทิศทาง Normal เพื่อนำไปเบี่ยงเบนทิศทางการสะท้อนแสง\nการประยุกษ์ใช้: ใช้เปลี่ยนทิศทางแสงให้หักเหไปทางซ้ายทั้งหมด"
     },
     "ShaderNodeNormalMap": {
         "name": "NormalMap",
-        "description": "โหนด NormalMap สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: แปลงไฟล์รูปภาพสีม่วง/น้ำเงิน (Normal Map) ให้กลายเป็นค่าทิศทางนูนต่ำ 3 มิติ\nการประยุกษ์ใช้: ใช้อ่านไฟล์ Normal Map ของก้อนหินที่สแกนมา เพื่อสร้างรอยขรุขระสมจริงโดยไม่ต้องเพิ่มจำนวนโพลีกอน",
         "dropdowns": {
             "space": [
                 "TANGENT",
@@ -5005,15 +5005,15 @@
     },
     "ShaderNodeObjectInfo": {
         "name": "ObjectInfo",
-        "description": "โหนด ObjectInfo สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: อ่านข้อมูลของ Object ตัวนั้น (เช่น ตำแหน่ง รหัสสีสุ่มดั้งเดิม)\nการประยุกษ์ใช้: ใช้ช่อง Random สร้างสีสุ่มให้เก้าอี้ 100 ตัว มีสีไม่ซ้ำกันเลยด้วย Material ตัวเดียว"
     },
     "ShaderNodeOutputAOV": {
         "name": "OutputAOV",
-        "description": "โหนด OutputAOV สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ส่งผลลัพธ์ข้อมูลเฉพาะทางออกไปเป็นเลเยอร์สำหรับขั้นตอน Compositing (Arbitrary Output Variables)\nการประยุกษ์ใช้: ใช้ส่งข้อมูลพื้นที่หน้าต่างตึกทั้งหมดเป็นสีขาวดำ (Mask) ออกไปต่างหากเพื่อใส่แสงสะท้อนทีหลัง"
     },
     "ShaderNodeOutputLight": {
         "name": "OutputLight",
-        "description": "โหนด OutputLight สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: ทางออกของการเชื่อมต่อโหนดแสง (Light Material)\nการประยุกษ์ใช้: ใช้ส่งข้อมูลสีส้มและความสว่างระดับ 100 ออกไปให้หลอดไฟสปอตไลท์ทำงาน",
         "dropdowns": {
             "target": [
                 "ALL",
@@ -5040,7 +5040,7 @@
     },
     "ShaderNodeOutputLineStyle": {
         "name": "OutputLineStyle",
-        "description": "โหนด OutputLineStyle สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: ทางออกสำหรับเส้นร่างแบบ Freestyle\nการประยุกษ์ใช้: ใช้ควบคุมความหนาบางของเส้นหมึกวาดขอบ (Freestyle Line)",
         "dropdowns": {
             "target": [
                 "ALL",
@@ -5166,7 +5166,7 @@
     },
     "ShaderNodeOutputMaterial": {
         "name": "OutputMaterial",
-        "description": "โหนด OutputMaterial สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: ปากทางออกสำคัญที่สุดสำหรับวัสดุ (Surface, Volume, Displacement)\nการประยุกษ์ใช้: ช่องสุดท้ายที่รวมรวบสีและพื้นผิวทั้งหมดเพื่อแสดงผลบนหน้าจอจริง",
         "dropdowns": {
             "target": [
                 "ALL",
@@ -5193,7 +5193,7 @@
     },
     "ShaderNodeOutputWorld": {
         "name": "OutputWorld",
-        "description": "โหนด OutputWorld สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: ทางออกของการเชื่อมต่อฉากหลังและแสงท้องฟ้า (World/Environment)\nการประยุกษ์ใช้: จุดส่งภาพพาโนรามา HDR 360 องศา ให้ส่องสว่างทั้งฉาก",
         "dropdowns": {
             "target": [
                 "ALL",
@@ -5220,31 +5220,31 @@
     },
     "ShaderNodeParticleInfo": {
         "name": "ParticleInfo",
-        "description": "โหนด ParticleInfo สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ดึงข้อมูลอนุภาค (Particles) เช่น อายุ, ความเร็ว, ขนาด\nการประยุกษ์ใช้: ใช้ทาสีแดงให้ประกายไฟที่เพิ่งเกิด และค่อยๆ เปลี่ยนเป็นสีดำเมื่ออายุมากขึ้น (ใกล้ตาย)"
     },
     "ShaderNodePointInfo": {
         "name": "PointInfo",
-        "description": "โหนด PointInfo สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ดึงข้อมูลจาก Point Cloud (กลุ่มจุด) ในโหมด Shader\nการประยุกษ์ใช้: ใช้อ่านค่าความหนาแน่นของกลุ่มจุดเพื่อทำก้อนเมฆที่สว่างตรงกลางแต่มืดที่ขอบ"
     },
     "ShaderNodeRGB": {
         "name": "RGB",
-        "description": "โหนด RGB สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ถาดสีกระดานเปล่า สำหรับจิ้มเลือกสีที่ต้องการ\nการประยุกษ์ใช้: ใช้เลือกสีชมพู แล้วเสียบสายส่งไปทาสีลูกโป่ง"
     },
     "ShaderNodeRGBToBW": {
         "name": "RGBToBW",
-        "description": "โหนด RGBToBW สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: หักสีทิ้ง เปลี่ยนภาพสีเป็นภาพขาวดำ-เทา (Grayscale)\nการประยุกษ์ใช้: เปลี่ยนภาพผนังอิฐสีแดง ให้เป็นขาวดำเพื่อเอาไปทำหน้ากากควบคุมความขรุขระ"
     },
     "ShaderNodeRadialTiling": {
         "name": "RadialTiling",
-        "description": "โหนด RadialTiling สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างการวนซ้ำในรูปแบบหมุนรอบจุดศูนย์กลาง (Radial)\nการประยุกษ์ใช้: สร้างลวดลายสี่เหลี่ยมเรียงต่อกันเป็นวงกลมบนจานข้าว"
     },
     "ShaderNodeRaycast": {
         "name": "Raycast",
-        "description": "โหนด Raycast สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ยิงลำแสงตรวจสอบว่ามีวัตถุใดขวางทางหรืออยู่ใกล้ๆ หรือไม่\nการประยุกษ์ใช้: ตรวจสอบว่าโมเดลยืนอยู่บนพื้นหรือไม่ ถ้าใช่ให้ใต้ฝ่าเท้ามีคราบโคลนเกาะ"
     },
     "ShaderNodeScript": {
         "name": "Script",
-        "description": "โหนด Script สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: ใช้เขียนโค้ดภาษา OSL (Open Shading Language) เพื่อสร้าง Shader ขึ้นมาเอง\nการประยุกษ์ใช้: ใช้เขียนสมการคณิตศาสตร์ที่ไม่มีโหนดรองรับ เพื่อสร้างลายจุดอวกาศซับซ้อน",
         "dropdowns": {
             "mode": [
                 "INTERNAL",
@@ -5266,7 +5266,7 @@
     },
     "ShaderNodeSeparateColor": {
         "name": "SeparateColor",
-        "description": "โหนด SeparateColor สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: แยกสีภาพออกเป็นช่อง (R,G,B / H,S,V)\nการประยุกษ์ใช้: ดึงเฉพาะพื้นที่ที่มีสีแดงจัดๆ ออกมาปรับแก้ให้สว่างขึ้น",
         "dropdowns": {
             "mode": [
                 "RGB",
@@ -5293,15 +5293,15 @@
     },
     "ShaderNodeShaderToRGB": {
         "name": "ShaderToRGB",
-        "description": "โหนด ShaderToRGB สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ดึงข้อมูลแสงเงา 3 มิติ (Shader) มาแปลงให้กลายเป็นสีภาพ 2D (ทำงานได้เฉพาะ Eevee)\nการประยุกษ์ใช้: ใช้ดึงค่าเงาที่มืดบนตัวละคร มาเข้าโหนดไล่สีเป็นขาวดำตัดกันชัดเจน (ทำเงา Cell-shade แบบอนิเมะ)"
     },
     "ShaderNodeSqueeze": {
         "name": "Squeeze",
-        "description": "โหนด Squeeze สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: บีบอัดค่าพารามิเตอร์ของสีหรือตัวเลขให้อยู่ในขีดจำกัด (Squeeze/Clamp)\nการประยุกษ์ใช้: บีบค่าความสว่างที่เกิน 1.0 ให้กลับมาเป็นสีขาวปกติ (1.0) ไม่เรืองแสงจ้าเกินไป"
     },
     "ShaderNodeSubsurfaceScattering": {
         "name": "SubsurfaceScattering",
-        "description": "โหนด SubsurfaceScattering สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: คำนวณแสงที่ส่องทะลุชั้นผิวหนังแล้วกระจายอยู่ด้านใน (SSS)\nการประยุกษ์ใช้: ทำผิวหนังมนุษย์ (ที่มีเลือดฝาด), ขี้ผึ้ง, เทียนไข, หรือหยก ที่แสงทะลุไปเรืองแสงด้านในได้",
         "dropdowns": {
             "falloff": [
                 "BURLEY",
@@ -5328,7 +5328,7 @@
     },
     "ShaderNodeTangent": {
         "name": "Tangent",
-        "description": "โหนด Tangent สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: ดึงค่าทิศทางเส้นขนานผิวนอก (Tangent) ตามแกนต่างๆ ของโมเดล\nการประยุกษ์ใช้: ใช้ป้อนเข้าพื้นผิว Anisotropic เพื่อกำหนดทิศทางวงสะท้อนแสงบนแผ่นสแครชแผ่นเสียง",
         "dropdowns": {
             "direction_type": [
                 "RADIAL",
@@ -5369,11 +5369,11 @@
     },
     "ShaderNodeTexCoord": {
         "name": "TexCoord",
-        "description": "โหนด TexCoord สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: โหนดสำคัญที่ควบคุมระบบพิกัดการฉายภาพ Texture ลงบนโมเดล (UV, Generated, Object)\nการประยุกษ์ใช้: ดึงค่าสาย UV ออกไปเพื่อกางภาพรูปยี่ห้อสินค้าให้ติดหนึบบนขวดแก้ว"
     },
     "ShaderNodeTexEnvironment": {
         "name": "TexEnvironment",
-        "description": "โหนด TexEnvironment สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: โหลดไฟล์ภาพพาโนรามา HDR 360 องศา (Environment Map)\nการประยุกษ์ใช้: ใช้โหลดภาพท้องฟ้า HDR แล้วป้อนเป็นแสงหลักเพื่อให้ฉากได้รับแสงสีสมจริง",
         "dropdowns": {
             "projection": [
                 "EQUIRECTANGULAR",
@@ -5419,7 +5419,7 @@
     },
     "ShaderNodeTexIES": {
         "name": "TexIES",
-        "description": "โหนด TexIES สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: โหลดไฟล์โปรไฟล์แสง IES (มาตรฐานดวงโคมจริง) มาใช้กับหลอดไฟ\nการประยุกษ์ใช้: จำลองแสงสปอตไลท์บนกำแพงบ้านให้มีแฉกสะท้อนและรูปร่างเป๊ะเหมือนโคมไฟดาวน์ไลท์แบรนด์ดัง",
         "dropdowns": {
             "mode": [
                 "INTERNAL",
@@ -5441,7 +5441,7 @@
     },
     "ShaderNodeTexSky": {
         "name": "TexSky",
-        "description": "โหนด TexSky สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: สร้างท้องฟ้าจำลองด้วยระบบฟิสิกส์ ปรับความสูงดวงอาทิตย์ ฝุ่น และโอโซนได้ (Nishita Sky)\nการประยุกษ์ใช้: สร้างแสงอาทิตย์ยามเย็น (พระอาทิตย์ต่ำแสงจะส้ม) หรือยามเที่ยง (แสงขาวแข็ง) โดยอัตโนมัติ ไม่ต้องหาภาพภายนอกมาแปะ",
         "dropdowns": {
             "sky_type": [
                 "SINGLE_SCATTERING",
@@ -5473,7 +5473,7 @@
     },
     "ShaderNodeTree": {
         "name": "Tree",
-        "description": "โหนด Tree สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: ทางผ่านของ Node Group ในหน้าต่าง Shader\nการประยุกษ์ใช้: โมดูลโหนดย่อยที่รวมการผสมสีรุ้งไว้ในโหนดเดียว",
         "dropdowns": {
             "id_type": [
                 "ACTION",
@@ -5680,15 +5680,15 @@
     },
     "ShaderNodeUVAlongStroke": {
         "name": "UVAlongStroke",
-        "description": "โหนด UVAlongStroke สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างพิกัด UV วิ่งตามแนวเส้นความยาว (ใช้งานหลักกับ Grease Pencil หรือ Curve)\nการประยุกษ์ใช้: เอาภาพลูกศรมาแปะเรียงต่อกันเป็นแนวยาวไปตามเส้นสายไฟ หรือถนน"
     },
     "ShaderNodeUVMap": {
         "name": "UVMap",
-        "description": "โหนด UVMap สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ดึงพิกัดกางแผนที่ (UV Map) ที่ตั้งชื่อไว้เฉพาะเจาะจงมาใช้งาน\nการประยุกษ์ใช้: เลือกใช้ UV ตัวที่ 2 (สำหรับทำรอยขีดข่วน) แยกจาก UV ตัวที่ 1 (สำหรับภาพสีหลัก)"
     },
     "ShaderNodeVectorDisplacement": {
         "name": "VectorDisplacement",
-        "description": "โหนด VectorDisplacement สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: ดันโมเดลให้ปูดนูนแบบทะลุมิติพิกัด 3 ทิศทาง (X,Y,Z) ไม่ใช่แค่นูนขึ้นลง (Vector Displacement)\nการประยุกษ์ใช้: ดันพื้นผิวเรียบๆ ให้กลายเป็นโมเดลใบหู หรือเห็ดที่งอกยื่นพับโค้งกลับมาได้",
         "dropdowns": {
             "space": [
                 "TANGENT",
@@ -5715,7 +5715,7 @@
     },
     "ShaderNodeVectorTransform": {
         "name": "VectorTransform",
-        "description": "โหนด VectorTransform สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: แปลงทิศทาง Vector (Normal/Position) ระหว่างระบบแกน (World/Object/Camera)\nการประยุกษ์ใช้: เปลี่ยนทิศทางแสงเงาจากที่ยึดติดกับตัวอ็อบเจกต์ ให้ไปยึดติดกับทิศทางกล้องแทน (แสงหันตามกล้องตลอด)",
         "dropdowns": {
             "vector_type": [
                 "POINT",
@@ -5780,15 +5780,15 @@
     },
     "ShaderNodeVertexColor": {
         "name": "VertexColor",
-        "description": "โหนด VertexColor สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: ดึงข้อมูลสีที่ถูกระบายลงบนจุดโมเดล (Vertex Paint/Color Attributes) มาใช้\nการประยุกษ์ใช้: เอาสีที่ผู้ใช้ระบายโคลนสีน้ำตาลไว้ตามมุมรถ มาผสมเป็นหน้ากากเพื่อให้รถสกปรก"
     },
     "ShaderNodeVolumeAbsorption": {
         "name": "VolumeAbsorption",
-        "description": "โหนด VolumeAbsorption สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: วัสดุปริมาตร (Volume) ที่ดูดกลืนสีแสงเมื่อส่องผ่าน ทำให้เกิดสีโปร่งแสงลึกๆ\nการประยุกษ์ใช้: ทำแก้วน้ำหวาน หรือน้ำทะเลลึก ยิ่งแสงส่องทะลุน้ำลึกเท่าไหร่สีจะยิ่งเข้มขึ้น (แสงถูกดูด)"
     },
     "ShaderNodeVolumeCoefficients": {
         "name": "VolumeCoefficients",
-        "description": "โหนด VolumeCoefficients สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: เครื่องมือคำนวณขั้นสูงสำหรับแปลงข้อมูล Volume\nการประยุกษ์ใช้: ใช้แปลงค่าความหนาแน่นเพื่อควบคุมการดูดกลืน (Absorption) และการสะท้อนฝุ่นละออง (Scatter) อิสระจากกัน",
         "dropdowns": {
             "phase": [
                 "HENYEY_GREENSTEIN",
@@ -5825,15 +5825,15 @@
     },
     "ShaderNodeVolumeInfo": {
         "name": "VolumeInfo",
-        "description": "โหนด VolumeInfo สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: อ่านข้อมูลอุณหภูมิ, สี, และความหนาแน่น จากไฟล์ข้อมูลควัน/ไฟ (OpenVDB/Smoke)\nการประยุกษ์ใช้: ดึงช่อง 'flame' จากการจำลองไฟ มาแสดงผลเป็นไฟเรืองแสงสว่างวาบสีส้ม"
     },
     "ShaderNodeVolumePrincipled": {
         "name": "VolumePrincipled",
-        "description": "โหนด VolumePrincipled สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: โหนดครอบจักรวาลสำหรับทำควัน ไฟ และเมฆ (ปรับ Density, Emission ได้ในตัว)\nการประยุกษ์ใช้: สร้างก้อนเมฆ หรือควันระเบิดแบบครบสูตร โดยใช้แค่โหนดเดียวคุมทั้งสีและแสงไฟ"
     },
     "ShaderNodeVolumeScatter": {
         "name": "VolumeScatter",
-        "description": "โหนด VolumeScatter สำหรับใช้งานใน Geometry Nodes",
+        "description": "หลักการ: วัสดุปริมาตรที่กระจายแสงในตัวกลาง (Fog/Smoke) ทำให้เกิดลำแสง (God rays)\nการประยุกษ์ใช้: ทำหมอกในป่าสนตอนเช้า เมื่อแสงอาทิตย์ส่องผ่านใบไม้จะเกิดเป็นลำแสงพาดลงมา",
         "dropdowns": {
             "phase": [
                 "HENYEY_GREENSTEIN",
@@ -5870,10 +5870,10 @@
     },
     "ShaderNodeWavelength": {
         "name": "Wavelength",
-        "description": "โหนด Wavelength สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: เปลี่ยนค่าความยาวคลื่นแสง (นาโนเมตร) ตามหลักฟิสิกส์ให้กลายเป็นสีที่มองเห็น\nการประยุกษ์ใช้: สร้างแสงเลเซอร์สีสเปกตรัมที่ถูกต้องตามความเป็นจริง (เช่น แดง=650nm, น้ำเงิน=450nm)"
     },
     "ShaderNodeWireframe": {
         "name": "Wireframe",
-        "description": "โหนด Wireframe สำหรับใช้งานใน Geometry Nodes"
+        "description": "หลักการ: สร้างหน้ากากแสดงผลตามเส้นขอบโครงข่าย (Wireframe) ของโมเดลรูปทรงเรขาคณิต\nการประยุกษ์ใช้: ใช้ทำเอฟเฟกต์โฮโลแกรมที่มีแต่เส้นโครงลวด หรือทำให้หน้าตัดเป็นสีดำเหลือแค่เส้นขอบสีขาวเรืองแสง"
     }
 }

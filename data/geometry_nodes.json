@@ -1,7 +1,7 @@
 {
     "GeometryNodeTransform": {
         "name": "Transform",
-        "description": "ใช้สำหรับเลื่อน (Translate), หมุน (Rotate), และปรับขนาด (Scale) รูปทรง",
+        "description": "หลักการ: เลื่อน (Translate), หมุน (Rotate), และปรับขนาด (Scale) รูปทรงทั้งชิ้น\nการประยุกษ์ใช้: ใช้จัดวางตำแหน่งอ็อบเจกต์, หมุนกังหันลม, หรือย่อขยายขนาดชิ้นส่วน",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -29,7 +29,7 @@
     },
     "GeometryNodeSetPosition": {
         "name": "Set Position",
-        "description": "เปลี่ยนตำแหน่งของแต่ละจุด (Points) ในรูปทรงเรขาคณิต",
+        "description": "หลักการ: เปลี่ยนพิกัดตำแหน่งของแต่ละจุด (Points) ในรูปทรง\nการประยุกษ์ใช้: ใช้ทำคลื่นน้ำโดยขยับจุดแกน Z ขึ้นลงด้วย Noise หรือดึงจุดให้ติดกับพื้นผิวอื่น",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -57,49 +57,49 @@
     },
     "GeometryNodeGroup": {
         "name": "Group",
-        "description": "Node ที่รวมกลุ่ม Node ย่อยๆ เอาไว้ข้างใน (Custom Node Group)",
+        "description": "หลักการ: สร้างกรุ๊ปรวมโหนดย่อยๆ เข้าด้วยกันเพื่อความสะอาดของหน้าต่างทำงาน\nการประยุกษ์ใช้: ใช้แพ็คโหนดที่ใช้บ่อยๆ เป็นโมดูล (Custom Node) เพื่อเรียกใช้ซ้ำในโปรเจกต์อื่น",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeImportCSV": {
         "name": "CSV (.csv)",
-        "description": "นำเข้าข้อมูลค่าต่างๆ จากไฟล์ CSV (Comma-Separated Values)",
+        "description": "หลักการ: นำเข้าตารางข้อมูลค่าต่างๆ จากไฟล์ CSV\nการประยุกษ์ใช้: ใช้อ่านพิกัดแผนที่เพื่อสร้างตึกตามจุด หรือทำกราฟแท่ง 3 มิติจากข้อมูลสถิติ",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeImportOBJ": {
         "name": "Wavefront (.obj)",
-        "description": "นำเข้ารูปทรงเรขาคณิต 3 มิติจากไฟล์นามสกุล .obj",
+        "description": "หลักการ: โหลดรูปทรงเรขาคณิต 3 มิติจากไฟล์นามสกุล .obj\nการประยุกษ์ใช้: ใช้ดึงโมเดลต้นไม้หรือหินจากภายนอกเข้ามาเป็น Instance ในระบบ Geometry Nodes",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeImportPLY": {
         "name": "Stanford PLY (.ply)",
-        "description": "นำเข้ารูปทรงและข้อมูลสีจุด (Vertex Colors) จากไฟล์ .ply",
+        "description": "หลักการ: โหลดรูปทรงและข้อมูลสี (Vertex Color) จากไฟล์ .ply\nการประยุกษ์ใช้: ใช้ดึงข้อมูลสแกน 3 มิติ (Photogrammetry) เข้ามาประมวลผลต่อ",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeImportSTL": {
         "name": "STL (.stl)",
-        "description": "นำเข้ารูปทรงสามมิติจากไฟล์ .stl (มักใช้ในงานพิมพ์ 3 มิติ)",
+        "description": "หลักการ: โหลดรูปทรง 3 มิติจากไฟล์ .stl\nการประยุกษ์ใช้: ใช้ดึงโมเดลสำหรับงานพิมพ์ 3 มิติเข้ามาแก้ไขหรือจัดเรียงก่อนพิมพ์",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeImportText": {
         "name": "Text (.txt)",
-        "description": "นำเข้าข้อมูลตัวอักษรหรือข้อความจากไฟล์ .txt",
+        "description": "หลักการ: นำเข้าข้อมูลข้อความจากไฟล์ .txt\nการประยุกษ์ใช้: ใช้ดึงรายการชื่อมาทำเป็นป้ายชื่อ 3 มิติ (Text Object) อัตโนมัติ",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeImportVDB": {
         "name": "OpenVDB (.vdb)",
-        "description": "นำเข้าข้อมูลปริมาตร (Volume/Voxel) จากไฟล์ OpenVDB",
+        "description": "หลักการ: โหลดข้อมูลปริมาตร (Volume/Voxel) จากไฟล์ OpenVDB\nการประยุกษ์ใช้: ใช้ดึงไฟล์ควัน ระเบิด หรือก้อนเมฆจากโปรแกรมอื่นเข้ามาจัดวาง",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeActiveCamera": {
         "name": "Active Camera",
-        "description": "ดึงข้อมูลกล้องที่กำลังถูกใช้งานเป็นมุมมองหลักของฉาก",
+        "description": "หลักการ: ดึงข้อมูลกล้องที่กำลังเป็นมุมมองหลัก (Active Camera) ของฉาก\nการประยุกษ์ใช้: ใช้สร้างเอฟเฟกต์ที่ตอบสนองต่อกล้อง เช่น ปรับให้แผ่นป้ายหันหน้าเข้าหากล้องเสมอ (Billboard)",
         "inputs": {},
         "outputs": {
             "Camera": {
@@ -110,7 +110,7 @@
     },
     "GeometryNodeBoneInfo": {
         "name": "Bone Info",
-        "description": "ดึงข้อมูลของกระดูก (Bone) ภายในอาร์มาเจอร์ (Armature)",
+        "description": "หลักการ: ดึงพิกัดตำแหน่ง การหมุน และสเกลของกระดูก (Bone) ใน Armature\nการประยุกษ์ใช้: ใช้ตรึงวัตถุเวทมนตร์หรือเอฟเฟกต์ให้ติดอยู่กับมือของตัวละครที่กำลังขยับ",
         "inputs": {
             "Object": {
                 "name": "อ็อบเจกต์ (Object)",
@@ -152,7 +152,7 @@
     },
     "GeometryNodeCollectionInfo": {
         "name": "Collection Info",
-        "description": "ดึงข้อมูลและอ็อบเจกต์ทั้งหมดที่อยู่ภายในคอลเลกชัน (Collection) ที่ระบุ",
+        "description": "หลักการ: ดึงโมเดลทั้งหมดที่อยู่ในคอลเลกชัน (Collection) ที่ระบุมาใช้\nการประยุกษ์ใช้: ใช้ดึงกลุ่มโมเดลหญ้าหลายๆ แบบมาสุ่มกระจายบนพื้นผิว (Instance on Points)",
         "inputs": {
             "Collection": {
                 "name": "คอลเลกชัน (Collection)",
@@ -198,7 +198,7 @@
     },
     "GeometryNodeImageInfo": {
         "name": "Image Info",
-        "description": "ดึงข้อมูลรายละเอียดพื้นฐานของภาพ เช่น ความกว้าง ความสูง มีการใช้ Alpha หรือไม่",
+        "description": "หลักการ: ดึงข้อมูลขนาดกว้างยาว และการโปร่งแสง (Alpha) ของรูปภาพ\nการประยุกษ์ใช้: ใช้สร้างแผ่นระนาบที่มีสัดส่วนกว้างยาวพอดีกับรูปภาพโดยอัตโนมัติ",
         "inputs": {
             "Image": {
                 "name": "รูปภาพ (Image)",
@@ -222,7 +222,7 @@
     },
     "GeometryNodeIsViewport": {
         "name": "Is Viewport",
-        "description": "ตรวจสอบว่ากำลังประมวลผล Geometry Nodes นี้บนหน้าจอ Viewport (ไม่ใช่ตอน Render) หรือไม่",
+        "description": "หลักการ: เช็คว่าโหนดกำลังแสดงผลในหน้าจอทำงาน (Viewport) หรือกำลังเรนเดอร์ (Render)\nการประยุกษ์ใช้: ใช้ลดความละเอียดของโมเดลตอนทำงานให้เครื่องไม่กระตุก แต่จัดเต็มตอนเรนเดอร์",
         "inputs": {},
         "outputs": {
             "Is Viewport": {
@@ -233,7 +233,7 @@
     },
     "GeometryNodeObjectInfo": {
         "name": "Object Info",
-        "description": "ดึงข้อมูลคุณสมบัติต่างๆ ของอ็อบเจกต์ที่อ้างอิง",
+        "description": "หลักการ: ดึงข้อมูลและรูปทรงของอ็อบเจกต์อื่นในฉากมาใช้\nการประยุกษ์ใช้: ใช้อ้างอิงตำแหน่งของ Empty เพื่อนำมาเป็นจุดศูนย์กลางในการดึงดูดวัตถุ",
         "inputs": {
             "Object": {
                 "name": "อ็อบเจกต์ (Object)",
@@ -287,7 +287,7 @@
     },
     "GeometryNodeSelfObject": {
         "name": "Self Object",
-        "description": "ดึงข้อมูลตัวอ็อบเจกต์ (Object) ที่ Geometry Nodes ชุดนี้ถูกติดตั้งอยู่",
+        "description": "หลักการ: ดึงข้อมูลของอ็อบเจกต์ตัวเองที่กำลังใส่ Geometry Nodes นี้อยู่\nการประยุกษ์ใช้: ใช้อ่านค่าสีหรือพิกัดของตัวเองเพื่อส่งต่อไปประมวลผล",
         "inputs": {},
         "outputs": {
             "Self Object": {
@@ -298,13 +298,13 @@
     },
     "GeometryNodeEnableOutput": {
         "name": "Enable Output",
-        "description": "ใช้เป็นเงื่อนไขสวิตช์ปิด/เปิดเส้นทางการส่งข้อมูลออกแบบจำเพาะ",
+        "description": "หลักการ: ใช้เป็นสวิตช์ปิด/เปิดการส่งต่อข้อมูลที่ทางออก (Output)\nการประยุกษ์ใช้: ใช้ทำเงื่อนไขปิดการแสดงผลบางส่วนเมื่อไม่ต้องการใช้งาน",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeViewer": {
         "name": "Viewer",
-        "description": "ใช้สำหรับดึงค่าพารามิเตอร์หรือข้อมูลรูปทรง (Geometry) ออกไปดูตัวเลขในช่อง Spreadsheet",
+        "description": "หลักการ: ดึงค่าตัวเลขหรือพิกัดไปแสดงในช่อง Spreadsheet เพื่อการตรวจสอบ (Debug)\nการประยุกษ์ใช้: ใช้ดูค่าความยาวของเส้นโค้ง หรือตรวจสอบว่าเงื่อนไข (True/False) ทำงานถูกหรือไม่",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -367,7 +367,7 @@
     },
     "GeometryNodeWarning": {
         "name": "Warning",
-        "description": "สร้างการแจ้งเตือน (Warning Message) ขึ้นบนตัวโหนด เมื่อค่าความจริงเข้าเงื่อนไขที่กำหนด",
+        "description": "หลักการ: แสดงข้อความแจ้งเตือน (Warning) บนตัวโหนดเมื่อเงื่อนไขเป็นจริง\nการประยุกษ์ใช้: ใช้เตือนผู้ใช้งาน Add-on ว่าใส่ค่าพารามิเตอร์ผิดช่วง หรือลืมเชื่อมต่อโมเดลหลัก",
         "inputs": {
             "Condition": {
                 "name": "เงื่อนไข (Condition)",
@@ -405,7 +405,7 @@
     },
     "GeometryNodeAttributeStatistic": {
         "name": "Attribute Statistic",
-        "description": "คำนวณและแสดงผลค่าทางสถิติของAttribute (เช่น ค่าเฉลี่ย, สูงสุด, ต่ำสุด) บนรูปทรง",
+        "description": "หลักการ: คำนวณค่าสถิติ (เฉลี่ย, สูงสุด, ต่ำสุด, ผลรวม) ของ Attribute บนรูปทรง\nการประยุกษ์ใช้: ใช้หาจุดที่สูงที่สุดของภูเขา หรือคำนวณน้ำหนักรวมของวัตถุทั้งหมด",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -569,7 +569,7 @@
     },
     "GeometryNodeAttributeDomainSize": {
         "name": "Domain Size",
-        "description": "ดึงค่าจำนวนขององค์ประกอบต่างๆ ของรูปทรง เช่น จำนวนจุด (Vertices), เส้น (Edges), หรือหน้าตัด (Faces)",
+        "description": "หลักการ: นับจำนวนชิ้นส่วนทั้งหมด (เช่น จำนวนจุด, จำนวนหน้าตัด, จำนวน Instance)\nการประยุกษ์ใช้: ใช้หาระยะห่างเฉลี่ยโดยเอาความยาวรวมมาหารด้วยจำนวนจุดทั้งหมด",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -638,7 +638,7 @@
     },
     "GeometryNodeBlurAttribute": {
         "name": "Blur Attribute",
-        "description": "เกลี่ยหรือทำเบลอค่าAttributeของแต่ละจุดให้กลืนกับจุดรอบๆ เพื่อลดความเหลื่อมล้ำ",
+        "description": "หลักการ: เกลี่ยค่าของจุดให้ผสมกลมกลืนกับจุดรอบๆ (ทำ Blur)\nการประยุกษ์ใช้: ใช้เกลี่ยสี Vertex Color ให้เนียนขึ้น หรือทำให้รอยยับบนพื้นผิวเรียบเนียนขึ้น",
         "inputs": {
             "Value": {
                 "name": "ค่าตัวเลข (Value)",
@@ -735,7 +735,7 @@
     },
     "GeometryNodeCaptureAttribute": {
         "name": "Capture Attribute",
-        "description": "จับและบันทึกค่าAttribute ณ ช่วงเวลานั้นเพื่อนำไปส่งต่อให้โหนดอื่นใช้งานได้ถูกต้องแม้องค์ประกอบจะเปลี่ยนไป",
+        "description": "หลักการ: บันทึกและฝังค่าตัวแปร (Attribute) ไว้กับรูปทรงในจังหวะนั้นๆ เพื่อไม่ให้ค่าเพี้ยนเมื่อรูปทรงเปลี่ยนไป\nการประยุกษ์ใช้: ใช้จำตำแหน่งดั้งเดิมของจุดก่อนที่จะโดนระเบิดกระจายออกไป เพื่อดึงกลับมาสร้างแอนิเมชันคืนร่าง",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -802,7 +802,7 @@
     },
     "GeometryNodeRemoveAttribute": {
         "name": "Remove Named Attribute",
-        "description": "ลบข้อมูลAttributeที่เคยตั้งชื่อบันทึกไว้ออกจากรูปทรงเพื่อลดภาระหน่วยความจำ",
+        "description": "หลักการ: ลบค่าตัวแปร (Named Attribute) ที่ไม่ใช้ออกจากรูปทรงเพื่อลดขนาดข้อมูล\nการประยุกษ์ใช้: ใช้ลบข้อมูล UV หรือสีที่ไม่ได้ใช้ก่อนส่งออกไฟล์ (Export) เพื่อให้ไฟล์เบาลง",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -822,7 +822,7 @@
     },
     "GeometryNodeStoreNamedAttribute": {
         "name": "Store Named Attribute",
-        "description": "สร้างและบันทึกข้อมูลAttributeลงในรูปทรงโดยตั้งชื่อเฉพาะ เพื่อเก็บไว้ใช้อ้างอิงในภายหลังหรือส่งออกไปยัง Shader",
+        "description": "หลักการ: บันทึกค่าตัวแปรลงในรูปทรงและตั้งชื่อให้ (Named Attribute) เพื่อนำไปเรียกใช้ในโหนดอื่นหรือใน Shader\nการประยุกษ์ใช้: ใช้ส่งค่าความเสียหายของวัตถุไปให้ Shader Material ทำรอยไหม้",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -962,7 +962,7 @@
     },
     "GeometryNodeActiveElement": {
         "name": "Active Element",
-        "description": "ดึงข้อมูลและสถานะขององค์ประกอบที่กำลังถูกเลือกเป็นหลัก (Active Element)",
+        "description": "หลักการ: ดึงองค์ประกอบที่กำลังถูกเลือกหรือเป็น (Active) อยู่\nการประยุกษ์ใช้: ใช้ดึงเฉพาะจุดสุดท้ายที่ผู้ใช้เลือกมาทำเป็นจุดกำเนิดพายุ",
         "inputs": {},
         "outputs": {
             "Active": {
@@ -973,7 +973,7 @@
     },
     "GeometryNodeGetGeometryBundle": {
         "name": "Get Geometry Bundle",
-        "description": "รับชุดข้อมูลรูปทรงที่ถูกจัดกลุ่มไว้จากโหนด Bundle",
+        "description": "หลักการ: แตกกลุ่มย่อยของ Geometry ออกมาใช้งาน (ในกรณีที่ถูกมัดรวมมา)\nการประยุกษ์ใช้: ใช้แยกข้อมูลตึก ข้อมูลถนน และข้อมูลต้นไม้ที่ถูกมัดรวมกันมา",
         "inputs": {
             "Bundle": {
                 "name": "บันเดิล (Bundle)",
@@ -989,7 +989,7 @@
     },
     "GeometryNodeProximity": {
         "name": "Geometry Proximity",
-        "description": "คำนวณหาระยะทางที่สั้นที่สุดจากจุดปัจจุบันไปยังตำแหน่งบนพื้นผิวหรือขอบของรูปทรงเป้าหมาย",
+        "description": "หลักการ: หาพิกัดหรือระยะทางบนพื้นผิววัตถุหนึ่ง ที่อยู่ใกล้กับอีกวัตถุหนึ่งมากที่สุด\nการประยุกษ์ใช้: ใช้สร้างคลื่นน้ำบุ๋มลงไปเมื่อมีลูกบอลสัมผัส หรือสร้างรอยเท้าเมื่อตัวละครเหยียบหิมะ",
         "inputs": {
             "Target": {
                 "name": "เป้าหมาย (Target)",
@@ -1040,7 +1040,7 @@
     },
     "GeometryNodeIndexOfNearest": {
         "name": "Index of Nearest",
-        "description": "ค้นหาค่าหมายเลขลำดับ (Index) ของจุดบนรูปทรงเป้าหมายที่อยู่ใกล้ที่สุด",
+        "description": "หลักการ: ค้นหา Index (รหัสประจำตัว) ของชิ้นส่วนที่อยู่ใกล้ที่สุด\nการประยุกษ์ใช้: ใช้ทำเอฟเฟกต์สายฟ้าเชื่อมไปยังเสาล่อฟ้าที่อยู่ใกล้ตัวที่สุด",
         "inputs": {
             "Target": {
                 "name": "เป้าหมาย (Target)",
@@ -1064,7 +1064,7 @@
     },
     "GeometryNodeRaycast": {
         "name": "Raycast",
-        "description": "ยิงเส้นรังสี (Ray) จากจุดที่กำหนดไปยังทิศทางเป้าหมาย เพื่อคำนวณการตกกระทบและการชนรูปทรง",
+        "description": "หลักการ: ยิงเลเซอร์เส้นตรงเพื่อตรวจจับการชน (Hit) ว่าไปกระแทกโดนพื้นผิวไหน และห่างเท่าไหร่\nการประยุกษ์ใช้: ใช้จำลองเรดาร์ วางต้นไม้ให้ตกลงมาเกาะบนพื้นดินเป๊ะๆ หรือทำแมงมุมไต่ตามกำแพง",
         "inputs": {
             "Target": {
                 "name": "เป้าหมาย (Target)",
@@ -1189,7 +1189,7 @@
     },
     "GeometryNodeSampleIndex": {
         "name": "Sample Index",
-        "description": "ดึงค่าข้อมูลขององค์ประกอบ (เช่น ค่าของจุดหรือหน้าตัด) จากหมายเลขลำดับ (Index) ที่ระบุ",
+        "description": "หลักการ: ดึงข้อมูลจากชิ้นส่วนที่ระบุ Index ไว้เจาะจง\nการประยุกษ์ใช้: ใช้ดึงตำแหน่งของจุดแรก (Index 0) ตลอดเวลา เพื่อให้วัตถุอื่นวิ่งตามจุดนั้น",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1325,7 +1325,7 @@
     },
     "GeometryNodeSampleNearest": {
         "name": "Sample Nearest",
-        "description": "ดึงข้อมูลจากจุดบนรูปทรงที่อยู่ใกล้ที่สุดในตำแหน่งปัจจุบัน",
+        "description": "หลักการ: ดึง Index ของจุดที่อยู่ใกล้พิกัดที่กำหนดมากที่สุด (เหมือน Index of Nearest แต่ออกแบบมาให้ใช้ร่วมกับ Sample Index)\nการประยุกษ์ใช้: ใช้ส่งข้อมูลสีจากจุดของวัตถุ A ไปให้จุดที่ใกล้ที่สุดบนวัตถุ B",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1373,7 +1373,7 @@
     },
     "GeometryNodeSetGeometryBundle": {
         "name": "Set Geometry Bundle",
-        "description": "รวมข้อมูลรูปทรงเข้าเป็นชุดเดียวกันในรูปแบบ Bundle",
+        "description": "หลักการ: มัดรวมและตั้งชื่อกลุ่มเรขาคณิต (Geometry) เข้าเป็นห่อเดียวกัน\nการประยุกษ์ใช้: ใช้แพ็คข้อมูลที่มีหลายชิ้นส่งผ่านสายเคเบิลเส้นเดียวเพื่อความสะอาด",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1389,7 +1389,7 @@
     },
     "GeometryNodeSetGeometryName": {
         "name": "Set Geometry Name",
-        "description": "กำหนดหรือตั้งชื่อให้กับรูปทรงในระบบ Node",
+        "description": "หลักการ: ตั้งชื่อให้กับรูปทรง Geometry เพื่อง่ายต่อการค้นหา\nการประยุกษ์ใช้: ใช้แยกแยะและจัดการระบบที่มีการสร้างวัตถุจำนวนมากซ้อนกัน",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1409,7 +1409,7 @@
     },
     "GeometryNodeSetID": {
         "name": "Set ID",
-        "description": "กำหนดหมายเลขไอดี (ID) ใหม่ให้กับองค์ประกอบของรูปทรง เพื่อใช้ระบุตัวตนในโหนดอื่น",
+        "description": "หลักการ: กำหนดค่า ID ประจำตัวใหม่ให้กับแต่ละชิ้นส่วนหรือ Instance\nการประยุกษ์ใช้: ใช้เปลี่ยน ID เพื่อให้การสุ่ม (Random) เปลี่ยนรูปแบบไปจากเดิม",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1433,7 +1433,7 @@
     },
     "GeometryNodeSetSelection": {
         "name": "Set Selection",
-        "description": "กำหนดหรือควบคุมพื้นที่การเลือก (Selection) ภายในกระบวนการ",
+        "description": "หลักการ: บันทึกกลุ่มการเลือก (Selection) เพื่อเอาไปใช้งานทีหลัง\nการประยุกษ์ใช้: ใช้มาร์กจุดที่เป็นหน้าต่างของตึกไว้ แล้วค่อยเรียกใช้เพื่อเจาะรูภายหลัง",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1453,7 +1453,7 @@
     },
     "GeometryNodeReplaceMaterial": {
         "name": "Replace Material",
-        "description": "แทนที่วัสดุพื้นผิวเดิมของรูปทรงด้วยวัสดุใหม่",
+        "description": "หลักการ: ค้นหาและสลับ Material เก่าให้เป็น Material ใหม่ทั้งหมด\nการประยุกษ์ใช้: ใช้เปลี่ยนสีเสื้อผ้าหรือสีรถยนต์ของฝูง Instance นับพันคันพร้อมกัน",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1477,7 +1477,7 @@
     },
     "GeometryNodeMaterialSelection": {
         "name": "Material Selection",
-        "description": "สร้างเงื่อนไขการเลือก (Selection) โดยอ้างอิงจากชิ้นส่วนที่ถูกกำหนดค่าวัสดุตามที่ระบุ",
+        "description": "หลักการ: สร้างเงื่อนไขการเลือก (Selection) เฉพาะพื้นผิวที่ถูกทาด้วย Material ที่ระบุ\nการประยุกษ์ใช้: ใช้เลือกเฉพาะกระจก (Material: Glass) บนตึก เพื่อสั่งให้มันแตกกระจาย",
         "inputs": {
             "Material": {
                 "name": "พื้นผิว (Material)",
@@ -1493,7 +1493,7 @@
     },
     "GeometryNodeSetMaterial": {
         "name": "Set Material",
-        "description": "ใส่หรือเปลี่ยนวัสดุพื้นผิว (Material) ให้กับชิ้นงานเรขาคณิตทั้งหมดหรือเฉพาะส่วนที่เลือก",
+        "description": "หลักการ: กำหนดและทาสี Material ให้กับรูปทรงทั้งหมดหรือเฉพาะส่วนที่เลือก\nการประยุกษ์ใช้: ใช้ทาสีเปลือกไม้และใบไม้แยกกัน หลังจากสร้างต้นไม้ขึ้นมาจาก Geometry Nodes",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1517,7 +1517,7 @@
     },
     "GeometryNodeSetMaterialIndex": {
         "name": "Set Material Index",
-        "description": "กำหนดให้พื้นที่หน้าตัดใช้ช่องเสียบวัสดุ (Material Index) ตามช่องหมายเลขที่ต้องการ",
+        "description": "หลักการ: กำหนดสล็อต Material ตามหมายเลข Index ลำดับในช่อง Material\nการประยุกษ์ใช้: ใช้สุ่มตัวเลข Index เพื่อให้แผ่นกระเบื้องแต่ละแผ่นดึง Material ลายต่างๆ กันมาแสดง",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1541,7 +1541,7 @@
     },
     "GeometryNodeBake": {
         "name": "Bake",
-        "description": "แคช (Cache) หรืออบ (Bake) ข้อมูลรูปทรงเก็บไว้ในไฟล์เพื่อลดภาระการประมวลผลซ้ำ",
+        "description": "หลักการ: อบ (Bake) ข้อมูลอนิเมชันหรือผลลัพธ์ของโหนดเพื่อบันทึกลงแคช (Cache) ทำให้ประมวลผลเร็วขึ้นในครั้งต่อไป\nการประยุกษ์ใช้: ใช้เบคอนิเมชันกระจกแตก หรือน้ำไหล เพื่อให้การดูผลลัพธ์ย้อนหลังลื่นไหลโดยไม่ต้องคำนวณใหม่",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1557,7 +1557,7 @@
     },
     "GeometryNodeBoundBox": {
         "name": "Bounding Box",
-        "description": "สร้างกล่องทรงลูกบาศก์ที่ครอบคลุมขนาดและขอบเขตของรูปทรงทั้งหมด",
+        "description": "หลักการ: สร้างกล่องสี่เหลี่ยม (Bounding Box) ล้อมรอบรูปทรงทั้งหมดให้พอดี\nการประยุกษ์ใช้: ใช้ทำกล่องกันกระแทกเวลาโยนของ หรือหาขนาดกว้างยาวสูงสุดของโมเดล",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1581,7 +1581,7 @@
     },
     "GeometryNodeConvexHull": {
         "name": "Convex Hull",
-        "description": "สร้างพื้นผิวห่อหุ้มคลุมจุดรอบนอกทั้งหมดของรูปทรงแบบปิดและไม่มีส่วนเว้า",
+        "description": "หลักการ: สร้างพื้นผิวห่อหุ้มรูปทรงภายนอก เหมือนการขึงพลาสติกแรปคลุมจุดที่ยื่นออกไปนอกสุด\nการประยุกษ์ใช้: ใช้สร้าง Collision (พื้นที่กันชน) อย่างง่ายให้กับก้อนหินที่มีรูปร่างซับซ้อน",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1597,7 +1597,7 @@
     },
     "GeometryNodeDeleteGeometry": {
         "name": "Delete Geometry",
-        "description": "ลบจุด (Point), เส้น (Edge), หรือหน้าตัด (Face) ตามเงื่อนไขที่กำหนด",
+        "description": "หลักการ: ลบรูปทรง, จุด, หน้าตัด, หรือเส้น ที่ตรงกับเงื่อนไขที่กำหนดทิ้งไป\nการประยุกษ์ใช้: ใช้ลบหลังคาบ้านทิ้งเมื่อต้องการมองทะลุ หรือลบใบไม้ที่อยู่ในร่มทิ้ง",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1674,7 +1674,7 @@
     },
     "GeometryNodeDuplicateElements": {
         "name": "Duplicate Elements",
-        "description": "ทำซ้ำ (Duplicate) องค์ประกอบต่างๆ ของรูปทรงตามจำนวนที่กำหนด",
+        "description": "หลักการ: คัดลอกและสร้างซ้ำองค์ประกอบ (จุด, เส้น, หน้า) หลายๆ ชุด\nการประยุกษ์ใช้: ใช้ทำไพ่ซ้อนกันหลายใบ โดยสร้างไพ่ใบเดียวแล้ว Duplicate และขยับแกน Z ทีละนิด",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1740,7 +1740,7 @@
     },
     "GeometryNodeMergeByDistance": {
         "name": "Merge by Distance",
-        "description": "รวมจุดหรือลบเส้นที่อยู่ใกล้กันกว่าระยะทางที่กำหนดให้กลายเป็นจุดเดียวกัน",
+        "description": "หลักการ: รวมจุดหรือหน้าตัดที่อยู่ใกล้กันเกินไปตามระยะที่กำหนด (Weld/Remove Doubles)\nการประยุกษ์ใช้: ใช้แก้ปัญหาตาข่ายแตกเมื่อต่อเส้นติดกัน หรือประสานรอยแยกให้เป็นเนื้อเดียวกัน",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1764,7 +1764,7 @@
     },
     "GeometryNodeSortElements": {
         "name": "Sort Elements",
-        "description": "จัดเรียงหมายเลขลำดับ (Index) ขององค์ประกอบใหม่ตามเงื่อนไขเพื่อความมีระเบียบ",
+        "description": "หลักการ: จัดเรียงหมายเลข Index ขององค์ประกอบใหม่ตามค่าน้ำหนักที่กำหนด\nการประยุกษ์ใช้: ใช้เรียงลำดับเส้นผมจากสั้นไปยาว เพื่อให้สามารถเลือกตัดเฉพาะเส้นยาวๆ ได้แม่นยำ",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1821,7 +1821,7 @@
     },
     "GeometryNodeSeparateComponents": {
         "name": "Separate Components",
-        "description": "แยกส่วนประกอบของรูปทรงออกมาเป็นชิ้นๆ ตามประเภท (Mesh, Curve, Point Cloud ฯลฯ)",
+        "description": "หลักการ: แยกชิ้นส่วนประเภทต่างๆ ออกจากกัน (Mesh, Point Cloud, Curve, Volume)\nการประยุกษ์ใช้: ใช้คัดกรองเส้นโค้งออกไปจัดการอย่างหนึ่ง แล้วส่ง Mesh ไปเรนเดอร์อีกอย่างหนึ่ง",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1853,7 +1853,7 @@
     },
     "GeometryNodeSeparateGeometry": {
         "name": "Separate Geometry",
-        "description": "แยกรูปทรงออกเป็นสองส่วน (ที่ตรงเงื่อนไข กับไม่ตรงเงื่อนไข) ตามค่า Boolean",
+        "description": "หลักการ: แยกรูปทรงออกเป็นสองส่วน (ส่วนที่ถูกเลือก กับ ส่วนที่ไม่ถูกเลือก)\nการประยุกษ์ใช้: ใช้หั่นแตงโมเป็น 2 ซีก หรือแยกหน้าตัดที่เป็นหน้าต่างออกมาทำวัสดุกระจก",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1915,7 +1915,7 @@
     },
     "GeometryNodeSplitToInstances": {
         "name": "Split to Instances",
-        "description": "แยกชิ้นส่วนหรือหน้าตัดต่างๆ ของรูปทรงที่แยกกันอยู่ให้ออกเป็น Instance อิสระ",
+        "description": "หลักการ: ฉีกกลุ่มหน้าตัดที่แยกตัวกันอยู่แล้ว ให้กลายเป็น Instance แยกชิ้นกัน\nการประยุกษ์ใช้: ใช้ระเบิดกำแพงอิฐให้แต่ละก้อนกระจายอิสระด้วยความเร็วต่างกัน",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1973,7 +1973,7 @@
     },
     "GeometryNodeGeometryToInstance": {
         "name": "Geometry to Instance",
-        "description": "รวมและแปลงรูปทรงหรือชิ้นงานทั้งหมดให้กลายเป็น Instance เดียวกันเพื่อนำไปทำซ้ำง่ายขึ้น",
+        "description": "หลักการ: แพ็ครูปทรง 3 มิติทั้งหมดให้กลายเป็นก้อน Instance 1 ชิ้น เพื่อความเบาบางในการประมวลผล\nการประยุกษ์ใช้: ใช้มัดรวมบ้านทั้งหลังให้เป็นก้อนเดียว ก่อนนำไปกระจายเป็นหมู่บ้าน 1,000 หลัง",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -1989,7 +1989,7 @@
     },
     "GeometryNodeJoinGeometry": {
         "name": "Join Geometry",
-        "description": "นำชิ้นส่วนหรือรูปทรงหลายๆ เส้นทางมารวมให้เป็นก้อนเดียวกัน",
+        "description": "หลักการ: จับรูปทรงหรือข้อมูลหลายๆ เส้นมารวมกันเป็นชิ้นเดียว (Union)\nการประยุกษ์ใช้: ใช้ต่อกิ่งไม้เข้ากับลำต้น หรือนำโมเดลบ้านมาต่อกับฐานดิน",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -2005,7 +2005,7 @@
     },
     "GeometryNodeGreasePencilLayerSelection": {
         "name": "Named Layer Selection",
-        "description": "เลือกและกรองข้อมูล Grease Pencil เฉพาะเลเยอร์ที่ระบุ",
+        "description": "หลักการ: เลือกเลเยอร์ที่ระบุใน Grease Pencil Object\nการประยุกษ์ใช้: ใช้เลือกเฉพาะเลเยอร์ 'Line Art' เพื่อนำเส้นวาดมาทำความหนา 3 มิติ",
         "inputs": {
             "Name": {
                 "name": "ชื่อ (Name)",
@@ -2021,7 +2021,7 @@
     },
     "GeometryNodeSetGreasePencilColor": {
         "name": "Set Grease Pencil Color",
-        "description": "ปรับแต่งสีของเส้นหรือช่องเติม (Fill) ของ Grease Pencil",
+        "description": "หลักการ: ตั้งค่าสีของเส้นหรือการถมสี (Fill) ของ Grease Pencil\nการประยุกษ์ใช้: ใช้เปลี่ยนสีเส้นร่างเป็นสีเทา หรือทำอนิเมชันให้เส้นดินสอกะพริบเปลี่ยนสี",
         "inputs": {
             "Grease Pencil": {
                 "name": "ดินสอไข (Grease Pencil)",
@@ -2055,7 +2055,7 @@
     },
     "GeometryNodeSetGreasePencilDepth": {
         "name": "Set Grease Pencil Depth",
-        "description": "กำหนดระดับความลึก (Z-Depth) สำหรับเส้น Grease Pencil ในมุมมอง 3 มิติ",
+        "description": "หลักการ: กำหนดความลึกหรือความซ้อนทับ (Z-depth) ของเส้นวาด\nการประยุกษ์ใช้: ใช้บังคับให้เส้นวาด Grease Pencil บางเส้นไปโผล่อยู่หลังโมเดล 3 มิติ",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -2079,13 +2079,13 @@
     },
     "GeometryNodeSetGreasePencilSoftness": {
         "name": "Set Grease Pencil Softness",
-        "description": "กำหนดความนุ่มละมุนของเส้นวาด Grease Pencil",
+        "description": "หลักการ: ตั้งค่าความเบลอหรือความนุ่มนวลของขอบเส้น Grease Pencil\nการประยุกษ์ใช้: ใช้ทำเส้นวาดบรรยากาศสไตล์สีน้ำ หรือทำความฟุ้งให้เส้นแสงสว่าง",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeMergeLayers": {
         "name": "Merge Layers",
-        "description": "รวมเลเยอร์ต่างๆ ของ Grease Pencil เข้าด้วยกันเป็นเลเยอร์เดียว",
+        "description": "หลักการ: รวมเลเยอร์ของ Grease Pencil หลายๆ ชั้นเข้าด้วยกัน\nการประยุกษ์ใช้: ใช้บีบรวมเส้นขอบและเส้นเงาให้เป็นชิ้นเดียวเพื่อประมวลผลเอฟเฟกต์ต่อ",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -2109,7 +2109,7 @@
     },
     "GeometryNodeInstanceOnPoints": {
         "name": "Instance on Points",
-        "description": "กระจายหรือคัดลอกรูปทรงเป้าหมาย (Instance) ไปวางตามจุดต่างๆ ของรูปทรงต้นทาง",
+        "description": "หลักการ: นำอ็อบเจกต์ต้นแบบ (Instance) ไปวางบนจุดแต่ละจุด (Points)\nการประยุกษ์ใช้: ใช้สร้างป่าไม้ โดยนำโมเดลต้นไม้ 1 ต้นไปวางบนจุดนับพันที่สุ่มกระจายบนภูเขา",
         "inputs": {
             "Points": {
                 "name": "จุด (Points)",
@@ -2145,7 +2145,7 @@
     },
     "GeometryNodeInstancesToPoints": {
         "name": "Instances to Points",
-        "description": "แปลงตำแหน่งตรงศูนย์กลางของชิ้นส่วนจำลอง (Instance) แต่ละชิ้นให้กลับกลายเป็นจุดว่างๆ (Points)",
+        "description": "หลักการ: ทำลายก้อน Instance แล้วดึงจุดศูนย์กลาง (Origin) กลับมาเป็นจุด (Points) ลอยๆ\nการประยุกษ์ใช้: ใช้ยุบก้อนหินนับพันให้เหลือแค่จุดศูนย์กลาง เพื่อคำนวณระยะห่างรอบตัว",
         "inputs": {
             "Instances": {
                 "name": "Instance (Instances)",
@@ -2161,7 +2161,7 @@
     },
     "GeometryNodeRealizeInstances": {
         "name": "Realize Instances",
-        "description": "แปลงชิ้นงานจำลอง (Instance) ให้กลายเป็นตาข่ายรูปทรงจริง (Real Geometry) เพื่อให้สามารถแก้ไขรูปทรงเชิงลึกได้",
+        "description": "หลักการ: แตกไฟล์ Instance (ที่เป็นตัวแทนชั่วคราว) ให้กลายเป็นโมเดล Mesh 3 มิติของจริง\nการประยุกษ์ใช้: ใช้แตก Instance หญ้า เพื่อใส่โหนด Noise ทำให้หญ้าแต่ละต้นปลิวลู่ลมไม่เหมือนกัน",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -2177,7 +2177,7 @@
     },
     "GeometryNodeRotateInstances": {
         "name": "Rotate Instances",
-        "description": "หมุนชิ้นงานจำลองแต่ละชิ้นในทิศทางและองศาที่กำหนด",
+        "description": "หลักการ: หมุนตัวอ็อบเจกต์ Instance แต่ละชิ้นแบบอิสระ\nการประยุกษ์ใช้: ใช้หมุนทิศทางกังหันลมในทุ่งให้รับลม หรือสุ่มให้ต้นไม้หันหน้าไปคนละทิศ",
         "inputs": {
             "Instances": {
                 "name": "Instance (Instances)",
@@ -2197,7 +2197,7 @@
     },
     "GeometryNodeScaleInstances": {
         "name": "Scale Instances",
-        "description": "ปรับลดหรือขยายขนาดชิ้นงานจำลอง",
+        "description": "หลักการ: ปรับขนาด ย่อ/ขยาย อ็อบเจกต์ Instance\nการประยุกษ์ใช้: ใช้สุ่มขนาดก้อนหินให้เล็กบ้างใหญ่บ้าง เพื่อความเป็นธรรมชาติ",
         "inputs": {
             "Instances": {
                 "name": "Instance (Instances)",
@@ -2217,13 +2217,13 @@
     },
     "GeometryNodeSetInstanceTransform": {
         "name": "Set Instance Transform",
-        "description": "ตั้งค่ากำหนดตำแหน่ง หมุน และย่อขยายให้กับชิ้นงานจำลองโดยตรงแบบครบวงจร",
+        "description": "หลักการ: ตั้งค่า เลื่อน/หมุน/ขยาย ตัว Instance ใหม่ทั้งหมดในโหนดเดียว\nการประยุกษ์ใช้: ใช้จัดระเบียบตึกที่ถูก Instance มาให้มีขนาดและทิศทางตรงกับแปลนถนน",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeTranslateInstances": {
         "name": "Translate Instances",
-        "description": "เลื่อนตำแหน่งของชิ้นงานจำลองแต่ละชิ้น",
+        "description": "หลักการ: ขยับหรือเลื่อนตัวอ็อบเจกต์ Instance ไปยังตำแหน่งใหม่\nการประยุกษ์ใช้: ใช้ขยับฝูงปลากลับขึ้นไปบนผิวน้ำพร้อมๆ กัน",
         "inputs": {
             "Instances": {
                 "name": "Instance (Instances)",
@@ -2243,13 +2243,13 @@
     },
     "GeometryNodeInstanceBounds": {
         "name": "Instance Bounds",
-        "description": "ดึงข้อมูลขนาดกล่องขอบเขต (Bounding Box) ของแต่ละชิ้นงานจำลองแยกกัน",
+        "description": "หลักการ: ดึงพิกัดกล่อง Bounding Box (เล็กสุด-ใหญ่สุด) ของ Instance\nการประยุกษ์ใช้: ใช้อ่านขนาดของรถยนต์แต่ละคัน แล้วนำไปสร้างกล่องจอดรถให้พอดีตัวรถ",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeSetShadeSmooth": {
         "name": "Set Shade Smooth",
-        "description": "กำหนดให้ลบรอยเหลี่ยมแสงเงาของหน้าตัด ทำให้พื้นผิวแลดูโค้งเนียน (Shade Smooth)",
+        "description": "หลักการ: ปรับการแสดงผลหน้าตัดให้ลื่นเนียน (Smooth) หรือเห็นเหลี่ยมชัดเจน (Flat)\nการประยุกษ์ใช้: ใช้ตั้งค่าให้พื้นผิวรถยนต์ดูมันวาวไร้เหลี่ยม หรือทำกล่องเพชรให้เห็นเหลี่ยมชัด",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -2291,7 +2291,7 @@
     },
     "GeometryNodeScaleElements": {
         "name": "Scale Elements",
-        "description": "ขยายหรือย่อขนาดเฉพาะบางองค์ประกอบภายในรูปทรงแยกกัน (เช่น หน้าตัดแต่ละแผ่น)",
+        "description": "หลักการ: ย่อ/ขยาย แต่ละองค์ประกอบ (เช่น แต่ละหน้าตัด) พุ่งเข้าหาจุดกึ่งกลางของตัวเอง\nการประยุกษ์ใช้: ใช้ย่อหน้าต่างให้เล็กลงแล้วหลุดออกจากกรอบตึก หรือทำเกล็ดมังกรแหลมๆ",
         "inputs": {
             "Geometry": {
                 "name": "รูปทรง (Geometry)",
@@ -2329,7 +2329,7 @@
     },
     "GeometryNodeTriangulate": {
         "name": "Triangulate",
-        "description": "ตัดแบ่งหน้าตัดทั้งหมดให้กลายเป็นหน้าตัดรูปสามเหลี่ยม",
+        "description": "หลักการ: หั่นหน้าตัดสี่เหลี่ยม หรือหลายเหลี่ยม ให้กลายเป็นหน้าตัดสามเหลี่ยมทั้งหมด\nการประยุกษ์ใช้: ใช้เตรียมโมเดลก่อนส่งเข้าเกมเอนจิน หรือทำให้พื้นผิวพับงอได้อิสระขึ้น",
         "inputs": {
             "Mesh": {
                 "name": "โครงข่าย (Mesh)",
@@ -2345,25 +2345,25 @@
     },
     "GeometryNodePackUVIslands": {
         "name": "Pack UV Islands",
-        "description": "จัดเรียงพิกัดแผนที่ภาพ (UV) ที่แยกส่วนให้อยู่รวมในกรอบอย่างมีระเบียบ",
+        "description": "หลักการ: จัดเรียงแผนที่ UV ที่กระจัดกระจายให้รวมกันเป็นระเบียบลงในกรอบสี่เหลี่ยม\nการประยุกษ์ใช้: ใช้แพ็ค UV โมเดลบ้านที่สร้างแบบ Procedural อัตโนมัติ เพื่อนำไปทาสีทีหลัง",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeUVTangent": {
         "name": "UV Tangent",
-        "description": "คำนวณVectorทิศทางสัมผัสโดยอิงจากพิกัด UV สำหรับใช้ปรับทิศทางการสะท้อนแสง",
+        "description": "หลักการ: สร้างเส้นทิศทางสัมผัส (Tangent) ตามแนวเส้นรอบรูปของ UV\nการประยุกษ์ใช้: ใช้ควบคุมทิศทางแสงเงาสะท้อน (Anisotropic) ของผม หรือรอยขัดลายเส้นบนโลหะ",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeUVUnwrap": {
         "name": "UV Unwrap",
-        "description": "แผ่รูปทรงสามมิติออกเป็นพิกัดระนาบ 2 มิติ (UV) แบบอัตโนมัติ เพื่อใช้กางลวดลายภาพ",
+        "description": "หลักการ: กางแผนที่ UV พื้นผิวแบบอัตโนมัติภายใน Geometry Nodes\nการประยุกษ์ใช้: ใช้กาง UV พื้นถนนที่ถูกวาดและสร้างใหม่แบบ Real-time ให้พื้นผิวไม่ยืด",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeDistributePointsInGrid": {
         "name": "Distribute Points in Grid",
-        "description": "สร้างและกระจายจุดลงในโครงสร้างแบบกริด",
+        "description": "หลักการ: กระจายจุดในรูปแบบของตารางสี่เหลี่ยม 3 มิติแบบมีระเบียบ\nการประยุกษ์ใช้: ใช้ทำนั่งร้านก่อสร้าง ชั้นวางสินค้า หรือโครงสร้างผลึกอะตอม",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -2387,7 +2387,7 @@
     },
     "GeometryNodeDistributePointsInVolume": {
         "name": "Distribute Points in Volume",
-        "description": "สุ่มกระจายจุดต่างๆ ลงในพื้นที่ว่างของรูปทรงควัน (Volume)",
+        "description": "หลักการ: กระจายจุด (Points) ให้เต็มไปในช่องว่างปริมาตรของรูปทรง\nการประยุกษ์ใช้: ใช้สุ่มสร้างฝูงนกที่บินอยู่รวมกันในก้อนเมฆ หรือหยดน้ำในแก้วน้ำ",
         "inputs": {
             "Volume": {
                 "name": "ปริมาตร (Volume)",
@@ -2407,37 +2407,37 @@
     },
     "GeometryNodePoints": {
         "name": "Points",
-        "description": "สร้างจุด (Points) อิสระขึ้นมาตามจำนวนที่กำหนด",
+        "description": "หลักการ: สร้างกลุ่มจุด (Points) เปล่าๆ ขึ้นมา\nการประยุกษ์ใช้: ใช้เป็นเป้าหมายอ้างอิงตำแหน่ง หรือสร้างจุดเริ่มต้นของพลุก่อนระเบิด",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodePointsToSDFGrid": {
         "name": "Points to SDF Grid",
-        "description": "แปลงกลุ่มจุดให้เป็นระยะห่างปริมาตรแบบ SDF (Signed Distance Field)",
+        "description": "หลักการ: เปลี่ยนกลุ่มจุดให้เป็นกล่องระยะทางปริมาตร (SDF Grid)\nการประยุกษ์ใช้: ใช้ทำเอฟเฟกต์หยดน้ำ (Metaballs) ให้จุดหลายๆ จุดหลอมรวมเข้าด้วยกัน",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodePointsToVertices": {
         "name": "Points to Vertices",
-        "description": "เปลี่ยนสถานะกลุ่มจุดเปล่าๆ (Point Cloud) ให้กลายเป็นจุดเชื่อมรูปทรง (Vertices)",
+        "description": "หลักการ: แปลงจุด (Point Cloud) ลอยๆ ให้กลายเป็น Vertex ภายใน Mesh แผ่นเดียวกัน\nการประยุกษ์ใช้: ใช้แปลงละอองจุดให้กลายเป็นโครงข่ายเพื่อใช้คำนวณ Convex Hull ภายหลัง",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodePointsToVolume": {
         "name": "Points to Volume",
-        "description": "แปลงตำแหน่งกลุ่มจุดให้กลายเป็นรูปทรงควันหรือปริมาตร (Volume) ทรงกลมรอบจุด",
+        "description": "หลักการ: แปลงกลุ่มจุดให้กลายเป็นก้อนเมฆทึบ ควัน หรือหมอก (Volume)\nการประยุกษ์ใช้: ใช้เอาฝูงจุดสุ่มมาสร้างเป็นก้อนเมฆก้อนใหญ่ หรือควันฝุ่นกระจาย",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeSetPointRadius": {
         "name": "Set Point Radius",
-        "description": "กำหนดขนาดความหนาหรือรัศมี (Radius) ให้กับแต่ละจุด (Point)",
+        "description": "หลักการ: กำหนดขนาดรัศมี (ความอ้วน) ให้แต่ละจุด\nการประยุกษ์ใช้: ใช้ทำละอองเกสรที่มีขนาดเล็กใหญ่สลับกัน หรือปรับขนาดของก้อน Metaball",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeGetNamedGrid": {
         "name": "Get Named Grid",
-        "description": "ดึงข้อมูลตารางกริดปริมาตร (Volume Grid) ตามชื่อที่บันทึกไว้",
+        "description": "หลักการ: ดึงข้อมูลกริดปริมาตรที่ถูกตั้งชื่อไว้แล้วมาใช้\nการประยุกษ์ใช้: ใช้อ่านข้อมูลความหนาแน่นของควัน แล้วเอาไปแสดงผลเป็นสีไฟ (Fire)",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -2566,7 +2566,7 @@
     },
     "GeometryNodeGridInfo": {
         "name": "Grid Info",
-        "description": "ตรวจสอบรายละเอียดของตารางกริดปริมาตร เช่น ขนาดหรือความละเอียด",
+        "description": "หลักการ: ดึงข้อมูลขนาด, ความละเอียด และขอบเขตของ Volume Grid\nการประยุกษ์ใช้: ใช้เช็คว่าควันลอยขึ้นไปสูงเท่าไหร่แล้ว เพื่อจำกัดความสูงของวัตถุอื่นๆ",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -2695,13 +2695,13 @@
     },
     "GeometryNodeVoxelIndex": {
         "name": "Voxel Index",
-        "description": "ดึงหมายเลขลำดับ (Index) ของเม็ดปริมาตร (Voxel) ที่กำลังประมวลผล",
+        "description": "หลักการ: สร้างรหัสประจำตัว (Index) ให้กับแต่ละ Voxel ก้อนสี่เหลี่ยมในกริดปริมาตร\nการประยุกษ์ใช้: ใช้ลบ Voxel เฉพาะจุดออกเพื่อทำโพรงในเมฆ หรือไล่สีจากล่างขึ้นบน",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeSampleGrid": {
         "name": "Sample Grid",
-        "description": "ดึงข้อมูลจากกริดปริมาตรในพิกัด 3 มิติที่กำหนด",
+        "description": "หลักการ: สุ่มดึงค่าจาก Voxel ของปริมาตรตามพิกัด 3 มิติที่กำหนด\nการประยุกษ์ใช้: ใช้อ่านความหนาแน่นของควัน แล้วให้จุดที่บินเข้าไปในควันเปลี่ยนสี",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -2830,7 +2830,7 @@
     },
     "GeometryNodeSampleGridIndex": {
         "name": "Sample Grid Index",
-        "description": "ดึงข้อมูลจากกริดโดยอิงจากตำแหน่งหมายเลขลำดับ Index ของ Voxel",
+        "description": "หลักการ: ดึงข้อมูลจาก Voxel โดยอ้างอิงจากรหัสประจำตัว (Index) แถวและคอลัมน์\nการประยุกษ์ใช้: ใช้สร้างตารางข้อมูล Voxel อย่างเป็นระบบ เพื่ออ่านค่าสีแบบ Pixel-art 3 มิติ",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -2959,37 +2959,37 @@
     },
     "GeometryNodeAdvectGrid": {
         "name": "Advect Grid",
-        "description": "เคลื่อนย้ายหรือพัดข้อมูลกริดปริมาตรไปตามทิศทางความเร็วคล้ายการเคลื่อนที่ของของไหล",
+        "description": "หลักการ: เลื่อนข้อมูลหรือจุดใน Grid ไปตามทิศทางของ Vector คล้ายการพัดพามวล\nการประยุกษ์ใช้: ใช้ทำของเหลวไหลไปตามทิศทาง หรือทำเอฟเฟกต์หมอกพัดตามลม",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeGridCurl": {
         "name": "Grid Curl",
-        "description": "คำนวณการม้วนตัวหรือกระแสหมุนวน (Curl) ของกริดประเภทVector",
+        "description": "หลักการ: สร้างVectorลมหมุนหรือกระแสน้ำวน (Curl) จากข้อมูลปริมาตร\nการประยุกษ์ใช้: ใช้ปั่นควันให้หมุนวนเหมือนทอร์นาโด หรือสร้างกระแสน้ำวนดึงดูดวัตถุ",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeGridDivergence": {
         "name": "Grid Divergence",
-        "description": "คำนวณการกระจายหรือกระจุกตัว (Divergence) ของVectorฟิลด์ในกริด",
+        "description": "หลักการ: คำนวณอัตราการกระจายออกหรือยุบตัวเข้า (Divergence) ของข้อมูล Grid\nการประยุกษ์ใช้: ใช้หาจุดที่ระเบิดกระจายตัวออกไปแรงที่สุด เพื่อสร้างสะเก็ดไฟ",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeGridGradient": {
         "name": "Grid Gradient",
-        "description": "คำนวณทิศทางการเปลี่ยนแปลงหรือไล่ระดับ (Gradient) ของข้อมูลกริด",
+        "description": "หลักการ: หาความชันหรือทิศทางที่ข้อมูล Volume มีการเปลี่ยนแปลงค่ามากที่สุด\nการประยุกษ์ใช้: ใช้หาทิศทางตั้งฉากกับก้อนควัน (Normal) เพื่อใช้แสงตกกระทบได้อย่างถูกต้อง",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeGridLaplacian": {
         "name": "Grid Laplacian",
-        "description": "คำนวณความอนุพันธ์อันดับสอง (Laplacian) ของกริด ช่วยเกลี่ยหรือเน้นขอบ",
+        "description": "หลักการ: หาอัตราการเปลี่ยนแปลงความชันซ้อนกัน (Laplacian) ใช้เน้นขอบหรือเกลี่ยค่า Volume\nการประยุกษ์ใช้: ใช้สร้างรายละเอียดให้ก้อนควันดูเป็นก้อนชัดขึ้น หรือฟุ้งกระจายเนียนขึ้น",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeSetGridBackground": {
         "name": "Set Grid Background",
-        "description": "กำหนดค่าพื้นหลังหรือขอบเขตนอกพื้นที่ที่มีข้อมูลของตารางกริด",
+        "description": "หลักการ: กำหนดค่าเริ่มต้นพื้นหลังของช่อง Grid ที่ไม่มีข้อมูล\nการประยุกษ์ใช้: ใช้ตั้งค่าความว่างเปล่าของอวกาศเป็น 0 เพื่อไม่ให้รบกวนการคำนวณ",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -3118,7 +3118,7 @@
     },
     "GeometryNodeSetGridTransform": {
         "name": "Set Grid Transform",
-        "description": "กำหนดพิกัดตำแหน่ง หมุน และย่อขยายของปริมาตรกริดทั้งก้อน",
+        "description": "หลักการ: ขยับ หมุน หรือปรับสเกลของ Volume Grid ทั้งชุด\nการประยุกษ์ใช้: ใช้เลื่อนก้อนเมฆทั้งก้อนไปพร้อมกันโดยไม่กระทบความละเอียดของ Voxel",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -3247,7 +3247,7 @@
     },
     "GeometryNodeStoreNamedGrid": {
         "name": "Store Named Grid",
-        "description": "จัดเก็บตารางกริดปริมาตรไว้ในหน่วยความจำโดยระบุชื่อ เพื่อใช้ซ้ำในภายหลัง",
+        "description": "หลักการ: บันทึกข้อมูลและตั้งชื่อให้ Volume Grid คล้ายการเซฟแอตทริบิวต์\nการประยุกษ์ใช้: ใช้บันทึกค่าอุณหภูมิของควัน เพื่อให้ Shader นำไปแสดงผลเป็นสีไฟ",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -3316,7 +3316,7 @@
     },
     "GeometryNodeGridToPoints": {
         "name": "Grid to Points",
-        "description": "สร้างกลุ่มจุดขึ้นมาจากแต่ละ Voxel ที่มีข้อมูลในกริด",
+        "description": "หลักการ: แปลงแต่ละ Voxel ที่มีค่าความหนาแน่น ให้กลายเป็นจุด (Points) เรียงต่อกัน\nการประยุกษ์ใช้: ใช้เปลี่ยนก้อนเมฆให้กลายเป็นเม็ดฝนเรียงแถวตามตาราง Grid",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -3445,43 +3445,43 @@
     },
     "GeometryNodeSDFGridFillet": {
         "name": "SDF Grid Fillet",
-        "description": "สร้างความโค้งมนหรือลบมุมบนรูปทรงปริมาตรแบบ SDF",
+        "description": "หลักการ: ลบมุมแหลมของกล่องปริมาตร SDF ให้นุ่มนวลขึ้น\nการประยุกษ์ใช้: ใช้ลบเหลี่ยมอักษร 3 มิติที่เป็นก้อนเนื้อเดียวกันให้ดูมนเป็นลูกโป่ง",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeSDFGridLaplacian": {
         "name": "SDF Grid Laplacian",
-        "description": "คำนวณค่าลากจูงพื้นผิวเพื่อใช้เบลอหรือเน้นรูปทรง SDF",
+        "description": "หลักการ: หาค่า Laplacian ของกล่องปริมาตร SDF เพื่อเกลี่ยหรือเพิ่มรายละเอียด\nการประยุกษ์ใช้: ใช้คำนวณเพื่อลบรอยต่อระหว่างวัตถุสองชิ้นที่เอามาบวกกันด้วย SDF ให้เนียนกริบ",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeSDFGridMean": {
         "name": "SDF Grid Mean",
-        "description": "หาค่าเฉลี่ยของพื้นที่ใกล้เคียงภายในรูปทรง SDF กริด",
+        "description": "หลักการ: ปรับความนุ่มนวลของพื้นผิว SDF ให้สมูทขึ้นโดยอิงค่าเฉลี่ย\nการประยุกษ์ใช้: ใช้ละลายผิวโมเดลให้ดูเหมือนช็อกโกแลต หรือน้ำแข็งที่กำลังละลาย",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeSDFGridMeanCurvature": {
         "name": "SDF Grid Mean Curvature",
-        "description": "คำนวณความโค้งเว้าเฉลี่ยของพื้นผิวจากระยะ SDF",
+        "description": "หลักการ: ตรวจจับส่วนโค้งเว้าของพื้นผิว SDF\nการประยุกษ์ใช้: ใช้ดึงค่าความเว้าไปใส่เอฟเฟกต์สนิมขึ้นเกาะตามร่อง หรือหิมะตกค้าง",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeSDFGridMedian": {
         "name": "SDF Grid Median",
-        "description": "หาค่ามัธยฐานในพื้นที่ของรูปร่างแบบ SDF",
+        "description": "หลักการ: ลบสัญญาณรบกวน (Noise) หรือขอบหยักๆ ออกจาก SDF\nการประยุกษ์ใช้: ใช้ขัดผิวโมเดลสแกน 3 มิติที่มีผิวขรุขระให้กลับมาเนียนเรียบ",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeSDFGridOffset": {
         "name": "SDF Grid Offset",
-        "description": "ขยับหรือขยาย/หดพื้นผิวรอบนอกของรูปทรงแบบ SDF กริด",
+        "description": "หลักการ: ขยายหรือหดขนาดของกล่องระยะทาง SDF เหมือนเป่าลูกโป่งให้พอง\nการประยุกษ์ใช้: ใช้พอกความหนาของโมเดลให้เป็นตัวอ้วนกลม หรือทำรัศมีออร่ารอบๆ ตัว",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeFieldToGrid": {
         "name": "Field To Grid",
-        "description": "แปลงฟิลด์ข้อมูลการคำนวณให้กลายเป็นตารางปริมาตร (Volume Grid)",
+        "description": "หลักการ: แปลงค่าประมวลผล (Field) ไปเป็นตารางข้อมูล Grid แบบตายตัว\nการประยุกษ์ใช้: ใช้แปลงค่าสมการ Noise ให้เป็นก้อนเมฆที่มีปริมาตรจริงไว้เรนเดอร์",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -3610,19 +3610,19 @@
     },
     "GeometryNodeClipGrid": {
         "name": "Clip Grid",
-        "description": "ตัดขอบเขตของกริดปริมาตรทิ้งเฉพาะส่วนที่ไม่ได้ใช้ข้อมูลเพื่อให้ประมวลผลเร็วขึ้น",
+        "description": "หลักการ: หั่นหรือตัดขอบเขตของ Volume Grid ทิ้งไปเพื่อประหยัดหน่วยความจำ\nการประยุกษ์ใช้: ใช้ตัดควันที่ลอยหลุดกรอบหน้าต่างออกไปไม่ให้ประมวลผลให้หนักเครื่อง",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeGridDilateErode": {
         "name": "Grid Dilate & Erode",
-        "description": "ขยายหรือกัดกร่อนรูปทรงปริมาตรกริดออกหรือเข้า (คล้ายการทำขอบหนาหรือบางใน 2D)",
+        "description": "หลักการ: ขยายพื้นที่ (Dilate) หรือกัดกร่อนให้เล็กลง (Erode) ของข้อมูล Grid\nการประยุกษ์ใช้: ใช้กัดกร่อนขอบของก้อนเมฆให้แหว่ง หรือทำให้เปลวไฟฟุ้งกระจายใหญ่ขึ้น",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeGridMean": {
         "name": "Grid Mean",
-        "description": "หาค่าเฉลี่ยของ Voxel โดยรอบเพื่อเกลี่ยข้อมูล (Blur)",
+        "description": "หลักการ: เบลอข้อมูลใน Grid ให้ผสมกันแบบค่าเฉลี่ย\nการประยุกษ์ใช้: ใช้ทำความร้อนของเปลวไฟให้แผ่กระจายอย่างนุ่มนวล ไม่ดูเป็นจุดพิกเซล",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -3751,7 +3751,7 @@
     },
     "GeometryNodeGridMedian": {
         "name": "Grid Median",
-        "description": "เกลี่ยข้อมูลกริดปริมาตรโดยใช้ค่ามัธยฐาน ช่วยลดจุดรบกวน (Noise)",
+        "description": "หลักการ: เกลี่ยสัญญาณรบกวนในข้อมูล Volume Grid โดยใช้ค่ามัธยฐาน\nการประยุกษ์ใช้: ใช้ลบเม็ดพิกเซลประหลาดๆ ที่กระโดดแหลมออกมาจากเมฆ",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -3880,25 +3880,25 @@
     },
     "GeometryNodePruneGrid": {
         "name": "Prune Grid",
-        "description": "ตัดแต่งและลบ Voxel ที่มีค่าความหนาแน่นน้อยกว่าระดับที่ตั้งไว้ออก (เพิ่มประสิทธิภาพ)",
+        "description": "หลักการ: ลบช่อง Voxel ที่ว่างเปล่าหรือมีค่าต่ำมากๆ ทิ้ง เพื่อประหยัด RAM\nการประยุกษ์ใช้: ใช้ล้างข้อมูลควันที่จางไปแล้วทิ้ง เพื่อให้ Simulation รันได้เร็วขึ้น",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeVoxelizeGrid": {
         "name": "Voxelize Grid",
-        "description": "บังคับแปลงรูปทรงหรือจุดให้กลายเป็นลักษณะเม็ดปริมาตร Voxel Grid พิกัดเหลี่ยม",
+        "description": "หลักการ: จัดระเบียบปริมาตรให้เป็นก้อน Voxel ตามตารางที่แน่นอน\nการประยุกษ์ใช้: ใช้แปลงโมเดลรถยนต์ให้กลายเป็นบล็อกคล้ายเกม Minecraft",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeCubeGridTopology": {
         "name": "Cube Grid Topology",
-        "description": "ข้อมูลระบบและตำแหน่งการเรียงตัวของกริดในรูปแบบลูกบาศก์",
+        "description": "หลักการ: สร้างโครงตารางเส้นลวดเชื่อมต่อกันในรูปแบบกล่องลูกบาศก์หลายมิติ\nการประยุกษ์ใช้: ใช้สร้างกรงเหล็กขังวัตถุ หรือตารางนั่งร้านก่อสร้างที่ซับซ้อน",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeVolumeCube": {
         "name": "Volume Cube",
-        "description": "สร้างรูปทรงก้อนควัน (Volume) ขึ้นมาในรูปแบบกล่องทรงลูกบาศก์",
+        "description": "หลักการ: สร้างก้อนปริมาตร (Volume) เริ่มต้นเป็นรูปกล่องสี่เหลี่ยมลูกบาศก์\nการประยุกษ์ใช้: ใช้เป็นกล่องกักเก็บควัน หรือสลักรูปร่างด้วย SDF จากกล่องนี้",
         "inputs": {
             "Density": {
                 "name": "ความหนาแน่น (Density)",
@@ -3914,85 +3914,85 @@
     },
     "GeometryNodeSimulationZone": {
         "name": "Simulation Zone",
-        "description": "พื้นที่คำนวณแบบวนซ้ำตามเวลาจริง (Simulation) เพื่อจำลองฟิสิกส์ หรือผลลัพธ์ที่ขึ้นกับเฟรมก่อนหน้า",
+        "description": "หลักการ: สร้างวงจรลูปเพื่อเก็บค่าและคำนวณสะสมแบบเฟรมต่อเฟรม (Simulation)\nการประยุกษ์ใช้: ใช้ทำหิมะร่วงหล่น จำลองฝูงนกบิน หรือรอยเท้าที่ถูกเหยียบซ้ำๆ",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeForEachElementZone": {
         "name": "For Each Element Zone",
-        "description": "พื้นที่วนลูป (Loop) เพื่อทำงานซ้ำๆ กับทุกๆ ชิ้นส่วนหรือองค์ประกอบแบบแยกกัน",
+        "description": "หลักการ: วนลูปการทำงานกระทำทีละชิ้นส่วน (Point/Face/Instance) แยกกัน\nการประยุกษ์ใช้: ใช้สั่งให้บ้านแต่ละหลังที่ Instance มา สุ่มจำนวนชั้นความสูงไม่เท่ากัน",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeRepeatZone": {
         "name": "Repeat Zone",
-        "description": "พื้นที่วนลูปทำงานซ้ำตามจำนวนครั้ง (Iterations) ที่กำหนดเพื่อสะสมการเปลี่ยนแปลง",
+        "description": "หลักการ: วนลูปกระบวนการโหนดเดิมซ้ำๆ หลายๆ รอบในเฟรมเดียว\nการประยุกษ์ใช้: ใช้สร้างขั้นบันไดเวียนที่ต่อกันสูงขึ้นไปเรื่อยๆ ตามจำนวนรอบลูป (เช่น 100 รอบ)",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeStringFormat": {
         "name": "Format String",
-        "description": "จัดรูปแบบและแทรกตัวแปรรวมเข้ากับข้อความ (คล้าย format string ในโปรแกรมมิ่ง)",
+        "description": "หลักการ: นำค่าตัวเลขและคำสั่งจัดรูปแบบ (เช่น จุดทศนิยม) มาแปลงเป็นข้อความ (String)\nการประยุกษ์ใช้: ใช้แสดงผลเปอร์เซ็นต์โหลดดิ้ง (10.5%) หรือนำค่าความเร็วไปแสดงเป็นป้ายตัวเลข",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeStringJoin": {
         "name": "Join Strings",
-        "description": "นำข้อความ (String) หลายๆ ตัวมาต่อติดกัน",
+        "description": "หลักการ: นำข้อความ (String) หลายๆ อันมาต่อกันเป็นประโยคเดียวโดยใช้ตัวเชื่อม\nการประยุกษ์ใช้: ใช้รวมคำว่า 'Level' กับตัวเลข '99' เป็นข้อความ 'Level: 99' ในเกม 3 มิติ",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeStringMatch": {
         "name": "Match String",
-        "description": "ตรวจสอบว่ามีข้อความหรือแพทเทิร์นย่อยอยู่ในข้อความหลักหรือไม่",
+        "description": "หลักการ: ตรวจสอบว่าข้อความตรงกับเงื่อนไขคำที่ตั้งไว้ หรือขึ้นต้นด้วยคำนี้หรือไม่\nการประยุกษ์ใช้: ใช้เช็คชื่อของ Attribute หรือ Bone ว่าขึ้นต้นด้วย 'DEF_' หรือไม่ เพื่อคัดออก",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeRadialTiling": {
         "name": "Radial Tiling",
-        "description": "ปูและทำซ้ำพิกัดในลักษณะการหมุนเป็นวงกลม",
+        "description": "หลักการ: ก๊อปปี้และจัดเรียงองค์ประกอบให้หมุนวนซ้ำๆ เป็นวงกลมรอบจุดศูนย์กลาง\nการประยุกษ์ใช้: ใช้ทำซี่ล้อจักรยาน, ใบพัดลม, หรือเรียงเก้าอี้เป็นวงกลมในโรงละคร",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeCombineBundle": {
         "name": "Combine Bundle",
-        "description": "รวมกลุ่มข้อมูลรูปทรงหรือAttributeหลายรายการให้อยู่ในชุด Bundle เดียว",
+        "description": "หลักการ: จับกลุ่มและมัดรวมสายข้อมูลต่างๆ ให้เป็นเส้นรวบยอด (Bundle) เส้นเดียว\nการประยุกษ์ใช้: ใช้มัดรวมสาย Color, Position, Scale ไว้ในสายเคเบิลเส้นเดียวเพื่อความสะอาด",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeSeparateBundle": {
         "name": "Separate Bundle",
-        "description": "แยกชิ้นส่วนข้อมูลที่ถูกรวมกันแบบ Bundle กลับออกมาใช้งานทีละอัน",
+        "description": "หลักการ: แตกสายสัญญาณที่ถูกมัดรวมไว้ (Bundle) ให้ออกมาเป็นสายเดี่ยวๆ เพื่อใช้งาน\nการประยุกษ์ใช้: ใช้ดึงข้อมูล Color จากสายที่มัดมาเพื่อเอาไปเปลี่ยนสีให้กับหน้าตัด",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeGetBundleItem": {
         "name": "Get Bundle Item",
-        "description": "ดึงข้อมูลเฉพาะบางตัวออกจากกล่อง Bundle ตามชื่อหรือชนิดข้อมูล",
+        "description": "หลักการ: ดึงเฉพาะข้อมูลรายการใดรายการหนึ่งจากกลุ่มข้อมูลที่ถูกมัดไว้ (Bundle)\nการประยุกษ์ใช้: ใช้ล้วงหยิบเอาเฉพาะข้อมูลความเร็วลมจากข้อมูลลมที่ถูกมัดมา",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeStoreBundleItem": {
         "name": "Store Bundle Item",
-        "description": "ยัดหรือเก็บข้อมูลใหม่เพิ่มเติมเข้าไปใน Bundle เดิม",
+        "description": "หลักการ: นำข้อมูลย่อยเสียบกลับเข้าไปเก็บไว้ในห่อข้อมูลหลัก (Bundle) เดิม\nการประยุกษ์ใช้: ใช้อัปเดตข้อมูลสีเข้าไปในกระเป๋า Bundle ที่พกข้อมูลอื่นๆ ติดตัวอยู่แล้ว",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeJoinBundle": {
         "name": "Join Bundle",
-        "description": "เชื่อมต่อรวม Bundle หลายๆ ชุดเข้าด้วยกัน",
+        "description": "หลักการ: ผสมสายห่อข้อมูล (Bundle) สองเส้นหรือมากกว่าเข้าด้วยกัน\nการประยุกษ์ใช้: ใช้รวบรวมข้อมูลแสงจากไฟ 2 ดวงเข้าด้วยกันเป็นสายเคเบิล 1 เส้น",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeEvaluateClosure": {
         "name": "Evaluate Closure",
-        "description": "คำนวณหรือประเมินค่าฟังก์ชัน (Closure) ณ จุดหรือเงื่อนไขนั้นๆ ทันที",
+        "description": "หลักการ: นำฟังก์ชันหรือโหนดที่ถูกพักการคำนวณไว้ มาสั่งให้ประมวลผลทันที ณ จุดนี้\nการประยุกษ์ใช้: ใช้สร้างเครื่องมือ (Custom Tool) ที่รับคำสั่งเงื่อนไขการเลือกจากผู้ใช้ไปทำงานทีหลัง",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeAccumulateField": {
         "name": "Accumulate Field",
-        "description": "สะสมและบวกค่าAttributeต่อเนื่องกันไปเรื่อยๆ (เช่น ใช้สะสมความกว้างรวมของจุด)",
+        "description": "หลักการ: คำนวณสะสมค่าตัวเลขจากต้นจนถึงจุดปัจจุบัน (เช่น 1, 1+2, 1+2+3)\nการประยุกษ์ใช้: ใช้เรียงหนังสือที่เล่มหนาไม่เท่ากันให้ชิดซ้าย โดยบวกความหนาสะสมไปเรื่อยๆ",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -4065,7 +4065,7 @@
     },
     "GeometryNodeFieldAtIndex": {
         "name": "Evaluate at Index",
-        "description": "ดึงค่าจากฟิลด์ข้อมูลโดยตรงโดยอ้างอิงลำดับ (Index)",
+        "description": "หลักการ: ล้วงหยิบค่าข้อมูลเจาะจงจากชิ้นส่วน Index ที่ระบุเท่านั้น\nการประยุกษ์ใช้: ใช้ดึงความสูงของเสาต้นแรกสุด (Index 0) ไปให้เสาอื่นๆ อ้างอิงขนาดตาม",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -4183,7 +4183,7 @@
     },
     "GeometryNodeFieldOnDomain": {
         "name": "Evaluate on Domain",
-        "description": "แปลงหรือประเมินค่าจากข้อมูลฟิลด์ให้ตรงกับโดเมน (จุด, เส้น, หน้าตัด) ของเป้าหมาย",
+        "description": "หลักการ: สั่งให้ประมวลผลข้อมูลล่วงหน้าบนโดเมน (จุด, เส้น, หน้า) ที่กำหนดก่อนเอาไปใช้\nการประยุกษ์ใช้: ใช้บังคับให้คำนวณสีบนหน้าตัดทั้งหมดก่อน แล้วค่อยสุ่มสีลงแต่ละหน้าตัด",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -4301,7 +4301,7 @@
     },
     "GeometryNodeFieldAverage": {
         "name": "Field Average",
-        "description": "คำนวณค่าเฉลี่ยของข้อมูลฟิลด์ (Attribute) จากองค์ประกอบทั้งหมดในโครงข่าย",
+        "description": "หลักการ: คำนวณหาค่าเฉลี่ยแบบเรียลไทม์จากระบบที่กระจายตัว\nการประยุกษ์ใช้: ใช้หาความสูงเฉลี่ยของต้นไม้ทั้งป่า เพื่อนำไปปรับความหนาแน่นรวม",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -4364,13 +4364,13 @@
     },
     "GeometryNodeFieldMinMax": {
         "name": "Field Min & Max",
-        "description": "หาค่าต่ำสุดและสูงสุดของAttributeทั้งหมด",
+        "description": "หลักการ: ค้นหาค่าตัวเลขที่น้อยที่สุดและมากที่สุดที่กำลังถูกใช้ในระบบ\nการประยุกษ์ใช้: ใช้หาจุดที่ร้อนที่สุดบนตัวเครื่องยนต์เพื่อเปลี่ยนสีเหล็กเป็นสีแดงอุณหภูมิสูง",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeFieldVariance": {
         "name": "Field Variance",
-        "description": "หาค่าความแปรปรวนของข้อมูลในฟิลด์",
+        "description": "หลักการ: หาค่าความแปรปรวนหรือความแกว่งของข้อมูลที่กระจายอยู่\nการประยุกษ์ใช้: ใช้หาระดับความแตกต่างของขนาดภูเขาเพื่อกระจายความขรุขระให้สมจริง",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -4433,19 +4433,19 @@
     },
     "GeometryNodeFieldToList": {
         "name": "Field to List",
-        "description": "รวบรวมค่าของข้อมูลทั้งหมดในฟิลด์ให้ออกมาเป็นรายการยาว (List) เพื่อใช้วนลูปหรือดึงข้อมูล",
+        "description": "หลักการ: รวบรวมข้อมูล Field ที่ทำงานแยกกันอิสระ ให้มารวมเป็นรายการ (List) แถวเรียง\nการประยุกษ์ใช้: ใช้ดึงรายชื่อสีทั้งหมดบนโมเดล 100 ชิ้นมารวมเป็นก้อนเดียวกันเพื่อส่งออก",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeGetListItem": {
         "name": "Get List Item",
-        "description": "ดึงข้อมูลจากรายการ (List) ทีละรายการโดยระบุหมายเลขลำดับ",
+        "description": "หลักการ: ดึงข้อมูลตัวที่ N ในคิวรายการ (List) ออกมา\nการประยุกษ์ใช้: ใช้ดึงสีลำดับที่ 3 จากชุดสี Palette ที่ส่งเข้ามาเพื่อทาสีบ้านหลังถัดไป",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeListLength": {
         "name": "List Length",
-        "description": "ตรวจสอบความยาวหรือจำนวนไอเทมทั้งหมดใน List",
+        "description": "หลักการ: นับจำนวนคิวหรือข้อมูลที่อยู่ในชุดรายการ (List) ว่ามีทั้งหมดกี่ชิ้น\nการประยุกษ์ใช้: ใช้นับว่ามีตึกกี่แบบในกระเป๋าคอลเลกชัน เพื่อคำนวณหาลูปการสุ่ม",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -4574,7 +4574,7 @@
     },
     "GeometryNodeIndexSwitch": {
         "name": "Index Switch",
-        "description": "สวิตช์เลือกส่งผ่านข้อมูลตามตัวเลข Index หรือลำดับที่ระบุ",
+        "description": "หลักการ: ทำสวิตช์เลือกช่องทางออก โดยใช้ตัวเลขรหัส (Index) เป็นตัวชี้\nการประยุกษ์ใช้: ใช้เลือกว่าจะปล่อยน้ำ (0) ปล่อยควัน (1) หรือปล่อยไฟ (2) ตามปุ่มที่ตั้ง",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -4703,7 +4703,7 @@
     },
     "GeometryNodeMenuSwitch": {
         "name": "Menu Switch",
-        "description": "สร้างเมนูตัวเลือกแบบ Dropdown เพื่อให้ผู้ใช้สามารถสลับเลือกข้อมูลได้สะดวก",
+        "description": "หลักการ: สร้างปุ่มสวิตช์เป็นเมนูรายชื่อ Dropdown ให้ผู้ใช้คลิกเลือกได้จาก UI\nการประยุกษ์ใช้: ใช้สร้างเมนู 'วงกลม/สี่เหลี่ยม/ดาว' บนหน้าจอ Property ภายนอกให้ผู้ใช้กด",
         "inputs": {},
         "outputs": {},
         "dropdowns": {
@@ -4832,7 +4832,7 @@
     },
     "GeometryNodeSwitch": {
         "name": "Switch",
-        "description": "ทำหน้าที่เป็นสวิตช์ทางผ่านเลือกระหว่างข้อมูลสองเส้นทางตามเงื่อนไขความจริง (True/False)",
+        "description": "หลักการ: สวิตช์ปิด-เปิดแบบ 2 ทางเลือก (True/False) สลับไปมา\nการประยุกษ์ใช้: ใช้สร้างปุ่มเช็คบ็อกซ์ให้ผู้ใช้เลือกว่าจะ 'เปิดหลังคา' หรือ 'ปิดหลังคา'",
         "inputs": {
             "Switch": {
                 "name": "สลับ (Switch)",

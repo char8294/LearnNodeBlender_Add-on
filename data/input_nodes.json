@@ -1,7 +1,7 @@
 {
     "GeometryNodeInputCollection": {
         "name": "Collection",
-        "description": "กำหนดและส่งออกข้อมูลคอลเลกชัน (Collection) เพื่อใช้เป็นอินพุต",
+        "description": "หลักการ: รับข้อมูลคอลเลกชัน (Collection) ในฉากเข้ามาใช้งาน\nการประยุกษ์ใช้: ใช้ดึงกลุ่มวัตถุหลายๆ ชิ้นมาสร้างเป็น Instance ตามจุดต่างๆ",
         "inputs": {},
         "outputs": {
             "Collection": {
@@ -12,7 +12,7 @@
     },
     "FunctionNodeInputColor": {
         "name": "Color",
-        "description": "กำหนดและส่งออกค่าสีและค่าความโปร่งใส (RGBA)",
+        "description": "หลักการ: กำหนดค่าสีและความโปร่งใส (RGBA) แบบคงที่\nการประยุกษ์ใช้: ใช้กำหนดสีเริ่มต้นให้กับวัสดุ หรือส่งค่าสีผสมกับแอตทริบิวต์อื่น",
         "inputs": {},
         "outputs": {
             "Color": {
@@ -23,7 +23,7 @@
     },
     "GeometryNodeInputImage": {
         "name": "Image",
-        "description": "กำหนดและส่งออกข้อมูลรูปภาพเพื่อนำไปใช้งาน",
+        "description": "หลักการ: อ้างอิงข้อมูลไฟล์รูปภาพภายนอกเข้ามา\nการประยุกษ์ใช้: ใช้ดึงสีจากรูปภาพมาเป็น Texture หรือสร้างความนูน (Displacement) ตามพิกเซล",
         "inputs": {},
         "outputs": {
             "Image": {
@@ -34,7 +34,7 @@
     },
     "FunctionNodeInputInt": {
         "name": "Integer",
-        "description": "ส่งออกค่าตัวเลขInteger",
+        "description": "หลักการ: กำหนดค่าตัวเลขจำนวนเต็ม (Integer) แบบคงที่\nการประยุกษ์ใช้: ใช้กำหนดจำนวนเต็มที่ไม่มีทศนิยม เช่น จำนวนสำเนาวัตถุ, ลำดับของ Item",
         "inputs": {},
         "outputs": {
             "Integer": {
@@ -45,7 +45,7 @@
     },
     "GeometryNodeInputMaterial": {
         "name": "Material",
-        "description": "กำหนดและส่งออกข้อมูลพื้นผิว (Material) สำหรับใช้ตกแต่งรูปทรง",
+        "description": "หลักการ: อ้างอิงวัสดุพื้นผิว (Material) ที่มีอยู่ในไฟล์\nการประยุกษ์ใช้: ใช้ส่งต่อไปยังโหนด Set Material เพื่อสวมใส่พื้นผิวให้กับรูปทรง",
         "inputs": {},
         "outputs": {
             "Material": {
@@ -56,7 +56,7 @@
     },
     "GeometryNodeInputObject": {
         "name": "Object",
-        "description": "กำหนดและส่งออกข้อมูลอ็อบเจกต์ (Object) เพื่อนำไปใช้งานในโหนด",
+        "description": "หลักการ: รับข้อมูลอ็อบเจกต์ 3 มิติในฉากเข้ามาประมวลผล\nการประยุกษ์ใช้: ใช้ดึงตำแหน่ง หมุน สเกลของวัตถุอื่น หรือดึงโครงสร้างตาข่าย (Mesh) มาใช้งานร่วม",
         "inputs": {},
         "outputs": {
             "Object": {
@@ -67,7 +67,7 @@
     },
     "FunctionNodeInputRotation": {
         "name": "Rotation",
-        "description": "กำหนดและส่งออกค่าการหมุน (Rotation) แบบออยเลอร์ (Euler)",
+        "description": "หลักการ: กำหนดค่าการหมุน (Rotation) แบบออยเลอร์ (Euler) คงที่\nการประยุกษ์ใช้: ใช้กำหนดองศาการหมุนของชิ้นงาน Instance หรือหมุน Vector คงที่",
         "inputs": {},
         "outputs": {
             "Rotation": {
@@ -78,7 +78,7 @@
     },
     "FunctionNodeInputString": {
         "name": "String",
-        "description": "กำหนดและส่งออกข้อมูลประเภทข้อความ (String)",
+        "description": "หลักการ: กำหนดข้อมูลประเภทข้อความ (String) คงที่\nการประยุกษ์ใช้: ใช้เป็นข้อความให้โหนด String to Curves สร้างเป็นอักษร 3 มิติ",
         "inputs": {},
         "outputs": {
             "String": {
@@ -89,7 +89,7 @@
     },
     "GeometryNodeGizmoDial": {
         "name": "Dial Gizmo",
-        "description": "แสดงหน้าปัดควบคุม (Gizmo) บนหน้าจอ Viewport สำหรับปรับแต่งค่าแบบหมุน",
+        "description": "หลักการ: สร้างหน้าปัดควบคุม (Dial) ลอยบนหน้าจอ Viewport สำหรับปรับค่าแบบหมุน\nการประยุกษ์ใช้: ใช้อำนวยความสะดวกในการปรับแต่งค่ามุมหรือการหมุนโดยไม่ต้องเข้า Panel",
         "inputs": {
             "Value": {
                 "name": "ค่าตัวเลข (Value)",
@@ -149,7 +149,7 @@
     },
     "GeometryNodeGizmoLinear": {
         "name": "Linear Gizmo",
-        "description": "แสดงลูกศรเลื่อน (Gizmo) บนหน้าจอ Viewport สำหรับปรับแต่งค่าแบบทางตรง",
+        "description": "หลักการ: สร้างลูกศรลอยบนหน้าจอ Viewport (Gizmo) เพื่อปรับค่าตัวเลขเชิงเส้น\nการประยุกษ์ใช้: ใช้ลากลูกศรเพื่อปรับระยะความยาวหรือค่าตำแหน่งได้ง่ายๆ ด้วยเมาส์",
         "inputs": {
             "Value": {
                 "name": "ค่าตัวเลข (Value)",
@@ -228,7 +228,7 @@
     },
     "GeometryNodeGizmoTransform": {
         "name": "Transform Gizmo",
-        "description": "แสดงวิดเจ็ตสำหรับเลื่อน หมุน หรือปรับขนาด (Transform) บนหน้าจอ Viewport",
+        "description": "หลักการ: สร้างวิดเจ็ตปรับตำแหน่ง หมุน สเกล (Transform) ครบวงจรบน Viewport\nการประยุกษ์ใช้: ให้ผู้ใช้สามารถจับเลื่อนวัตถุจากโหนดได้ทันทีในหน้า 3D View",
         "inputs": {
             "Matrix": {
                 "name": "เมทริกซ์ (Matrix)",
@@ -247,13 +247,13 @@
     },
     "NodeGroupInput": {
         "name": "Group Input",
-        "description": "รับค่าพารามิเตอร์ต่างๆ จากภายนอกเข้ามาใช้งานภายในกลุ่มโหนด (Node Group)",
+        "description": "หลักการ: รับค่าพารามิเตอร์ต่างๆ จากภายนอกกลุ่มโหนด (Modifier Panel)\nการประยุกษ์ใช้: ใช้ดึงค่าที่ผู้ใช้ตั้งไว้เข้ามาควบคุมภายใน Node Group",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeInput3DCursor": {
         "name": "3D Cursor",
-        "description": "ดึงข้อมูลตำแหน่งและการหมุนของ 3D Cursor ปัจจุบันในหน้าจอ",
+        "description": "หลักการ: ดึงค่าตำแหน่งและการหมุนของ 3D Cursor ปัจจุบัน\nการประยุกษ์ใช้: ใช้ให้วัตถุในโหนดวิ่งตามหรือหันหน้าไปหา 3D Cursor เสมอ",
         "inputs": {},
         "outputs": {
             "Location": {
@@ -272,7 +272,7 @@
     },
     "GeometryNodeInputSceneTime": {
         "name": "Scene Time",
-        "description": "ดึงข้อมูลเวลาปัจจุบันของแอนิMeshันในฉาก (เฟรมหรือวินาที)",
+        "description": "หลักการ: ดึงเวลาหรือเฟรมแอนิเมชันปัจจุบันในฉาก\nการประยุกษ์ใช้: ใช้ทำให้สิ่งต่างๆ เคลื่อนไหว หมุน หรือเปลี่ยนสีไปเรื่อยๆ เมื่อกด Play",
         "inputs": {},
         "outputs": {
             "Seconds": {
@@ -287,7 +287,7 @@
     },
     "GeometryNodeInputID": {
         "name": "ID",
-        "description": "ดึงค่าตัวเลขหมายเลข ID หรือกำหนดรหัสเฉพาะประจำตัวของแต่ละส่วนประกอบ",
+        "description": "หลักการ: อ่านค่าหรือสร้างรหัสประจำตัว (ID) เฉพาะสำหรับจุดหรือหน้าตัด\nการประยุกษ์ใช้: ใช้เพื่อการสุ่มค่า Random Value ให้แต่ละชิ้นงานแตกต่างกันไป",
         "inputs": {},
         "outputs": {
             "ID": {
@@ -298,7 +298,7 @@
     },
     "GeometryNodeInputIndex": {
         "name": "Index",
-        "description": "ดึงค่าตัวเลขลำดับ (Index) ขององค์ประกอบรูปทรง เช่น หมายเลขลำดับของจุดหรือหน้าตัด",
+        "description": "หลักการ: ดึงหมายเลขลำดับ (Index) ของจุดหรือหน้าตัดแต่ละอัน\nการประยุกษ์ใช้: ใช้เลือกเฉพาะจุดลำดับคู่/คี่ หรือไล่ค่าสีตามลำดับการสร้าง",
         "inputs": {},
         "outputs": {
             "Index": {
@@ -309,7 +309,7 @@
     },
     "GeometryNodeInputNamedAttribute": {
         "name": "Named Attribute",
-        "description": "ดึงค่าAttributeที่ถูกบันทึกไว้จากชื่อ (Name) ที่ระบุมาใช้งาน",
+        "description": "หลักการ: ดึงข้อมูลแอตทริบิวต์ (Attribute) จากชื่อที่ระบุมาใช้งาน\nการประยุกษ์ใช้: ใช้ดึงค่า UV Map, Vertex Color หรือค่าที่ถูกเก็บซ่อนไว้ออกมาคำนวณ",
         "inputs": {
             "Name": {
                 "name": "ชื่อ (Name)",
@@ -402,7 +402,7 @@
     },
     "GeometryNodeInputNormal": {
         "name": "Normal",
-        "description": "ดึงข้อมูลVectorทิศทางแนวฉาก (Normal) ของแต่ละองค์ประกอบรูปทรง",
+        "description": "หลักการ: ดึงทิศทางที่ตั้งฉากกับพื้นผิว (Normal Vector) ของรูปทรง\nการประยุกษ์ใช้: ใช้ทำให้หญ้าตั้งตรงชี้ออกจากพื้นผิวผิวโลก หรือทำ Extrude หน้าตัด",
         "inputs": {},
         "outputs": {
             "Normal": {
@@ -413,7 +413,7 @@
     },
     "GeometryNodeInputPosition": {
         "name": "Position",
-        "description": "ดึงข้อมูลตำแหน่ง (Position) ในพื้นที่สามมิติขององค์ประกอบรูปทรง",
+        "description": "หลักการ: ดึงพิกัดตำแหน่ง (Position) ในพื้นที่สามมิติของทุกๆ จุด\nการประยุกษ์ใช้: ใช้ขยับจุดให้เกิดคลื่น หรือให้สีไล่ระดับตามความสูงแกน Z",
         "inputs": {},
         "outputs": {
             "Position": {
@@ -424,7 +424,7 @@
     },
     "GeometryNodeInputRadius": {
         "name": "Radius",
-        "description": "ดึงข้อมูลขนาดรัศมี (Radius) เช่น รัศมีของเส้นผม รัศมีของเส้นโค้งCurve",
+        "description": "หลักการ: ดึงค่ารัศมีความหนาของจุดบนเส้นโค้ง (Curve)\nการประยุกษ์ใช้: ใช้ควบคุมความหนาของเส้นท่อ หรือทำปลายเส้นผมให้แหลม",
         "inputs": {},
         "outputs": {
             "Radius": {
@@ -435,7 +435,7 @@
     },
     "GeometryNodeInputSelection": {
         "name": "Selection",
-        "description": "ดึงข้อมูลพื้นที่ที่กำลังถูกเลือกหรือประมวลผลอยู่",
+        "description": "หลักการ: ดึงพื้นที่หรือองค์ประกอบที่กำลังประมวลผลอยู่ขณะนั้น\nการประยุกษ์ใช้: นิยมใช้เป็นเงื่อนไข Boolean เพื่อเลือกว่าจะกระทำเอฟเฟกต์กับส่วนใดบ้าง",
         "inputs": {},
         "outputs": {
             "Selection": {
@@ -446,7 +446,7 @@
     },
     "GeometryNodeInputMaterialIndex": {
         "name": "Material Index",
-        "description": "ดึงหมายเลขช่องสล็อต (Index) ของวัสดุพื้นผิวที่องค์ประกอบหน้าตัด (Face) ของรูปทรงกำลังใช้งาน",
+        "description": "หลักการ: ดึงหมายเลขช่องสล็อตพื้นผิว (Material Index) ของหน้าตัดนั้นๆ\nการประยุกษ์ใช้: ใช้เลือกหน้าตัดที่มีวัสดุช่องที่ 1 ไปทำ Extrude หรือเปลี่ยนสีเฉพาะส่วน",
         "inputs": {},
         "outputs": {
             "Material Index": {
@@ -457,7 +457,7 @@
     },
     "GeometryNodeInputTangent": {
         "name": "Curve Tangent",
-        "description": "ดึงข้อมูลVectorทิศทางเส้นสัมผัส (Tangent) ณ จุดต่างๆ บนเส้นโค้ง",
+        "description": "หลักการ: ดึงทิศทางเส้นสัมผัสที่ขนานไปตามแนวของเส้นโค้ง\nการประยุกษ์ใช้: ใช้หมุนวัตถุที่วิ่งไปตามเส้นโค้งให้หน้าหันไปตามทิศทางราง",
         "inputs": {},
         "outputs": {
             "Tangent": {
@@ -468,25 +468,25 @@
     },
     "GeometryNodeInputInstanceTransform": {
         "name": "Instance Transform",
-        "description": "ดึงข้อมูลพิกัด (Transform) ทั้งหมดของชิ้นงานจำลองแต่ละชิ้น (ตำแหน่ง หมุน Scale)",
+        "description": "หลักการ: ดึงข้อมูลตำแหน่ง การหมุน และขนาดเดิมของ Instance\nการประยุกษ์ใช้: ใช้เพื่อรักษาทิศทางเดิมไว้เมื่อมีการปรับเปลี่ยนหรือแตก Instance เป็น Mesh",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeInputInstanceRotation": {
         "name": "Instance Rotation",
-        "description": "ดึงข้อมูลองศาการหมุนปัจจุบันของชิ้นงานจำลอง",
+        "description": "หลักการ: ดึงเฉพาะข้อมูลการหมุน (Rotation) ของ Instance แนวนั้น\nการประยุกษ์ใช้: ใช้เพื่ออ่านค่าความเอียงของสำเนาแต่ละตัวแล้วนำไปต่อยอดเอฟเฟกต์",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeInputInstanceScale": {
         "name": "Instance Scale",
-        "description": "ดึงข้อมูลอัตราส่วนขนาด (Scale) ของชิ้นงานจำลอง",
+        "description": "หลักการ: ดึงเฉพาะข้อมูลอัตราส่วนขนาด (Scale) ของ Instance\nการประยุกษ์ใช้: ใช้เปรียบเทียบหรือใช้สเกลของวัตถุสำเนาในการคำนวณสีหรือความเร็ว",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeInputMeshEdgeAngle": {
         "name": "Edge Angle",
-        "description": "ดึงข้อมูลองศามุมพับที่เกิดขึ้นระหว่างสองหน้าตัดที่เชื่อมกันด้วยเส้น (Edge)",
+        "description": "หลักการ: อ่านค่าองศามุมพับที่เกิดขึ้นระหว่างหน้าตัดสองชิ้นที่ติดกัน\nการประยุกษ์ใช้: ใช้เลือกเฉพาะขอบที่พับแหลมมากๆ เพื่อทำ Bevel หรือลบเหลี่ยม",
         "inputs": {},
         "outputs": {
             "Unsigned Angle": {
@@ -501,7 +501,7 @@
     },
     "GeometryNodeInputMeshEdgeNeighbors": {
         "name": "Edge Neighbors",
-        "description": "ดึงจำนวนของหน้าตัด (Face) ที่เชื่อมติดอยู่กับเส้น (Edge) แต่ละเส้น",
+        "description": "หลักการ: นับจำนวนหน้าตัด (Face) ที่เชื่อมติดกับเส้นนั้นๆ\nการประยุกษ์ใช้: ใช้หาขอบนอกสุดของตาข่าย (Non-manifold) ที่มีหน้าตัดติดเพียง 1 ชิ้น",
         "inputs": {},
         "outputs": {
             "Face Count": {
@@ -512,7 +512,7 @@
     },
     "GeometryNodeInputMeshEdgeVertices": {
         "name": "Edge Vertices",
-        "description": "ดึงข้อมูลหมายเลขลำดับของจุด (Vertex) 2 จุดที่เชื่อมกันเป็นเส้นนั้นๆ",
+        "description": "หลักการ: ดึงหมายเลขจุด 2 จุดหัวท้ายที่ลากต่อกันเป็นเส้นนั้นๆ\nการประยุกษ์ใช้: ใช้หาจุดกึ่งกลางหรือดึงค่าของจุดทั้งสองมาเฉลี่ยรวมกัน",
         "inputs": {},
         "outputs": {
             "Vertex Index 1": {
@@ -527,7 +527,7 @@
     },
     "GeometryNodeInputMeshFaceArea": {
         "name": "Face Area",
-        "description": "คำนวณและดึงข้อมูลขนาดพื้นที่ของแต่ละหน้าตัด (Face) บนรูปทรงเรขาคณิต",
+        "description": "หลักการ: คำนวณขนาดพื้นที่ผิวของแต่ละหน้าตัด\nการประยุกษ์ใช้: ใช้สุ่มวางจำนวนต้นไม้ให้หนาแน่นบนหน้าตัดที่กว้าง และบางบนหน้าตัดที่เล็ก",
         "inputs": {},
         "outputs": {
             "Area": {
@@ -538,13 +538,13 @@
     },
     "GeometryNodeInputMeshFaceNeighbors": {
         "name": "Face Neighbors",
-        "description": "ตรวจสอบว่าหน้าตัดหนึ่งๆ นั้นเชื่อมอยู่กับหน้าตัดอื่นหรือจุดกี่จุด",
+        "description": "หลักการ: นับว่าหน้าตัดหนึ่งๆ ติดอยู่กับหน้าตัดเพื่อนบ้านกี่ชิ้น\nการประยุกษ์ใช้: ใช้ตรวจจับชิ้นส่วนที่อยู่ตรงกลาง หรือหามุมของตาข่าย",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeInputMeshFaceIsPlanar": {
         "name": "Is Face Planar",
-        "description": "ตรวจสอบว่าหน้าตัดนั้นราบเรียบแบนสนิทเป็นระนาบเดียวกันทั้งหมดหรือไม่ (จุดไม่บิดเบี้ยว)",
+        "description": "หลักการ: ตรวจสอบว่าหน้าตัดแบนราบเป็นระนาบเดียวกันหมดหรือไม่\nการประยุกษ์ใช้: ใช้หาพื้นที่ที่ราบเรียบพอที่จะวางวัตถุโดยไม่เอียง",
         "inputs": {},
         "outputs": {
             "Planar": {
@@ -555,7 +555,7 @@
     },
     "GeometryNodeInputMeshFaceIsSmooth": {
         "name": "Is Face Smooth",
-        "description": "ตรวจสอบว่าหน้าตัดนั้นตั้งค่าถูกลบรอยเหลี่ยมแบบเนียน (Shade Smooth) หรือไม่",
+        "description": "หลักการ: ตรวจสอบสถานะการเรนเดอร์ขอบเนียน (Shade Smooth) ของหน้าตัด\nการประยุกษ์ใช้: ใช้แบ่งแยกหน้าตัดที่เป็นเหลี่ยมกับที่เนียนออกจากกันเพื่อใส่ Material ต่างกัน",
         "inputs": {},
         "outputs": {
             "Smooth": {
@@ -566,13 +566,13 @@
     },
     "GeometryNodeInputMeshEdgeSmooth": {
         "name": "Is Edge Smooth",
-        "description": "ตรวจสอบสถานะความคมของแต่ละเส้นว่าถูกกำหนดให้มีความโค้งมนหรือไม่",
+        "description": "หลักการ: ตรวจสอบสถานะความเรียบของเส้น\nการประยุกษ์ใช้: ใช้อ่านแอตทริบิวต์ขอบคมเพื่อนำไปพับหรือทำไฮไลต์",
         "inputs": {},
         "outputs": {}
     },
     "GeometryNodeInputMeshIsland": {
         "name": "Mesh Island",
-        "description": "ดึงรหัสระบุชิ้นส่วนตาข่าย (Island) เพื่อระบุกลุ่มชิ้นส่วนที่ขาดจากกัน",
+        "description": "หลักการ: ระบุกลุ่มของหน้าตัดหรือจุดที่ต่อกันเป็นก้อนเดียวกัน (Island)\nการประยุกษ์ใช้: ใช้แยกเศษชิ้นส่วนที่แตกหักกระจายออกจากกัน เพื่อสุ่มสีแต่ละก้อน",
         "inputs": {},
         "outputs": {
             "Island Index": {
@@ -587,7 +587,7 @@
     },
     "GeometryNodeInputMeshVertexNeighbors": {
         "name": "Vertex Neighbors",
-        "description": "ดึงจำนวนจุด เส้น หรือหน้าตัดที่เชื่อมต่อเข้าหาจุดมุมจุดใดจุดหนึ่ง",
+        "description": "หลักการ: นับจำนวนเส้นและหน้าตัดที่พุ่งเข้ามาเชื่อมกับจุดนั้น\nการประยุกษ์ใช้: ใช้หาจุดมุมแหลม ยอดปิรามิด หรือส่วนปลายของหุ่นเพื่อใส่เอฟเฟกต์",
         "inputs": {},
         "outputs": {}
     }
